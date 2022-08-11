@@ -10,6 +10,8 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+
+import GUI.Program.Home;
 import Negozio.Cliente;
 import Negozio.DataM;
 import Negozio.ErrorMessage;
@@ -190,14 +192,11 @@ public class Spesa extends Finestra{
 	}
 	
 	public Spesa (Merce m,Fornitore f){
-		super("Ordina rifornimenti di "+m.getNome()+" da "+f.getCognome()+" "+f.getNome());
+		super("Ordina "+m.getNome());
 		setLocation(150,50);
 		
-		double saldo=0.0;
-		int quant=0;
-		
 		Panel contenuto=new Panel();
-		contenuto.setLayout(new GridLayout(4,2));
+		contenuto.setLayout(new GridLayout(2,2));
 		
 /*comp1*/  Etichetta ti=new Etichetta("Ordina rifornimenti di "+m.getNome());
 		contenuto.add(ti);
@@ -219,23 +218,28 @@ public class Spesa extends Finestra{
 		Panel sotto=new Panel();
 		sotto.setLayout(new GridLayout(1,2));
 		
-/*comp10*/Pulsante bex=new Pulsante("-ESCI-");
+/*comp10*/Pulsante bex=new Pulsante("-ANNULLA-");
 		bex.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
-		    	ErrorMessage err=new ErrorMessage(Spesa.this);
-		    	err.setVisible(true);
+		    	Home home=new Home();
+				home.setVisible(true);
+		    	dispose();
 			}
 		});
 		sotto.add(bex);
 		
 /*comp11*/Pulsante fin=new Pulsante("-ACQUISTA-");
+		fin.setBackground(Est.oran);
 		fin.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	// ordina m da f quantita tf2.ret
-		    	setVisible(false);
-		    	// esci disclamer verifica acquisto
-		    	dispose();
+		    	double qt=Double.parseDouble(tf2.ret);
+		    	if (qt>0){
+			    	ErrorMessage er=new ErrorMessage(f,m,qt);
+			    	er.setVisible(true);
+			    	setVisible(false);
+			    	dispose();
+		    	}
 			}
 		});
 		sotto.add(fin);

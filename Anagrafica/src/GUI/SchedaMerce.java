@@ -137,15 +137,20 @@ public class SchedaMerce extends Finestra{
 		sud.add(eli);
 		Pulsante ord=new Pulsante("-ORDINA-");
 		ord.setPreferredSize(Est.piccolo);
+		ord.setBackground(Est.oran);
 		ord.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (x!=-1){
 		    		
-		    		// ORDINA mer  DA indexF
-			    	setVisible(false);
-			    	ErrorMessage del=new ErrorMessage(x);
-			    	del.setVisible(true);
-			    	dispose();
+		    		try{
+				    	Fornitore f=DataB.get(indexF,"ciao");
+				    	Spesa sp=new Spesa(mer,f);
+				    	sp.setVisible(true);;
+				    	dispose();
+			    	}
+			    	catch (Exception y){
+			    		// ERRORE
+			    	}
 		    	}
 			}
 		});

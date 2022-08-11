@@ -17,7 +17,7 @@ public class SchedaPersona extends Finestra{
 	Double saldo=0.00;
 	String indirizzo;
 	Anagrafica mer;
-	int index;
+	int index=-1;
 		public SchedaPersona(int x, String tipo){
 			super("Scheda "+tipo);
 			if (x>-1){
@@ -138,6 +138,7 @@ public class SchedaPersona extends Finestra{
 				sud.setLayout(new GridLayout(1,2));
 				
 				Pulsante agg=new Pulsante("-Aggiungi Merce-");
+				agg.setBackground(Est.oran);
 				agg.addActionListener(new ActionListener() {
 				    public void actionPerformed(ActionEvent e) {
 				    	setVisible(false);
@@ -157,11 +158,17 @@ public class SchedaPersona extends Finestra{
 				Pulsante ord=new Pulsante("-Ordina Merce-");
 				ord.addActionListener(new ActionListener() {
 				    public void actionPerformed(ActionEvent e) {
-				    	if (x!=-1){
+				    	if (index!=-1){
 					    	setVisible(false);
-					    	/*FAI ACQUISTO DI MERCE index DA mer */
-				    	
-					    	dispose();
+					    	try{
+						    	Fornitore f=DataB.trovaForn(mer);
+						    	Spesa sp=new Spesa(DataM.get(index),f);
+						    	sp.setVisible(true);;
+						    	dispose();
+					    	}
+					    	catch (Exception y){
+					    		// ERRORE
+					    	}
 				    	}
 					}
 				});

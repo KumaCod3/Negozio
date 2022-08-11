@@ -13,12 +13,14 @@ public class AssegnaMerc extends Finestra{
 	public AssegnaMerc(Fornitore f){
 		super("Assegna Merce a fornitore");
 		
-		Etichetta nom=new Etichetta("Fornitore: "+f.getIntestazione());
-		add("North",nom);	
-		
 		Panel contenuto=new Panel();
-		contenuto.setLayout(new GridLayout(2,2));
+		contenuto.setLayout(new GridLayout(3,2));
 		add("Center",contenuto);
+		
+		Etichetta nom=new Etichetta("Fornitore: ");
+		contenuto.add(nom);
+		Etichetta nome=new Etichetta(f.getIntestazione());
+		contenuto.add(nome);
 		
 		Etichetta tt=new Etichetta("Scegliere merce:");
 		contenuto.add(tt);
