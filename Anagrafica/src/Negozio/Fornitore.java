@@ -36,4 +36,9 @@ public class Fornitore extends Anagrafica {
 		int x=DataM.trovaNome(name);
 		elenco.remove(x);
 	}
+	public void ordina(double quant, int index){
+		double saldo=quant*DataM.get(index).getPrezzoA();
+		consegnaMerci(saldo);
+		DataM.get(index).aggiungi(quant);
+	}
 }

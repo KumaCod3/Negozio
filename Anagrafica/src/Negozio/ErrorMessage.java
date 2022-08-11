@@ -217,7 +217,7 @@ public class ErrorMessage extends Frame implements ActionListener{
 		setLocation(300,300);
 		setBackground(new Color(217,243,248));
 		
-		double saldo=m.getPrezzoF()*quantita;
+		double saldo=m.getPrezzoA()*quantita;
 		
 		JLabel tx=new JLabel();
 		tx.setText("<html>Se è sicuri divoler fare l'ordine? "+f.getIntestazione()+"per la Merce: "+m.getNome()+"?");

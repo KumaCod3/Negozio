@@ -69,7 +69,7 @@ public class Merce {
 		valore=quantita*prezzoA;
 		prezzoF=quantita*prezzoV;
 	}
-	public void aggiungi(int x){
+	public void aggiungi(double x){
 		quantita=quantita+x;
 		valore=quantita*prezzoA;
 		prezzoF=quantita*prezzoV;
