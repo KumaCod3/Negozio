@@ -253,7 +253,7 @@ public class ErrorMessage extends Frame implements ActionListener{
 		ty.setBackground(Est.rosso);
 		ty.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	// PIAZZA ORDINE
+		    	f.ordina(quantita, m.getCod());
 		    	setVisible(false);
 		    	Home home=new Home();
 				home.setVisible(true);
