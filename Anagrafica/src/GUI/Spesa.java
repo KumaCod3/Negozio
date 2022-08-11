@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import Negozio.Cliente;
 import Negozio.DataM;
 import Negozio.ErrorMessage;
+import Negozio.Fornitore;
 import Negozio.ListaSpesa;
 import Negozio.Merce;
 
@@ -185,6 +186,61 @@ public class Spesa extends Finestra{
 
 
 
+		pack();
+	}
+	
+	public Spesa (Merce m,Fornitore f){
+		super("Ordina rifornimenti di "+m.getNome()+" da "+f.getCognome()+" "+f.getNome());
+		setLocation(150,50);
+		
+		double saldo=0.0;
+		int quant=0;
+		
+		Panel contenuto=new Panel();
+		contenuto.setLayout(new GridLayout(4,2));
+		
+/*comp1*/  Etichetta ti=new Etichetta("Ordina rifornimenti di "+m.getNome());
+		contenuto.add(ti);
+/*comp2*/  Etichetta no=new Etichetta(" da "+f.getCognome()+" "+f.getNome());
+		contenuto.add(no);
+		
+		add("North",contenuto);
+
+/*comp3*/  Etichetta qtt=new Etichetta("Quantita: ");
+		contenuto.add(qtt);
+/*comp4*/JPanel pan2=new JPanel();
+		FormVuoto tf2=new FormVuoto("Quantita");
+		pan2.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+		pan2.add(tf2);
+		pan2.setBackground(Est.chiaro);
+		contenuto.add(pan2);
+		
+		
+		Panel sotto=new Panel();
+		sotto.setLayout(new GridLayout(1,2));
+		
+/*comp10*/Pulsante bex=new Pulsante("-ESCI-");
+		bex.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	setVisible(false);
+		    	ErrorMessage err=new ErrorMessage(Spesa.this);
+		    	err.setVisible(true);
+			}
+		});
+		sotto.add(bex);
+		
+/*comp11*/Pulsante fin=new Pulsante("-ACQUISTA-");
+		fin.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	// ordina m da f quantita tf2.ret
+		    	setVisible(false);
+		    	// esci disclamer verifica acquisto
+		    	dispose();
+			}
+		});
+		sotto.add(fin);
+			
+		add("South",sotto);
 		pack();
 	}
 }

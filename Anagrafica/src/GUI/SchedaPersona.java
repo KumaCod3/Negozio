@@ -101,7 +101,7 @@ public class SchedaPersona extends Finestra{
 			});
 			contenuto.add(bin);
 			
-/*comp 7*/
+/*comp 7 FOR FORNITORI*/
 			if (tipo.equals("fornitore")){
 				contenuto.setLayout(new GridLayout(7,2));
 	
@@ -169,7 +169,7 @@ public class SchedaPersona extends Finestra{
 				add("South",sud);
 			}			
 				
-/*comp OUT cli*/
+/*comp OUT FOR CLIENTI*/
 			if (tipo.equals("cliente")){
 				Pulsante eli=new Pulsante("-APRI ACQUISTO-");
 				eli.setPreferredSize(Est.piccolo);
