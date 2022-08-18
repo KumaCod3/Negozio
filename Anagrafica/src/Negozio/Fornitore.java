@@ -40,5 +40,6 @@ public class Fornitore extends Anagrafica {
 		double saldo=quant*DataM.get(index).getPrezzoA();
 		consegnaMerci(saldo);
 		DataM.get(index).aggiungi(quant);
+		MyReadA.salva(this, saldo, index);
 	}
 }

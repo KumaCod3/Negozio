@@ -16,9 +16,7 @@ public class Storico extends Finestra{
 	
 		public Storico(){
 			super("Storico Vendite: ");
-			
-			
-			
+
 			Etichetta non=new Etichetta("Storico Vendite: ");
 			add("North",non);
 			

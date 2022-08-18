@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 
 import GUI.Est;
+import GUI.MyReadA;
 import GUI.MyReadL;
 
 public class Shop {
@@ -41,9 +42,17 @@ public class Shop {
 			}
 		}
 	}
-	public static void setTotBought(double x){
-		/*totBought=totBought+x;
-		 FIX WHEN FORNITORI TRANSACTION DONE*/
+	public static void setTotBought(){
+		totSold=0.0;
+		HashMap<LocalDateTime,String[]> elenco=MyReadA.carica();
+		for (String[] a:elenco.values()){
+			try{
+			double tot=Est.deci.parse(a[2]).doubleValue();
+			totSold=totSold+tot;
+			}
+			catch (Exception e){
+			}
+		}
 	}
 	public static double getBal(){
 		bal=totSold-totBought;
