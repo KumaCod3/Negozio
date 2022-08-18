@@ -21,9 +21,7 @@ public class StorTab extends Frame{
 
 	public StorTab(){
 		elenco=MyReadL.carica();
-		
-		
-		
+
 		tavola=new JTable(model);
 		tavola.setBackground(Est.chiaro);
 		tavola.setColumnSelectionAllowed(false);
@@ -33,6 +31,30 @@ public class StorTab extends Frame{
 		model.addColumn("DATA:");
 		model.addColumn("COGNOME:");
 		model.addColumn("NOME:");
+		model.addColumn("TOT:");
+		
+		for (Entry<LocalDateTime,String[]> entry:elenco.entrySet()){
+			
+			String[] riga={entry.getKey().format(Est.dateForm),entry.getValue()[0],entry.getValue()[1],entry.getValue()[2]};
+			model.addRow(riga);
+		}
+
+		JScrollPane sp=new JScrollPane(tavola);
+		sp.add(tavola);
+		add(sp);
+	}
+	public StorTab(String x){
+		elenco=MyReadLA.carica();
+
+		tavola=new JTable(model);
+		tavola.setBackground(Est.chiaro);
+		tavola.setColumnSelectionAllowed(false);
+		tavola.setDragEnabled(false);
+		tavola.setRowSelectionAllowed(true);
+				
+		model.addColumn("DATA:");
+		model.addColumn("COGNOME:");
+		model.addColumn("MERCE:");
 		model.addColumn("TOT:");
 		
 		for (Entry<LocalDateTime,String[]> entry:elenco.entrySet()){
