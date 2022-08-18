@@ -95,6 +95,8 @@ public class ErrorMessage extends Frame implements ActionListener{
 		super("---ATTENZIONE---");
 		setLocation(300,300);
 		setBackground(new Color(217,243,248));
+		boolean gst=x.b.getNome().equals("GUEST");
+		System.out.println(""+gst);
 		
 		JLabel tx=new JLabel();
 		tx.setText("<html>Se è sicuri divoler uscire? <br/> Il contenuto del carrello andra perso.");
@@ -117,8 +119,14 @@ public class ErrorMessage extends Frame implements ActionListener{
 		    	
 		    	x.dispose();
 		    	setVisible(false);
-		    	ConsultaPersone consultaP=new ConsultaPersone();
-		    	consultaP.setVisible(true);
+		    	if (!gst){
+		    		ConsultaPersone consultaP=new ConsultaPersone();
+		    		consultaP.setVisible(true);
+		    	}
+		    	else if (gst){
+		    		Home home=new Home();
+					home.setVisible(true);
+		    	}
 		    	dispose();
 			}
 		});

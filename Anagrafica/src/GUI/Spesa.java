@@ -12,6 +12,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import GUI.Program.Home;
+import Negozio.Anagrafica;
 import Negozio.Cliente;
 import Negozio.DataM;
 import Negozio.ErrorMessage;
@@ -23,16 +24,15 @@ public class Spesa extends Finestra{
 	int indice=-1;
 	int indixex=-1;
 	int index=-1;
+	public Anagrafica b;
 	public Spesa (Cliente c){
 		super("Lista spesa per "+c.getTitolo()+" "+c.getCognome()+" "+c.getNome());
 		setLocation(150,50);
 		ListaSpesa list=new ListaSpesa(c);
-		
+		b=c;
 		Panel contenuto=new Panel();
 		contenuto.setLayout(new GridLayout(4,2));
 
-	/*	Panel tit=new Panel();
-		tit.setLayout(new GridLayout(2,1));*/
 		
 /*comp1*/  Etichetta ti=new Etichetta("Lista spesa per ");
 		contenuto.add(ti);
@@ -194,7 +194,7 @@ public class Spesa extends Finestra{
 	public Spesa (Merce m,Fornitore f){
 		super("Ordina "+m.getNome());
 		setLocation(150,50);
-		
+		b=f;
 		Panel contenuto=new Panel();
 		contenuto.setLayout(new GridLayout(2,2));
 		
