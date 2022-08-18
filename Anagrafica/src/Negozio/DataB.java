@@ -213,4 +213,9 @@ public class DataB <T extends Anagrafica> {
 		int index=trovaPersona(x.getCognome(), x.getNome());
 		return get(index,0);
 	}
+	static public void remove(int x){
+		for (Fornitore f:fornitori){
+			f.removeMerc(x);
+		}
+	}
 }

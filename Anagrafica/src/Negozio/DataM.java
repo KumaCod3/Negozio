@@ -91,5 +91,6 @@ public class DataM {
 	}
 	static public void elimina(int x){
 		elenco.remove(x);
+		DataB.remove(x);
 	}
 }
