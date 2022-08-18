@@ -13,6 +13,9 @@ public class DataM {
 		else {
 		}
 	}
+	static public void agg(Merce t,int ind){
+		elenco.put(ind,t);
+	}
 	static public Merce get(int x){
 		return elenco.get(x);
 	}

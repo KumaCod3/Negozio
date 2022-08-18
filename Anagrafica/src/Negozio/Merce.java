@@ -40,6 +40,17 @@ public class Merce {
 		this.valore=prezzoA*quantita;
 		this.codice=DataM.nextIndice();
 	}
+	public Merce(String nome, Double quantita, int rincaro, Double prezzoA, String unita, int cod){
+		this.nome=nome;
+		this.quantita=quantita;
+		this.rincaro=rincaro;
+		this.prezzoA=prezzoA;
+		this.unita=unita;
+		this.prezzoV=(prezzoA/100*rincaro)+prezzoA;
+		this.prezzoF=prezzoV*quantita;
+		this.valore=prezzoA*quantita;
+		this.codice=cod;
+	}
 	public int getCod(){
 		return codice;
 	}

@@ -31,20 +31,21 @@ public class MyReadM {
 		
 		for (String lin:elenco){
 			String[] og=lin.split(",");
-			String nome=og[0];
-			Double quantita=Double.parseDouble(og[1]);
-			int rincaro=Integer.parseInt(og[2]);
-			Double prezzoA=Double.parseDouble(og[3]);
-			String unita=og[4];
-			Merce ogetto=new Merce(nome, quantita, rincaro, prezzoA, unita);
-			DataM.agg(ogetto);
+			int cod=Integer.parseInt(og[0]);
+			String nome=og[1];
+			Double quantita=Double.parseDouble(og[2]);
+			int rincaro=Integer.parseInt(og[3]);
+			Double prezzoA=Double.parseDouble(og[4]);
+			String unita=og[5];
+			Merce ogetto=new Merce(nome, quantita, rincaro, prezzoA, unita, cod);
+			DataM.agg(ogetto,cod);
 			
 		}
 	}
 	public static void scarica(){
 		ArrayList<String> elenco=new ArrayList<String>();
 		for (Merce f:DataM.elenco.values()){
-			String temp=f.getNome()+","+f.getQuantita()+","+f.getRincaro()+","+f.getPrezzoA()+","+f.getUnit();
+			String temp=f.getCod()+","+f.getNome()+","+f.getQuantita()+","+f.getRincaro()+","+f.getPrezzoA()+","+f.getUnit();
 			elenco.add(temp);
 		}
 		try{
