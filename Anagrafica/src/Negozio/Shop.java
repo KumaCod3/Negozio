@@ -22,6 +22,7 @@ public class Shop {
 		return totSold;
 	}
 	public static double getTotBought(){
+		setTotBought();
 		return totBought;
 	}
 	public static void setMerchVal(){
@@ -43,16 +44,17 @@ public class Shop {
 		}
 	}
 	public static void setTotBought(){
-		totSold=0.0;
+		totBought=0.0;
 		HashMap<LocalDateTime,String[]> elenco=MyReadA.carica();
 		for (String[] a:elenco.values()){
 			try{
 			double tot=Est.deci.parse(a[2]).doubleValue();
-			totSold=totSold+tot;
+			totBought=totBought+tot;
 			}
 			catch (Exception e){
 			}
 		}
+		
 	}
 	public static double getBal(){
 		bal=totSold-totBought;
