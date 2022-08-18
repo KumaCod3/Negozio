@@ -262,6 +262,7 @@ public class ErrorMessage extends Frame implements ActionListener{
 		ty.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	f.ordina(quantita, m.getCod());
+		    	
 		    	setVisible(false);
 		    	Home home=new Home();
 				home.setVisible(true);

@@ -8,6 +8,8 @@ import java.util.Map.Entry;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import Negozio.DataM;
 import Negozio.Merce;
 
 public class StorTab extends Frame{
@@ -44,7 +46,7 @@ public class StorTab extends Frame{
 		add(sp);
 	}
 	public StorTab(String x){
-		elenco=MyReadLA.carica();
+		elenco=MyReadA.carica();
 
 		tavola=new JTable(model);
 		tavola.setBackground(Est.chiaro);
@@ -59,7 +61,7 @@ public class StorTab extends Frame{
 		
 		for (Entry<LocalDateTime,String[]> entry:elenco.entrySet()){
 			
-			String[] riga={entry.getKey().format(Est.dateForm),entry.getValue()[0],entry.getValue()[1],entry.getValue()[2]};
+			String[] riga={entry.getKey().format(Est.dateForm),entry.getValue()[0],DataM.get(Integer.parseInt(entry.getValue()[3])).getNome(),entry.getValue()[2]};
 			model.addRow(riga);
 		}
 
