@@ -15,30 +15,30 @@ public class ConsultaPersone  extends Finestra {
 	int indexC=-1;
 	boolean tipp=true;
 	public ConsultaPersone(){
-		super("CONSULTA data base Persone");
+		super("CONSULT Persons database");
 
 		Panel contenuto=new Panel();
 		contenuto.setLayout(new GridLayout(3,3));
 		
-/*comp1*/  Etichetta tx1=new Etichetta("Consulta Fornitori");
+/*comp1*/  Etichetta tx1=new Etichetta("Persons:");
 		contenuto.add(tx1);
 		
 /*comp2*/Choice ele1=new Choice();
-		ele1.add("Scegli");
+		ele1.add("Choose");
 		try{
 			for (Fornitore a:DataB.fornitori){
 				ele1.add(a.getCognome()+", "+a.getNome());
 			}
 		}
 		catch (Exception e){
-			ele1.add("Lista vuota");
+			ele1.add("Empty");
 		}
 		ele1.setFont(Est.font);
 		ele1.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e){
 			}
 			public void focusLost(FocusEvent e){
-				if (ele1.getSelectedItem().equals("Scegli")||ele1.getSelectedItem().equals("Lista vuota")){
+				if (ele1.getSelectedItem().equals("Choose")||ele1.getSelectedItem().equals("Empty")){
 				}
 				else {
 					String[] temp=ele1.getSelectedItem().split(", ");
@@ -48,7 +48,7 @@ public class ConsultaPersone  extends Finestra {
 		});
 		contenuto.add(ele1);
 
-/*comp3*/Pulsante bent1=new Pulsante("-INVIO-");
+/*comp3*/Pulsante bent1=new Pulsante("-ENTER-");
 		bent1.addActionListener(new ActionListener() {
 			 public void actionPerformed(ActionEvent e) {
 				 if (indexF!=-1){
@@ -61,25 +61,25 @@ public class ConsultaPersone  extends Finestra {
 		contenuto.add(bent1);
 
 
-/*comp4*/  Etichetta tx=new Etichetta("Consulta Clienti");
+/*comp4*/  Etichetta tx=new Etichetta("See Customers");
 		contenuto.add(tx);
 		
 /*comp5*/Choice ele=new Choice();
-		ele.add("Scegli");
+		ele.add("Choose");
 		try{
 			for (Cliente a:DataB.clienti){
 				ele.add(a.getCognome()+", "+a.getNome());
 			}
 		}
 		catch (Exception e){
-			ele.add("Lista vuota");
+			ele.add("Empty");
 		}
 		ele.setFont(Est.font);
 		ele.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e){
 			}
 			public void focusLost(FocusEvent e){
-				if (ele.getSelectedItem().equals("Scegli")||ele.getSelectedItem().equals("Lista vuota")){
+				if (ele.getSelectedItem().equals("Choose")||ele.getSelectedItem().equals("Empty")){
 				}
 				else {
 					String[] temp=ele.getSelectedItem().split(", ");
@@ -89,7 +89,7 @@ public class ConsultaPersone  extends Finestra {
 		});
 		contenuto.add(ele);
 
-/*comp6*/Pulsante bent=new Pulsante("-INVIO-");
+/*comp6*/Pulsante bent=new Pulsante("-ENTER-");
 		bent.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (indexC!=-1){
@@ -101,7 +101,7 @@ public class ConsultaPersone  extends Finestra {
 	});
 		contenuto.add(bent);
 		
-/*comp7*/Pulsante bex=new Pulsante("-ESCI-");
+/*comp7*/Pulsante bex=new Pulsante("-EXIT-");
 		bex.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
@@ -115,7 +115,7 @@ public class ConsultaPersone  extends Finestra {
 /*comp8*/Etichetta tv=new Etichetta("           ");
 		contenuto.add(tv);
 		
-/*comp9*/Pulsante b2=new Pulsante("+ Aggiungi +");
+/*comp9*/Pulsante b2=new Pulsante("+ ADD new +");
 		b2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AggiungiPersona aggg=new AggiungiPersona();

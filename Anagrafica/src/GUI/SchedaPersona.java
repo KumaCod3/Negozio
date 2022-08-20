@@ -51,32 +51,32 @@ public class SchedaPersona extends Finestra{
 			Panel contenuto=new Panel();
 			contenuto.setLayout(new GridLayout(6,2));
 			
-	/*comp1*/  Etichetta non=new Etichetta("Nominativo: ");
+	/*comp1*/  Etichetta non=new Etichetta("Nominative: ");
 			contenuto.add(non);	
 			Etichetta nn=new Etichetta(titolo+" "+cognome+" "+nome);
 			contenuto.add(nn);	
 			
-	/*comp2*/  Etichetta uni=new Etichetta("Contatti: ");
+	/*comp2*/  Etichetta uni=new Etichetta("Contacts: ");
 			contenuto.add(uni);
-			Etichetta uu=new Etichetta("tel: "+telefono+" eMail: "+email);
+			Etichetta uu=new Etichetta("Phone: "+telefono+" eMail: "+email);
 			contenuto.add(uu);
 			
-	/*comp3*/  Etichetta ac=new Etichetta("Partita IVA: ");
+	/*comp3*/  Etichetta ac=new Etichetta("VAT number: ");
 			contenuto.add(ac);
 			Etichetta aa=new Etichetta("n. "+iva);
 			contenuto.add(aa);
 			
-	/*comp4*/  Etichetta ri=new Etichetta("Saldo: ");
+	/*comp4*/  Etichetta ri=new Etichetta("Balance: ");
 			contenuto.add(ri);
 			Etichetta rr=new Etichetta(Est.deci.format(saldo)+" eu. ");
 			contenuto.add(rr);
 			
-	/*comp5*/  Etichetta va=new Etichetta("Indirizzo: ");
+	/*comp5*/  Etichetta va=new Etichetta("Address: ");
 			contenuto.add(va);
 			Etichetta vv=new Etichetta(indirizzo+" ");
 			contenuto.add(vv);
 			
-	/*comp6*/Pulsante bex=new Pulsante("-ESCI-");
+	/*comp6*/Pulsante bex=new Pulsante("-EXIT-");
 			bex.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	setVisible(false);
@@ -87,7 +87,7 @@ public class SchedaPersona extends Finestra{
 			});
 			contenuto.add(bex);
 			
-			Pulsante bin=new Pulsante("-MODIFICA-");
+			Pulsante bin=new Pulsante("-MODIFY-");
 			bin.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	if (x!=-1){
@@ -105,25 +105,25 @@ public class SchedaPersona extends Finestra{
 			if (tipo.equals("fornitore")){
 				contenuto.setLayout(new GridLayout(7,2));
 	
-				Etichetta forn=new Etichetta("Merci: ");
+				Etichetta forn=new Etichetta("Products: ");
 				contenuto.add(forn);	
 				
 				Choice ele1=new Choice();
-				ele1.add("Scegli");
+				ele1.add("Choose");
 				try{
 					for (Merce a: mer.getMerc().values()){
 						ele1.add(a.getNome()+" "+a.getCod());
 					}
 				}
 				catch (Exception e){
-					ele1.add("Lista vuota");
+					ele1.add("Empty");
 				}
 				ele1.setFont(Est.font);
 				ele1.addFocusListener(new FocusListener() {
 					public void focusGained(FocusEvent e){
 					}
 					public void focusLost(FocusEvent e){
-						if (ele1.getSelectedItem().equals("Scegli")||ele1.getSelectedItem().equals("Lista vuota")){
+						if (ele1.getSelectedItem().equals("Choose")||ele1.getSelectedItem().equals("Empty")){
 						}
 						else {
 							String temp=ele1.getSelectedItem();
@@ -137,7 +137,7 @@ public class SchedaPersona extends Finestra{
 	/*OUT*/		Panel sud=new Panel();
 				sud.setLayout(new GridLayout(1,2));
 				
-				Pulsante agg=new Pulsante("-Aggiungi Merce-");
+				Pulsante agg=new Pulsante("-Assign Product-");
 				agg.setBackground(Est.oran);
 				agg.addActionListener(new ActionListener() {
 				    public void actionPerformed(ActionEvent e) {
@@ -155,7 +155,7 @@ public class SchedaPersona extends Finestra{
 				});
 				sud.add(agg);
 				
-				Pulsante ord=new Pulsante("-Ordina Merce-");
+				Pulsante ord=new Pulsante("-Order Product-");
 				ord.addActionListener(new ActionListener() {
 				    public void actionPerformed(ActionEvent e) {
 				    	if (index!=-1){
@@ -178,7 +178,7 @@ public class SchedaPersona extends Finestra{
 				
 /*comp OUT FOR CLIENTI*/
 			if (tipo.equals("cliente")){
-				Pulsante eli=new Pulsante("-APRI ACQUISTO-");
+				Pulsante eli=new Pulsante("-OPEN CART-");
 				eli.setPreferredSize(Est.piccolo);
 				eli.setBackground(Est.medio);
 				eli.addActionListener(new ActionListener() {

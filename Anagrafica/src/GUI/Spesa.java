@@ -26,7 +26,7 @@ public class Spesa extends Finestra{
 	int index=-1;
 	public Anagrafica b;
 	public Spesa (Cliente c){
-		super("Lista spesa per "+c.getTitolo()+" "+c.getCognome()+" "+c.getNome());
+		super("Shopping cart of "+c.getTitolo()+" "+c.getCognome()+" "+c.getNome());
 		setLocation(150,50);
 		ListaSpesa list=new ListaSpesa(c);
 		b=c;
@@ -34,32 +34,32 @@ public class Spesa extends Finestra{
 		contenuto.setLayout(new GridLayout(4,2));
 
 		
-/*comp1*/  Etichetta ti=new Etichetta("Lista spesa per ");
+/*comp1*/  Etichetta ti=new Etichetta("Shopping cart of ");
 		contenuto.add(ti);
 /*comp2*/  Etichetta no=new Etichetta(c.getTitolo()+" "+c.getCognome()+" "+c.getNome());
 		contenuto.add(no);
 		
 		add("North",contenuto);
 
-/*comp1*/  Etichetta tx=new Etichetta("Scegli merce: ");
+/*comp1*/  Etichetta tx=new Etichetta("Choose product: ");
 		contenuto.add(tx);
 		
 /*comp2*/Choice ele=new Choice();
-		ele.add("Scegli");
+		ele.add("Choose");
 		try{
 			for (Merce a:DataM.elenco.values()){
 				ele.add(a.getNome()+" "+a.getCod());
 			}
 		}
 		catch (Exception e){
-			ele.add("Lista vuota");
+			ele.add("Empty");
 		}
 		ele.setFont(Est.font);
 		ele.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e){
 			}
 			public void focusLost(FocusEvent e){
-				if (ele.getSelectedItem().equals("Scegli")||ele.getSelectedItem().equals("Lista vuota")){
+				if (ele.getSelectedItem().equals("Choose")||ele.getSelectedItem().equals("Empty")){
 				}
 				else {
 					String temp=ele.getSelectedItem();
@@ -70,10 +70,10 @@ public class Spesa extends Finestra{
 		});
 		contenuto.add(ele);
 		
-/*comp3*/  Etichetta qtt=new Etichetta("Quantita: ");
+/*comp3*/  Etichetta qtt=new Etichetta("Quantity: ");
 		contenuto.add(qtt);
 /*comp4*/JPanel pan2=new JPanel();
-		FormVuoto tf2=new FormVuoto("Quantita");
+		FormVuoto tf2=new FormVuoto("Quantity");
 		pan2.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		pan2.add(tf2);
 		pan2.setBackground(Est.chiaro);
@@ -81,7 +81,7 @@ public class Spesa extends Finestra{
 		
 		Panel sal=new Panel();
 		sal.setLayout(new GridLayout(1,3));
-		Etichetta sal1=new Etichetta("Totale: .......");
+		Etichetta sal1=new Etichetta("Total: .......");
 		sal.add(sal1);
 		Etichetta sal2=new Etichetta("..............");
 		sal.add(sal2);
@@ -107,7 +107,7 @@ public class Spesa extends Finestra{
 		
 		add("Center", corpo);
 
-/*comp5*/Pulsante bent=new Pulsante("-AGGIUNGI-");
+/*comp5*/Pulsante bent=new Pulsante("-ADD-");
 		bent.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (index!=-1){
@@ -134,7 +134,7 @@ public class Spesa extends Finestra{
 		});
 		contenuto.add(bent);
 		
-/*comp6*/Pulsante eli=new Pulsante("-ELIMINA-");
+/*comp6*/Pulsante eli=new Pulsante("-DELETE-");
 		eli.setBackground(Est.rosso);
 		eli.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -159,7 +159,7 @@ public class Spesa extends Finestra{
 		sotto.setLayout(new GridLayout(1,2));
 		
 		
-/*comp10*/Pulsante bex=new Pulsante("-ESCI-");
+/*comp10*/Pulsante bex=new Pulsante("-EXIT-");
 		bex.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
@@ -169,7 +169,7 @@ public class Spesa extends Finestra{
 		});
 		sotto.add(bex);
 		
-/*comp11*/Pulsante fin=new Pulsante("-ACQUISTA-");
+/*comp11*/Pulsante fin=new Pulsante("- BUY -");
 		fin.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	list.concludi();
@@ -192,23 +192,23 @@ public class Spesa extends Finestra{
 	}
 	
 	public Spesa (Merce m,Fornitore f){
-		super("Ordina "+m.getNome());
+		super("Order "+m.getNome());
 		setLocation(150,50);
 		b=f;
 		Panel contenuto=new Panel();
 		contenuto.setLayout(new GridLayout(2,2));
 		
-/*comp1*/  Etichetta ti=new Etichetta("Ordina rifornimenti di "+m.getNome());
+/*comp1*/  Etichetta ti=new Etichetta("Order supply of "+m.getNome());
 		contenuto.add(ti);
 /*comp2*/  Etichetta no=new Etichetta(" da "+f.getCognome()+" "+f.getNome());
 		contenuto.add(no);
 		
 		add("North",contenuto);
 
-/*comp3*/  Etichetta qtt=new Etichetta("Quantita: ");
+/*comp3*/  Etichetta qtt=new Etichetta("Quantity: ");
 		contenuto.add(qtt);
 /*comp4*/JPanel pan2=new JPanel();
-		FormVuoto tf2=new FormVuoto("Quantita");
+		FormVuoto tf2=new FormVuoto("Quantity");
 		pan2.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		pan2.add(tf2);
 		pan2.setBackground(Est.chiaro);
@@ -218,7 +218,7 @@ public class Spesa extends Finestra{
 		Panel sotto=new Panel();
 		sotto.setLayout(new GridLayout(1,2));
 		
-/*comp10*/Pulsante bex=new Pulsante("-ANNULLA-");
+/*comp10*/Pulsante bex=new Pulsante("-CANCEL-");
 		bex.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
@@ -229,7 +229,7 @@ public class Spesa extends Finestra{
 		});
 		sotto.add(bex);
 		
-/*comp11*/Pulsante fin=new Pulsante("-ACQUISTA-");
+/*comp11*/Pulsante fin=new Pulsante("- BUY -");
 		fin.setBackground(Est.oran);
 		fin.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {

@@ -30,9 +30,9 @@ public class StorTab extends Frame{
 		tavola.setDragEnabled(false);
 		tavola.setRowSelectionAllowed(true);
 				
-		model.addColumn("DATA:");
-		model.addColumn("COGNOME:");
-		model.addColumn("NOME:");
+		model.addColumn("DATE:");
+		model.addColumn("LAST NAME:");
+		model.addColumn("NAME:");
 		model.addColumn("TOT:");
 		
 		for (Entry<LocalDateTime,String[]> entry:elenco.entrySet()){
@@ -54,9 +54,9 @@ public class StorTab extends Frame{
 		tavola.setDragEnabled(false);
 		tavola.setRowSelectionAllowed(true);
 				
-		model.addColumn("DATA:");
-		model.addColumn("COGNOME:");
-		model.addColumn("MERCE:");
+		model.addColumn("DATE:");
+		model.addColumn("LAST NAME:");
+		model.addColumn("PRODUCT:");
 		model.addColumn("TOT:");
 		
 		for (Entry<LocalDateTime,String[]> entry:elenco.entrySet()){

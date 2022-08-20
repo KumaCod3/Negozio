@@ -15,20 +15,20 @@ import Negozio.DataB;
 public class Storico extends Finestra{
 	
 		public Storico(){
-			super("Storico: ");
+			super("History: ");
 
 			Panel centro=new Panel();
 			centro.setLayout(new GridLayout(1,2));
 			add("Center",centro);
 			Panel sinistro=new Panel();
 			sinistro.setLayout(new BorderLayout());
-			Etichetta non=new Etichetta("Storico Vendite: ");
+			Etichetta non=new Etichetta("Sales History: ");
 			sinistro.add("North",non);
 			
 			StorTab tab=new StorTab();
 			sinistro.add("Center",tab.ta());
 			
-			Pulsante bex=new Pulsante("-ESCI-");
+			Pulsante bex=new Pulsante("-EXIT-");
 			bex.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	setVisible(false);
@@ -42,7 +42,7 @@ public class Storico extends Finestra{
 			
 			Panel destro=new Panel();
 			destro.setLayout(new BorderLayout());
-			Etichetta nomm=new Etichetta("Storico Acquisti: ");
+			Etichetta nomm=new Etichetta("Purchase History: ");
 			destro.add("North",nomm);
 			
 			StorTab tabb=new StorTab("prova");

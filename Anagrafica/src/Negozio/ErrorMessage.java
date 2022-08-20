@@ -8,13 +8,13 @@ import javax.swing.*;
 import java.awt.event.*;
 public class ErrorMessage extends Frame implements ActionListener{
 	public ErrorMessage(){
-		super("---ERRORE---");
+		super("---ERROR---");
 		setLayout(new BorderLayout(100,50));
 		setLocation(300,300);
 		setBackground(Est.chiaro);
 		
 		JLabel tx=new JLabel();
-		tx.setText("Mi dispiace, qualcosa e andato storto... ");
+		tx.setText("I'm sorry, something went wrong ... ");
 		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
 		tx.setFont(Est.font);
 		
@@ -27,13 +27,13 @@ public class ErrorMessage extends Frame implements ActionListener{
 		pack();
 	}
 	public ErrorMessage(String a){
-		super("---ERRORE---");
+		super("---ERROR---");
 		setLayout(new BorderLayout(100,50));
 		setLocation(300,300);
 		setBackground(new Color(217,243,248));
 		
 		JLabel tx=new JLabel();
-		tx.setText("Mi dispiace, qualcosa e andato storto... ");
+		tx.setText("I'm sorry, something went wrong ... ");
 		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
 		tx.setFont(Est.font);
 		
@@ -53,16 +53,16 @@ public class ErrorMessage extends Frame implements ActionListener{
 	}
 	
 	public ErrorMessage(int a){
-		super("---ATTENZIONE---");
+		super("---ATTENTION---");
 		setLocation(300,300);
 		setBackground(new Color(217,243,248));
 		
 		JLabel tx=new JLabel();
-		tx.setText("<html>Se è sicuri divoler eliminare questo prodotto? <br/> Numero:"+a+" Merce: "+DataM.elenco.get(a).getNome());
+		tx.setText("<html>Are you sure you want to delete this product? <br/> Number:"+a+" Product: "+DataM.elenco.get(a).getNome());
 		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
 		tx.setFont(Est.font);
 		
-		Pulsante ok=new Pulsante("ANNULLA");
+		Pulsante ok=new Pulsante("CANCEL");
 		ok.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
@@ -72,7 +72,7 @@ public class ErrorMessage extends Frame implements ActionListener{
 			}
 		});
 		
-		Pulsante ty=new Pulsante("ELIMINA");
+		Pulsante ty=new Pulsante("DELETE");
 		ty.setBackground(Est.rosso);
 		ty.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -92,18 +92,18 @@ public class ErrorMessage extends Frame implements ActionListener{
 	}
 	
 	public ErrorMessage(Spesa x){
-		super("---ATTENZIONE---");
+		super("---ATTENTION---");
 		setLocation(300,300);
 		setBackground(new Color(217,243,248));
 		boolean gst=x.b.getNome().equals("GUEST");
 		System.out.println(""+gst);
 		
 		JLabel tx=new JLabel();
-		tx.setText("<html>Se è sicuri divoler uscire? <br/> Il contenuto del carrello andra perso.");
+		tx.setText("<html>Are you sure you want to go out? <br/> The contents of the shopping cart will be lost.");
 		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
 		tx.setFont(Est.font);
 		
-		Pulsante ok=new Pulsante("ANNULLA");
+		Pulsante ok=new Pulsante("CANCEL");
 		ok.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
@@ -112,7 +112,7 @@ public class ErrorMessage extends Frame implements ActionListener{
 			}
 		});
 		
-		Pulsante ty=new Pulsante("ELIMINA");
+		Pulsante ty=new Pulsante("DELETE");
 		ty.setBackground(Est.rosso);
 		ty.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -139,17 +139,17 @@ public class ErrorMessage extends Frame implements ActionListener{
 	}
 	
 	public ErrorMessage(Merce m,int index){
-		super("---ATTENZIONE---");
+		super("---ATTENTION---");
 		setLocation(300,300);
 		setBackground(new Color(217,243,248));
 		
 		Fornitore f=DataB.fornitori.get(index);
 		JLabel tx=new JLabel();
-		tx.setText("<html>Se è sicuri divoler eliminare il fornitore? <br/> "+f.getIntestazione()+"per la Merce: "+m.getNome()+"?");
+		tx.setText("<html>Are you sure you will delete the supplier <br/> "+f.getIntestazione()+"for the product: "+m.getNome()+"?");
 		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
 		tx.setFont(Est.font);
 		
-		Pulsante ok=new Pulsante("ANNULLA");
+		Pulsante ok=new Pulsante("CANCEL");
 		ok.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
@@ -159,7 +159,7 @@ public class ErrorMessage extends Frame implements ActionListener{
 			}
 		});
 		
-		Pulsante ty=new Pulsante("ELIMINA");
+		Pulsante ty=new Pulsante("DELETE");
 		ty.setBackground(Est.rosso);
 		ty.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -180,17 +180,17 @@ public class ErrorMessage extends Frame implements ActionListener{
 	}
 	
 	public ErrorMessage(Fornitore f,int index){
-		super("---ATTENZIONE---");
+		super("---ATTENtION---");
 		setLocation(300,300);
 		setBackground(new Color(217,243,248));
 		
 		Merce m=DataM.get(index);
 		JLabel tx=new JLabel();
-		tx.setText("<html>Se è sicuri divoler eliminare il fornitore? <br/> "+f.getIntestazione()+"per la Merce: "+m.getNome()+"?");
+		tx.setText("<html>Are you sure you will delete the supplier <br/> "+f.getIntestazione()+"for the product: "+m.getNome()+"?");
 		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
 		tx.setFont(Est.font);
 		
-		Pulsante ok=new Pulsante("ANNULLA");
+		Pulsante ok=new Pulsante("CANCEL");
 		ok.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
@@ -200,7 +200,7 @@ public class ErrorMessage extends Frame implements ActionListener{
 			}
 		});
 		
-		Pulsante ty=new Pulsante("ELIMINA");
+		Pulsante ty=new Pulsante("DELETE");
 		ty.setBackground(Est.rosso);
 		ty.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -221,31 +221,31 @@ public class ErrorMessage extends Frame implements ActionListener{
 	}
 	
 	public ErrorMessage(Fornitore f,Merce m, double quantita){
-		super("---ATTENZIONE---");
+		super("---ATTENTION---");
 		setLocation(300,300);
 		setBackground(new Color(217,243,248));
 		
 		double saldo=m.getPrezzoA()*quantita;
 		
 		JLabel tx=new JLabel();
-		tx.setText("<html>Se è sicuri divoler fare l'ordine? "+f.getIntestazione()+"per la Merce: "+m.getNome()+"?");
+		tx.setText("<html>Do you want to DELETE the order from "+f.getIntestazione()+"for the product: "+m.getNome()+"?");
 		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
 		tx.setFont(Est.font);
 		
 		Panel sal=new Panel();
 		sal.setLayout(new GridLayout(1,3));
-		Etichetta sal1=new Etichetta("Ordinare: "+quantita+m.getUnit());
+		Etichetta sal1=new Etichetta("Order: "+quantita+m.getUnit());
 		sal.add(sal1);
-		Etichetta sal2=new Etichetta(" di "+m.getNome());
+		Etichetta sal2=new Etichetta(" of "+m.getNome());
 		sal.add(sal2);
-		Etichetta sal3=new Etichetta("costo: "+Est.deci.format(saldo)+" eu. ?");
+		Etichetta sal3=new Etichetta("price: "+Est.deci.format(saldo)+" eu. ?");
 		sal.add(sal3);
 		
 		
 		Panel tasti=new Panel();
 		tasti.setLayout(new GridLayout(1,2));
 		
-		Pulsante ok=new Pulsante("ANNULLA");
+		Pulsante ok=new Pulsante("CANCEL");
 		ok.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
@@ -257,7 +257,7 @@ public class ErrorMessage extends Frame implements ActionListener{
 			}
 		});
 		
-		Pulsante ty=new Pulsante("ORDINA");
+		Pulsante ty=new Pulsante("PLACE ORDER");
 		ty.setBackground(Est.rosso);
 		ty.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {

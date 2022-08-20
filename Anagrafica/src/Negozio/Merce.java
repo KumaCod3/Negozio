@@ -116,11 +116,11 @@ public class Merce {
 		return prezzoF;
 	}
 	public String toString(){
-		String stampa=nome+" qt. "+quantita+" prezzo: "+prezzoF;
+		String stampa=nome+" "+quantita+" "+unita+" price: "+prezzoF;
 		return stampa;
 	}
 	public String toStri(){
-		String stampa=nome+" qt. "+quantita+" TOT "+valore;
+		String stampa=nome+" "+quantita+" TOT "+valore;
 		return stampa;
 	}
 	public void addForn(Fornitore f){

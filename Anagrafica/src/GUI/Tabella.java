@@ -27,18 +27,10 @@ public class Tabella extends Frame{
 		tavola.setDragEnabled(false);
 		tavola.setRowSelectionAllowed(true);
 				
-		model.addColumn("PRODOTTO:");
-		model.addColumn("QUANTITÀ:");
+		model.addColumn("PRODUCT:");
+		model.addColumn("QUANTITY:");
 		model.addColumn("ToT:");
-		/*tavola.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
-			int indx=-1;
-			public void valueChanged(ListSelectionEvent arg0) {
-				indx = tavola.getSelectedRow();
-			}
-			public int getInd(){
-				return indx;
-			}
-		});*/
+
 		JScrollPane sp=new JScrollPane(tavola);
 		sp.add(tavola);
 		add(sp);

@@ -50,7 +50,7 @@ public class ListaSpesa{
 		return stampa;
 	}
 	public String salva(){
-		String sav=data+" "+cliente.getNome()+" "+cliente.getCognome()+" tot da pagare: "+saldo+"eu./n";
+		String sav=data+" "+cliente.getNome()+" "+cliente.getCognome()+" tot to pay: "+saldo+"eu./n";
 		for (int k:elenco.keySet()){
 			Double x=elenco.get(k).getPrezzoV();
 			DataM.get(k).togli(x);

@@ -17,7 +17,7 @@ public class Balance extends Finestra{
 	private double bal;
 	
 		public Balance(){
-			super("Bilancio negozio:");
+			super("TOTAL BALANCE:");
 			this.merchVal=Shop.getMerchVal();
 			this.totSold=Shop.getTotSold();
 			this.totBought=Shop.getTotBought();
@@ -26,29 +26,29 @@ public class Balance extends Finestra{
 			Panel contenuto=new Panel();
 			contenuto.setLayout(new GridLayout(4,2));
 			
-	/*comp1*/  Etichetta non=new Etichetta("Valore merce in magazzino: ");
+	/*comp1*/  Etichetta non=new Etichetta("Goods value in stock: ");
 			contenuto.add(non);	
 			Etichetta nn=new Etichetta(Est.deci.format(merchVal)+" eu. ");
 			contenuto.add(nn);	
 			
-	/*comp2*/  Etichetta uni=new Etichetta("Totale vendite: ");
+	/*comp2*/  Etichetta uni=new Etichetta("Total sold: ");
 			contenuto.add(uni);
 			Etichetta uu=new Etichetta(Est.deci.format(totSold)+" eu. ");
 			contenuto.add(uu);
 			
-	/*comp3*/  Etichetta ac=new Etichetta("Totale acquisti: ");
+	/*comp3*/  Etichetta ac=new Etichetta("Total Bought: ");
 			contenuto.add(ac);
 			Etichetta aa=new Etichetta(Est.deci.format(totBought)+" eu. ");
 			contenuto.add(aa);
 			
-	/*comp4*/  Etichetta ri=new Etichetta("BILANCIO FINALE: ");
+	/*comp4*/  Etichetta ri=new Etichetta("FINAL BALANCE: ");
 			contenuto.add(ri);
 			Etichetta rr=new Etichetta(Est.deci.format(bal)+" eu. ");
 			contenuto.add(rr);
 			
 			add("Center", contenuto);
 			
-	/*es*/Pulsante bex=new Pulsante("-ESCI-");
+	/*es*/Pulsante bex=new Pulsante("-EXIT-");
 			bex.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	setVisible(false);

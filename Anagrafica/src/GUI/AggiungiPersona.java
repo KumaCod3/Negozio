@@ -19,17 +19,17 @@ public class AggiungiPersona extends Finestra{
 	boolean sett;
 	Anagrafica mer=null;
 	public AggiungiPersona(){
-		super("Aggiungi persona");
+		super("Add new Person");
 		
 		Panel contenuto=new Panel();
 		contenuto.setLayout(new GridLayout(10,2));
 		
-/*comp1*/  Etichetta ty=new Etichetta("Scegliere DB: ");
+/*comp1*/  Etichetta ty=new Etichetta("Choose DB: ");
 		contenuto.add(ty);
 		
 /*comp2*/Panel ss=new Panel();
 		ss.setLayout(new GridLayout(1,2));
-		JRadioButton client = new JRadioButton("Clienti");
+		JRadioButton client = new JRadioButton("Customer");
 		client.setBackground(Est.chiaro);
 	    client.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent evt) {
@@ -37,7 +37,7 @@ public class AggiungiPersona extends Finestra{
 	        }
 	    });
 	    ss.add(client);
-		JRadioButton fornit = new JRadioButton("Fornitori");
+		JRadioButton fornit = new JRadioButton("Supplier");
  		fornit.setBackground(Est.chiaro);
 	    fornit.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent evt) {
@@ -51,14 +51,14 @@ public class AggiungiPersona extends Finestra{
 	    group.add(fornit);
 	    contenuto.add(ss);
 		
-/*comp3*/  Etichetta un=new Etichetta("Titolo: ");
+/*comp3*/  Etichetta un=new Etichetta("Title: ");
 		contenuto.add(un);
 		
 /*comp4*/Choice uni=new Choice();
-		uni.add("Scegli");
-		uni.add("Ditta");
-		uni.add("Sig.");
-		uni.add("Sig.ra");
+		uni.add("Choose");
+		uni.add("Firm");
+		uni.add("Mr.");
+		uni.add("Mrs.");
 		uni.setFont(Est.font);
 		uni.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e){
@@ -71,28 +71,28 @@ public class AggiungiPersona extends Finestra{
 		});
 		contenuto.add(uni);	
 		
-/*comp5*/  Etichetta non=new Etichetta("Nome: ");
+/*comp5*/  Etichetta non=new Etichetta("Name: ");
 		contenuto.add(non);
 /*comp6*/ JPanel pan1=new JPanel();
-		FormVuoto tf1 = new FormVuoto("Nome");
+		FormVuoto tf1 = new FormVuoto("Name");
 		pan1.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		pan1.add(tf1);
 		pan1.setBackground(Est.chiaro);
 		contenuto.add(pan1);
 
-/*comp7*/  Etichetta qtt=new Etichetta("Cognome: ");
+/*comp7*/  Etichetta qtt=new Etichetta("Last Name: ");
 		contenuto.add(qtt);
 /*comp8*/JPanel pan2=new JPanel();
-		FormVuoto tf2 = new FormVuoto("Cognome");
+		FormVuoto tf2 = new FormVuoto("Last Name");
 		pan2.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		pan2.add(tf2);
 		pan2.setBackground(Est.chiaro);
 		contenuto.add(pan2);
 		
-/*comp9*/  Etichetta tel=new Etichetta("Telefono: ");
+/*comp9*/  Etichetta tel=new Etichetta("Phone: ");
 		contenuto.add(tel);
 /*comp10*/JPanel pan3=new JPanel();
-		FormVuoto tf3 = new FormVuoto("Telefono");
+		FormVuoto tf3 = new FormVuoto("Phone");
 		tf3.setFont(Est.font);
 		pan3.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		pan3.add(tf3);
@@ -108,34 +108,34 @@ public class AggiungiPersona extends Finestra{
 		pan4.setBackground(Est.chiaro);
 		contenuto.add(pan4);
 		
-/*comp13*/  Etichetta ivv=new Etichetta("Partita IVA: ");
+/*comp13*/  Etichetta ivv=new Etichetta("VAT number: ");
 		contenuto.add(ivv);
 /*comp14*/JPanel pan5=new JPanel();
-		FormVuoto tf5 = new FormVuoto("IVA n.");
+		FormVuoto tf5 = new FormVuoto("VAT n.");
 		pan5.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		pan5.add(tf5);
 		pan5.setBackground(Est.chiaro);
 		contenuto.add(pan5);
 		
-/*comp15*/  Etichetta ind=new Etichetta("Indirizzo: ");
+/*comp15*/  Etichetta ind=new Etichetta("Address: ");
 		contenuto.add(ind);
 /*comp16*/JPanel pan6=new JPanel();
-		FormVuoto tf6 = new FormVuoto("indirizzo");
+		FormVuoto tf6 = new FormVuoto("address");
 		pan6.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		pan6.add(tf6);
 		pan6.setBackground(Est.chiaro);
 		contenuto.add(pan6);
 		
-/*comp17*/  Etichetta prr=new Etichetta("Saldo iniziale: ");
+/*comp17*/  Etichetta prr=new Etichetta("Opening balance: ");
 		contenuto.add(prr);
 /*comp18*/ JPanel pan7=new JPanel();
-		FormVuoto tf7 = new FormVuoto("Saldo");
+		FormVuoto tf7 = new FormVuoto("balance");
 		pan7.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		pan7.add(tf7);
 		pan7.setBackground(Est.chiaro);
 		contenuto.add(pan7);
 			
-/*comp19*/Pulsante bex=new Pulsante("-ESCI-");
+/*comp19*/Pulsante bex=new Pulsante("-EXIT-");
 		bex.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
@@ -146,7 +146,7 @@ public class AggiungiPersona extends Finestra{
 		});
 		contenuto.add(bex);
 		
-/*comp20*/Pulsante bent=new Pulsante("-INVIO-");
+/*comp20*/Pulsante bent=new Pulsante("-ENTER-");
 		bent.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 				nome=tf1.ret;
@@ -159,7 +159,7 @@ public class AggiungiPersona extends Finestra{
 					saldo=Double.parseDouble(tf7.ret);
 				}
 				catch (Exception ex){
-					ErrorMessage err=new ErrorMessage("inserire numero con . ");
+					ErrorMessage err=new ErrorMessage("Enter number with . ");
 					err.setVisible(true);
 				}
 		    	
@@ -186,14 +186,14 @@ public class AggiungiPersona extends Finestra{
 	}
 	
 	public AggiungiPersona(int x,String tipo){
-		super("Modifica persona");
+		super("Edit person");
 		
 		if (tipo.equals("fornitore")){
 			try {
 				mer=DataB.fornitori.get(x);
 			}
 			catch (Exception e){
-				ErrorMessage err=new ErrorMessage("Indice elenco errato...");
+				ErrorMessage err=new ErrorMessage("Wrong Index...");
 				err.setVisible(true);
 				setVisible(false);
 			    ConsultaPersone consultaP=new ConsultaPersone();
@@ -206,7 +206,7 @@ public class AggiungiPersona extends Finestra{
 				mer=DataB.clienti.get(x);
 			}
 			catch (Exception e){
-				ErrorMessage err=new ErrorMessage("Indice elenco errato...");
+				ErrorMessage err=new ErrorMessage("Wrong Index...");
 				err.setVisible(true);
 				setVisible(false);
 			   	ConsultaPersone consultaP=new ConsultaPersone();
@@ -229,13 +229,13 @@ public class AggiungiPersona extends Finestra{
     		saldo=mer.getSaldo();
     		indirizzo=mer.getIndirizzo();
 			
-	/*comp1*/  Etichetta ty=new Etichetta("Tipo persona: ");
+	/*comp1*/  Etichetta ty=new Etichetta("Type of person: ");
 			contenuto.add(ty);
 			
 	/*comp2*/Etichetta ty1=new Etichetta(""+tipo);
 			contenuto.add(ty1);
 			
-	/*comp3*/  Etichetta un=new Etichetta("Titolo: ");
+	/*comp3*/  Etichetta un=new Etichetta("Title: ");
 			contenuto.add(un);
 	/*comp4*/JLabel uni=new JLabel();
 			uni.setText(mer.getTitolo());
@@ -243,17 +243,17 @@ public class AggiungiPersona extends Finestra{
 			uni.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
 			contenuto.add(uni);
 			
-	/*comp5*/  Etichetta non=new Etichetta("Nome: ");
+	/*comp5*/  Etichetta non=new Etichetta("Name: ");
 			contenuto.add(non);
 	/*comp6*/ Etichetta nomm=new Etichetta(mer.getNome());
 			contenuto.add(nomm);
 	
-	/*comp7*/  Etichetta qtt=new Etichetta("Cognome: ");
+	/*comp7*/  Etichetta qtt=new Etichetta("Last Name: ");
 			contenuto.add(qtt);
 	/*comp8*/Etichetta qtr=new Etichetta(mer.getCognome());
 			contenuto.add(qtr);
 			
-	/*comp9*/  Etichetta tel=new Etichetta("Telefono: ");
+	/*comp9*/  Etichetta tel=new Etichetta("Phone: ");
 			contenuto.add(tel);
 	/*comp10*/JPanel pan3=new JPanel();
 			FormVuoto tf3 = new FormVuoto(mer.getTelefono());
@@ -271,7 +271,7 @@ public class AggiungiPersona extends Finestra{
 			pan4.setBackground(Est.chiaro);
 			contenuto.add(pan4);
 			
-	/*comp13*/  Etichetta ivv=new Etichetta("Partita IVA: ");
+	/*comp13*/  Etichetta ivv=new Etichetta("VAT Number: ");
 			contenuto.add(ivv);
 	/*comp14*/JPanel pan5=new JPanel();
 			FormVuoto tf5 = new FormVuoto(mer.getIva());
@@ -280,7 +280,7 @@ public class AggiungiPersona extends Finestra{
 			pan5.setBackground(Est.chiaro);
 			contenuto.add(pan5);
 			
-	/*comp15*/  Etichetta ind=new Etichetta("Indirizzo: ");
+	/*comp15*/  Etichetta ind=new Etichetta("Address: ");
 			contenuto.add(ind);
 	/*comp16*/JPanel pan6=new JPanel();
 			FormVuoto tf6 = new FormVuoto(mer.getIndirizzo());
@@ -289,7 +289,7 @@ public class AggiungiPersona extends Finestra{
 			pan6.setBackground(Est.chiaro);
 			contenuto.add(pan6);
 			
-	/*comp17*/  Etichetta prr=new Etichetta("Saldo iniziale: ");
+	/*comp17*/  Etichetta prr=new Etichetta("Opening balance: ");
 			contenuto.add(prr);
 	/*comp18*/ JPanel pan7=new JPanel();
 			FormVuoto tf7 = new FormVuoto(""+mer.getSaldo());
@@ -298,7 +298,7 @@ public class AggiungiPersona extends Finestra{
 			pan7.setBackground(Est.chiaro);
 			contenuto.add(pan7);
 				
-	/*comp19*/Pulsante bex=new Pulsante("-ESCI-");
+	/*comp19*/Pulsante bex=new Pulsante("-EXIT-");
 			bex.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	setVisible(false);
@@ -309,7 +309,7 @@ public class AggiungiPersona extends Finestra{
 			});
 			contenuto.add(bex);
 			
-	/*comp20*/Pulsante bent=new Pulsante("-INVIO-");
+	/*comp20*/Pulsante bent=new Pulsante("-ENTER-");
 			bent.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	
@@ -321,7 +321,7 @@ public class AggiungiPersona extends Finestra{
 						saldo=Double.parseDouble(tf7.ret);
 					}
 					catch (Exception ex){
-						ErrorMessage err=new ErrorMessage("inserire numero con . ");
+						ErrorMessage err=new ErrorMessage("Enter number with . ");
 						err.setVisible(true);
 					}
 			    	
@@ -339,7 +339,7 @@ public class AggiungiPersona extends Finestra{
 					    	dispose();
 			    		}
 			    		catch (Exception r){
-			    			ErrorMessage err=new ErrorMessage("Indice elenco errato...");
+			    			ErrorMessage err=new ErrorMessage("Wrong Index...");
 			    			err.setVisible(true);
 							setVisible(false);
 						    ConsultaPersone consultaP=new ConsultaPersone();
@@ -360,7 +360,7 @@ public class AggiungiPersona extends Finestra{
 					    	dispose();
 			    		}
 			    		catch (Exception u){
-			    			ErrorMessage err=new ErrorMessage("Indice elenco errato...");
+			    			ErrorMessage err=new ErrorMessage("Wrong Index...");
 			    			err.setVisible(true);
 							setVisible(false);
 						    ConsultaPersone consultaP=new ConsultaPersone();

@@ -17,7 +17,7 @@ public class Fornitore extends Anagrafica {
 	}
 	public void consegnaMerci(Double costo){
 		setSaldo(getSaldo()-costo);
-		System.out.println("merce ricevuta da "+getNome()+" fattuira registrata per P.IVA: "+getIva());
+		System.out.println("Product recived from "+getNome()+" invoice for VAT: "+getIva());
 	}
 	public HashMap<Integer,Merce> getMerc(){
 		return elenco;

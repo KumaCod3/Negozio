@@ -40,7 +40,7 @@ public class DataM {
 		int index=trovaNome(m.getNome());
 		Double qt=(elenco.get(index).getQuantita())-(m.getQuantita());
 		if (qt<0){
-			throw new AoOexception("out Of Order",index);
+			throw new AoOexception("Out Of Order",index);
 			
 		}
 		else {

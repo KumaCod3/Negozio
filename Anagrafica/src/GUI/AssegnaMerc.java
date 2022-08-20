@@ -11,35 +11,35 @@ public class AssegnaMerc extends Finestra{
 	int index;
 	
 	public AssegnaMerc(Fornitore f){
-		super("Assegna Merce a fornitore");
+		super("Assign Product to Supplier");
 		
 		Panel contenuto=new Panel();
 		contenuto.setLayout(new GridLayout(3,2));
 		add("Center",contenuto);
 		
-		Etichetta nom=new Etichetta("Fornitore: ");
+		Etichetta nom=new Etichetta("Supplier: ");
 		contenuto.add(nom);
 		Etichetta nome=new Etichetta(f.getIntestazione());
 		contenuto.add(nome);
 		
-		Etichetta tt=new Etichetta("Scegliere merce:");
+		Etichetta tt=new Etichetta("Choose Product:");
 		contenuto.add(tt);
 		Choice ele=new Choice();
-		ele.add("Scegli");
+		ele.add("Choose");
 		try{
 			for (Merce a:DataM.elenco.values()){
 				ele.add(a.getNome()+" "+a.getCod());
 			}
 		}
 		catch (Exception e){
-			ele.add("Lista vuota");
+			ele.add("Empty");
 		}
 		ele.setFont(Est.font);
 		ele.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e){
 			}
 			public void focusLost(FocusEvent e){
-				if (ele.getSelectedItem().equals("Scegli")||ele.getSelectedItem().equals("Lista vuota")){
+				if (ele.getSelectedItem().equals("Choose")||ele.getSelectedItem().equals("Empty")){
 				}
 				else {
 					String temp=ele.getSelectedItem();
@@ -50,7 +50,7 @@ public class AssegnaMerc extends Finestra{
 		});
 		contenuto.add(ele);
 		
-		Pulsante bex=new Pulsante("-ESCI-");
+		Pulsante bex=new Pulsante("-EXIT-");
 		bex.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
@@ -60,7 +60,7 @@ public class AssegnaMerc extends Finestra{
 			}
 		});
 		contenuto.add(bex);
-		Pulsante bent=new Pulsante("-INVIO-");
+		Pulsante bent=new Pulsante("-ENTER-");
 		bent.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (index>-1){
@@ -78,7 +78,7 @@ public class AssegnaMerc extends Finestra{
 			}
 		});
 		contenuto.add(bent);
-		Pulsante dis=new Pulsante("-RIMUOVI-");
+		Pulsante dis=new Pulsante("-REMOVE-");
 		dis.setBackground(Est.rosso);
 		dis.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -95,33 +95,33 @@ public class AssegnaMerc extends Finestra{
 		pack();
 	}
 	public AssegnaMerc(Merce m){
-		super("Assegna Merce a fornitore");
+		super("Assign Product to Supplier");
 		
-		Etichetta nom=new Etichetta("Merce: "+m.getNome());
+		Etichetta nom=new Etichetta("Product: "+m.getNome());
 		add("North",nom);	
 		
 		Panel contenuto=new Panel();
 		contenuto.setLayout(new GridLayout(2,2));
 		add("Center",contenuto);
 		
-		Etichetta tt=new Etichetta("Scegliere Fornitore:");
+		Etichetta tt=new Etichetta("Choose Supplier:");
 		contenuto.add(tt);
 		Choice ele1=new Choice();
-		ele1.add("Scegli");
+		ele1.add("Choose");
 		try{
 			for (Fornitore a:DataB.fornitori){
 				ele1.add(a.getCognome()+", "+a.getNome());
 			}
 		}
 		catch (Exception e){
-			ele1.add("Lista vuota");
+			ele1.add("Empty");
 		}
 		ele1.setFont(Est.font);
 		ele1.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e){
 			}
 			public void focusLost(FocusEvent e){
-				if (ele1.getSelectedItem().equals("Scegli")||ele1.getSelectedItem().equals("Lista vuota")){
+				if (ele1.getSelectedItem().equals("Choose")||ele1.getSelectedItem().equals("Empty")){
 				}
 				else {
 					String[] temp=ele1.getSelectedItem().split(", ");
@@ -131,7 +131,7 @@ public class AssegnaMerc extends Finestra{
 		});
 		contenuto.add(ele1);
 		
-		Pulsante bex=new Pulsante("-ESCI-");
+		Pulsante bex=new Pulsante("-EXIT-");
 		bex.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
@@ -141,7 +141,7 @@ public class AssegnaMerc extends Finestra{
 			}
 		});
 		contenuto.add(bex);
-		Pulsante bent=new Pulsante("-INVIO-");
+		Pulsante bent=new Pulsante("-ENTER-");
 		bent.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (index>-1){
@@ -160,7 +160,7 @@ public class AssegnaMerc extends Finestra{
 		});
 		contenuto.add(bent);
 		
-		Pulsante dis=new Pulsante("-RIMUOVI-");
+		Pulsante dis=new Pulsante("-REMOVE-");
 		dis.setBackground(Est.rosso);
 		dis.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {

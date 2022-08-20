@@ -14,31 +14,31 @@ public class AggiungiMerce extends Finestra{
 	int rincaro=0;
 	String unita="";
 	public AggiungiMerce(){
-		super("Aggiungi prodotto");
+		super("Add new Product");
 		
 		Panel contenuto=new Panel();
 		contenuto.setLayout(new GridLayout(6,2));
 
-/*comp1*/  Etichetta non=new Etichetta("Merce: ");
+/*comp1*/  Etichetta non=new Etichetta("Product: ");
 		contenuto.add(non);
 		
 		
 		JPanel pan1=new JPanel();
- /*comp2*/FormVuoto tf1=new FormVuoto("Nome");
+ /*comp2*/FormVuoto tf1=new FormVuoto("Name");
 		pan1.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		pan1.add(tf1);
 		pan1.setBackground(Est.chiaro);
 		contenuto.add(pan1);
 		
-/*comp3*/  Etichetta un=new Etichetta("Scelta Unita: ");
+/*comp3*/  Etichetta un=new Etichetta("Unit of measure: ");
 		contenuto.add(un);
 /*comp4*/Choice uni=new Choice();
-		uni.add("Scegli");
-		uni.add("Pezzi");
+		uni.add("Choose");
+		uni.add("Pieces");
 		uni.add("Kg");
-		uni.add("grammi");
-		uni.add("quintali");
-		uni.add("tonnellate");
+		uni.add("Grams");
+		uni.add("Quintals");
+		uni.add("Liters");
 		uni.setFont(Est.font);
 		uni.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e){
@@ -51,28 +51,28 @@ public class AggiungiMerce extends Finestra{
 		});
 		contenuto.add(uni);	
 		
-/*comp5*/  Etichetta qtt=new Etichetta("Quantita: ");
+/*comp5*/  Etichetta qtt=new Etichetta("Quantity: ");
 		contenuto.add(qtt);
 /*comp6*/JPanel pan2=new JPanel();
-		FormVuoto tf2=new FormVuoto("Quantita");
+		FormVuoto tf2=new FormVuoto("Quantity");
 		pan2.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		pan2.add(tf2);
 		pan2.setBackground(Est.chiaro);
 		contenuto.add(pan2);
 		
-/*comp7*/  Etichetta prr=new Etichetta("Prezzo d'acquisto: ");
+/*comp7*/  Etichetta prr=new Etichetta("Purchase price: ");
 		contenuto.add(prr);
 /*comp8*/ JPanel pan3=new JPanel();
-		FormVuoto tf3=new FormVuoto("Prezzo");
+		FormVuoto tf3=new FormVuoto("Price");
 		pan3.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		pan3.add(tf3);
 		pan3.setBackground(Est.chiaro);
 		contenuto.add(pan3);
 		
-/*comp9*/  Etichetta rin=new Etichetta("Imposta % rincaro: ");
+/*comp9*/  Etichetta rin=new Etichetta("Choose % price increase: ");
 		contenuto.add(rin);
 /*comp10*/Choice rim=new Choice();
-		rim.add("Scegli");
+		rim.add("Choose");
 		rim.add("10");
 		rim.add("20");
 		rim.add("30");
@@ -89,7 +89,7 @@ public class AggiungiMerce extends Finestra{
 		});
 		contenuto.add(rim);	
 			
-/*comp11*/Pulsante bex=new Pulsante("-ESCI-");
+/*comp11*/Pulsante bex=new Pulsante("-EXIT-");
 		bex.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
@@ -100,7 +100,7 @@ public class AggiungiMerce extends Finestra{
 		});
 		contenuto.add(bex);
 		
-/*comp12*/Pulsante bent=new Pulsante("-INVIO-");
+/*comp12*/Pulsante bent=new Pulsante("-ENTER-");
 		bent.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	nome=tf1.ret;
@@ -108,14 +108,14 @@ public class AggiungiMerce extends Finestra{
 		    		quantita=Double.parseDouble(tf2.ret);
 		    	}
 		    	catch (Exception ex){
-		    		ErrorMessage err=new ErrorMessage("inserire numero con . ");
+		    		ErrorMessage err=new ErrorMessage("Enter number with . ");
 		    		err.setVisible(true);
 		    	}
 		    	try {
 					prezzoA=Double.parseDouble(tf3.ret);
 				}
 				catch (Exception ex){
-					ErrorMessage err=new ErrorMessage("inserire numero con . ");
+					ErrorMessage err=new ErrorMessage("Enter number with . ");
 					err.setVisible(true);
 				}
 				Merce inserisci =new Merce(nome, quantita, rincaro, prezzoA, unita);
@@ -133,7 +133,7 @@ public class AggiungiMerce extends Finestra{
 	}
 	
 	public AggiungiMerce(int x){
-		super("Modifica prodotto");
+		super("Product modification");
 		Merce prod=DataM.get(x);
 		
 		nome=prod.getNome();
@@ -149,12 +149,12 @@ public class AggiungiMerce extends Finestra{
 		Panel contenuto=new Panel();
 		contenuto.setLayout(new GridLayout(7,2));
 
-/*comp1*/  Etichetta non=new Etichetta("Merce: ");
+/*comp1*/  Etichetta non=new Etichetta("Product: ");
 		contenuto.add(non);
 /*comp2*/ Etichetta nom=new Etichetta(nome);
 		contenuto.add(nom);
 		
-/*comp3*/  Etichetta un=new Etichetta("Scelta Unita: ");
+/*comp3*/  Etichetta un=new Etichetta("Unit of measure: ");
 		contenuto.add(un);
 /*comp4*/Choice uni=new Choice();
 		uni.add(unita);
@@ -175,7 +175,7 @@ public class AggiungiMerce extends Finestra{
 		});
 		contenuto.add(uni);	
 		
-/*comp5*/  Etichetta qtt=new Etichetta("Quantita: ");
+/*comp5*/  Etichetta qtt=new Etichetta("Quantity: ");
 		contenuto.add(qtt);
 /*comp6*/JPanel pan2=new JPanel();
 		FormVuoto tf2=new FormVuoto(quantita+"");
@@ -184,7 +184,7 @@ public class AggiungiMerce extends Finestra{
 		pan2.setBackground(Est.chiaro);
 		contenuto.add(pan2);
 		
-/*comp7*/  Etichetta prr=new Etichetta("Prezzo d'acquisto: ");
+/*comp7*/  Etichetta prr=new Etichetta("Purchase price: ");
 		contenuto.add(prr);
 /*comp8*/ JPanel pan3=new JPanel();
 		FormVuoto tf3=new FormVuoto(prezzoA+"");
@@ -193,7 +193,7 @@ public class AggiungiMerce extends Finestra{
 		pan3.setBackground(Est.chiaro);
 		contenuto.add(pan3);
 		
-/*comp9*/  Etichetta rin=new Etichetta("Imposta % rincaro: ");
+/*comp9*/  Etichetta rin=new Etichetta("Choose % price increase: ");
 		contenuto.add(rin);
 /*comp10*/Choice rim=new Choice();
 		rim.add(""+(rincaro));
@@ -213,7 +213,7 @@ public class AggiungiMerce extends Finestra{
 		});
 		contenuto.add(rim);	
 			
-/*comp11*/Pulsante bex=new Pulsante("-ESCI-");
+/*comp11*/Pulsante bex=new Pulsante("-EXIT-");
 		bex.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
@@ -224,7 +224,7 @@ public class AggiungiMerce extends Finestra{
 		});
 		contenuto.add(bex);
 		
-/*comp12*/Pulsante bent=new Pulsante("-INVIO-");
+/*comp12*/Pulsante bent=new Pulsante("-ENTER-");
 		bent.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	try {
@@ -252,7 +252,7 @@ public class AggiungiMerce extends Finestra{
 /*comp 13*/Etichetta vot=new Etichetta("        ");
 		contenuto.add(vot);
 		
-/*comp14*/Pulsante agg=new Pulsante("-Assegna a Fornitore-");
+/*comp14*/Pulsante agg=new Pulsante("-Assign to Supplier-");
 		agg.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);

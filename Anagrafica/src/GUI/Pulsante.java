@@ -7,10 +7,10 @@ public class Pulsante extends Button{
 		super(x);
 		setPreferredSize(Est.piccolo);
 		setFont(Est.font2);
-		if (x.equals("-INVIO-")){
+		if (x.equals("-ENTER-")){
 			setBackground(Est.medio);
 		}
-		else if (x.equals("-ESCI-")){
+		else if (x.equals("-EXIT-")){
 			setBackground(Est.scuro);
 		}
 		else {

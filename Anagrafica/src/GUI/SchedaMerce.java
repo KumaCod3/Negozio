@@ -19,7 +19,7 @@ public class SchedaMerce extends Finestra{
 	Merce mer;
 	int indexF=-1;
 	public SchedaMerce(int x){
-		super("Scheda prodotto");
+		super("Product details");
 		
 		if (x!=-1&&DataM.elenco.containsKey(x)){
 			mer=DataM.elenco.get(x);
@@ -36,12 +36,12 @@ public class SchedaMerce extends Finestra{
 		Panel contenuto=new Panel();
 		contenuto.setLayout(new GridLayout(7,2));
 		
-/*comp1*/  Etichetta non=new Etichetta("Merce: ");
+/*comp1*/  Etichetta non=new Etichetta("Product: ");
 		contenuto.add(non);	
 		Etichetta nn=new Etichetta(""+nome);
 		contenuto.add(nn);	
 		
-/*comp2*/  Etichetta uni=new Etichetta("In magazzino: ");
+/*comp2*/  Etichetta uni=new Etichetta("In stock: ");
 		contenuto.add(uni);
 		Etichetta uu=new Etichetta(quantita+" "+unita);
 		if (quantita<=5.0){
@@ -53,39 +53,39 @@ public class SchedaMerce extends Finestra{
 		}
 		contenuto.add(uu);
 		
-/*comp3*/  Etichetta ac=new Etichetta("Prezzo d acquisto: ");
+/*comp3*/  Etichetta ac=new Etichetta("Purchase price: ");
 		contenuto.add(ac);
-		Etichetta aa=new Etichetta(Est.deci.format(prezzoA)+"eu al "+unita);
+		Etichetta aa=new Etichetta(Est.deci.format(prezzoA)+"eu for "+unita);
 		contenuto.add(aa);
 		
-/*comp4*/  Etichetta ri=new Etichetta("Prezzo di vendita: ");
+/*comp4*/  Etichetta ri=new Etichetta("Selling price: ");
 		contenuto.add(ri);
-		Etichetta rr=new Etichetta(Est.deci.format(prezzoV)+"eu (rincaro del "+rincaro+"%)");
+		Etichetta rr=new Etichetta(Est.deci.format(prezzoV)+"eu ("+rincaro+"% price increase)");
 		contenuto.add(rr);
 		
-/*comp5*/  Etichetta va=new Etichetta("Valore complessivo merce: ");
+/*comp5*/  Etichetta va=new Etichetta("Total in stock value: ");
 		contenuto.add(va);
 		Etichetta vv=new Etichetta(Est.deci.format(valore)+"eu");
 		contenuto.add(vv);
 		
-/*comp6*/  Etichetta forn=new Etichetta("Fornitori: ");
+/*comp6*/  Etichetta forn=new Etichetta("Supplier: ");
 		contenuto.add(forn);	
 		Choice ele1=new Choice();
-		ele1.add("Scegli");
+		ele1.add("Choose");
 		try{
 			for (Fornitore a:mer.getForn()){
 				ele1.add(a.getCognome()+", "+a.getNome());
 			}
 		}
 		catch (Exception e){
-			ele1.add("Lista vuota");
+			ele1.add("Empty");
 		}
 		ele1.setFont(Est.font);
 		ele1.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e){
 			}
 			public void focusLost(FocusEvent e){
-				if (ele1.getSelectedItem().equals("Scegli")||ele1.getSelectedItem().equals("Lista vuota")){
+				if (ele1.getSelectedItem().equals("Choose")||ele1.getSelectedItem().equals("Empty")){
 				}
 				else {
 					String[] temp=ele1.getSelectedItem().split(", ");
@@ -95,7 +95,7 @@ public class SchedaMerce extends Finestra{
 		});
 		contenuto.add(ele1);	
 		
-/*comp7*/Pulsante bex=new Pulsante("-ESCI-");
+/*comp7*/Pulsante bex=new Pulsante("-EXIT-");
 		bex.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
@@ -105,7 +105,7 @@ public class SchedaMerce extends Finestra{
 			}
 		});
 		contenuto.add(bex);
-		Pulsante bin=new Pulsante("-MODIFICA-");
+		Pulsante bin=new Pulsante("-MODIFY-");
 		bin.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (x!=-1){
@@ -121,7 +121,7 @@ public class SchedaMerce extends Finestra{
 		
 /*OUT*/		Panel sud=new Panel();
 		sud.setLayout(new GridLayout(1,2));
-		Pulsante eli=new Pulsante("-ELIMINA-");
+		Pulsante eli=new Pulsante("-DELETE-");
 		eli.setPreferredSize(Est.piccolo);
 		eli.setBackground(Est.rosso);
 		eli.addActionListener(new ActionListener() {
@@ -135,7 +135,7 @@ public class SchedaMerce extends Finestra{
 			}
 		});
 		sud.add(eli);
-		Pulsante ord=new Pulsante("-ORDINA-");
+		Pulsante ord=new Pulsante("-ORDER-");
 		ord.setPreferredSize(Est.piccolo);
 		ord.setBackground(Est.oran);
 		ord.addActionListener(new ActionListener() {

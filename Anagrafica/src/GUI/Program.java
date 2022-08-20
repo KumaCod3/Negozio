@@ -26,10 +26,10 @@ public class Program{
 			Panel contenuto=new Panel();
 			contenuto.setLayout(new GridLayout(4,1));
 			
-			Etichetta tx=new Etichetta("<html>Benvenuti nel database, cosa si desidera fare? ");
+			Etichetta tx=new Etichetta("<html>Welcome to the database, what do you want to do? ");
 			add("North",tx);
 			
-			Pulsante b1=new Pulsante("Consulta DataBase Persone");
+			Pulsante b1=new Pulsante("See persons DataBase");
 			b1.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	ConsultaPersone consultaP=new ConsultaPersone();
@@ -39,7 +39,7 @@ public class Program{
 			});
 	        contenuto.add(b1);
 			
-	        Pulsante b2=new Pulsante("Consulta DataBase Merci");
+	        Pulsante b2=new Pulsante("See Products DataBase");
 			b2.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	ConsultaMerci consultaM=new ConsultaMerci();
@@ -50,7 +50,7 @@ public class Program{
 			});
 	        contenuto.add(b2);
 			
-	        Pulsante b3=new Pulsante("--ACQUISTO RAPIDO--");
+	        Pulsante b3=new Pulsante("--QUICK PURCHASE--");
 	        b3.setBackground(Est.oran);
 			b3.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
@@ -69,7 +69,7 @@ public class Program{
 			bott.setLayout(new GridLayout(1,2));
 			
 			
-			Pulsante bex=new Pulsante("-ESCI-");
+			Pulsante bex=new Pulsante("-EXIT-");
 			bex.setBackground(Est.rosso);
 			bex.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
@@ -82,7 +82,7 @@ public class Program{
 	        	}
 			});
 						
-			Pulsante bes=new Pulsante("-STORICO-");
+			Pulsante bes=new Pulsante("-HISTORY-");
 			bes.setBackground(Est.medio);
 			bes.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {

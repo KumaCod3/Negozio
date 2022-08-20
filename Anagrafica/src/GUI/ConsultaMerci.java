@@ -14,31 +14,31 @@ public class ConsultaMerci extends Finestra {
 		boolean tipp=true;
 		int index=-1;
 		public ConsultaMerci(){
-			super("CONSULTA data base Merci");
+			super("CONSULT Products database");
 
 			Panel contenuto=new Panel();
 			contenuto.setLayout(new GridLayout(2,3));
 			
 
-	/*comp1*/  Etichetta tx=new Etichetta("Consulta merci: ");
+	/*comp1*/  Etichetta tx=new Etichetta("Products: ");
 			contenuto.add(tx);
 			
 	/*comp2*/Choice ele=new Choice();
-			ele.add("Scegli");
+			ele.add("Choose");
 			try{
 				for (Merce a:DataM.elenco.values()){
 					ele.add(a.getNome()+" "+a.getCod());
 				}
 			}
 			catch (Exception e){
-				ele.add("Lista vuota");
+				ele.add("Empty");
 			}
 			ele.setFont(Est.font);
 			ele.addFocusListener(new FocusListener() {
 				public void focusGained(FocusEvent e){
 				}
 				public void focusLost(FocusEvent e){
-					if (ele.getSelectedItem().equals("Scegli")||ele.getSelectedItem().equals("Lista vuota")){
+					if (ele.getSelectedItem().equals("Choose")||ele.getSelectedItem().equals("Empty")){
 					}
 					else {
 						String temp=ele.getSelectedItem();
@@ -49,7 +49,7 @@ public class ConsultaMerci extends Finestra {
 			});
 			contenuto.add(ele);
 
-/*comp3*/Pulsante bent=new Pulsante("-INVIO-");
+/*comp3*/Pulsante bent=new Pulsante("-ENTER-");
 			bent.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	if (index!=-1){
@@ -61,7 +61,7 @@ public class ConsultaMerci extends Finestra {
 			});
 			contenuto.add(bent);
 
-/*comp4*/Pulsante bex=new Pulsante("-ESCI-");
+/*comp4*/Pulsante bex=new Pulsante("-EXIT-");
 			bex.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	setVisible(false);
@@ -75,7 +75,7 @@ public class ConsultaMerci extends Finestra {
 /*comp5*/	Etichetta tv=new Etichetta("           ");
 			contenuto.add(tv);
 			
-/*comp6*/Pulsante b2=new Pulsante("+ Aggiungi +");
+/*comp6*/Pulsante b2=new Pulsante("+ ADD new +");
 			b2.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	AggiungiMerce aggg=new AggiungiMerce();

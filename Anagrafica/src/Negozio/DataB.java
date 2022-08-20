@@ -22,11 +22,11 @@ public class DataB <T extends Anagrafica> {
 	}
 
 	static public Cliente get(int x, int y) throws Exception{
-		if (x>=clienti.size())throw new Exception("Indice troppo grande");
+		if (x>=clienti.size())throw new Exception("Index too big");
 		else return clienti.get(x);
 	}
 	static public Fornitore get(int x ,String y) throws Exception{
-		if (x>=fornitori.size())throw new Exception("Indice troppo grande");
+		if (x>=fornitori.size())throw new Exception("Index too big");
 		else return fornitori.get(x);
 	}
 	
