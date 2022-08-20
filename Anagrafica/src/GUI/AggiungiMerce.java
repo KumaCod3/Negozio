@@ -147,7 +147,7 @@ public class AggiungiMerce extends Finestra{
 		setBackground(Est.chiaro);
 		
 		Panel contenuto=new Panel();
-		contenuto.setLayout(new GridLayout(7,2));
+		contenuto.setLayout(new GridLayout(6,2));
 
 /*comp1*/  Etichetta non=new Etichetta("Product: ");
 		contenuto.add(non);
@@ -249,8 +249,6 @@ public class AggiungiMerce extends Finestra{
 			}
 		});
 		contenuto.add(bent);
-/*comp 13*/Etichetta vot=new Etichetta("        ");
-		contenuto.add(vot);
 		
 /*comp14*/Pulsante agg=new Pulsante("-Assign to Supplier-");
 		agg.addActionListener(new ActionListener() {
@@ -266,7 +264,7 @@ public class AggiungiMerce extends Finestra{
 		    	}
 			}
 		});
-		contenuto.add(agg);
+		add("South", agg);
 				
 		add(contenuto);
 		pack();

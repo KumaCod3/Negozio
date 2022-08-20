@@ -15,12 +15,12 @@ public class ConsultaPersone  extends Finestra {
 	int indexC=-1;
 	boolean tipp=true;
 	public ConsultaPersone(){
-		super("CONSULT Persons database");
+		super("Consult Persons database");
 
 		Panel contenuto=new Panel();
 		contenuto.setLayout(new GridLayout(3,3));
 		
-/*comp1*/  Etichetta tx1=new Etichetta("Persons:");
+/*comp1*/  Etichetta tx1=new Etichetta("Supplier:");
 		contenuto.add(tx1);
 		
 /*comp2*/Choice ele1=new Choice();
@@ -61,7 +61,7 @@ public class ConsultaPersone  extends Finestra {
 		contenuto.add(bent1);
 
 
-/*comp4*/  Etichetta tx=new Etichetta("See Customers");
+/*comp4*/  Etichetta tx=new Etichetta("Customers:");
 		contenuto.add(tx);
 		
 /*comp5*/Choice ele=new Choice();

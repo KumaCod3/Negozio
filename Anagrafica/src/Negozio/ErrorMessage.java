@@ -228,7 +228,7 @@ public class ErrorMessage extends Frame implements ActionListener{
 		double saldo=m.getPrezzoA()*quantita;
 		
 		JLabel tx=new JLabel();
-		tx.setText("<html>Do you want to DELETE the order from "+f.getIntestazione()+"for the product: "+m.getNome()+"?");
+		tx.setText("<html>Do you want to place the order from "+f.getIntestazione()+"for the product: "+m.getNome()+"?");
 		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
 		tx.setFont(Est.font);
 		

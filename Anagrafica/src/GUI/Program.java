@@ -29,7 +29,7 @@ public class Program{
 			Etichetta tx=new Etichetta("<html>Welcome to the database, what do you want to do? ");
 			add("North",tx);
 			
-			Pulsante b1=new Pulsante("See persons DataBase");
+			Pulsante b1=new Pulsante("See Persons DataBase");
 			b1.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	ConsultaPersone consultaP=new ConsultaPersone();
