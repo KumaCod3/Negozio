@@ -76,8 +76,8 @@ public class SchedaPersona extends Finestra{
 			Etichetta vv=new Etichetta(indirizzo+" ");
 			contenuto.add(vv);
 			
-	/*comp6*/Pulsante bex=new Pulsante("-EXIT-");
-			bex.addActionListener(new ActionListener() {
+	/*comp6*/Bottone bex=new Bottone("-EXIT-");
+			bex.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	setVisible(false);
 			    	ConsultaPersone consultaP=new ConsultaPersone();
@@ -87,8 +87,8 @@ public class SchedaPersona extends Finestra{
 			});
 			contenuto.add(bex);
 			
-			Pulsante bin=new Pulsante("-MODIFY-");
-			bin.addActionListener(new ActionListener() {
+			Bottone bin=new Bottone("-MODIFY-");
+			bin.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	if (x!=-1){
 				    	setVisible(false);
@@ -137,9 +137,12 @@ public class SchedaPersona extends Finestra{
 	/*OUT*/		Panel sud=new Panel();
 				sud.setLayout(new GridLayout(1,2));
 				
-				Pulsante agg=new Pulsante("-Assign Product-");
-				agg.setBackground(Est.oran);
-				agg.addActionListener(new ActionListener() {
+				Bottone agg=new Bottone("-Assign Product-");
+				agg.but.setMinimumSize(Est.grosso);
+		        agg.but.setMaximumSize(Est.grosso);
+		        agg.but.setPreferredSize(Est.grosso);
+				agg.but.setBackground(Est.oran);
+				agg.but.addActionListener(new ActionListener() {
 				    public void actionPerformed(ActionEvent e) {
 				    	setVisible(false);
 				    	try{
@@ -155,8 +158,11 @@ public class SchedaPersona extends Finestra{
 				});
 				sud.add(agg);
 				
-				Pulsante ord=new Pulsante("-Order Product-");
-				ord.addActionListener(new ActionListener() {
+				Bottone ord=new Bottone("-Order Product-");
+				ord.but.setMinimumSize(Est.grosso);
+		        ord.but.setMaximumSize(Est.grosso);
+		        ord.but.setPreferredSize(Est.grosso);
+				ord.but.addActionListener(new ActionListener() {
 				    public void actionPerformed(ActionEvent e) {
 				    	if (index!=-1){
 					    	setVisible(false);
@@ -178,10 +184,13 @@ public class SchedaPersona extends Finestra{
 				
 /*comp OUT FOR CLIENTI*/
 			if (tipo.equals("cliente")){
-				Pulsante eli=new Pulsante("-OPEN CART-");
-				eli.setPreferredSize(Est.piccolo);
-				eli.setBackground(Est.medio);
-				eli.addActionListener(new ActionListener() {
+				Bottone eli=new Bottone("-OPEN CART-");
+				eli.but.setMinimumSize(Est.grosso);
+		        eli.but.setMaximumSize(Est.grosso);
+		        eli.but.setPreferredSize(Est.grosso);
+				eli.but.setPreferredSize(Est.piccolo);
+				eli.but.setBackground(Est.medio);
+				eli.but.addActionListener(new ActionListener() {
 				    public void actionPerformed(ActionEvent e) {
 				    	Spesa aggg=new Spesa(DataB.clienti.get(x));
 						aggg.setVisible(true);

@@ -107,8 +107,8 @@ public class Spesa extends Finestra{
 		
 		super.c.add("Center", corpo);
 
-/*comp5*/Pulsante bent=new Pulsante("-ADD-");
-		bent.addActionListener(new ActionListener() {
+/*comp5*/Bottone bent=new Bottone("-ADD-");
+		bent.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (index!=-1){
 		    		try {
@@ -134,9 +134,9 @@ public class Spesa extends Finestra{
 		});
 		contenuto.add(bent);
 		
-/*comp6*/Pulsante eli=new Pulsante("-DELETE-");
-		eli.setBackground(Est.rosso);
-		eli.addActionListener(new ActionListener() {
+/*comp6*/Bottone eli=new Bottone("-DELETE-");
+		eli.but.setBackground(Est.rosso);
+		eli.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (indice!=-1&&indixex!=-1){
 		    		try {
@@ -159,8 +159,8 @@ public class Spesa extends Finestra{
 		sotto.setLayout(new GridLayout(1,2));
 		
 		
-/*comp10*/Pulsante bex=new Pulsante("-EXIT-");
-		bex.addActionListener(new ActionListener() {
+/*comp10*/Bottone bex=new Bottone("-EXIT-");
+		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
 		    	ErrorMessage err=new ErrorMessage(Spesa.this);
@@ -169,8 +169,8 @@ public class Spesa extends Finestra{
 		});
 		sotto.add(bex);
 		
-/*comp11*/Pulsante fin=new Pulsante("- BUY -");
-		fin.addActionListener(new ActionListener() {
+/*comp11*/Bottone fin=new Bottone("- BUY -");
+		fin.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	list.concludi();
 		    	tab.clear();
@@ -218,8 +218,8 @@ public class Spesa extends Finestra{
 		Panel sotto=new Panel();
 		sotto.setLayout(new GridLayout(1,2));
 		
-/*comp10*/Pulsante bex=new Pulsante("-CANCEL-");
-		bex.addActionListener(new ActionListener() {
+/*comp10*/Bottone bex=new Bottone("-CANCEL-");
+		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
 		    	Home home=new Home();
@@ -229,9 +229,9 @@ public class Spesa extends Finestra{
 		});
 		sotto.add(bex);
 		
-/*comp11*/Pulsante fin=new Pulsante("- BUY -");
-		fin.setBackground(Est.oran);
-		fin.addActionListener(new ActionListener() {
+/*comp11*/Bottone fin=new Bottone("- BUY -");
+		fin.but.setBackground(Est.oran);
+		fin.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	double qt=Double.parseDouble(tf2.ret);
 		    	if (qt>0){

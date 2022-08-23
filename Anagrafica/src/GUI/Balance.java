@@ -48,8 +48,8 @@ public class Balance extends Finestra{
 			
 			c.add("Center", contenuto);
 			
-	/*es*/Pulsante bex=new Pulsante("-EXIT-");
-			bex.addActionListener(new ActionListener() {
+	/*es*/Bottone bex=new Bottone("-EXIT-");
+			bex.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	setVisible(false);
 			    	Home home=new Home();

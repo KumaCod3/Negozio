@@ -49,8 +49,8 @@ public class ConsultaMerci extends Finestra {
 			});
 			contenuto.add(ele);
 
-/*comp3*/Pulsante bent=new Pulsante("-ENTER-");
-			bent.addActionListener(new ActionListener() {
+/*comp3*/Bottone bent=new Bottone("-ENTER-");
+			bent.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	if (index!=-1){
 				    	SchedaMerce aggg=new SchedaMerce(index);
@@ -61,8 +61,8 @@ public class ConsultaMerci extends Finestra {
 			});
 			contenuto.add(bent);
 
-/*comp4*/Pulsante bex=new Pulsante("-EXIT-");
-			bex.addActionListener(new ActionListener() {
+/*comp4*/Bottone bex=new Bottone("-EXIT-");
+			bex.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	setVisible(false);
 			    	Home home=new Home();
@@ -75,8 +75,8 @@ public class ConsultaMerci extends Finestra {
 /*comp5*/	Etichetta tv=new Etichetta("           ");
 			contenuto.add(tv);
 			
-/*comp6*/Pulsante b2=new Pulsante("+ ADD new +");
-			b2.addActionListener(new ActionListener() {
+/*comp6*/Bottone b2=new Bottone("+ ADD new +");
+			b2.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	AggiungiMerce aggg=new AggiungiMerce();
 			    	aggg.setVisible(true);

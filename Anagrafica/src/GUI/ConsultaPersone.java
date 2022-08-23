@@ -90,8 +90,8 @@ public class ConsultaPersone  extends Finestra {
 		});
 		contenuto.add(ele);
 
-/*comp6*/Pulsante bent=new Pulsante("-ENTER-");
-		bent.addActionListener(new ActionListener() {
+/*comp6*/Bottone bent=new Bottone("-ENTER-");
+		bent.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (indexC!=-1){
 		    		SchedaPersona aggg=new SchedaPersona(indexC,"cliente");
@@ -102,8 +102,8 @@ public class ConsultaPersone  extends Finestra {
 	});
 		contenuto.add(bent);
 		
-/*comp7*/Pulsante bex=new Pulsante("-EXIT-");
-		bex.addActionListener(new ActionListener() {
+/*comp7*/Bottone bex=new Bottone("-EXIT-");
+		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
 		    	Home home=new Home();
@@ -116,8 +116,8 @@ public class ConsultaPersone  extends Finestra {
 /*comp8*/Etichetta tv=new Etichetta("           ");
 		contenuto.add(tv);
 		
-/*comp9*/Pulsante b2=new Pulsante("+ ADD new +");
-		b2.addActionListener(new ActionListener() {
+/*comp9*/Bottone b2=new Bottone("+ ADD new +");
+		b2.but.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AggiungiPersona aggg=new AggiungiPersona();
 				aggg.setVisible(true);

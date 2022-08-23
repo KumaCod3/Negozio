@@ -18,8 +18,8 @@ public class ErrorMessage extends Frame implements ActionListener{
 		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
 		tx.setFont(Est.font);
 		
-		Pulsante ok=new Pulsante("OK");
-		ok.addActionListener(this);
+		Bottone ok=new Bottone("OK");
+		ok.but.addActionListener(this);
 		
 		add("North",tx);
 		add("Center",ok);
@@ -37,8 +37,8 @@ public class ErrorMessage extends Frame implements ActionListener{
 		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
 		tx.setFont(Est.font);
 		
-		Pulsante ok=new Pulsante("OK");
-		ok.addActionListener(this);
+		Bottone ok=new Bottone("OK");
+		ok.but.addActionListener(this);
 		
 		JLabel ty=new JLabel();
 		ty.setText(a);
@@ -62,8 +62,8 @@ public class ErrorMessage extends Frame implements ActionListener{
 		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
 		tx.setFont(Est.font);
 		
-		Pulsante ok=new Pulsante("CANCEL");
-		ok.addActionListener(new ActionListener() {
+		Bottone ok=new Bottone("OK");
+		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
 		    	ConsultaMerci consultaM=new ConsultaMerci();
@@ -72,9 +72,9 @@ public class ErrorMessage extends Frame implements ActionListener{
 			}
 		});
 		
-		Pulsante ty=new Pulsante("DELETE");
-		ty.setBackground(Est.rosso);
-		ty.addActionListener(new ActionListener() {
+		Bottone ty=new Bottone("PLACE ORDER");
+		ty.but.setBackground(Est.rosso);
+		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	DataM.elimina(a);
 		    	setVisible(false);
@@ -103,8 +103,8 @@ public class ErrorMessage extends Frame implements ActionListener{
 		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
 		tx.setFont(Est.font);
 		
-		Pulsante ok=new Pulsante("CANCEL");
-		ok.addActionListener(new ActionListener() {
+		Bottone ok=new Bottone("OK");
+		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
 		    	x.setVisible(true);
@@ -112,9 +112,9 @@ public class ErrorMessage extends Frame implements ActionListener{
 			}
 		});
 		
-		Pulsante ty=new Pulsante("DELETE");
-		ty.setBackground(Est.rosso);
-		ty.addActionListener(new ActionListener() {
+		Bottone ty=new Bottone("DELETE ORDER");
+		ty.but.setBackground(Est.rosso);
+		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	
 		    	x.dispose();
@@ -149,8 +149,8 @@ public class ErrorMessage extends Frame implements ActionListener{
 		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
 		tx.setFont(Est.font);
 		
-		Pulsante ok=new Pulsante("CANCEL");
-		ok.addActionListener(new ActionListener() {
+		Bottone ok=new Bottone("OK");
+		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
 		    	AssegnaMerc ass=new AssegnaMerc(m);
@@ -159,9 +159,9 @@ public class ErrorMessage extends Frame implements ActionListener{
 			}
 		});
 		
-		Pulsante ty=new Pulsante("DELETE");
-		ty.setBackground(Est.rosso);
-		ty.addActionListener(new ActionListener() {
+		Bottone ty=new Bottone("PLACE ORDER");
+		ty.but.setBackground(Est.rosso);
+		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	m.removeForn(f);
 		    	f.removeMerc(m.getCod());
@@ -190,8 +190,8 @@ public class ErrorMessage extends Frame implements ActionListener{
 		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
 		tx.setFont(Est.font);
 		
-		Pulsante ok=new Pulsante("CANCEL");
-		ok.addActionListener(new ActionListener() {
+		Bottone ok=new Bottone("OK");
+		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
 		    	AssegnaMerc ass=new AssegnaMerc(m);
@@ -200,9 +200,9 @@ public class ErrorMessage extends Frame implements ActionListener{
 			}
 		});
 		
-		Pulsante ty=new Pulsante("DELETE");
-		ty.setBackground(Est.rosso);
-		ty.addActionListener(new ActionListener() {
+		Bottone ty=new Bottone("PLACE ORDER");
+		ty.but.setBackground(Est.rosso);
+		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	m.removeForn(f);
 		    	f.removeMerc(m.getCod());
@@ -245,8 +245,8 @@ public class ErrorMessage extends Frame implements ActionListener{
 		Panel tasti=new Panel();
 		tasti.setLayout(new GridLayout(1,2));
 		
-		Pulsante ok=new Pulsante("CANCEL");
-		ok.addActionListener(new ActionListener() {
+		Bottone ok=new Bottone("OK");
+		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
 		    	AssegnaMerc ass=new AssegnaMerc(m);
@@ -257,9 +257,9 @@ public class ErrorMessage extends Frame implements ActionListener{
 			}
 		});
 		
-		Pulsante ty=new Pulsante("PLACE ORDER");
-		ty.setBackground(Est.rosso);
-		ty.addActionListener(new ActionListener() {
+		Bottone ty=new Bottone("PLACE ORDER");
+		ty.but.setBackground(Est.rosso);
+		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	f.ordina(quantita, m.getCod());
 		    	

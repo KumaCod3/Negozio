@@ -95,8 +95,8 @@ public class SchedaMerce extends Finestra{
 		});
 		contenuto.add(ele1);	
 		
-/*comp7*/Pulsante bex=new Pulsante("-EXIT-");
-		bex.addActionListener(new ActionListener() {
+/*comp7*/Bottone bex=new Bottone("-EXIT-");
+		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
 		    	ConsultaMerci consultaM=new ConsultaMerci();
@@ -105,8 +105,8 @@ public class SchedaMerce extends Finestra{
 			}
 		});
 		contenuto.add(bex);
-		Pulsante bin=new Pulsante("-MODIFY-");
-		bin.addActionListener(new ActionListener() {
+		Bottone bin=new Bottone("-MODIFY-");
+		bin.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (x!=-1){
 			    	setVisible(false);
@@ -121,10 +121,10 @@ public class SchedaMerce extends Finestra{
 		
 /*OUT*/		Panel sud=new Panel();
 		sud.setLayout(new GridLayout(1,2));
-		Pulsante eli=new Pulsante("-DELETE-");
-		eli.setPreferredSize(Est.piccolo);
-		eli.setBackground(Est.rosso);
-		eli.addActionListener(new ActionListener() {
+		Bottone eli=new Bottone("-DELETE-");
+		eli.but.setPreferredSize(Est.piccolo);
+		eli.but.setBackground(Est.rosso);
+		eli.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (x!=-1){
 			    	setVisible(false);
@@ -135,10 +135,10 @@ public class SchedaMerce extends Finestra{
 			}
 		});
 		sud.add(eli);
-		Pulsante ord=new Pulsante("-ORDER-");
-		ord.setPreferredSize(Est.piccolo);
-		ord.setBackground(Est.oran);
-		ord.addActionListener(new ActionListener() {
+		Bottone ord=new Bottone("-ORDER-");
+		ord.but.setPreferredSize(Est.piccolo);
+		ord.but.setBackground(Est.oran);
+		ord.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (x!=-1){
 		    		

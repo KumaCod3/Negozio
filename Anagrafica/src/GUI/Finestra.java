@@ -2,6 +2,7 @@ package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.Panel;
@@ -21,10 +22,10 @@ public class Finestra extends Frame{
 		super(x);
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		setLocation(70,70);
+		setPreferredSize(new Dimension(650, 900));
 		setBackground(Est.chiaro);
 		Header testa=new Header();
 		add(testa);
-		testa.setAlignmentX(Panel.RIGHT_ALIGNMENT);
 		c=new Panel();
 		c.setLayout(new BorderLayout(100,10));
 		add(c);

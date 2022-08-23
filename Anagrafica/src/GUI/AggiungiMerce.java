@@ -89,8 +89,8 @@ public class AggiungiMerce extends Finestra{
 		});
 		contenuto.add(rim);	
 			
-/*comp11*/Pulsante bex=new Pulsante("-EXIT-");
-		bex.addActionListener(new ActionListener() {
+/*comp11*/Bottone bex=new Bottone("-EXIT-");
+		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
 		    	ConsultaMerci consultaM=new ConsultaMerci();
@@ -100,8 +100,8 @@ public class AggiungiMerce extends Finestra{
 		});
 		contenuto.add(bex);
 		
-/*comp12*/Pulsante bent=new Pulsante("-ENTER-");
-		bent.addActionListener(new ActionListener() {
+/*comp12*/Bottone bent=new Bottone("-ENTER-");
+		bent.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	nome=tf1.ret;
 		    	try {
@@ -213,8 +213,8 @@ public class AggiungiMerce extends Finestra{
 		});
 		contenuto.add(rim);	
 			
-/*comp11*/Pulsante bex=new Pulsante("-EXIT-");
-		bex.addActionListener(new ActionListener() {
+/*comp11*/Bottone bex=new Bottone("-EXIT-");
+		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
 		    	ConsultaMerci consultaM=new ConsultaMerci();
@@ -224,8 +224,8 @@ public class AggiungiMerce extends Finestra{
 		});
 		contenuto.add(bex);
 		
-/*comp12*/Pulsante bent=new Pulsante("-ENTER-");
-		bent.addActionListener(new ActionListener() {
+/*comp12*/Bottone bent=new Bottone("-ENTER-");
+		bent.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	try {
 		    		quantita=Double.parseDouble(tf2.ret);
@@ -250,8 +250,8 @@ public class AggiungiMerce extends Finestra{
 		});
 		contenuto.add(bent);
 		
-/*comp14*/Pulsante agg=new Pulsante("-Assign to Supplier-");
-		agg.addActionListener(new ActionListener() {
+/*comp14*/Bottone agg=new Bottone("-Assign to Supplier-");
+		agg.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
 		    	try{

@@ -22,7 +22,7 @@ public class Est {
 	public static Font font=new Font("Lucida",Font.PLAIN,24);
 	public static Font font2=new Font(Font.DIALOG_INPUT, Font.BOLD,  20);
 	public static Dimension piccolo=new Dimension(190,80);
-//	public static Dimension grosso=new Dimension(190,185);
+	public static Dimension grosso=new Dimension(290,80);
 	public static Color chiarissimo=new Color(117,223,235);
 	public static DecimalFormat deci = new DecimalFormat("0.00");
 	public static DateTimeFormatter dateForm= DateTimeFormatter.ofPattern("yyyy-MM-dd H:mm.ss");
@@ -31,3 +31,9 @@ public class Est {
 	public static Border aaa= BorderFactory.createLineBorder(Est.chiaro,10);
 	public static Border bbb= BorderFactory.createCompoundBorder(aaa,bordo);
 }
+
+/*
+but.setMinimumSize(Est.grosso);
+but.setMaximumSize(Est.grosso);
+but.setPreferredSize(Est.grosso);
+*/

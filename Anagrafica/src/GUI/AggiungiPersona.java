@@ -135,8 +135,8 @@ public class AggiungiPersona extends Finestra{
 		pan7.setBackground(Est.chiaro);
 		contenuto.add(pan7);
 			
-/*comp19*/Pulsante bex=new Pulsante("-EXIT-");
-		bex.addActionListener(new ActionListener() {
+/*comp19*/Bottone bex=new Bottone("-EXIT-");
+		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
 		    	ConsultaPersone consultaP=new ConsultaPersone();
@@ -146,8 +146,8 @@ public class AggiungiPersona extends Finestra{
 		});
 		contenuto.add(bex);
 		
-/*comp20*/Pulsante bent=new Pulsante("-ENTER-");
-		bent.addActionListener(new ActionListener() {
+/*comp20*/Bottone bent=new Bottone("-ENTER-");
+		bent.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 				nome=tf1.ret;
 				cognome=tf2.ret;
@@ -298,8 +298,8 @@ public class AggiungiPersona extends Finestra{
 			pan7.setBackground(Est.chiaro);
 			contenuto.add(pan7);
 				
-	/*comp19*/Pulsante bex=new Pulsante("-EXIT-");
-			bex.addActionListener(new ActionListener() {
+	/*comp19*/Bottone bex=new Bottone("-EXIT-");
+			bex.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	setVisible(false);
 			    	ConsultaPersone consultaP=new ConsultaPersone();
@@ -309,8 +309,8 @@ public class AggiungiPersona extends Finestra{
 			});
 			contenuto.add(bex);
 			
-	/*comp20*/Pulsante bent=new Pulsante("-ENTER-");
-			bent.addActionListener(new ActionListener() {
+	/*comp20*/Bottone bent=new Bottone("-ENTER-");
+			bent.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	
 					telefono=tf3.ret;

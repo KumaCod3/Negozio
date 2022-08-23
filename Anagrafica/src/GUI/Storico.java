@@ -28,8 +28,8 @@ public class Storico extends Finestra{
 			StorTab tab=new StorTab();
 			sinistro.add("Center",tab.ta());
 			
-			Pulsante bex=new Pulsante("-EXIT-");
-			bex.addActionListener(new ActionListener() {
+			Bottone bex=new Bottone("-EXIT-");
+			bex.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	setVisible(false);
 			    	Home home=new Home();

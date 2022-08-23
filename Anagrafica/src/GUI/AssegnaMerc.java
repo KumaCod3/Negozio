@@ -50,8 +50,8 @@ public class AssegnaMerc extends Finestra{
 		});
 		contenuto.add(ele);
 		
-		Pulsante bex=new Pulsante("-EXIT-");
-		bex.addActionListener(new ActionListener() {
+		Bottone bex=new Bottone("-EXIT-");
+		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
 		    	ConsultaPersone consultaP=new ConsultaPersone();
@@ -60,8 +60,8 @@ public class AssegnaMerc extends Finestra{
 			}
 		});
 		contenuto.add(bex);
-		Pulsante bent=new Pulsante("-ENTER-");
-		bent.addActionListener(new ActionListener() {
+		Bottone bent=new Bottone("-ENTER-");
+		bent.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (index>-1){
 			    	f.addMerc(index);
@@ -78,9 +78,9 @@ public class AssegnaMerc extends Finestra{
 			}
 		});
 		contenuto.add(bent);
-		Pulsante dis=new Pulsante("-REMOVE-");
-		dis.setBackground(Est.rosso);
-		dis.addActionListener(new ActionListener() {
+		Bottone dis=new Bottone("-REMOVE-");
+		dis.but.setBackground(Est.rosso);
+		dis.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (index>-1){
 			    	setVisible(false);
@@ -131,8 +131,8 @@ public class AssegnaMerc extends Finestra{
 		});
 		contenuto.add(ele1);
 		
-		Pulsante bex=new Pulsante("-EXIT-");
-		bex.addActionListener(new ActionListener() {
+		Bottone bex=new Bottone("-EXIT-");
+		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
 		    	ConsultaPersone consultaP=new ConsultaPersone();
@@ -141,8 +141,8 @@ public class AssegnaMerc extends Finestra{
 			}
 		});
 		contenuto.add(bex);
-		Pulsante bent=new Pulsante("-ENTER-");
-		bent.addActionListener(new ActionListener() {
+		Bottone bent=new Bottone("-ENTER-");
+		bent.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (index>-1){
 		    		DataB.fornitori.get(index).addMerc(m);
@@ -160,9 +160,9 @@ public class AssegnaMerc extends Finestra{
 		});
 		contenuto.add(bent);
 		
-		Pulsante dis=new Pulsante("-REMOVE-");
-		dis.setBackground(Est.rosso);
-		dis.addActionListener(new ActionListener() {
+		Bottone dis=new Bottone("-REMOVE-");
+		dis.but.setBackground(Est.rosso);
+		dis.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (index>-1){
 			    	setVisible(false);
