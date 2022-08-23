@@ -128,7 +128,7 @@ public class AggiungiMerce extends Finestra{
 		});
 		contenuto.add(bent);
 		
-		add(contenuto);
+		c.add("Center", contenuto);
 		pack();
 	}
 	
@@ -142,7 +142,7 @@ public class AggiungiMerce extends Finestra{
 		rincaro=prod.getRincaro();
 		unita=prod.getUnit();
 		
-		setLayout(new BorderLayout(100,10));
+		c.setLayout(new BorderLayout(100,10));
 		setLocation(150,150);
 		setBackground(Est.chiaro);
 		
@@ -264,9 +264,9 @@ public class AggiungiMerce extends Finestra{
 		    	}
 			}
 		});
-		add("South", agg);
+		c.add("South", agg);
 				
-		add(contenuto);
+		c.add(contenuto);
 		pack();
 	}
 }

@@ -125,7 +125,7 @@ public class ConsultaPersone  extends Finestra {
 		});
 		contenuto.add(b2);
 		
-		add(contenuto);
+		c.add(contenuto);
 		pack();
 	}
 	public void sett(boolean a){

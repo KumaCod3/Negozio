@@ -173,7 +173,7 @@ public class SchedaPersona extends Finestra{
 					}
 				});
 				sud.add(ord);
-				add("South",sud);
+				c.add("South",sud);
 			}			
 				
 /*comp OUT FOR CLIENTI*/
@@ -188,9 +188,9 @@ public class SchedaPersona extends Finestra{
 						dispose();
 					}
 				});
-				add("South", eli);
+				c.add("South", eli);
 			}
-			add(contenuto);
+			c.add("Center", contenuto);
 			
 			pack();
 		}

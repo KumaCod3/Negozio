@@ -181,7 +181,7 @@ public class AggiungiPersona extends Finestra{
 		});
 		contenuto.add(bent);
 		
-		add(contenuto);
+		c.add("Center", contenuto);
 		pack();
 	}
 	
@@ -215,8 +215,8 @@ public class AggiungiPersona extends Finestra{
 			}
 		}
 		
-			setLayout(new BorderLayout(100,10));
-			setLocation(150,150);
+			c.setLayout(new BorderLayout(100,10));
+
 			setBackground(Est.chiaro);
 			
 			Panel contenuto=new Panel();
@@ -372,7 +372,7 @@ public class AggiungiPersona extends Finestra{
 			});
 			contenuto.add(bent);
 			
-			add(contenuto);
+			c.add("Center", contenuto);
 			pack();
 
 	}

@@ -46,7 +46,7 @@ public class Balance extends Finestra{
 			Etichetta rr=new Etichetta(Est.deci.format(bal)+" eu. ");
 			contenuto.add(rr);
 			
-			add("Center", contenuto);
+			c.add("Center", contenuto);
 			
 	/*es*/Pulsante bex=new Pulsante("-EXIT-");
 			bex.addActionListener(new ActionListener() {
@@ -57,7 +57,7 @@ public class Balance extends Finestra{
 			    	dispose();
 				}
 			});
-			add("South", bex);
+			c.add("South", bex);
 			pack();
 		}
 	}

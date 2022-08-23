@@ -15,7 +15,7 @@ public class AssegnaMerc extends Finestra{
 		
 		Panel contenuto=new Panel();
 		contenuto.setLayout(new GridLayout(3,2));
-		add("Center",contenuto);
+		c.add("Center",contenuto);
 		
 		Etichetta nom=new Etichetta("Supplier: ");
 		contenuto.add(nom);
@@ -91,18 +91,18 @@ public class AssegnaMerc extends Finestra{
 			}
 		});
 		
-		add("South",dis);
+		c.add("South",dis);
 		pack();
 	}
 	public AssegnaMerc(Merce m){
 		super("Assign Product to Supplier");
 		
 		Etichetta nom=new Etichetta("Product: "+m.getNome());
-		add("North",nom);	
+		c.add("North",nom);	
 		
 		Panel contenuto=new Panel();
 		contenuto.setLayout(new GridLayout(2,2));
-		add("Center",contenuto);
+		c.add("Center",contenuto);
 		
 		Etichetta tt=new Etichetta("Choose Supplier:");
 		contenuto.add(tt);
@@ -173,7 +173,7 @@ public class AssegnaMerc extends Finestra{
 			}
 		});
 		
-		add("South",dis);
+		c.add("South",dis);
 		pack();
 	}
 }

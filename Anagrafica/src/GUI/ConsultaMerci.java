@@ -86,7 +86,7 @@ public class ConsultaMerci extends Finestra {
 	        contenuto.add(b2);
 	        
 	        
-			add(contenuto);
+			c.add("Center",contenuto);
 			pack();
 		}
 		public void sett(boolean a){

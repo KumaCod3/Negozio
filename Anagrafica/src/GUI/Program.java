@@ -4,6 +4,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BoxLayout;
+import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
 public class Program{
 	public static void main(String[] args) {
 		MyReadM.carica();
@@ -16,18 +21,18 @@ public class Program{
 	public static class Home extends Frame{
 		public Home(){
 			super("HOME");
-			setLayout(new BorderLayout(100,10));
-			setLocation(150,150);
+			setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+			setLocation(70,70);
 			setBackground(Est.chiaro);
+			setPreferredSize(new Dimension(400, 500));
 			
-			// ISTANZIO TUTTI I FRAME SECONDARI
-			
-			
-			Panel contenuto=new Panel();
-			contenuto.setLayout(new GridLayout(4,1));
-			
-			Etichetta tx=new Etichetta("<html>Welcome to the database, what do you want to do? ");
-			add("North",tx);
+			Header inte=new Header();
+			add(inte);
+
+			JPanel contenuto=new JPanel();
+			contenuto.setLayout(new GridLayout(3,1));
+			contenuto.setMaximumSize(new Dimension(360, 360));
+			contenuto.setAlignmentX(Panel.CENTER_ALIGNMENT);
 			
 			Pulsante b1=new Pulsante("See Persons DataBase");
 			b1.addActionListener(new ActionListener() {
@@ -62,25 +67,12 @@ public class Program{
 			});
 	        contenuto.add(b3);
 			
-			add("Center",contenuto);
+			add(contenuto);
 			
 			
-			Panel bott=new Panel();
+			JPanel bott=new JPanel();
 			bott.setLayout(new GridLayout(1,2));
-			
-			
-			Pulsante bex=new Pulsante("-EXIT-");
-			bex.setBackground(Est.rosso);
-			bex.addActionListener(new ActionListener() {
-	            public void actionPerformed(ActionEvent e) {
-	            	MyReadM.scarica();
-	    			MyReadF.scarica();
-	    			MyReadC.scarica();
-	            	setVisible(false);
-	            	dispose();
-	            	System.exit(0);
-	        	}
-			});
+			bott.setMaximumSize(new Dimension(360, 180));
 						
 			Pulsante bes=new Pulsante("-HISTORY-");
 			bes.setBackground(Est.medio);
@@ -106,8 +98,23 @@ public class Program{
 			});
 			bott.add(bal);
 			
-			contenuto.add(bott);
-	        add("South",bex);
+			add(bott);
+			
+			Pulsante bex=new Pulsante("-EXIT-");
+			bex.setBackground(Est.rosso);
+			bex.setAlignmentX(Panel.CENTER_ALIGNMENT);
+			bex.setMaximumSize(new Dimension(360, 360));
+			bex.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	            	MyReadM.scarica();
+	    			MyReadF.scarica();
+	    			MyReadC.scarica();
+	            	setVisible(false);
+	            	dispose();
+	            	System.exit(0);
+	        	}
+			});
+	        add(bex);
 	        
 			pack();
 		}

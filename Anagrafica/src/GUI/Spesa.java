@@ -30,16 +30,16 @@ public class Spesa extends Finestra{
 		setLocation(150,50);
 		ListaSpesa list=new ListaSpesa(c);
 		b=c;
+		
 		Panel contenuto=new Panel();
 		contenuto.setLayout(new GridLayout(4,2));
-
 		
 /*comp1*/  Etichetta ti=new Etichetta("Shopping cart of ");
 		contenuto.add(ti);
 /*comp2*/  Etichetta no=new Etichetta(c.getTitolo()+" "+c.getCognome()+" "+c.getNome());
 		contenuto.add(no);
 		
-		add("North",contenuto);
+		super.c.add("North",contenuto);
 
 /*comp1*/  Etichetta tx=new Etichetta("Choose product: ");
 		contenuto.add(tx);
@@ -105,7 +105,7 @@ public class Spesa extends Finestra{
 
 		corpo.add("South",sal);
 		
-		add("Center", corpo);
+		super.c.add("Center", corpo);
 
 /*comp5*/Pulsante bent=new Pulsante("-ADD-");
 		bent.addActionListener(new ActionListener() {
@@ -184,7 +184,7 @@ public class Spesa extends Finestra{
 		sotto.add(fin);
 		
 		
-		add("South",sotto);
+		super.c.add("South",sotto);
 
 
 
@@ -203,7 +203,7 @@ public class Spesa extends Finestra{
 /*comp2*/  Etichetta no=new Etichetta(" da "+f.getCognome()+" "+f.getNome());
 		contenuto.add(no);
 		
-		add("North",contenuto);
+		c.add("North",contenuto);
 
 /*comp3*/  Etichetta qtt=new Etichetta("Quantity: ");
 		contenuto.add(qtt);
@@ -244,7 +244,7 @@ public class Spesa extends Finestra{
 		});
 		sotto.add(fin);
 			
-		add("South",sotto);
+		c.add("South",sotto);
 		pack();
 	}
 }

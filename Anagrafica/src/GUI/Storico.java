@@ -19,7 +19,7 @@ public class Storico extends Finestra{
 
 			Panel centro=new Panel();
 			centro.setLayout(new GridLayout(1,2));
-			add("Center",centro);
+			c.add("Center",centro);
 			Panel sinistro=new Panel();
 			sinistro.setLayout(new BorderLayout());
 			Etichetta non=new Etichetta("Sales History: ");
@@ -37,7 +37,7 @@ public class Storico extends Finestra{
 			    	dispose();
 				}
 			});
-			add("South",bex);
+			c.add("South",bex);
 			centro.add(sinistro);
 			
 			Panel destro=new Panel();

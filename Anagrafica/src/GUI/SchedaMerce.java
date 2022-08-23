@@ -156,8 +156,8 @@ public class SchedaMerce extends Finestra{
 		});
 		sud.add(ord);
 		
-		add(contenuto);
-		add("South", sud);
+		c.add("Center", contenuto);
+		c.add("South", sud);
 		pack();
 	}
 	
