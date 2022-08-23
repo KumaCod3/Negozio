@@ -48,8 +48,9 @@ public class ConsultaPersone  extends Finestra {
 		});
 		contenuto.add(ele1);
 
-/*comp3*/Pulsante bent1=new Pulsante("-ENTER-");
-		bent1.addActionListener(new ActionListener() {
+		
+/*comp3*/Bottone bent1=new Bottone("-ENTER-");
+		bent1.but.addActionListener(new ActionListener() {
 			 public void actionPerformed(ActionEvent e) {
 				 if (indexF!=-1){
 					SchedaPersona aggg=new SchedaPersona(indexF,"fornitore");

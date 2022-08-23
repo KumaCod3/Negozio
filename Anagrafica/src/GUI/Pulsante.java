@@ -1,9 +1,12 @@
 package GUI;
 import java.awt.Button;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Insets;
 
 import javax.swing.JButton;
+import javax.swing.JPanel;
 
 public class Pulsante extends JButton{
 	public Pulsante(String x){
@@ -13,7 +16,8 @@ public class Pulsante extends JButton{
         setMaximumSize(Est.piccolo);
         setPreferredSize(Est.piccolo);
 		
-		setBorder(Est.bbb);
+        
+	//	setBorder(Est.bbb);
 		setFont(Est.font2);
 		if (x.equals("-ENTER-")){
 			setBackground(Est.medio);
