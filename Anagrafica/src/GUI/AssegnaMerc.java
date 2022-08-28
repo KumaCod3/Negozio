@@ -99,8 +99,14 @@ public class AssegnaMerc extends Finestra{
 	public AssegnaMerc(Merce m){
 		super("Assign Product to Supplier", 615, 550);
 		
-		Etichetta nom=new Etichetta("Product:       "+m.getNome());
-		c.add("North",nom);	
+		Panel tit=new Panel();
+		tit.setLayout(new GridLayout(1,2));
+		Etichetta nom=new Etichetta("Product: ");
+		tit.add(nom);
+		Etichetta nim=new Etichetta(m.getNome());
+		tit.add(nim);
+		
+		c.add("North",tit);	
 		
 		Panel contenuto=new Panel();
 		contenuto.setLayout(new GridLayout(2,2));

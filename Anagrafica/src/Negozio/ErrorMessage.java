@@ -159,7 +159,7 @@ public class ErrorMessage extends Frame implements ActionListener{
 			}
 		});
 		
-		Bottone ty=new Bottone("PLACE ORDER");
+		Bottone ty=new Bottone("REMOVE SUPPLIER");
 		ty.but.setBackground(Est.rosso);
 		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -262,7 +262,6 @@ public class ErrorMessage extends Frame implements ActionListener{
 		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	f.ordina(quantita, m.getCod());
-		    	
 		    	setVisible(false);
 		    	Home home=new Home();
 				home.setVisible(true);
