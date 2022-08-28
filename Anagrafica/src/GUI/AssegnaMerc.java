@@ -11,10 +11,12 @@ public class AssegnaMerc extends Finestra{
 	int index;
 	
 	public AssegnaMerc(Fornitore f){
-		super("Assign Product to Supplier");
+		super("Assign Product to Supplier",870,570);
 		
-		Panel contenuto=new Panel();
+		JPanel contenuto=new JPanel();
 		contenuto.setLayout(new GridLayout(3,2));
+		contenuto.setBorder(Est.bordo);
+		contenuto.setOpaque(false);
 		c.add("Center",contenuto);
 		
 		Etichetta nom=new Etichetta("Supplier: ");
@@ -95,9 +97,9 @@ public class AssegnaMerc extends Finestra{
 		pack();
 	}
 	public AssegnaMerc(Merce m){
-		super("Assign Product to Supplier");
+		super("Assign Product to Supplier", 615, 550);
 		
-		Etichetta nom=new Etichetta("Product: "+m.getNome());
+		Etichetta nom=new Etichetta("Product:       "+m.getNome());
 		c.add("North",nom);	
 		
 		Panel contenuto=new Panel();

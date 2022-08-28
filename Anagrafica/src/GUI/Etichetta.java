@@ -1,12 +1,17 @@
 package GUI;
 
+import java.awt.Insets;
+
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.border.EmptyBorder;
 
 public class Etichetta extends JLabel{
 	public Etichetta(String x){
 		setText(x);
 		setFont(Est.font);
-		setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
+		setBackground(Est.oran);
+		setOpaque(true);
+		setBorder(Est.vuoto);
 	}
 }

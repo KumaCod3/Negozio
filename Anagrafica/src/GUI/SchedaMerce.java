@@ -19,7 +19,7 @@ public class SchedaMerce extends Finestra{
 	Merce mer;
 	int indexF=-1;
 	public SchedaMerce(int x){
-		super("Product details");
+		super("Product details", 650, 920);
 		
 		if (x!=-1&&DataM.elenco.containsKey(x)){
 			mer=DataM.elenco.get(x);
@@ -33,7 +33,9 @@ public class SchedaMerce extends Finestra{
 			this.codice=x;
 		}
 		
-		Panel contenuto=new Panel();
+		JPanel contenuto=new JPanel();
+		contenuto.setBorder(Est.bordo);
+		contenuto.setOpaque(false);
 		contenuto.setLayout(new GridLayout(7,2));
 		
 /*comp1*/  Etichetta non=new Etichetta("Product: ");

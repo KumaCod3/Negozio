@@ -12,12 +12,13 @@ import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeListener;
 import javax.swing.Action;
 import javax.swing.BoxLayout;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import Negozio.DataM;
 
 public class Finestra extends Frame{
-	Panel c;
+	JPanel c;
 	public Finestra (String x){
 		super(x);
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
@@ -26,8 +27,25 @@ public class Finestra extends Frame{
 		setBackground(Est.chiaro);
 		Header testa=new Header();
 		add(testa);
-		c=new Panel();
+		c=new JPanel();
 		c.setLayout(new BorderLayout(100,10));
+		c.setBorder(Est.bordo);
+		c.setBackground(Est.chiaro);
+		add(c);
+		
+	}
+	public Finestra (String a,int x, int y){
+		super(a);
+		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+		setLocation(70,70);
+		setPreferredSize(new Dimension(x, y));
+		setBackground(Est.chiaro);
+		Header testa=new Header();
+		add(testa);
+		c=new JPanel();
+		c.setLayout(new BorderLayout(100,10));
+		c.setBorder(Est.bordo);
+		c.setBackground(Est.chiaro);
 		add(c);
 		
 	}

@@ -31,7 +31,9 @@ public class Spesa extends Finestra{
 		ListaSpesa list=new ListaSpesa(c);
 		b=c;
 		
-		Panel contenuto=new Panel();
+		JPanel contenuto=new JPanel();
+		contenuto.setBorder(Est.bordo);
+		contenuto.setOpaque(false);
 		contenuto.setLayout(new GridLayout(4,2));
 		
 /*comp1*/  Etichetta ti=new Etichetta("Shopping cart of ");
@@ -192,7 +194,7 @@ public class Spesa extends Finestra{
 	}
 	
 	public Spesa (Merce m,Fornitore f){
-		super("Order "+m.getNome());
+		super("Order "+m.getNome(),690,350);
 		setLocation(150,50);
 		b=f;
 		Panel contenuto=new Panel();

@@ -15,7 +15,7 @@ public class Bottone extends JPanel{
 	public Bottone(String x){
 		super();
 		but=new JButton(x);
-		setBorder(Est.bor);
+		setBorder(Est.vuoto);
 		setLayout(new GridBagLayout());
 		setBorder(Est.bordo);
 		setBackground(Est.chiaro);

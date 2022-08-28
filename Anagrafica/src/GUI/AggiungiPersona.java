@@ -21,7 +21,9 @@ public class AggiungiPersona extends Finestra{
 	public AggiungiPersona(){
 		super("Add new Person");
 		
-		Panel contenuto=new Panel();
+		JPanel contenuto=new JPanel();
+		contenuto.setBorder(Est.bordo);
+		contenuto.setOpaque(false);
 		contenuto.setLayout(new GridLayout(10,2));
 		
 /*comp1*/  Etichetta ty=new Etichetta("Choose DB: ");

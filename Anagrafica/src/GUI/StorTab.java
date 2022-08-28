@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
+import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -12,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import Negozio.DataM;
 import Negozio.Merce;
 
-public class StorTab extends Frame{
+public class StorTab extends Finestra{
 	public HashMap<LocalDateTime,String[]> elenco=new HashMap<LocalDateTime,String[]>();
 	JTable tavola;
 	DefaultTableModel model = new DefaultTableModel() {
@@ -22,6 +23,7 @@ public class StorTab extends Frame{
 	};
 
 	public StorTab(){
+		super("Storico");
 		elenco=MyReadL.carica();
 
 		tavola=new JTable(model);
@@ -29,7 +31,7 @@ public class StorTab extends Frame{
 		tavola.setColumnSelectionAllowed(false);
 		tavola.setDragEnabled(false);
 		tavola.setRowSelectionAllowed(true);
-				
+						
 		model.addColumn("DATE:");
 		model.addColumn("LAST NAME:");
 		model.addColumn("NAME:");
@@ -46,6 +48,7 @@ public class StorTab extends Frame{
 		add(sp);
 	}
 	public StorTab(String x){
+		super("Storico");
 		elenco=MyReadA.carica();
 
 		tavola=new JTable(model);
@@ -73,30 +76,4 @@ public class StorTab extends Frame{
 		JScrollPane sp=new JScrollPane(tavola); 
 		return sp;
 	}
-	
-	/*
-	public void aggiungi(Merce m, Double q){
-		String nome=m.getNome();
-		String quantita=q+"";
-		String tot=Est.deci.format(m.getPrezzoV()*q)+" $";
-		String[] riga={nome,quantita,tot};
-		model.addRow(riga);
-	}
-	public void togli(int x){
-		model.removeRow(x);
-	}
-	public void clear(){
-		model.setRowCount(0);
-	}
-	public String getNome(int row){
-		return model.getValueAt(row,0).toString();
-	}
-	public int getInd(String nome){
-		for (int i=0;i<model.getRowCount();i++){
-			if (model.getValueAt(i, 0).equals(nome)){
-				return i;
-			}
-		}
-		return -1;
-	}*/
 }

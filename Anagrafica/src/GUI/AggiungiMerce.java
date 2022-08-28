@@ -16,7 +16,9 @@ public class AggiungiMerce extends Finestra{
 	public AggiungiMerce(){
 		super("Add new Product");
 		
-		Panel contenuto=new Panel();
+		JPanel contenuto=new JPanel();
+		contenuto.setBorder(Est.bordo);
+		contenuto.setOpaque(false);
 		contenuto.setLayout(new GridLayout(6,2));
 
 /*comp1*/  Etichetta non=new Etichetta("Product: ");
@@ -143,10 +145,11 @@ public class AggiungiMerce extends Finestra{
 		unita=prod.getUnit();
 		
 		c.setLayout(new BorderLayout(100,10));
-		setLocation(150,150);
 		setBackground(Est.chiaro);
 		
-		Panel contenuto=new Panel();
+		JPanel contenuto=new JPanel();
+		contenuto.setBorder(Est.bordo);
+		contenuto.setOpaque(false);
 		contenuto.setLayout(new GridLayout(6,2));
 
 /*comp1*/  Etichetta non=new Etichetta("Product: ");
@@ -251,6 +254,9 @@ public class AggiungiMerce extends Finestra{
 		contenuto.add(bent);
 		
 /*comp14*/Bottone agg=new Bottone("-Assign to Supplier-");
+		agg.but.setMinimumSize(Est.grosso);
+		agg.but.setMaximumSize(Est.grosso);
+		agg.but.setPreferredSize(Est.grosso);
 		agg.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);

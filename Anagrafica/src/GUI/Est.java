@@ -27,13 +27,7 @@ public class Est {
 	public static DecimalFormat deci = new DecimalFormat("0.00");
 	public static DateTimeFormatter dateForm= DateTimeFormatter.ofPattern("yyyy-MM-dd H:mm.ss");
 	public static Border bordo= BorderFactory.createEmptyBorder(10,10,10,10);
-	public static Border bor=new EmptyBorder(3, 3, 3, 3);
+	public static Border vuoto=new EmptyBorder(new Insets(3,3,3,3));;
 	public static Border aaa= BorderFactory.createLineBorder(Est.chiaro,10);
 	public static Border bbb= BorderFactory.createCompoundBorder(aaa,bordo);
 }
-
-/*
-but.setMinimumSize(Est.grosso);
-but.setMaximumSize(Est.grosso);
-but.setPreferredSize(Est.grosso);
-*/

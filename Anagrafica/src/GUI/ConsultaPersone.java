@@ -15,10 +15,12 @@ public class ConsultaPersone  extends Finestra {
 	int indexC=-1;
 	boolean tipp=true;
 	public ConsultaPersone(){
-		super("Consult Persons database");
+		super("Consult Persons database",770,400);
 
-		Panel contenuto=new Panel();
+		JPanel contenuto=new JPanel();
 		contenuto.setLayout(new GridLayout(3,3));
+		contenuto.setBorder(Est.bordo);
+		contenuto.setOpaque(false);
 		
 /*comp1*/  Etichetta tx1=new Etichetta("Supplier:");
 		contenuto.add(tx1);

@@ -19,7 +19,7 @@ public class SchedaPersona extends Finestra{
 	Anagrafica mer;
 	int index=-1;
 		public SchedaPersona(int x, String tipo){
-			super("Scheda "+tipo);
+			super("Scheda "+tipo,650, 920);
 			if (x>-1){
 				if (tipo.equals("fornitore")){
 					try {
@@ -48,7 +48,9 @@ public class SchedaPersona extends Finestra{
 				this.indirizzo=mer.getIndirizzo();
 			}
 			
-			Panel contenuto=new Panel();
+			JPanel contenuto=new JPanel();
+			contenuto.setBorder(Est.bordo);
+			contenuto.setOpaque(false);
 			contenuto.setLayout(new GridLayout(6,2));
 			
 	/*comp1*/  Etichetta non=new Etichetta("Nominative: ");
