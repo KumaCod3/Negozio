@@ -25,10 +25,12 @@ public class Spesa extends Finestra{
 	int indixex=-1;
 	int index=-1;
 	public Anagrafica b;
+	public ListaSpesa list;
+	public Tabella tab;
 	public Spesa (Cliente c){
 		super("Shopping cart of "+c.getTitolo()+" "+c.getCognome()+" "+c.getNome());
 		setLocation(150,50);
-		ListaSpesa list=new ListaSpesa(c);
+		list=new ListaSpesa(c);
 		b=c;
 		
 		JPanel contenuto=new JPanel();
@@ -92,7 +94,7 @@ public class Spesa extends Finestra{
 		
 		Panel corpo=new Panel();
 		corpo.setLayout(new BorderLayout());
-		Tabella tab=new Tabella();
+		tab=new Tabella();
 		tab.tavola.addFocusListener(new FocusListener() {
 				public void focusGained(FocusEvent e){
 					indice=tab.tavola.getSelectedRow();
@@ -114,10 +116,10 @@ public class Spesa extends Finestra{
 		    public void actionPerformed(ActionEvent e) {
 		    	if (index!=-1){
 		    		try {
-		    			boolean x=list.compra(index, Double.parseDouble(tf2.ret));
+		    			boolean x=list.compra(index, Double.parseDouble(tf2.ret), Spesa.this);
 		    			
 		    			if (x){
-		    				tab.aggiungi(DataM.get(index),Double.parseDouble(tf2.ret));
+		    				tab.aggiungi(list.get(index),list.get(index).getQuantita());
 		    			}
 		    			else {
 			    			tab.togli(tab.getInd(DataM.get(index).getNome()));
@@ -174,13 +176,11 @@ public class Spesa extends Finestra{
 /*comp11*/Bottone fin=new Bottone("- BUY -");
 		fin.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	list.concludi();
-		    	tab.clear();
-		    	MyReadL.scarica(list);
+		    	
+		    	ErrorMessage er=new ErrorMessage(Spesa.this, c);
+		    	er.setVisible(true);
 		    	setVisible(false);
-		    	ConsultaPersone consultaP=new ConsultaPersone();
-		    	consultaP.setVisible(true);
-		    	dispose();
+		    	
 			}
 		});
 		sotto.add(fin);
@@ -191,6 +191,10 @@ public class Spesa extends Finestra{
 
 
 		pack();
+	}
+	public void refre(){
+		tab.repaint(list);
+		System.out.println("che frescura!");
 	}
 	
 	public Spesa (Merce m,Fornitore f){

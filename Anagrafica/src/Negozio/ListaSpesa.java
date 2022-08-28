@@ -3,6 +3,8 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
+import GUI.Spesa;
+
 public class ListaSpesa{
 	Cliente cliente;
 	Double saldo;
@@ -21,16 +23,24 @@ public class ListaSpesa{
 	public LocalDateTime getData(){
 		return data;
 	}
-	public boolean compra(int merce,Double quantita){
+	public boolean compra(int merce,Double quantita, Spesa spes){
 		Merce x=new Merce(DataM.get(merce));
 		for (Merce m:elenco.values()){
 			if (m.getNome().equals(x.getNome())){
 				m.setQuantita(quantita+(m.getQuantita()));
+				if (!check(m)){
+					fix(m,spes);
+					System.out.println("fix a: "+m.getQuantita()+" in magaz: "+DataM.elenco.get(m.getCod()).getQuantita());
+				}
 				calcolaSaldo();
 				return false;
 			}
 		}
 		x.setQuantita(quantita);
+		if (!check(x)){
+			fix(x,spes);
+			System.out.println("fix a: "+x.getQuantita()+" in magaz: "+DataM.elenco.get(x.getCod()).getQuantita());
+		}
 		elenco.put(merce, x);
 		calcolaSaldo();
 		return true;
@@ -118,6 +128,7 @@ public class ListaSpesa{
 		elenco.remove(x);
 		calcolaSaldo();
 	}
+
 	public void calcolaSaldo(){
 		saldo=0.0;
 		for (Merce m:elenco.values()){
@@ -132,19 +143,28 @@ public class ListaSpesa{
 		return tot;
 	}
 	public void concludi(){
+		
 		for (Merce m:elenco.values()){
 			try{
 				DataM.acquista(m);
-				
 			}
 			catch (AoOexception e){
-				m.setQuantita(0.0);
-				
 				continue;
 			}
 		}
 		calcolaSaldo();
 		cliente.setSaldo(cliente.getSaldo()-saldo);
+	}
+	public boolean check(Merce m){
+		if (DataM.elenco.get(m.getCod()).getQuantita()<m.getQuantita()){
+			return false;
+		}
+		return true;
+	}
+	public void fix(Merce m, Spesa spes){
+		System.out.println("rich: "+m.getQuantita()+" in magaz: "+DataM.elenco.get(m.getCod()).getQuantita());
+		ErrorMessage er=new ErrorMessage(m,ListaSpesa.this, spes);
+		er.setVisible(true);
 	}
 }
 

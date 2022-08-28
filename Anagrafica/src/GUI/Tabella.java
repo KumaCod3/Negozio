@@ -63,4 +63,10 @@ public class Tabella extends Frame{
 		}
 		return -1;
 	}
+	public void repaint(ListaSpesa l){
+		clear();
+		for (Merce m:l.elenco.values()){
+			aggiungi(m,m.getQuantita());
+		}
+	}
 }

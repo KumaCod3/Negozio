@@ -51,7 +51,6 @@ public class ErrorMessage extends Frame implements ActionListener{
 		setAlwaysOnTop(true);
 		pack();
 	}
-	
 	public ErrorMessage(int a){
 		super("---ATTENTION---");
 		setLocation(300,300);
@@ -96,7 +95,6 @@ public class ErrorMessage extends Frame implements ActionListener{
 		setLocation(300,300);
 		setBackground(new Color(217,243,248));
 		boolean gst=x.b.getNome().equals("GUEST");
-		System.out.println(""+gst);
 		
 		JLabel tx=new JLabel();
 		tx.setText("<html>Are you sure you want to go out? <br/> The contents of the shopping cart will be lost.");
@@ -138,6 +136,50 @@ public class ErrorMessage extends Frame implements ActionListener{
 		pack();
 	}
 	
+	public ErrorMessage(Spesa x,Cliente c){
+		super("---ATTENTION---");
+		setLocation(300,300);
+		setBackground(new Color(217,243,248));
+//		boolean gst=x.b.getNome().equals("GUEST");
+		
+		JLabel tx=new JLabel();
+		tx.setText("<html>Are you sure you want to place the order? <br/>"+c.getIntestazione()+" tot: "+Est.deci.format(x.list.getSaldo()));
+		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
+		tx.setFont(Est.font);
+		
+		Bottone ok=new Bottone("Go Back");
+		ok.but.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	setVisible(false);
+		    	x.setVisible(true);
+		    	dispose();
+			}
+		});
+		
+		Bottone ty=new Bottone("PLACE ORDER");
+		ty.but.setBackground(Est.rosso);
+		ty.but.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	
+		    	setVisible(false);
+		    	x.list.concludi();
+		    	MyReadL.scarica(x.list);
+		    	x.tab.clear();
+		    	
+		    	ConsultaPersone consultaP=new ConsultaPersone();
+		    	consultaP.setVisible(true);
+		    	x.dispose();
+		    	dispose();
+			}
+		});
+		
+		add("North",tx);
+		add("Center",ok);
+		add("South",ty);
+		setAlwaysOnTop(true);
+		pack();
+	}
+	
 	public ErrorMessage(Merce m,int index){
 		super("---ATTENTION---");
 		setLocation(300,300);
@@ -168,6 +210,45 @@ public class ErrorMessage extends Frame implements ActionListener{
 		    	setVisible(false);
 		    	AssegnaMerc ass=new AssegnaMerc(m);
 		    	ass.setVisible(true);
+		    	dispose();
+			}
+		});
+		
+		add("North",tx);
+		add("Center",ok);
+		add("South",ty);
+		setAlwaysOnTop(true);
+		pack();
+	}
+	
+	public ErrorMessage(Merce m,ListaSpesa x, Spesa spes){
+		super("---ATTENTION---");
+		setLocation(300,300);
+		setBackground(new Color(217,243,248));
+		double max=DataM.get(m.getCod()).getQuantita();
+		
+		JLabel tx=new JLabel();
+		tx.setText("<html>Product is Out of Order! <br/> "+"You have only: "+max+m.getUnit()+" of "+m.getNome()+" left.");
+		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
+		tx.setFont(Est.font);
+		
+		Bottone ok=new Bottone("Buy only "+max+m.getUnit());
+		ok.but.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	setVisible(false);
+	//	    	qtt=();
+		    	m.setQuantita(DataM.elenco.get(m.getCod()).getQuantita());
+		    	spes.refre();
+		    	dispose();
+			}
+		});
+		
+		Bottone ty=new Bottone("REMOVE Product from cart");
+		ty.but.setBackground(Est.rosso);
+		ty.but.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	setVisible(false);
+		    	m.setQuantita(0.0);
 		    	dispose();
 			}
 		});

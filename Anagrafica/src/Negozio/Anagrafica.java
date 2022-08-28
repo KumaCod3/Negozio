@@ -90,15 +90,15 @@ public abstract class Anagrafica {
 	public String toString(){
 		String stamp="";
 		if (getTipo().equals("fornitore")){
-			stamp=getNome()+" Piva: "+getIva()+" Debito totale: "+getSaldo();
+			stamp=getTitolo()+getNome()+" Piva: "+getIva()+" Debito totale: "+getSaldo();
 		}
 		else {
-			stamp=getNome()+" "+getCognome()+" Debito totale: "+getSaldo();
+			stamp=getTitolo()+" "+getNome()+" "+getCognome()+" Debito totale: "+getSaldo();
 		}
 		return stamp;
 	}
 	public String getIntestazione(){
-		String in=cognome+" , "+nome;
+		String in=getTitolo()+" "+cognome+" , "+nome;
 		return in;
 	}
 	public abstract HashMap<Integer,Merce> getMerc();
