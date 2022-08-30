@@ -253,10 +253,7 @@ public class AggiungiMerce extends Finestra{
 		});
 		contenuto.add(bent);
 		
-/*comp14*/Bottone agg=new Bottone("-Assign to Supplier-");
-		agg.but.setMinimumSize(Est.grosso);
-		agg.but.setMaximumSize(Est.grosso);
-		agg.but.setPreferredSize(Est.grosso);
+/*comp14*/Bottone agg=new Bottone("-Assign to Supplier-", 5);
 		agg.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);

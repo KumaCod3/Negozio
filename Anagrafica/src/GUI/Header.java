@@ -18,6 +18,7 @@ public class Header extends JPanel {
 		setBackground(Est.chiaro);
 		setLayout(new FlowLayout());
 		MyPanel pan=new MyPanel();
+		pan.setOpaque(false);
 		add(pan);
 		Label tz=new Label();
 		tz.setText("Powered by Pucchosa.sa :) ");

@@ -36,5 +36,29 @@ public class Bottone extends JPanel{
 		}
 		add(but);
 	}
+	public Bottone(String x,int y){
+		super();
+		but=new JButton(x);
+		setBorder(Est.vuoto);
+		setLayout(new GridBagLayout());
+		setBorder(Est.bordo);
+		setBackground(Est.chiaro);
+
+		but.setMinimumSize(Est.grosso);
+		but.setMaximumSize(Est.grosso);
+		but.setPreferredSize(Est.grosso);
+		but.setFont(Est.font2);
+		
+		if (x.equals("-ENTER-")){
+			but.setBackground(Est.medio);
+		}
+		else if (x.equals("-EXIT-")){
+			but.setBackground(Est.scuro);
+		}
+		else {
+			but.setBackground(Est.chiarissimo);
+		}
+		add(but);
+	}
 
 }

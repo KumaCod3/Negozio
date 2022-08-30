@@ -29,7 +29,6 @@ public class Spesa extends Finestra{
 	public Tabella tab;
 	public Spesa (Cliente c){
 		super("Shopping cart of "+c.getTitolo()+" "+c.getCognome()+" "+c.getNome());
-		setLocation(150,50);
 		list=new ListaSpesa(c);
 		b=c;
 		

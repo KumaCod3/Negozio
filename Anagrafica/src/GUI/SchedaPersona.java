@@ -139,10 +139,7 @@ public class SchedaPersona extends Finestra{
 	/*OUT*/		Panel sud=new Panel();
 				sud.setLayout(new GridLayout(1,2));
 				
-				Bottone agg=new Bottone("-Assign Product-");
-				agg.but.setMinimumSize(Est.grosso);
-		        agg.but.setMaximumSize(Est.grosso);
-		        agg.but.setPreferredSize(Est.grosso);
+				Bottone agg=new Bottone("-Assign Product-", 5);
 				agg.but.setBackground(Est.oran);
 				agg.but.addActionListener(new ActionListener() {
 				    public void actionPerformed(ActionEvent e) {
@@ -160,10 +157,7 @@ public class SchedaPersona extends Finestra{
 				});
 				sud.add(agg);
 				
-				Bottone ord=new Bottone("-Order Product-");
-				ord.but.setMinimumSize(Est.grosso);
-		        ord.but.setMaximumSize(Est.grosso);
-		        ord.but.setPreferredSize(Est.grosso);
+				Bottone ord=new Bottone("-Order Product-", 5);
 				ord.but.addActionListener(new ActionListener() {
 				    public void actionPerformed(ActionEvent e) {
 				    	if (index!=-1){
@@ -187,10 +181,6 @@ public class SchedaPersona extends Finestra{
 /*comp OUT FOR CLIENTI*/
 			if (tipo.equals("cliente")){
 				Bottone eli=new Bottone("-OPEN CART-");
-				eli.but.setMinimumSize(Est.grosso);
-		        eli.but.setMaximumSize(Est.grosso);
-		        eli.but.setPreferredSize(Est.grosso);
-				eli.but.setPreferredSize(Est.piccolo);
 				eli.but.setBackground(Est.medio);
 				eli.but.addActionListener(new ActionListener() {
 				    public void actionPerformed(ActionEvent e) {

@@ -18,13 +18,26 @@ public class ConsultaPersone  extends Finestra {
 		super("Consult Persons database"/*,770,400*/);
 
 		JPanel contenuto=new JPanel();
-		contenuto.setLayout(new GridLayout(3,3));
+		contenuto.setLayout(new GridLayout(5,1));
 		contenuto.setBorder(Est.bordo);
 		contenuto.setOpaque(false);
 		
-/*comp1*/  Etichetta tx1=new Etichetta("Supplier:");
-		contenuto.add(tx1);
+		JPanel pan1=new JPanel();
+		pan1.setLayout(new GridLayout(1,2));
+		pan1.setBorder(Est.bordo);
+		pan1.setOpaque(false);
+		JPanel pan2=new JPanel();
+		pan2.setLayout(new GridLayout(1,2));
+		pan2.setBorder(Est.bordo);
+		pan2.setOpaque(false);
+		JPanel pan3=new JPanel();
+		pan3.setLayout(new GridLayout(1,2));
+		pan3.setBorder(Est.bordo);
+		pan3.setOpaque(false);
 		
+/*comp1*/  Etichetta tx1=new Etichetta("Supplier:");
+		pan1.add(tx1);
+
 /*comp2*/Choice ele1=new Choice();
 		ele1.add("Choose");
 		try{
@@ -48,10 +61,10 @@ public class ConsultaPersone  extends Finestra {
 				}
 			}
 		});
-		contenuto.add(ele1);
-
+		pan1.add(ele1);
+		contenuto.add(pan1);
 		
-/*comp3*/Bottone bent1=new Bottone("-ENTER-");
+/*comp3*/Bottone bent1=new Bottone("-ENTER-", 5);
 		bent1.but.addActionListener(new ActionListener() {
 			 public void actionPerformed(ActionEvent e) {
 				 if (indexF!=-1){
@@ -65,7 +78,7 @@ public class ConsultaPersone  extends Finestra {
 
 
 /*comp4*/  Etichetta tx=new Etichetta("Customers:");
-		contenuto.add(tx);
+		pan2.add(tx);
 		
 /*comp5*/Choice ele=new Choice();
 		ele.add("Choose");
@@ -90,9 +103,10 @@ public class ConsultaPersone  extends Finestra {
 				}
 			}
 		});
-		contenuto.add(ele);
+		pan2.add(ele);
+		contenuto.add(pan2);
 
-/*comp6*/Bottone bent=new Bottone("-ENTER-");
+/*comp6*/Bottone bent=new Bottone("-ENTER-", 5);
 		bent.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (indexC!=-1){
@@ -113,10 +127,10 @@ public class ConsultaPersone  extends Finestra {
 		    	dispose();
 			}
 		});
-		contenuto.add(bex);
+		pan3.add(bex);
 		
-/*comp8*/Etichetta tv=new Etichetta("           ");
-		contenuto.add(tv);
+/*comp8Etichetta tv=new Etichetta("           ");
+		contenuto.add(tv);*/
 		
 /*comp9*/Bottone b2=new Bottone("+ ADD new +");
 		b2.but.addActionListener(new ActionListener() {
@@ -126,7 +140,8 @@ public class ConsultaPersone  extends Finestra {
 				dispose();
 			}
 		});
-		contenuto.add(b2);
+		pan3.add(b2);
+		contenuto.add(pan3);
 		
 		c.add(contenuto);
 		pack();

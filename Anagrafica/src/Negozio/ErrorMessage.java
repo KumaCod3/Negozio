@@ -18,7 +18,7 @@ public class ErrorMessage extends Frame implements ActionListener{
 		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
 		tx.setFont(Est.font);
 		
-		Bottone ok=new Bottone("OK");
+		Bottone ok=new Bottone("OK", 5);
 		ok.but.addActionListener(this);
 		
 		add("North",tx);
@@ -37,7 +37,7 @@ public class ErrorMessage extends Frame implements ActionListener{
 		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
 		tx.setFont(Est.font);
 		
-		Bottone ok=new Bottone("OK");
+		Bottone ok=new Bottone("OK", 5);
 		ok.but.addActionListener(this);
 		
 		JLabel ty=new JLabel();
@@ -61,7 +61,7 @@ public class ErrorMessage extends Frame implements ActionListener{
 		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
 		tx.setFont(Est.font);
 		
-		Bottone ok=new Bottone("OK");
+		Bottone ok=new Bottone("No, go back", 5);
 		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
@@ -71,7 +71,7 @@ public class ErrorMessage extends Frame implements ActionListener{
 			}
 		});
 		
-		Bottone ty=new Bottone("PLACE ORDER");
+		Bottone ty=new Bottone("REMOVE PRODUCT", 5);
 		ty.but.setBackground(Est.rosso);
 		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -101,7 +101,7 @@ public class ErrorMessage extends Frame implements ActionListener{
 		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
 		tx.setFont(Est.font);
 		
-		Bottone ok=new Bottone("OK");
+		Bottone ok=new Bottone("NO, go back!", 5);
 		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
@@ -110,7 +110,7 @@ public class ErrorMessage extends Frame implements ActionListener{
 			}
 		});
 		
-		Bottone ty=new Bottone("DELETE ORDER");
+		Bottone ty=new Bottone("DELETE ORDER", 5);
 		ty.but.setBackground(Est.rosso);
 		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -147,7 +147,7 @@ public class ErrorMessage extends Frame implements ActionListener{
 		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
 		tx.setFont(Est.font);
 		
-		Bottone ok=new Bottone("Go Back");
+		Bottone ok=new Bottone("No, Go Back", 5);
 		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
@@ -156,7 +156,7 @@ public class ErrorMessage extends Frame implements ActionListener{
 			}
 		});
 		
-		Bottone ty=new Bottone("PLACE ORDER");
+		Bottone ty=new Bottone("PLACE ORDER", 5);
 		ty.but.setBackground(Est.rosso);
 		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -191,7 +191,7 @@ public class ErrorMessage extends Frame implements ActionListener{
 		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
 		tx.setFont(Est.font);
 		
-		Bottone ok=new Bottone("OK");
+		Bottone ok=new Bottone("No, go back!", 5);
 		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
@@ -201,7 +201,7 @@ public class ErrorMessage extends Frame implements ActionListener{
 			}
 		});
 		
-		Bottone ty=new Bottone("REMOVE SUPPLIER");
+		Bottone ty=new Bottone("REMOVE SUPPLIER", 5);
 		ty.but.setBackground(Est.rosso);
 		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -232,7 +232,7 @@ public class ErrorMessage extends Frame implements ActionListener{
 		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
 		tx.setFont(Est.font);
 		
-		Bottone ok=new Bottone("Buy only "+max+m.getUnit());
+		Bottone ok=new Bottone("Buy only "+max+m.getUnit(), 5);
 		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
@@ -243,7 +243,7 @@ public class ErrorMessage extends Frame implements ActionListener{
 			}
 		});
 		
-		Bottone ty=new Bottone("REMOVE Product from cart");
+		Bottone ty=new Bottone("REMOVE Product from cart", 5);
 		ty.but.setBackground(Est.rosso);
 		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -271,7 +271,7 @@ public class ErrorMessage extends Frame implements ActionListener{
 		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
 		tx.setFont(Est.font);
 		
-		Bottone ok=new Bottone("OK");
+		Bottone ok=new Bottone("No, go back", 5);
 		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
@@ -281,7 +281,7 @@ public class ErrorMessage extends Frame implements ActionListener{
 			}
 		});
 		
-		Bottone ty=new Bottone("PLACE ORDER");
+		Bottone ty=new Bottone("REMOVE SUPPLIER", 5);
 		ty.but.setBackground(Est.rosso);
 		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -326,7 +326,7 @@ public class ErrorMessage extends Frame implements ActionListener{
 		Panel tasti=new Panel();
 		tasti.setLayout(new GridLayout(1,2));
 		
-		Bottone ok=new Bottone("OK");
+		Bottone ok=new Bottone("No, go back", 5);
 		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
@@ -338,7 +338,7 @@ public class ErrorMessage extends Frame implements ActionListener{
 			}
 		});
 		
-		Bottone ty=new Bottone("PLACE ORDER");
+		Bottone ty=new Bottone("PLACE ORDER", 5);
 		ty.but.setBackground(Est.rosso);
 		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {

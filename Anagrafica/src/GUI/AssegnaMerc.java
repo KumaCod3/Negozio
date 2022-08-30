@@ -80,7 +80,7 @@ public class AssegnaMerc extends Finestra{
 			}
 		});
 		contenuto.add(bent);
-		Bottone dis=new Bottone("-REMOVE-");
+		Bottone dis=new Bottone("-REMOVE-", 5);
 		dis.but.setBackground(Est.rosso);
 		dis.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -143,8 +143,8 @@ public class AssegnaMerc extends Finestra{
 		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
-		    	ConsultaPersone consultaP=new ConsultaPersone();
-		    	consultaP.setVisible(true);
+		    	ConsultaMerci consultaM=new ConsultaMerci();
+		    	consultaM.setVisible(true);
 		    	dispose();
 			}
 		});
@@ -168,8 +168,7 @@ public class AssegnaMerc extends Finestra{
 		});
 		contenuto.add(bent);
 		
-		Bottone dis=new Bottone("-REMOVE-");
-		dis.but.setBackground(Est.rosso);
+		Bottone dis=new Bottone("-REMOVE-", 5);
 		dis.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (index>-1){

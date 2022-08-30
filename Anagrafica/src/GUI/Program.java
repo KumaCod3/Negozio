@@ -24,20 +24,12 @@ public class Program{
 			setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 			setLocation(70,70);
 			setBackground(Est.chiaro);
-			setPreferredSize(new Dimension(400, 500));
+			setPreferredSize(Est.standard);
 			
 			Header inte=new Header();
 			add(inte);
-
-			JPanel contenuto=new JPanel();
-			contenuto.setLayout(new GridLayout(3,1));
-			contenuto.setMaximumSize(new Dimension(560, 560));
-			contenuto.setAlignmentX(Panel.CENTER_ALIGNMENT);
 			
-			Bottone b1=new Bottone("See Persons DataBase");
-			b1.but.setMinimumSize(Est.grosso);
-			b1.but.setMaximumSize(Est.grosso);
-			b1.but.setPreferredSize(Est.grosso);
+			Bottone b1=new Bottone("See Persons DataBase", 5);
 			b1.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	ConsultaPersone consultaP=new ConsultaPersone();
@@ -45,12 +37,9 @@ public class Program{
 			    	setVisible(false);
 				}
 			});
-	        contenuto.add(b1);
+	        /*contenuto.*/add(b1);
 			
-	        Bottone b2=new Bottone("See Products DataBase");
-	        b2.but.setMinimumSize(Est.grosso);
-	        b2.but.setMaximumSize(Est.grosso);
-	        b2.but.setPreferredSize(Est.grosso);
+	        Bottone b2=new Bottone("See Products DataBase", 5);
 			b2.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	ConsultaMerci consultaM=new ConsultaMerci();
@@ -59,12 +48,9 @@ public class Program{
 			    	dispose();
 				}
 			});
-	        contenuto.add(b2);
+	        /*contenuto.*/add(b2);
 			
-	        Bottone b3=new Bottone("--QUICK PURCHASE--");
-	        b3.but.setMinimumSize(Est.grosso);
-	        b3.but.setMaximumSize(Est.grosso);
-	        b3.but.setPreferredSize(Est.grosso);
+	        Bottone b3=new Bottone("--QUICK PURCHASE--", 5);
 	        b3.but.setBackground(Est.oran);
 			b3.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
@@ -74,9 +60,9 @@ public class Program{
 			    	dispose();
 				}
 			});
-	        contenuto.add(b3);
+	        /*contenuto.*/add(b3);
 			
-			add(contenuto);
+			/*add(contenuto);*/
 			
 			
 			JPanel bott=new JPanel();
@@ -109,10 +95,9 @@ public class Program{
 			
 			add(bott);
 			
-			Bottone bex=new Bottone("-EXIT-");
+			Bottone bex=new Bottone("-EXIT-", 5);
 			bex.but.setBackground(Est.rosso);
 			bex.but.setAlignmentX(Panel.CENTER_ALIGNMENT);
-			bex.but.setMaximumSize(new Dimension(360, 360));
 			bex.but.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	MyReadM.scarica();
