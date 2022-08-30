@@ -3,6 +3,7 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
+import GUI.Errore;
 import GUI.Spesa;
 
 public class ListaSpesa{
@@ -163,7 +164,7 @@ public class ListaSpesa{
 	}
 	public void fix(Merce m, Spesa spes){
 		System.out.println("rich: "+m.getQuantita()+" in magaz: "+DataM.elenco.get(m.getCod()).getQuantita());
-		ErrorMessage er=new ErrorMessage(m,ListaSpesa.this, spes);
+		Errore er=new Errore(m,ListaSpesa.this, spes);
 		er.setVisible(true);
 	}
 }

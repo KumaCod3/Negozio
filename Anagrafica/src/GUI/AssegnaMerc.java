@@ -74,7 +74,7 @@ public class AssegnaMerc extends Finestra{
 			    	dispose();
 		    	}
 		    	else {
-		    		ErrorMessage err=new ErrorMessage();
+		    		Errore err=new Errore("Index not valid... ");
 		    		err.setVisible(true);
 		    	}
 			}
@@ -86,7 +86,7 @@ public class AssegnaMerc extends Finestra{
 		    public void actionPerformed(ActionEvent e) {
 		    	if (index>-1){
 			    	setVisible(false);
-			    	ErrorMessage del=new ErrorMessage(f,index);
+			    	Errore del=new Errore(f,index);
 			    	del.setVisible(true);
 			    	dispose();
 		    	}
@@ -161,7 +161,7 @@ public class AssegnaMerc extends Finestra{
 			    	dispose();
 		    	}
 		    	else {
-		    		ErrorMessage err=new ErrorMessage();
+		    		Errore err=new Errore("Index not valid...");
 		    		err.setVisible(true);
 		    	}
 			}
@@ -173,7 +173,7 @@ public class AssegnaMerc extends Finestra{
 		    public void actionPerformed(ActionEvent e) {
 		    	if (index>-1){
 			    	setVisible(false);
-			    	ErrorMessage del=new ErrorMessage(m,index);
+			    	Errore del=new Errore(m,index);
 			    	del.setVisible(true);
 			    	dispose();
 		    	}

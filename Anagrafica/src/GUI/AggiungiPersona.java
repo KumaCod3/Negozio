@@ -161,7 +161,7 @@ public class AggiungiPersona extends Finestra{
 					saldo=Double.parseDouble(tf7.ret);
 				}
 				catch (Exception ex){
-					ErrorMessage err=new ErrorMessage("Enter number with . ");
+					Errore err=new Errore("Enter number with . ");
 					err.setVisible(true);
 				}
 		    	
@@ -195,7 +195,7 @@ public class AggiungiPersona extends Finestra{
 				mer=DataB.fornitori.get(x);
 			}
 			catch (Exception e){
-				ErrorMessage err=new ErrorMessage("Wrong Index...");
+				Errore err=new Errore("Wrong Index...");
 				err.setVisible(true);
 				setVisible(false);
 			    ConsultaPersone consultaP=new ConsultaPersone();
@@ -208,7 +208,7 @@ public class AggiungiPersona extends Finestra{
 				mer=DataB.clienti.get(x);
 			}
 			catch (Exception e){
-				ErrorMessage err=new ErrorMessage("Wrong Index...");
+				Errore err=new Errore("Wrong Index...");
 				err.setVisible(true);
 				setVisible(false);
 			   	ConsultaPersone consultaP=new ConsultaPersone();
@@ -323,7 +323,7 @@ public class AggiungiPersona extends Finestra{
 						saldo=Double.parseDouble(tf7.ret);
 					}
 					catch (Exception ex){
-						ErrorMessage err=new ErrorMessage("Enter number with . ");
+						Errore err=new Errore("Enter number with . ");
 						err.setVisible(true);
 					}
 			    	
@@ -341,7 +341,7 @@ public class AggiungiPersona extends Finestra{
 					    	dispose();
 			    		}
 			    		catch (Exception r){
-			    			ErrorMessage err=new ErrorMessage("Wrong Index...");
+			    			Errore err=new Errore("Wrong Index...");
 			    			err.setVisible(true);
 							setVisible(false);
 						    ConsultaPersone consultaP=new ConsultaPersone();
@@ -362,7 +362,7 @@ public class AggiungiPersona extends Finestra{
 					    	dispose();
 			    		}
 			    		catch (Exception u){
-			    			ErrorMessage err=new ErrorMessage("Wrong Index...");
+			    			Errore err=new Errore("Wrong Index...");
 			    			err.setVisible(true);
 							setVisible(false);
 						    ConsultaPersone consultaP=new ConsultaPersone();

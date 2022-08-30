@@ -1,67 +1,69 @@
-package Negozio;
-import GUI.*;
+package GUI;
 import GUI.Program.Home;
-
-//import java.util.*;
+import Negozio.Cliente;
+import Negozio.DataB;
+import Negozio.DataM;
+import Negozio.Fornitore;
+import Negozio.ListaSpesa;
+import Negozio.Merce;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
-public class ErrorMessage extends Frame implements ActionListener{
-	public ErrorMessage(){
+
+public class Errore extends Frame{
+	JLabel tx;
+	Bottone ok;
+	Bottone ty;
+	
+	public Errore(){
 		super("---ERROR---");
-		setLayout(new BorderLayout(100,50));
+		setLayout(new GridLayout(3,1));
 		setLocation(300,300);
 		setBackground(Est.chiaro);
 		
-		JLabel tx=new JLabel();
+		tx=new JLabel();
 		tx.setText("I'm sorry, something went wrong ... ");
-		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
+		tx.setBorder(Est.eti);
 		tx.setFont(Est.font);
 		
-		Bottone ok=new Bottone("OK", 5);
-		ok.but.addActionListener(this);
+		ok=new Bottone("OK", 5);
 		
-		add("North",tx);
-		add("Center",ok);
+		ty=new Bottone("CANCEL", 5);
+		ty.but.setBackground(Est.rosso);
+		
+		add(tx);
+		add(ok);
+		add(ty);
 		setAlwaysOnTop(true);
-		pack();
 	}
-	public ErrorMessage(String a){
-		super("---ERROR---");
-		setLayout(new BorderLayout(100,50));
-		setLocation(300,300);
-		setBackground(new Color(217,243,248));
-		
-		JLabel tx=new JLabel();
+	public Errore(String a){
+		this();
+		// da AggiungiMerce e AggiungiPersona
 		tx.setText("I'm sorry, something went wrong ... ");
-		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
-		tx.setFont(Est.font);
+
+		ok.but.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	setVisible(false);
+		    	dispose();
+			}
+		});
 		
-		Bottone ok=new Bottone("OK", 5);
-		ok.but.addActionListener(this);
-		
-		JLabel ty=new JLabel();
-		ty.setText(a);
-		ty.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
-		ty.setFont(new Font("Lucida",Font.PLAIN,14));
-		
-		add("North",tx);
-		add("Center",ok);
-		add("South",ty);
-		setAlwaysOnTop(true);
+		ty.but.setText(a);
+		ty.but.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	setVisible(false);
+		    	dispose();
+			}
+		});
+
 		pack();
 	}
-	public ErrorMessage(int a){
-		super("---ATTENTION---");
-		setLocation(300,300);
-		setBackground(new Color(217,243,248));
-		
-		JLabel tx=new JLabel();
+	
+	public Errore(int a){
+		this();
+		//da SchedaMerce 
 		tx.setText("<html>Are you sure you want to delete this product? <br/> Number:"+a+" Product: "+DataM.elenco.get(a).getNome());
-		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
-		tx.setFont(Est.font);
-		
-		Bottone ok=new Bottone("No, go back", 5);
+
 		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
@@ -71,8 +73,6 @@ public class ErrorMessage extends Frame implements ActionListener{
 			}
 		});
 		
-		Bottone ty=new Bottone("REMOVE PRODUCT", 5);
-		ty.but.setBackground(Est.rosso);
 		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	DataM.elimina(a);
@@ -82,26 +82,18 @@ public class ErrorMessage extends Frame implements ActionListener{
 		    	dispose();
 			}
 		});
-		
-		add("North",tx);
-		add("Center",ok);
-		add("South",ty);
-		setAlwaysOnTop(true);
+
 		pack();
 	}
 	
-	public ErrorMessage(Spesa x){
-		super("---ATTENTION---");
-		setLocation(300,300);
-		setBackground(new Color(217,243,248));
+	public Errore(Spesa x){
+		this();
+		// da Spesa
 		boolean gst=x.b.getNome().equals("GUEST");
-		
-		JLabel tx=new JLabel();
+
 		tx.setText("<html>Are you sure you want to go out? <br/> The contents of the shopping cart will be lost.");
-		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
-		tx.setFont(Est.font);
-		
-		Bottone ok=new Bottone("NO, go back!", 5);
+
+		ok.but.setText("NO, go back!");
 		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
@@ -109,9 +101,8 @@ public class ErrorMessage extends Frame implements ActionListener{
 		    	dispose();
 			}
 		});
-		
-		Bottone ty=new Bottone("DELETE ORDER", 5);
-		ty.but.setBackground(Est.rosso);
+
+		ty.but.setText("DELETE ORDER");
 		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	
@@ -128,26 +119,15 @@ public class ErrorMessage extends Frame implements ActionListener{
 		    	dispose();
 			}
 		});
-		
-		add("North",tx);
-		add("Center",ok);
-		add("South",ty);
-		setAlwaysOnTop(true);
+
 		pack();
 	}
 	
-	public ErrorMessage(Spesa x,Cliente c){
-		super("---ATTENTION---");
-		setLocation(300,300);
-		setBackground(new Color(217,243,248));
-//		boolean gst=x.b.getNome().equals("GUEST");
-		
-		JLabel tx=new JLabel();
+	public Errore(Spesa x,Cliente c){
+		this();
+		// da Spesa
 		tx.setText("<html>Are you sure you want to place the order? <br/>"+c.getIntestazione()+" tot: "+Est.deci.format(x.list.getSaldo()));
-		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
-		tx.setFont(Est.font);
-		
-		Bottone ok=new Bottone("No, Go Back", 5);
+
 		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
@@ -156,8 +136,6 @@ public class ErrorMessage extends Frame implements ActionListener{
 			}
 		});
 		
-		Bottone ty=new Bottone("PLACE ORDER", 5);
-		ty.but.setBackground(Est.rosso);
 		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	
@@ -172,26 +150,17 @@ public class ErrorMessage extends Frame implements ActionListener{
 		    	dispose();
 			}
 		});
-		
-		add("North",tx);
-		add("Center",ok);
-		add("South",ty);
-		setAlwaysOnTop(true);
+
 		pack();
 	}
 	
-	public ErrorMessage(Merce m,int index){
-		super("---ATTENTION---");
-		setLocation(300,300);
-		setBackground(new Color(217,243,248));
-		
+	public Errore(Merce m,int index){
+		this();
+		// da AssegnaMerce
 		Fornitore f=DataB.fornitori.get(index);
-		JLabel tx=new JLabel();
+
 		tx.setText("<html>Are you sure you will delete the supplier <br/> "+f.getIntestazione()+"for the product: "+m.getNome()+"?");
-		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
-		tx.setFont(Est.font);
-		
-		Bottone ok=new Bottone("No, go back!", 5);
+
 		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
@@ -200,9 +169,7 @@ public class ErrorMessage extends Frame implements ActionListener{
 		    	dispose();
 			}
 		});
-		
-		Bottone ty=new Bottone("REMOVE SUPPLIER", 5);
-		ty.but.setBackground(Est.rosso);
+
 		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	m.removeForn(f);
@@ -213,38 +180,26 @@ public class ErrorMessage extends Frame implements ActionListener{
 		    	dispose();
 			}
 		});
-		
-		add("North",tx);
-		add("Center",ok);
-		add("South",ty);
-		setAlwaysOnTop(true);
+
 		pack();
 	}
 	
-	public ErrorMessage(Merce m,ListaSpesa x, Spesa spes){
-		super("---ATTENTION---");
-		setLocation(300,300);
-		setBackground(new Color(217,243,248));
+	public Errore(Merce m,ListaSpesa x, Spesa spes){
+		this();
+		// da ListaSpesa
 		double max=DataM.get(m.getCod()).getQuantita();
-		
-		JLabel tx=new JLabel();
+
 		tx.setText("<html>Product is Out of Order! <br/> "+"You have only: "+max+m.getUnit()+" of "+m.getNome()+" left.");
-		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
-		tx.setFont(Est.font);
-		
-		Bottone ok=new Bottone("Buy only "+max+m.getUnit(), 5);
+
 		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
-	//	    	qtt=();
 		    	m.setQuantita(DataM.elenco.get(m.getCod()).getQuantita());
 		    	spes.refre();
 		    	dispose();
 			}
 		});
 		
-		Bottone ty=new Bottone("REMOVE Product from cart", 5);
-		ty.but.setBackground(Est.rosso);
 		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
@@ -252,26 +207,17 @@ public class ErrorMessage extends Frame implements ActionListener{
 		    	dispose();
 			}
 		});
-		
-		add("North",tx);
-		add("Center",ok);
-		add("South",ty);
-		setAlwaysOnTop(true);
+
 		pack();
 	}
 	
-	public ErrorMessage(Fornitore f,int index){
-		super("---ATTENtION---");
-		setLocation(300,300);
-		setBackground(new Color(217,243,248));
-		
+	public Errore(Fornitore f,int index){
+		this();
+		// da AssegnaMerce 
 		Merce m=DataM.get(index);
-		JLabel tx=new JLabel();
+
 		tx.setText("<html>Are you sure you will delete the supplier <br/> "+f.getIntestazione()+"for the product: "+m.getNome()+"?");
-		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
-		tx.setFont(Est.font);
-		
-		Bottone ok=new Bottone("No, go back", 5);
+
 		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
@@ -280,9 +226,7 @@ public class ErrorMessage extends Frame implements ActionListener{
 		    	dispose();
 			}
 		});
-		
-		Bottone ty=new Bottone("REMOVE SUPPLIER", 5);
-		ty.but.setBackground(Est.rosso);
+
 		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	m.removeForn(f);
@@ -293,40 +237,30 @@ public class ErrorMessage extends Frame implements ActionListener{
 		    	dispose();
 			}
 		});
-		
-		add("North",tx);
-		add("Center",ok);
-		add("South",ty);
-		setAlwaysOnTop(true);
+
 		pack();
 	}
 	
-	public ErrorMessage(Fornitore f,Merce m, double quantita){
-		super("---ATTENTION---");
-		setLocation(300,300);
-		setBackground(new Color(217,243,248));
-		
+	public Errore(Fornitore f,Merce m, double quantita){
+		this();
+		// da Spesa
 		double saldo=m.getPrezzoA()*quantita;
-		
-		JLabel tx=new JLabel();
-		tx.setText("<html>Do you want to place the order from "+f.getIntestazione()+"for the product: "+m.getNome()+"?");
-		tx.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
-		tx.setFont(Est.font);
+
+		tx.setText("<html>Do you want to place the order from "+f.getIntestazione()+"?");
 		
 		Panel sal=new Panel();
 		sal.setLayout(new GridLayout(1,3));
-		Etichetta sal1=new Etichetta("Order: "+quantita+m.getUnit());
+		Etichetta sal1=new Etichetta(" Order: "+quantita+" "+m.getUnit());
 		sal.add(sal1);
-		Etichetta sal2=new Etichetta(" of "+m.getNome());
+		Etichetta sal2=new Etichetta("of "+m.getNome());
 		sal.add(sal2);
-		Etichetta sal3=new Etichetta("price: "+Est.deci.format(saldo)+" eu. ?");
+		Etichetta sal3=new Etichetta("for: "+Est.deci.format(saldo)+" eu. ?");
 		sal.add(sal3);
 		
 		
 		Panel tasti=new Panel();
 		tasti.setLayout(new GridLayout(1,2));
 		
-		Bottone ok=new Bottone("No, go back", 5);
 		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
@@ -337,9 +271,7 @@ public class ErrorMessage extends Frame implements ActionListener{
 		    	dispose();
 			}
 		});
-		
-		Bottone ty=new Bottone("PLACE ORDER", 5);
-		ty.but.setBackground(Est.rosso);
+
 		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	f.ordina(quantita, m.getCod());
@@ -357,9 +289,5 @@ public class ErrorMessage extends Frame implements ActionListener{
 		setAlwaysOnTop(true);
 		pack();
 	}
-	public void actionPerformed(ActionEvent e){
-		this.setVisible(false);
-		this.dispose();
-	}
-	
+
 }		

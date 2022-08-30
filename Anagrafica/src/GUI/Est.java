@@ -35,5 +35,6 @@ public class Est {
 	public static Border vuoto=new EmptyBorder(new Insets(3,3,3,3));;
 	public static Border aaa= BorderFactory.createLineBorder(Est.chiaro,10);
 	public static Border bbb= BorderFactory.createCompoundBorder(aaa,bordo);
+	public static Border eti= BorderFactory.createEmptyBorder(30, 20, 20, 70);
 	
 }

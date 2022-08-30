@@ -15,7 +15,7 @@ import GUI.Program.Home;
 import Negozio.Anagrafica;
 import Negozio.Cliente;
 import Negozio.DataM;
-import Negozio.ErrorMessage;
+//import Negozio.ErrorMessage;
 import Negozio.Fornitore;
 import Negozio.ListaSpesa;
 import Negozio.Merce;
@@ -166,7 +166,8 @@ public class Spesa extends Finestra{
 		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
-		    	ErrorMessage err=new ErrorMessage(Spesa.this);
+//		    	ErrorMessage err=new ErrorMessage(Spesa.this);
+		    	Errore err=new Errore(Spesa.this);
 		    	err.setVisible(true);
 			}
 		});
@@ -176,7 +177,7 @@ public class Spesa extends Finestra{
 		fin.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	
-		    	ErrorMessage er=new ErrorMessage(Spesa.this, c);
+		    	Errore er=new Errore(Spesa.this, c);
 		    	er.setVisible(true);
 		    	setVisible(false);
 		    	
@@ -240,7 +241,7 @@ public class Spesa extends Finestra{
 		    public void actionPerformed(ActionEvent e) {
 		    	double qt=Double.parseDouble(tf2.ret);
 		    	if (qt>0){
-			    	ErrorMessage er=new ErrorMessage(f,m,qt);
+			    	Errore er=new Errore(f,m,qt);
 			    	er.setVisible(true);
 			    	setVisible(false);
 			    	dispose();

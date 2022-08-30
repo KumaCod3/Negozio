@@ -110,14 +110,14 @@ public class AggiungiMerce extends Finestra{
 		    		quantita=Double.parseDouble(tf2.ret);
 		    	}
 		    	catch (Exception ex){
-		    		ErrorMessage err=new ErrorMessage("Enter number with . ");
+		    		Errore err=new Errore("Enter number with . ");
 		    		err.setVisible(true);
 		    	}
 		    	try {
 					prezzoA=Double.parseDouble(tf3.ret);
 				}
 				catch (Exception ex){
-					ErrorMessage err=new ErrorMessage("Enter number with . ");
+					Errore err=new Errore("Enter number with . ");
 					err.setVisible(true);
 				}
 				Merce inserisci =new Merce(nome, quantita, rincaro, prezzoA, unita);

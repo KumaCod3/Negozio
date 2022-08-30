@@ -130,7 +130,7 @@ public class SchedaMerce extends Finestra{
 		    public void actionPerformed(ActionEvent e) {
 		    	if (x!=-1){
 			    	setVisible(false);
-			    	ErrorMessage del=new ErrorMessage(x);
+			    	Errore del=new Errore(x);
 			    	del.setVisible(true);
 			    	dispose();
 		    	}
