@@ -11,7 +11,7 @@ public class Etichetta extends JLabel{
 		setText(x);
 		setFont(Est.font);
 		setBackground(Est.oran);
-		setOpaque(true);
+		setOpaque(false);
 		setBorder(Est.vuoto);
 	}
 }

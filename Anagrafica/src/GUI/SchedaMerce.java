@@ -19,7 +19,7 @@ public class SchedaMerce extends Finestra{
 	Merce mer;
 	int indexF=-1;
 	public SchedaMerce(int x){
-		super("Product details", 650, 920);
+		super("Product details"/*, 650, 920*/);
 		
 		if (x!=-1&&DataM.elenco.containsKey(x)){
 			mer=DataM.elenco.get(x);

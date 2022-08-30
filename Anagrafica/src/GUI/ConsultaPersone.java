@@ -15,7 +15,7 @@ public class ConsultaPersone  extends Finestra {
 	int indexC=-1;
 	boolean tipp=true;
 	public ConsultaPersone(){
-		super("Consult Persons database",770,400);
+		super("Consult Persons database"/*,770,400*/);
 
 		JPanel contenuto=new JPanel();
 		contenuto.setLayout(new GridLayout(3,3));

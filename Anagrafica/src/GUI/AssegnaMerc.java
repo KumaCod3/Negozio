@@ -11,7 +11,7 @@ public class AssegnaMerc extends Finestra{
 	int index;
 	
 	public AssegnaMerc(Fornitore f){
-		super("Assign Product to Supplier",870,570);
+		super("Assign Product to Supplier"/*,870,570*/);
 		
 		JPanel contenuto=new JPanel();
 		contenuto.setLayout(new GridLayout(3,2));
@@ -97,7 +97,7 @@ public class AssegnaMerc extends Finestra{
 		pack();
 	}
 	public AssegnaMerc(Merce m){
-		super("Assign Product to Supplier", 615, 550);
+		super("Assign Product to Supplier"/*, 615, 550*/);
 		
 		Panel tit=new Panel();
 		tit.setLayout(new GridLayout(1,2));

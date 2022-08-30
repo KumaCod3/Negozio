@@ -198,7 +198,7 @@ public class Spesa extends Finestra{
 	}
 	
 	public Spesa (Merce m,Fornitore f){
-		super("Order "+m.getNome(),690,350);
+		super("Order "+m.getNome()/*,690,350*/);
 		setLocation(150,50);
 		b=f;
 		Panel contenuto=new Panel();

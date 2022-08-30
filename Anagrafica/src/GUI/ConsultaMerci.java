@@ -14,7 +14,7 @@ public class ConsultaMerci extends Finestra {
 		boolean tipp=true;
 		int index=-1;
 		public ConsultaMerci(){
-			super("CONSULT Products database",690, 450);
+			super("CONSULT Products database"/*,690, 450*/);
 
 			JPanel contenuto=new JPanel();
 			contenuto.setBorder(Est.bordo);

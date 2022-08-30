@@ -17,7 +17,7 @@ public class Balance extends Finestra{
 	private double bal;
 	
 		public Balance(){
-			super("TOTAL BALANCE:", 650, 750);
+			super("TOTAL BALANCE:"/*, 650, 750*/);
 			this.merchVal=Shop.getMerchVal();
 			this.totSold=Shop.getTotSold();
 			this.totBought=Shop.getTotBought();

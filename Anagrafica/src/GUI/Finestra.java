@@ -23,7 +23,7 @@ public class Finestra extends Frame{
 		super(x);
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		setLocation(70,70);
-		setPreferredSize(new Dimension(650, 900));
+		setPreferredSize(Est.standard);
 		setBackground(Est.chiaro);
 		Header testa=new Header();
 		add(testa);
@@ -34,7 +34,7 @@ public class Finestra extends Frame{
 		add(c);
 		
 	}
-	public Finestra (String a,int x, int y){
+/*	public Finestra (String a,int x, int y){
 		super(a);
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		setLocation(70,70);
@@ -48,5 +48,5 @@ public class Finestra extends Frame{
 		c.setBackground(Est.chiaro);
 		add(c);
 		
-	}
+	}	*/
 }

@@ -24,7 +24,7 @@ public class Program{
 			setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 			setLocation(70,70);
 			setBackground(Est.chiaro);
-//			setPreferredSize(new Dimension(400, 500));
+			setPreferredSize(new Dimension(400, 500));
 			
 			Header inte=new Header();
 			add(inte);

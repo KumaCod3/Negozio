@@ -19,7 +19,7 @@ public class SchedaPersona extends Finestra{
 	Anagrafica mer;
 	int index=-1;
 		public SchedaPersona(int x, String tipo){
-			super("Scheda "+tipo,650, 920);
+			super("Scheda "+tipo/*,650, 920*/);
 			if (x>-1){
 				if (tipo.equals("fornitore")){
 					try {
