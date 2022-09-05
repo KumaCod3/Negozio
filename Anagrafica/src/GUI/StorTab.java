@@ -3,6 +3,7 @@ import java.awt.Frame;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 
 import javax.swing.JFrame;
@@ -14,7 +15,7 @@ import Negozio.DataM;
 import Negozio.Merce;
 
 public class StorTab extends Finestra{
-	public HashMap<LocalDateTime,String[]> elenco=new HashMap<LocalDateTime,String[]>();
+	public LinkedHashMap<LocalDateTime,String[]> elenco=new LinkedHashMap<LocalDateTime,String[]>();
 	JTable tavola;
 	DefaultTableModel model = new DefaultTableModel() {
 	    public boolean isCellEditable(int row, int column) {

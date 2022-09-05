@@ -199,32 +199,43 @@ public class Spesa extends Finestra{
 	
 	public Spesa (Merce m,Fornitore f){
 		super("Order "+m.getNome()/*,690,350*/);
-		setLocation(150,50);
+//		setLocation(150,50);
 		b=f;
 		Panel contenuto=new Panel();
-		contenuto.setLayout(new GridLayout(2,2));
+		contenuto.setLayout(new GridLayout(4,2));
 		
-/*comp1*/  Etichetta ti=new Etichetta("Order supply of "+m.getNome());
+/*comp1*/  Etichetta ti=new Etichetta("Order supply from ");
 		contenuto.add(ti);
-/*comp2*/  Etichetta no=new Etichetta(" da "+f.getCognome()+" "+f.getNome());
+/*comp2*/  Etichetta no=new Etichetta(""+f.getCognome()+" "+f.getNome());
 		contenuto.add(no);
 		
-		c.add("North",contenuto);
+/*comp3*/  Etichetta to=new Etichetta("Purchase price: ");
+		contenuto.add(to);
+/*comp4*/  Etichetta po=new Etichetta(""+Est.deci.format(m.getPrezzoA())+" eu per "+m.getUnit());
+		contenuto.add(po);
 
-/*comp3*/  Etichetta qtt=new Etichetta("Quantity: ");
+/*comp5*/  Etichetta go=new Etichetta("Sale price: ");
+		contenuto.add(go);
+/*comp6*/  Etichetta xo=new Etichetta(""+Est.deci.format(m.getPrezzoV())+" eu per "+m.getUnit());
+		contenuto.add(xo);
+		
+		
+/*comp7*/  Etichetta qtt=new Etichetta("Quantity: ");
 		contenuto.add(qtt);
-/*comp4*/JPanel pan2=new JPanel();
+/*comp8*/JPanel pan2=new JPanel();
 		FormVuoto tf2=new FormVuoto("Quantity");
-		pan2.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+		// DA SISTEMARE DOPO ETICHETTA
+		pan2.setBorder(BorderFactory.createEmptyBorder(60, 10, 10, 10));
 		pan2.add(tf2);
 		pan2.setBackground(Est.chiaro);
 		contenuto.add(pan2);
 		
+		c.add("Center",contenuto);
 		
 		Panel sotto=new Panel();
 		sotto.setLayout(new GridLayout(1,2));
 		
-/*comp10*/Bottone bex=new Bottone("-CANCEL-");
+/*comp9*/Bottone bex=new Bottone("-CANCEL-");
 		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
@@ -235,7 +246,7 @@ public class Spesa extends Finestra{
 		});
 		sotto.add(bex);
 		
-/*comp11*/Bottone fin=new Bottone("- BUY -");
+/*comp10*/Bottone fin=new Bottone("- BUY -");
 		fin.but.setBackground(Est.oran);
 		fin.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {

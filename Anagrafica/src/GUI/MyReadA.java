@@ -10,14 +10,15 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import Negozio.*;
 
 public class MyReadA {
 	
-	public static HashMap<LocalDateTime,String[]> carica(){
+	public static LinkedHashMap<LocalDateTime,String[]> carica(){
 		BufferedReader reader;
-		HashMap<LocalDateTime,String[]> elenco=new HashMap<LocalDateTime,String[]>();
+		LinkedHashMap<LocalDateTime,String[]> elenco=new LinkedHashMap<LocalDateTime,String[]>();
 		ArrayList<String> ele=new ArrayList<String>();
 		try{
 			File file = new File("gross");
