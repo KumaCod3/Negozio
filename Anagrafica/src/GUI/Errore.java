@@ -142,6 +142,9 @@ public class Errore extends Frame{
 		    	setVisible(false);
 		    	x.list.concludi();
 		    	MyReadL.scarica(x.list);
+		    	MyReadM.scarica();
+    			MyReadF.scarica();
+    			MyReadC.scarica();
 		    	x.tab.clear();
 		    	
 		    	ConsultaPersone consultaP=new ConsultaPersone();
@@ -263,19 +266,23 @@ public class Errore extends Frame{
 		
 		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
+		    	f.ordina(quantita, m.getCod());
 		    	setVisible(false);
-		    	AssegnaMerc ass=new AssegnaMerc(m);
-		    	ass.setVisible(true);
+		    	MyReadM.scarica();
+    			MyReadF.scarica();
+    			MyReadC.scarica();
 		    	Home home=new Home();
 				home.setVisible(true);
 		    	dispose();
+		    	
 			}
 		});
 
 		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	f.ordina(quantita, m.getCod());
 		    	setVisible(false);
+		    	SchedaMerce ass=new SchedaMerce(m.getCod());
+		    	ass.setVisible(true);
 		    	Home home=new Home();
 				home.setVisible(true);
 		    	dispose();

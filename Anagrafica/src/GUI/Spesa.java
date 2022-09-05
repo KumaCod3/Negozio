@@ -166,7 +166,6 @@ public class Spesa extends Finestra{
 		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
-//		    	ErrorMessage err=new ErrorMessage(Spesa.this);
 		    	Errore err=new Errore(Spesa.this);
 		    	err.setVisible(true);
 			}
