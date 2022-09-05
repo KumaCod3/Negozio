@@ -113,7 +113,7 @@ public class AggiungiPersona extends Finestra{
 /*comp13*/  Etichetta ivv=new Etichetta("VAT number: ");
 		contenuto.add(ivv);
 /*comp14*/JPanel pan5=new JPanel();
-		FormVuoto tf5 = new FormVuoto("VAT n.");
+		FormVuoto tf5 = new FormVuoto("VAT");
 		pan5.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		pan5.add(tf5);
 		pan5.setBackground(Est.chiaro);
@@ -157,12 +157,17 @@ public class AggiungiPersona extends Finestra{
 				email=tf4.ret;
 				iva=tf5.ret;
 				indirizzo=tf6.ret;
-				try {
-					saldo=Double.parseDouble(tf7.ret);
+				if (tf7.ret.equals("balance")){
+					saldo=0.0;
 				}
-				catch (Exception ex){
-					Errore err=new Errore("Enter number with . ");
-					err.setVisible(true);
+				else{
+					try {
+						saldo=Double.parseDouble(tf7.ret);
+					}
+					catch (Exception ex){
+						Errore err=new Errore("Enter number with . ");
+						err.setVisible(true);
+					}
 				}
 		    	
 		    	if (tipo.contentEquals("cliente")){
@@ -170,6 +175,7 @@ public class AggiungiPersona extends Finestra{
 		    		DataB.agg(inser);
 		    		ConsultaPersone consultaP=new ConsultaPersone();
 			    	consultaP.setVisible(true);
+			    	MyReadC.scarica();
 			    	dispose();
 		    	}
 		    	else if (tipo.contentEquals("fornitore")){
@@ -177,6 +183,7 @@ public class AggiungiPersona extends Finestra{
 		    		DataB.agg(inser);
 		    		ConsultaPersone consultaP=new ConsultaPersone();
 			    	consultaP.setVisible(true);
+			    	MyReadF.scarica();
 			    	dispose();
 		    	}
 			}
@@ -319,18 +326,22 @@ public class AggiungiPersona extends Finestra{
 					email=tf4.ret;
 					iva=tf5.ret;
 					indirizzo=tf6.ret;
-					try {
-						saldo=Double.parseDouble(tf7.ret);
+					if (tf7.ret.equals("balance")){
+						saldo=0.0;
 					}
-					catch (Exception ex){
-						Errore err=new Errore("Enter number with . ");
-						err.setVisible(true);
+					else{
+						try {
+							saldo=Double.parseDouble(tf7.ret);
+						}
+						catch (Exception ex){
+							Errore err=new Errore("Enter number with . ");
+							err.setVisible(true);
+						}
 					}
 			    	
 			    	if (tipo.contentEquals("cliente")){
 			    		try {
 			    		
-		//		    		DataB.clienti.get(x).setTitolo(titolo);
 				    		DataB.clienti.get(x).setIva(iva);
 				    		DataB.clienti.get(x).setTelefono(telefono);
 				    		DataB.clienti.get(x).setEmail(email);
@@ -338,6 +349,7 @@ public class AggiungiPersona extends Finestra{
 				    		DataB.clienti.get(x).setIndirizzo(indirizzo);
 				    		ConsultaPersone consultaP=new ConsultaPersone();
 					    	consultaP.setVisible(true);
+					    	MyReadC.scarica();
 					    	dispose();
 			    		}
 			    		catch (Exception r){
@@ -351,7 +363,6 @@ public class AggiungiPersona extends Finestra{
 			    	}
 			    	else if (tipo.contentEquals("fornitore")){
 			    		try {
-	//		    			DataB.fornitori.get(x).setTitolo(titolo);
 			    			DataB.fornitori.get(x).setIva(iva);
 			    			DataB.fornitori.get(x).setTelefono(telefono);
 			    			DataB.fornitori.get(x).setEmail(email);
@@ -359,6 +370,7 @@ public class AggiungiPersona extends Finestra{
 			    			DataB.fornitori.get(x).setIndirizzo(indirizzo);
 				    		ConsultaPersone consultaP=new ConsultaPersone();
 					    	consultaP.setVisible(true);
+					    	MyReadF.scarica();
 					    	dispose();
 			    		}
 			    		catch (Exception u){

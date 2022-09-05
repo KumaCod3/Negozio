@@ -42,6 +42,7 @@ public class MyReadM {
 			
 		}
 	}
+	
 	public static void scarica(){
 		ArrayList<String> elenco=new ArrayList<String>();
 		for (Merce f:DataM.elenco.values()){

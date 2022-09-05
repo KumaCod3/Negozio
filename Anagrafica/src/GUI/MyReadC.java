@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import Negozio.*;
 
@@ -42,6 +43,7 @@ public class MyReadC{
 			
 		}
 	}
+	
 	public static void scarica(){
 		ArrayList<String> elenco=new ArrayList<String>();
 		for (Cliente f:DataB.clienti){

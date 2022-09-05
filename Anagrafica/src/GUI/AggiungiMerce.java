@@ -124,6 +124,7 @@ public class AggiungiMerce extends Finestra{
 				DataM.agg(inserisci);
 				ConsultaMerci consultaM=new ConsultaMerci(/*c*/);
 		    	consultaM.setVisible(true);
+		    	MyReadM.scarica();
 		    	setVisible(false);
 		    	dispose();
 			}
@@ -247,6 +248,7 @@ public class AggiungiMerce extends Finestra{
 		    	
 				ConsultaMerci consultaM=new ConsultaMerci();
 		    	consultaM.setVisible(true);
+		    	MyReadM.scarica();
 		    	setVisible(false);
 		    	dispose();
 			}

@@ -2,6 +2,7 @@ package Negozio;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import GUI.Est;
 import GUI.MyReadA;
@@ -45,7 +46,7 @@ public class Shop {
 	}
 	public static void setTotBought(){
 		totBought=0.0;
-		HashMap<LocalDateTime,String[]> elenco=MyReadA.carica();
+		LinkedHashMap<LocalDateTime,String[]> elenco=MyReadA.carica();
 		for (String[] a:elenco.values()){
 			try{
 			double tot=Est.deci.parse(a[2]).doubleValue();

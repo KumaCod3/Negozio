@@ -56,6 +56,7 @@ public class MyReadF{
 			
 		}
 	}
+	
 	public static void scarica(){
 		ArrayList<String> elenco=new ArrayList<String>();
 		for (Fornitore f:DataB.fornitori){
