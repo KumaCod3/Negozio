@@ -21,6 +21,7 @@ public class Program{
 	public static class Home extends Frame{
 		public Home(){
 			super("HOME");
+			addWindowListener(Finestra.close);
 			setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 			setLocation(70,70);
 			setBackground(Est.chiaro);
