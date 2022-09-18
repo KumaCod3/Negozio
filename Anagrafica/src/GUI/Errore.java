@@ -130,7 +130,7 @@ public class Errore extends Frame{
 		// da Spesa
 		tx.setText("<html>Are you sure you want to place the order? <br/>"+c.getIntestazione()+" tot: "+Est.deci.format(x.list.getSaldo()));
 
-		ok.but.addActionListener(new ActionListener() {
+		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	setVisible(false);
 		    	x.setVisible(true);
@@ -138,7 +138,7 @@ public class Errore extends Frame{
 			}
 		});
 		
-		ty.but.addActionListener(new ActionListener() {
+		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	
 		    	setVisible(false);

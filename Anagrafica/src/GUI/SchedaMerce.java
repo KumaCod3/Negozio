@@ -36,7 +36,7 @@ public class SchedaMerce extends Finestra{
 		JPanel contenuto=new JPanel();
 		contenuto.setBorder(Est.bordo);
 		contenuto.setOpaque(false);
-		contenuto.setLayout(new GridLayout(7,2));
+		contenuto.setLayout(new GridLayout(6,2));
 		
 /*comp1*/  Etichetta non=new Etichetta("Product: ");
 		contenuto.add(non);	
@@ -97,6 +97,9 @@ public class SchedaMerce extends Finestra{
 		});
 		contenuto.add(ele1);	
 		
+		Panel sud=new Panel();
+		sud.setLayout(new GridLayout(2,2));
+		
 /*comp7*/Bottone bex=new Bottone("-EXIT-");
 		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -106,7 +109,7 @@ public class SchedaMerce extends Finestra{
 		    	dispose();
 			}
 		});
-		contenuto.add(bex);
+		sud.add(bex);
 		Bottone bin=new Bottone("-MODIFY-");
 		bin.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -119,12 +122,10 @@ public class SchedaMerce extends Finestra{
 		    	}
 			}
 		});
-		contenuto.add(bin);
+		sud.add(bin);
 		
-/*OUT*/		Panel sud=new Panel();
-		sud.setLayout(new GridLayout(1,2));
+/*OUT*/		
 		Bottone eli=new Bottone("-DELETE-");
-		eli.but.setPreferredSize(Est.piccolo);
 		eli.but.setBackground(Est.rosso);
 		eli.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -138,7 +139,6 @@ public class SchedaMerce extends Finestra{
 		});
 		sud.add(eli);
 		Bottone ord=new Bottone("-ORDER-");
-		ord.but.setPreferredSize(Est.piccolo);
 		ord.but.setBackground(Est.oran);
 		ord.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {

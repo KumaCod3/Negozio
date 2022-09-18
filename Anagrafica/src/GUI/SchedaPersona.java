@@ -180,7 +180,7 @@ public class SchedaPersona extends Finestra{
 				
 /*comp OUT FOR CLIENTI*/
 			if (tipo.equals("cliente")){
-				Bottone eli=new Bottone("-OPEN CART-");
+				Bottone eli=new Bottone("-OPEN CART-", 5);
 				eli.but.setBackground(Est.medio);
 				eli.but.addActionListener(new ActionListener() {
 				    public void actionPerformed(ActionEvent e) {
