@@ -21,7 +21,7 @@ public class AggiungiMerce extends Finestra{
 		contenuto.setOpaque(false);
 		contenuto.setLayout(new GridLayout(6,2));
 
-/*comp1*/  Etichetta non=new Etichetta("Product: ");
+/*comp1*/ Etichetta non=new Etichetta("Product: ");
 		contenuto.add(non);
 		
 		
