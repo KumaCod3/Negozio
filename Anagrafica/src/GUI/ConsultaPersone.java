@@ -5,8 +5,6 @@ import java.awt.*;
 import Negozio.*;
 import javax.swing.*;
 
-import GUI.Program.Home;
-
 //import Negozio.Ogg;
 import java.awt.event.*;
 

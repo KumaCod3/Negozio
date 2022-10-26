@@ -10,8 +10,6 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
-
-import GUI.Program.Home;
 import Negozio.Anagrafica;
 import Negozio.Cliente;
 import Negozio.DataM;

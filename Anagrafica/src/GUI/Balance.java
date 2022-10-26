@@ -4,9 +4,6 @@ import Negozio.*;
 import java.awt.*;
 import Negozio.*;
 import javax.swing.*;
-
-import GUI.Program.Home;
-
 import java.awt.event.*;
 
 public class Balance extends Finestra{
