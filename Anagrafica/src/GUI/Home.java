@@ -1,17 +1,14 @@
 package GUI;
-import java.awt.Dimension;
 import java.awt.Frame;
-import java.awt.GridLayout;
-import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import Negozio.Guest;
-import javax.swing.SwingConstants;
-
 import java.awt.Color;
 import java.awt.Component;
+import javax.swing.border.EmptyBorder;
+import java.awt.SystemColor;
 
 public class Home extends Frame{
 	public Home(){
@@ -19,24 +16,44 @@ public class Home extends Frame{
 		addWindowListener(Finestra.close);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setLocation(70,70);
-		setBackground(Est.chiaro);
+		setBackground(SystemColor.menu);
 		setPreferredSize(Est.standard);
+		setUndecorated(true);
 		
 		Header inte=new Header();
+		inte.setBackground(SystemColor.menu);
 		add(inte);
 		
-		Bottone b1=new Bottone("See Persons DataBase", 5);
-		b1.but.addActionListener(new ActionListener() {
+		JPanel bu1=new JPanel();
+		bu1.setOpaque(false);
+		bu1.setBorder(new EmptyBorder(10, 10, 10, 10));
+		MyButVoi b1=new MyButVoi("See Persons DataBase", Color.GRAY, Color.BLACK,3);
+		b1.setForeground(SystemColor.controlText);
+		b1.setAlignmentX(Component.CENTER_ALIGNMENT);
+		b1.setMinimumSize(Est.grosso);
+		b1.setMaximumSize(Est.grosso);
+		b1.setPreferredSize(Est.grosso);
+		b1.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	ConsultaPersone consultaP=new ConsultaPersone();
 		    	consultaP.setVisible(true);
 		    	setVisible(false);
 			}
 		});
-        /*contenuto.*/add(b1);
+		bu1.add(b1);
+        /*contenuto.*/add(bu1);
 		
-        Bottone b2=new Bottone("See Products DataBase", 5);
-		b2.but.addActionListener(new ActionListener() {
+        
+        JPanel bu2=new JPanel();
+		bu2.setOpaque(false);
+		bu2.setBorder(new EmptyBorder(10, 10, 10, 10));
+        MyButVoi b2=new MyButVoi("See Products DataBase", Color.GRAY, Color.BLACK,3);
+        b2.setForeground(SystemColor.desktop);
+        b2.setAlignmentX(Component.CENTER_ALIGNMENT);
+        b2.setMinimumSize(Est.grosso);
+        b2.setMaximumSize(Est.grosso);
+        b2.setPreferredSize(Est.grosso);
+		b2.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	ConsultaMerci consultaM=new ConsultaMerci();
 		    	consultaM.setVisible(true);
@@ -44,14 +61,18 @@ public class Home extends Frame{
 		    	dispose();
 			}
 		});
-        /*contenuto.*/add(b2);
+		bu2.add(b2);
+        /*contenuto.*/add(bu2);
 		
-        MyBut b3=new MyBut("--QUICK PURCHASE--", Color.YELLOW, Color.MAGENTA);
+        JPanel bu3=new JPanel();
+		bu3.setOpaque(false);
+		bu3.setBorder(new EmptyBorder(10, 10, 10, 10));
+        MyBut b3=new MyBut("--QUICK PURCHASE--", Color.GRAY, Color.BLACK);
+        b3.setForeground(Color.YELLOW);
         b3.setAlignmentX(Component.CENTER_ALIGNMENT);
         b3.setMinimumSize(Est.grosso);
 		b3.setMaximumSize(Est.grosso);
 		b3.setPreferredSize(Est.grosso);
-		b3.setFont(Est.font2);
 		b3.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	Spesa aggg=new Spesa(new Guest());
@@ -60,18 +81,22 @@ public class Home extends Frame{
 		    	dispose();
 			}
 		});
-        /*contenuto.*/add(b3);
+		bu3.add(b3);
+        /*contenuto.*/add(bu3);
 		
 		/*add(contenuto);*/
 		
 		
-		JPanel bott=new JPanel();
-		bott.setLayout(new GridLayout(1,2));
-		bott.setMaximumSize(new Dimension(480, 180));
+        JPanel bott=new JPanel();
+		bott.setOpaque(false);
+		bott.setBorder(new EmptyBorder(10, 10, 10, 10));
 					
-		Bottone bes=new Bottone("-HISTORY-");
-		bes.but.setBackground(Est.medio);
-		bes.but.addActionListener(new ActionListener() {
+		MyButVoi bes=new MyButVoi("-History-", Color.GRAY, Color.BLACK,2);
+		bes.setForeground(SystemColor.desktop);
+		bes.setMinimumSize(Est.piccolo);
+		bes.setMaximumSize(Est.piccolo);
+		bes.setPreferredSize(Est.piccolo);
+		bes.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	Storico stor=new Storico();
             	stor.setVisible(true);
@@ -81,9 +106,12 @@ public class Home extends Frame{
 		});
 		bott.add(bes);
 		
-		Bottone bal=new Bottone("-BALANCE-");
-		bal.but.setBackground(Est.medio);
-		bal.but.addActionListener(new ActionListener() {
+		MyButVoi bal=new MyButVoi("-Balance-", Color.GRAY, Color.BLACK,2);
+		bal.setForeground(SystemColor.controlText);
+		bal.setMinimumSize(Est.piccolo);
+		bal.setMaximumSize(Est.piccolo);
+		bal.setPreferredSize(Est.piccolo);
+		bal.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	Balance bl=new Balance();
             	bl.setVisible(true);
@@ -95,12 +123,14 @@ public class Home extends Frame{
 		
 		add(bott);
 		
-		MyButVoi bex=new MyButVoi("-EXIT-", Color.RED, Color.YELLOW);
+		JPanel buex=new JPanel();
+		buex.setOpaque(false);
+		buex.setBorder(new EmptyBorder(10, 10, 10, 10));
+		MyButVoi bex=new MyButVoi("-EXIT-", Color.GRAY, Color.BLACK,7);
+		bex.setForeground(Color.RED);
         bex.setMinimumSize(Est.grosso);
 		bex.setMaximumSize(Est.grosso);
 		bex.setPreferredSize(Est.grosso);
-		bex.setFont(Est.font2);
-		bex.setAlignmentX(Panel.CENTER_ALIGNMENT);
 		bex.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	MyReadM.scarica();
@@ -111,7 +141,8 @@ public class Home extends Frame{
             	System.exit(0);
         	}
 		});
-        add(bex);
+		buex.add(bex);
+        /*contenuto.*/add(buex);
         
 		pack();
 	}

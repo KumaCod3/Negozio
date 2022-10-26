@@ -46,6 +46,7 @@ public class MyBut extends JButton{
 		
 		setContentAreaFilled(false);
 		setForeground(scri);
+		setFont(Est.font2);
 		
 		// metto manina
 		setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -117,7 +118,7 @@ public class MyBut extends JButton{
 		BufferedImage img=new BufferedImage(wi,he, BufferedImage.TYPE_INT_ARGB);
 		Graphics2D g2=img.createGraphics();
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		GradientPaint pa=new GradientPaint(0,0,col1,wi,0,col2);
+		GradientPaint pa=new GradientPaint(0,0,col1,0,he,col2);
 		g2.setPaint(pa);
 		g2.fillRoundRect(0,0,wi,he,he,he);
 		createStyle(g2);

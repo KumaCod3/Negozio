@@ -25,13 +25,14 @@ public class Est {
 	public static Font font2=new Font(Font.DIALOG_INPUT, Font.BOLD,  20);
 	
 	public static Dimension piccolo=new Dimension(190,80);
-	public static Dimension grosso=new Dimension(290,80);
+	public static Dimension grosso=new Dimension(310,80);
 	public static Dimension standard=new Dimension(690, 930);
 	
 	public static DecimalFormat deci = new DecimalFormat("0.00");
 	public static DateTimeFormatter dateForm= DateTimeFormatter.ofPattern("yyyy-MM-dd H:mm.ss");
 	
 	public static Border bordo= BorderFactory.createEmptyBorder(10,10,10,10);
+	public static Border borGro= BorderFactory.createEmptyBorder(20,20,20,20);
 	public static Border vuoto=new EmptyBorder(new Insets(3,3,3,3));;
 	public static Border aaa= BorderFactory.createLineBorder(Est.chiaro,10);
 	public static Border bbb= BorderFactory.createCompoundBorder(aaa,bordo);

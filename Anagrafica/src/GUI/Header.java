@@ -11,20 +11,22 @@ import java.awt.Panel;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 public class Header extends JPanel {
 	public Header(){
 		super();
 		setBackground(Est.chiaro);
 		setLayout(new FlowLayout());
+		
 		MyPanel pan=new MyPanel();
 		pan.setOpaque(false);
 		add(pan);
 		Label tz=new Label();
 		tz.setText("Powered by Pucchosa.sa :) ");
-		tz.setPreferredSize(new Dimension(240, 25));
 		add(tz);
-
+		
+		
 
 	}
 	

@@ -23,6 +23,7 @@ public class MyButVoi extends JButton{
 	private Color col1;
 	private Color col2;
 	private Color scri=Color.DARK_GRAY;
+	BasicStroke stro;
 	
 	//per OVER
 	private final Timer timer;
@@ -39,14 +40,15 @@ public class MyButVoi extends JButton{
 	// rimpicciolisci per rallentare macchia click
 	private float sizeSpeed=0.5f;
 	
-	public MyButVoi(String a, Color co1, Color co2) {
+	public MyButVoi(String a, Color co1, Color co2, int x) {
 		super(a);
 		
+		stro=new BasicStroke(x);
 		col1=co1;
 		col2=co2;
-		
 		setContentAreaFilled(false);
 		setForeground(scri);
+		setFont(Est.font2);
 		
 		// metto manina
 		setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -55,15 +57,6 @@ public class MyButVoi extends JButton{
 		
 		// faccio il lampeggio sull OVER
 		addMouseListener(new MouseAdapter() {
-/*			public void mouseEntered(MouseEvent me) {
-				mouseOver=true;
-				timer.start();
-			}
-			public void mouseExited(MouseEvent me) {
-				mouseOver=false;
-				timer.start();
-			}
-			*/
 			public void mousePressed(MouseEvent me) {
 				pressSize=0;
 				alphaPress=0.5f;
@@ -120,10 +113,10 @@ public class MyButVoi extends JButton{
 		Graphics2D g2=img.createGraphics();
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		GradientPaint pa=new GradientPaint(0,0,col1,wi,0,col2);
-		g2.setStroke(new BasicStroke(5));
+		g2.setStroke(stro);
 		g2.setPaint(pa);
 		g2.drawRoundRect(5,5,wi-10,he-10,he,he);
-		createStyle(g2);
+//		createStyle(g2);
 		if (press) {
 			paintPress(g2);
 		}
