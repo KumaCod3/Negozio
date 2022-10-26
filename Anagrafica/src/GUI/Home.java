@@ -9,6 +9,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import Negozio.Guest;
 import javax.swing.SwingConstants;
+
+import java.awt.Color;
 import java.awt.Component;
 
 public class Home extends Frame{
@@ -44,7 +46,7 @@ public class Home extends Frame{
 		});
         /*contenuto.*/add(b2);
 		
-        MyBut b3=new MyBut("--QUICK PURCHASE--");
+        MyBut b3=new MyBut("--QUICK PURCHASE--", Color.YELLOW, Color.MAGENTA);
         b3.setAlignmentX(Component.CENTER_ALIGNMENT);
         b3.setMinimumSize(Est.grosso);
 		b3.setMaximumSize(Est.grosso);
@@ -93,10 +95,13 @@ public class Home extends Frame{
 		
 		add(bott);
 		
-		Bottone bex=new Bottone("-EXIT-", 5);
-		bex.but.setBackground(Est.rosso);
-		bex.but.setAlignmentX(Panel.CENTER_ALIGNMENT);
-		bex.but.addActionListener(new ActionListener() {
+		MyButVoi bex=new MyButVoi("-EXIT-", Color.RED, Color.YELLOW);
+        bex.setMinimumSize(Est.grosso);
+		bex.setMaximumSize(Est.grosso);
+		bex.setPreferredSize(Est.grosso);
+		bex.setFont(Est.font2);
+		bex.setAlignmentX(Panel.CENTER_ALIGNMENT);
+		bex.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	MyReadM.scarica();
     			MyReadF.scarica();

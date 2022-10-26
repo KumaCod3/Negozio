@@ -1,6 +1,9 @@
 package GUI;
 import java.awt.AlphaComposite;
+import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -11,17 +14,15 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Path2D;
 import java.awt.image.BufferedImage;
-import java.awt.Cursor;
-import java.awt.GradientPaint;
 import javax.swing.JButton;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
-public class MyBut extends JButton{
+public class MyButVoi extends JButton{
 	// generali
 	private Color col1;
 	private Color col2;
-	private Color scri=Color.WHITE;
+	private Color scri=Color.DARK_GRAY;
 	
 	//per OVER
 	private final Timer timer;
@@ -38,7 +39,7 @@ public class MyBut extends JButton{
 	// rimpicciolisci per rallentare macchia click
 	private float sizeSpeed=0.5f;
 	
-	public MyBut(String a, Color co1, Color co2) {
+	public MyButVoi(String a, Color co1, Color co2) {
 		super(a);
 		
 		col1=co1;
@@ -54,7 +55,7 @@ public class MyBut extends JButton{
 		
 		// faccio il lampeggio sull OVER
 		addMouseListener(new MouseAdapter() {
-			public void mouseEntered(MouseEvent me) {
+/*			public void mouseEntered(MouseEvent me) {
 				mouseOver=true;
 				timer.start();
 			}
@@ -62,6 +63,7 @@ public class MyBut extends JButton{
 				mouseOver=false;
 				timer.start();
 			}
+			*/
 			public void mousePressed(MouseEvent me) {
 				pressSize=0;
 				alphaPress=0.5f;
@@ -118,8 +120,9 @@ public class MyBut extends JButton{
 		Graphics2D g2=img.createGraphics();
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		GradientPaint pa=new GradientPaint(0,0,col1,wi,0,col2);
+		g2.setStroke(new BasicStroke(5));
 		g2.setPaint(pa);
-		g2.fillRoundRect(0,0,wi,he,he,he);
+		g2.drawRoundRect(5,5,wi-10,he-10,he,he);
 		createStyle(g2);
 		if (press) {
 			paintPress(g2);
