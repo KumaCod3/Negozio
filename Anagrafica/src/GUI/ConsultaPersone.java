@@ -126,7 +126,7 @@ public class ConsultaPersone  extends Finestra {
 /*comp8Etichetta tv=new Etichetta("           ");
 		contenuto.add(tv);*/
 		
-/*comp9*/Bottone b2=new Bottone("+ ADD new +");
+/*comp9*/Bottone b2=new Bottone("ADD new");
 		b2.but.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AggiungiPersona aggg=new AggiungiPersona();

@@ -12,6 +12,11 @@ public class FormVuoto extends JTextField{
 		ret=tit;
 		tt=tit;
 		setForeground(Est.chiarissimo);
+		/*
+		 * setMinimumSize(Est.piccolo);
+		 * setMaximumSize(Est.piccolo);
+		 * setPreferredSize(Est.piccolo);
+		 */
 		addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e){
 				if (getText().equals(tit)){
