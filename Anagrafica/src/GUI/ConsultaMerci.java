@@ -41,7 +41,7 @@ public class ConsultaMerci extends Finestra {
 			catch (Exception e){
 				ele.add("Empty");
 			}
-			ele.setFont(Est.font);
+			ele.setFont(Est.plainFont);
 			ele.addFocusListener(new FocusListener() {
 				public void focusGained(FocusEvent e){
 				}

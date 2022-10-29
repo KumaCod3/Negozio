@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Component;
 import javax.swing.border.EmptyBorder;
 import java.awt.SystemColor;
+import java.awt.Font;
 
 public class Home extends Frame{
 	public Home(){
@@ -28,6 +29,7 @@ public class Home extends Frame{
 		bu1.setOpaque(false);
 		bu1.setBorder(new EmptyBorder(10, 10, 10, 10));
 		MyButVoi b1=new MyButVoi("See Persons DataBase", Color.GRAY, Color.BLACK,3);
+		b1.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
 		b1.setForeground(SystemColor.controlText);
 		b1.setAlignmentX(Component.CENTER_ALIGNMENT);
 		b1.setMinimumSize(Est.grosso);

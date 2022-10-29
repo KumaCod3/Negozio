@@ -29,7 +29,7 @@ public class AggiungiMerce extends Finestra{
  /*comp2*/FormVuoto tf1=new FormVuoto("Name");
 		pan1.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		pan1.add(tf1);
-		pan1.setBackground(Est.chiaro);
+		pan1.setBackground(Est.sfondo);
 		contenuto.add(pan1);
 		
 /*comp3*/  Etichetta un=new Etichetta("Unit of measure: ");
@@ -41,7 +41,7 @@ public class AggiungiMerce extends Finestra{
 		uni.add("Grams");
 		uni.add("Quintals");
 		uni.add("Liters");
-		uni.setFont(Est.font);
+		uni.setFont(Est.plainFont);
 		uni.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e){
 			}
@@ -59,7 +59,7 @@ public class AggiungiMerce extends Finestra{
 		FormVuoto tf2=new FormVuoto("Quantity");
 		pan2.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		pan2.add(tf2);
-		pan2.setBackground(Est.chiaro);
+		pan2.setBackground(Est.sfondo);
 		contenuto.add(pan2);
 		
 /*comp7*/  Etichetta prr=new Etichetta("Purchase price: ");
@@ -68,7 +68,7 @@ public class AggiungiMerce extends Finestra{
 		FormVuoto tf3=new FormVuoto("Price");
 		pan3.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		pan3.add(tf3);
-		pan3.setBackground(Est.chiaro);
+		pan3.setBackground(Est.sfondo);
 		contenuto.add(pan3);
 		
 /*comp9*/  Etichetta rin=new Etichetta("Choose % price increase: ");
@@ -79,7 +79,7 @@ public class AggiungiMerce extends Finestra{
 		rim.add("20");
 		rim.add("30");
 		rim.add("50");
-		rim.setFont(Est.font);
+		rim.setFont(Est.plainFont);
 		rim.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e){
 			}
@@ -146,7 +146,7 @@ public class AggiungiMerce extends Finestra{
 		unita=prod.getUnit();
 		
 		c.setLayout(new BorderLayout(100,10));
-		setBackground(Est.chiaro);
+		setBackground(Est.sfondo);
 		
 		JPanel contenuto=new JPanel();
 		contenuto.setBorder(Est.bordo);
@@ -167,7 +167,7 @@ public class AggiungiMerce extends Finestra{
 		uni.add("grammi");
 		uni.add("quintali");
 		uni.add("tonnellate");
-		uni.setFont(Est.font);
+		uni.setFont(Est.plainFont);
 		uni.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e){
 			}
@@ -185,7 +185,7 @@ public class AggiungiMerce extends Finestra{
 		FormVuoto tf2=new FormVuoto(quantita+"");
 		pan2.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		pan2.add(tf2);
-		pan2.setBackground(Est.chiaro);
+		pan2.setBackground(Est.sfondo);
 		contenuto.add(pan2);
 		
 /*comp7*/  Etichetta prr=new Etichetta("Purchase price: ");
@@ -194,7 +194,7 @@ public class AggiungiMerce extends Finestra{
 		FormVuoto tf3=new FormVuoto(prezzoA+"");
 		pan3.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		pan3.add(tf3);
-		pan3.setBackground(Est.chiaro);
+		pan3.setBackground(Est.sfondo);
 		contenuto.add(pan3);
 		
 /*comp9*/  Etichetta rin=new Etichetta("Choose % price increase: ");
@@ -205,7 +205,7 @@ public class AggiungiMerce extends Finestra{
 		rim.add("20");
 		rim.add("30");
 		rim.add("50");
-		rim.setFont(Est.font);
+		rim.setFont(Est.plainFont);
 		rim.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e){
 			}

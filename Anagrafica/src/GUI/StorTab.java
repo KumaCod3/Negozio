@@ -28,7 +28,7 @@ public class StorTab extends Finestra{
 		elenco=MyReadL.carica();
 
 		tavola=new JTable(model);
-		tavola.setBackground(Est.chiaro);
+		tavola.setBackground(Est.sfondo);
 		tavola.setColumnSelectionAllowed(false);
 		tavola.setDragEnabled(false);
 		tavola.setRowSelectionAllowed(true);
@@ -53,7 +53,7 @@ public class StorTab extends Finestra{
 		elenco=MyReadA.carica();
 
 		tavola=new JTable(model);
-		tavola.setBackground(Est.chiaro);
+		tavola.setBackground(Est.sfondo);
 		tavola.setColumnSelectionAllowed(false);
 		tavola.setDragEnabled(false);
 		tavola.setRowSelectionAllowed(true);

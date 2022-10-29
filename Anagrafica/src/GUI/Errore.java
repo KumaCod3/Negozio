@@ -18,18 +18,17 @@ public class Errore extends Frame{
 		super("---ERROR---");
 		setLayout(new GridLayout(3,1));
 		setLocation(300,300);
-		setBackground(Est.chiaro);
+		setBackground(Est.sfondo);
 		addWindowListener(Finestra.close);
 		
 		tx=new JLabel();
 		tx.setText("I'm sorry, something went wrong ... ");
 		tx.setBorder(Est.eti);
-		tx.setFont(Est.font);
+		tx.setFont(Est.plainFont);
 		
 		ok=new Bottone("OK", 5);
 		
 		ty=new Bottone("CANCEL", 5);
-		ty.but.setBackground(Est.rosso);
 		
 		add(tx);
 		add(ok);

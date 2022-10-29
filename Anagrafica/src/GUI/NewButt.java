@@ -1,9 +1,7 @@
 package GUI;
 import java.awt.AlphaComposite;
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -12,18 +10,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.geom.Path2D;
 import java.awt.image.BufferedImage;
 import javax.swing.JButton;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
-public class MyButVoi extends JButton{
+public class NewButt extends JButton{
 	// generali
-	private Color col1;
-	private Color col2;
-	private Color scri=Color.DARK_GRAY;
-	BasicStroke stro;
+	private Color col1=Est.scuro;
+	private Color scri=Color.WHITE;
 	
 	//per OVER
 	private final Timer timer;
@@ -38,17 +33,14 @@ public class MyButVoi extends JButton{
 	private Point pressLoc;
 	
 	// rimpicciolisci per rallentare macchia click
-	private float sizeSpeed=0.5f;
+	private float sizeSpeed=10.0f;
 	
-	public MyButVoi(String a, Color co1, Color co2, int x) {
+	public NewButt(String a) {
 		super(a);
 		
-		stro=new BasicStroke(x);
-		col1=co1;
-		col2=co2;
 		setContentAreaFilled(false);
 		setForeground(scri);
-		setFont(Est.plainFont);
+		setFont(Est.boldFont);
 		
 		// metto manina
 		setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -112,10 +104,9 @@ public class MyButVoi extends JButton{
 		BufferedImage img=new BufferedImage(wi,he, BufferedImage.TYPE_INT_ARGB);
 		Graphics2D g2=img.createGraphics();
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		GradientPaint pa=new GradientPaint(0,0,col1,wi,0,col2);
-		g2.setStroke(stro);
-		g2.setPaint(pa);
-		g2.drawRoundRect(5,5,wi-10,he-10,he,he);
+		g2.setPaint(col1);
+		// I DUE 5 SERVONO PER ARROTONDARE GLI SPIGOLI
+		g2.fillRoundRect(0,0,wi,he,20,20);
 //		createStyle(g2);
 		if (press) {
 			paintPress(g2);
@@ -125,22 +116,6 @@ public class MyButVoi extends JButton{
 		
 	}
 	
-	
-	//MAKE SHADOW
-	private void createStyle(Graphics2D g2) {
-		int wi=getWidth();
-		int he=getHeight();
-		//per fare lombra bianca
-		GradientPaint pa=new GradientPaint(0,0,Color.WHITE,0,he,new Color(255,255,255,60));
-		g2.setPaint(pa);
-		Path2D.Float f=new Path2D.Float();
-		int controll=he+he/2;
-		f.moveTo(0,0);
-		f.curveTo(0,0,wi/2,controll,wi,0);
-		// alpha e lintensita dellombra bianca e cambia sopra quando passi
-		g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_ATOP,alpha));
-		g2.fill(f);
-	}
 	
 	//Make graph for pressed
 	private void paintPress(Graphics2D g2) {

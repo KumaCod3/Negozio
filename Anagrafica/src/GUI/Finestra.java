@@ -37,13 +37,13 @@ public class Finestra extends Frame{
 		this.addWindowListener(close);
 		setLocation(70,70);
 		setPreferredSize(Est.standard);
-		setBackground(Est.chiaro);
+		setBackground(Est.sfondo);
 		Header testa=new Header();
 		add(testa);
 		c=new JPanel();
 		c.setLayout(new BorderLayout(100,10));
 		c.setBorder(Est.bordo);
-		c.setBackground(Est.chiaro);
+		c.setBackground(Est.sfondo);
 		add(c);
 		
 	}

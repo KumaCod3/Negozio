@@ -32,7 +32,7 @@ public class AggiungiPersona extends Finestra{
 /*comp2*/Panel ss=new Panel();
 		ss.setLayout(new GridLayout(1,2));
 		JRadioButton client = new JRadioButton("Customer");
-		client.setBackground(Est.chiaro);
+		client.setBackground(Est.sfondo);
 	    client.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent evt) {
 	            tipo="cliente";
@@ -40,7 +40,7 @@ public class AggiungiPersona extends Finestra{
 	    });
 	    ss.add(client);
 		JRadioButton fornit = new JRadioButton("Supplier");
- 		fornit.setBackground(Est.chiaro);
+ 		fornit.setBackground(Est.sfondo);
 	    fornit.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent evt) {
 	        	tipo="fornitore";
@@ -61,7 +61,7 @@ public class AggiungiPersona extends Finestra{
 		uni.add("Firm");
 		uni.add("Mr.");
 		uni.add("Mrs.");
-		uni.setFont(Est.font);
+		uni.setFont(Est.plainFont);
 		uni.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e){
 			}
@@ -79,7 +79,7 @@ public class AggiungiPersona extends Finestra{
 		FormVuoto tf1 = new FormVuoto("Name");
 		pan1.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		pan1.add(tf1);
-		pan1.setBackground(Est.chiaro);
+		pan1.setBackground(Est.sfondo);
 		contenuto.add(pan1);
 
 /*comp7*/  Etichetta qtt=new Etichetta("Last Name: ");
@@ -88,17 +88,17 @@ public class AggiungiPersona extends Finestra{
 		FormVuoto tf2 = new FormVuoto("Last Name");
 		pan2.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		pan2.add(tf2);
-		pan2.setBackground(Est.chiaro);
+		pan2.setBackground(Est.sfondo);
 		contenuto.add(pan2);
 		
 /*comp9*/  Etichetta tel=new Etichetta("Phone: ");
 		contenuto.add(tel);
 /*comp10*/JPanel pan3=new JPanel();
 		FormVuoto tf3 = new FormVuoto("Phone");
-		tf3.setFont(Est.font);
+		tf3.setFont(Est.plainFont);
 		pan3.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		pan3.add(tf3);
-		pan3.setBackground(Est.chiaro);
+		pan3.setBackground(Est.sfondo);
 		contenuto.add(pan3);
 		
 /*comp11*/  Etichetta mai=new Etichetta("eMail: ");
@@ -107,7 +107,7 @@ public class AggiungiPersona extends Finestra{
 		FormVuoto tf4 = new FormVuoto("eMail");
 		pan4.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		pan4.add(tf4);
-		pan4.setBackground(Est.chiaro);
+		pan4.setBackground(Est.sfondo);
 		contenuto.add(pan4);
 		
 /*comp13*/  Etichetta ivv=new Etichetta("VAT number: ");
@@ -116,7 +116,7 @@ public class AggiungiPersona extends Finestra{
 		FormVuoto tf5 = new FormVuoto("VAT");
 		pan5.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		pan5.add(tf5);
-		pan5.setBackground(Est.chiaro);
+		pan5.setBackground(Est.sfondo);
 		contenuto.add(pan5);
 		
 /*comp15*/  Etichetta ind=new Etichetta("Address: ");
@@ -125,7 +125,7 @@ public class AggiungiPersona extends Finestra{
 		FormVuoto tf6 = new FormVuoto("address");
 		pan6.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		pan6.add(tf6);
-		pan6.setBackground(Est.chiaro);
+		pan6.setBackground(Est.sfondo);
 		contenuto.add(pan6);
 		
 /*comp17*/  Etichetta prr=new Etichetta("Opening balance: ");
@@ -134,7 +134,7 @@ public class AggiungiPersona extends Finestra{
 		FormVuoto tf7 = new FormVuoto("balance");
 		pan7.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		pan7.add(tf7);
-		pan7.setBackground(Est.chiaro);
+		pan7.setBackground(Est.sfondo);
 		contenuto.add(pan7);
 			
 /*comp19*/Bottone bex=new Bottone("-EXIT-");
@@ -226,7 +226,7 @@ public class AggiungiPersona extends Finestra{
 		
 			c.setLayout(new BorderLayout(100,10));
 
-			setBackground(Est.chiaro);
+			setBackground(Est.sfondo);
 			
 			Panel contenuto=new Panel();
 			contenuto.setLayout(new GridLayout(10,2));
@@ -248,7 +248,7 @@ public class AggiungiPersona extends Finestra{
 			contenuto.add(un);
 	/*comp4*/JLabel uni=new JLabel();
 			uni.setText(mer.getTitolo());
-			uni.setFont(Est.font);
+			uni.setFont(Est.plainFont);
 			uni.setBorder(BorderFactory.createEmptyBorder(30, 20, 20, 70));
 			contenuto.add(uni);
 			
@@ -268,7 +268,7 @@ public class AggiungiPersona extends Finestra{
 			FormVuoto tf3 = new FormVuoto(mer.getTelefono());
 			pan3.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 			pan3.add(tf3);
-			pan3.setBackground(Est.chiaro);
+			pan3.setBackground(Est.sfondo);
 			contenuto.add(pan3);
 			
 	/*comp11*/  Etichetta mai=new Etichetta("eMail: ");
@@ -277,7 +277,7 @@ public class AggiungiPersona extends Finestra{
 			FormVuoto tf4 = new FormVuoto(mer.getEmail());
 			pan4.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 			pan4.add(tf4);
-			pan4.setBackground(Est.chiaro);
+			pan4.setBackground(Est.sfondo);
 			contenuto.add(pan4);
 			
 	/*comp13*/  Etichetta ivv=new Etichetta("VAT Number: ");
@@ -286,7 +286,7 @@ public class AggiungiPersona extends Finestra{
 			FormVuoto tf5 = new FormVuoto(mer.getIva());
 			pan5.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 			pan5.add(tf5);
-			pan5.setBackground(Est.chiaro);
+			pan5.setBackground(Est.sfondo);
 			contenuto.add(pan5);
 			
 	/*comp15*/  Etichetta ind=new Etichetta("Address: ");
@@ -295,7 +295,7 @@ public class AggiungiPersona extends Finestra{
 			FormVuoto tf6 = new FormVuoto(mer.getIndirizzo());
 			pan6.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 			pan6.add(tf6);
-			pan6.setBackground(Est.chiaro);
+			pan6.setBackground(Est.sfondo);
 			contenuto.add(pan6);
 			
 	/*comp17*/  Etichetta prr=new Etichetta("Opening balance: ");
@@ -304,7 +304,7 @@ public class AggiungiPersona extends Finestra{
 			FormVuoto tf7 = new FormVuoto(""+mer.getSaldo());
 			pan7.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 			pan7.add(tf7);
-			pan7.setBackground(Est.chiaro);
+			pan7.setBackground(Est.sfondo);
 			contenuto.add(pan7);
 				
 	/*comp19*/Bottone bex=new Bottone("-EXIT-");

@@ -46,7 +46,7 @@ public class MyBut extends JButton{
 		
 		setContentAreaFilled(false);
 		setForeground(scri);
-		setFont(Est.font2);
+		setFont(Est.plainFont);
 		
 		// metto manina
 		setCursor(new Cursor(Cursor.HAND_CURSOR));

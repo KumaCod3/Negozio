@@ -120,7 +120,7 @@ public class SchedaPersona extends Finestra{
 				catch (Exception e){
 					ele1.add("Empty");
 				}
-				ele1.setFont(Est.font);
+				ele1.setFont(Est.plainFont);
 				ele1.addFocusListener(new FocusListener() {
 					public void focusGained(FocusEvent e){
 					}
@@ -140,7 +140,6 @@ public class SchedaPersona extends Finestra{
 				sud.setLayout(new GridLayout(1,2));
 				
 				Bottone agg=new Bottone("-Assign Product-", 5);
-				agg.but.setBackground(Est.oran);
 				agg.but.addActionListener(new ActionListener() {
 				    public void actionPerformed(ActionEvent e) {
 				    	setVisible(false);
@@ -181,7 +180,6 @@ public class SchedaPersona extends Finestra{
 /*comp OUT FOR CLIENTI*/
 			if (tipo.equals("cliente")){
 				Bottone eli=new Bottone("-OPEN CART-", 5);
-				eli.but.setBackground(Est.medio);
 				eli.but.addActionListener(new ActionListener() {
 				    public void actionPerformed(ActionEvent e) {
 				    	Spesa aggg=new Spesa(DataB.clienti.get(x));

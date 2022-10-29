@@ -29,7 +29,7 @@ public class FormVuoto extends JTextField{
 				else ret=getText();
 			}
 		});
-		setFont(Est.font);
+		setFont(Est.plainFont);
 		
 	}
 	public void clear(){

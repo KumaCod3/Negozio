@@ -46,7 +46,7 @@ public class ConsultaPersone  extends Finestra {
 		catch (Exception e){
 			ele1.add("Empty");
 		}
-		ele1.setFont(Est.font);
+		ele1.setFont(Est.plainFont);
 		ele1.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e){
 			}
@@ -88,7 +88,7 @@ public class ConsultaPersone  extends Finestra {
 		catch (Exception e){
 			ele.add("Empty");
 		}
-		ele.setFont(Est.font);
+		ele.setFont(Est.plainFont);
 		ele.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e){
 			}

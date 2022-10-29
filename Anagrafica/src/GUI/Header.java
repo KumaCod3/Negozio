@@ -16,7 +16,7 @@ import javax.swing.border.EmptyBorder;
 public class Header extends JPanel {
 	public Header(){
 		super();
-		setBackground(Est.chiaro);
+		setBackground(Est.sfondo);
 		setLayout(new FlowLayout());
 		
 		MyPanel pan=new MyPanel();

@@ -55,7 +55,7 @@ public class Spesa extends Finestra{
 		catch (Exception e){
 			ele.add("Empty");
 		}
-		ele.setFont(Est.font);
+		ele.setFont(Est.plainFont);
 		ele.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e){
 			}
@@ -77,7 +77,7 @@ public class Spesa extends Finestra{
 		FormVuoto tf2=new FormVuoto("Quantity");
 		pan2.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		pan2.add(tf2);
-		pan2.setBackground(Est.chiaro);
+		pan2.setBackground(Est.sfondo);
 		contenuto.add(pan2);
 		
 		Panel sal=new Panel();
@@ -136,7 +136,6 @@ public class Spesa extends Finestra{
 		contenuto.add(bent);
 		
 /*comp6*/Bottone eli=new Bottone("-DELETE-");
-		eli.but.setBackground(Est.rosso);
 		eli.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (indice!=-1&&indixex!=-1){
@@ -224,7 +223,7 @@ public class Spesa extends Finestra{
 		// DA SISTEMARE DOPO ETICHETTA
 		pan2.setBorder(BorderFactory.createEmptyBorder(60, 10, 10, 10));
 		pan2.add(tf2);
-		pan2.setBackground(Est.chiaro);
+		pan2.setBackground(Est.sfondo);
 		contenuto.add(pan2);
 		
 		c.add("Center",contenuto);
@@ -244,7 +243,6 @@ public class Spesa extends Finestra{
 		sotto.add(bex);
 		
 /*comp10*/Bottone fin=new Bottone("- BUY -");
-		fin.but.setBackground(Est.oran);
 		fin.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	double qt=Double.parseDouble(tf2.ret);

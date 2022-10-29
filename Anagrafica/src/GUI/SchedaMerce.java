@@ -49,9 +49,7 @@ public class SchedaMerce extends Finestra{
 		if (quantita<=5.0){
 			uu.setForeground(Est.rosso);
 			uu.setOpaque(true);
-			uu.setBackground(Est.chiarissimo);
 			uni.setOpaque(true);
-			uni.setBackground(Est.chiarissimo);
 		}
 		contenuto.add(uu);
 		
@@ -82,7 +80,7 @@ public class SchedaMerce extends Finestra{
 		catch (Exception e){
 			ele1.add("Empty");
 		}
-		ele1.setFont(Est.font);
+		ele1.setFont(Est.plainFont);
 		ele1.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e){
 			}
@@ -126,7 +124,7 @@ public class SchedaMerce extends Finestra{
 		
 /*OUT*/		
 		Bottone eli=new Bottone("-DELETE-");
-		eli.but.setBackground(Est.rosso);
+//		eli.but.setBackground(Est.rosso);
 		eli.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (x!=-1){
@@ -139,7 +137,6 @@ public class SchedaMerce extends Finestra{
 		});
 		sud.add(eli);
 		Bottone ord=new Bottone("-ORDER-");
-		ord.but.setBackground(Est.oran);
 		ord.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (x!=-1){

@@ -11,53 +11,33 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class Bottone extends JPanel{
-	public JButton but;
+	public NewButt but;
 	public Bottone(String x){
 		super();
-		but=new JButton(x);
+		but=new NewButt(x);
 		setBorder(Est.vuoto);
 		setLayout(new GridBagLayout());
 		setBorder(Est.bordo);
-		setBackground(Est.chiaro);
+		setBackground(Est.sfondo);
 
 		but.setMinimumSize(Est.piccolo);
 		but.setMaximumSize(Est.piccolo);
 		but.setPreferredSize(Est.piccolo);
-		but.setFont(Est.font2);
 		
-		if (x.equals("-ENTER-")){
-			but.setBackground(Est.medio);
-		}
-		else if (x.equals("-EXIT-")){
-			but.setBackground(Est.scuro);
-		}
-		else {
-			but.setBackground(Est.chiarissimo);
-		}
 		add(but);
 	}
 	public Bottone(String x,int y){
 		super();
-		but=new JButton(x);
+		but=new NewButt(x);
 		setBorder(Est.vuoto);
 		setLayout(new GridBagLayout());
 		setBorder(Est.bordo);
-		setBackground(Est.chiaro);
+		setBackground(Est.sfondo);
 
 		but.setMinimumSize(Est.grosso);
 		but.setMaximumSize(Est.grosso);
 		but.setPreferredSize(Est.grosso);
-		but.setFont(Est.font2);
 		
-		if (x.equals("-ENTER-")){
-			but.setBackground(Est.medio);
-		}
-		else if (x.equals("-EXIT-")){
-			but.setBackground(Est.scuro);
-		}
-		else {
-			but.setBackground(Est.chiarissimo);
-		}
 		add(but);
 	}
 

@@ -22,7 +22,7 @@ public class Tabella extends Frame{
 // 	int indx=-1;
 	public Tabella(){
 		tavola=new JTable(model);
-		tavola.setBackground(Est.chiaro);
+		tavola.setBackground(Est.sfondo);
 		tavola.setColumnSelectionAllowed(false);
 		tavola.setDragEnabled(false);
 		tavola.setRowSelectionAllowed(true);
