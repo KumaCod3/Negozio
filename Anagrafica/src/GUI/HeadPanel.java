@@ -6,8 +6,8 @@ import java.awt.MediaTracker;
 import java.awt.Toolkit;
 import javax.swing.JPanel;
 
-public class MyPanel extends JPanel{
-	MyPanel(){
+public class HeadPanel extends JPanel{
+	HeadPanel(){
 		super();
 		setPreferredSize(new Dimension(40, 40));
 		setOpaque(true);

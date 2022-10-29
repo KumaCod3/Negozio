@@ -12,8 +12,11 @@ public class Header extends JPanel {
 	public Header(){
 		super();
 		setLayout(new FlowLayout());
+		setMinimumSize(Est.testa);
+		setMaximumSize(Est.testa);
+		setPreferredSize(Est.testa);
 		
-		MyPanel pan=new MyPanel();
+		HeadPanel pan=new HeadPanel();
 		pan.setOpaque(false);
 		add(pan);
 		JLabel tz=new JLabel();
