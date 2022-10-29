@@ -66,9 +66,9 @@ public class Errore extends Frame{
 
 		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	setVisible(false);
 		    	ConsultaMerci consultaM=new ConsultaMerci();
 		    	consultaM.setVisible(true);
+		    	setVisible(false);
 		    	dispose();
 			}
 		});
@@ -76,9 +76,9 @@ public class Errore extends Frame{
 		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	DataM.elimina(a);
-		    	setVisible(false);
 		    	ConsultaMerci consultaM=new ConsultaMerci();
 		    	consultaM.setVisible(true);
+		    	setVisible(false);
 		    	dispose();
 			}
 		});
@@ -96,8 +96,8 @@ public class Errore extends Frame{
 		ok.but.setText("NO, go back!");
 		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	setVisible(false);
 		    	x.setVisible(true);
+		    	setVisible(false);
 		    	dispose();
 			}
 		});
@@ -105,9 +105,6 @@ public class Errore extends Frame{
 		ty.but.setText("DELETE ORDER");
 		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	
-		    	x.dispose();
-		    	setVisible(false);
 		    	if (!gst){
 		    		ConsultaPersone consultaP=new ConsultaPersone();
 		    		consultaP.setVisible(true);
@@ -116,6 +113,7 @@ public class Errore extends Frame{
 		    		Home home=new Home();
 					home.setVisible(true);
 		    	}
+		    	setVisible(false);
 		    	dispose();
 			}
 		});
@@ -130,8 +128,8 @@ public class Errore extends Frame{
 
 		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	setVisible(false);
 		    	x.setVisible(true);
+		    	setVisible(false);
 		    	dispose();
 			}
 		});
@@ -166,9 +164,9 @@ public class Errore extends Frame{
 
 		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	setVisible(false);
 		    	AssegnaMerc ass=new AssegnaMerc(m);
 		    	ass.setVisible(true);
+		    	setVisible(false);
 		    	dispose();
 			}
 		});
@@ -177,9 +175,9 @@ public class Errore extends Frame{
 		    public void actionPerformed(ActionEvent e) {
 		    	m.removeForn(f);
 		    	f.removeMerc(m.getCod());
-		    	setVisible(false);
 		    	AssegnaMerc ass=new AssegnaMerc(m);
 		    	ass.setVisible(true);
+		    	setVisible(false);
 		    	dispose();
 			}
 		});
@@ -196,17 +194,17 @@ public class Errore extends Frame{
 
 		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	setVisible(false);
 		    	m.setQuantita(DataM.elenco.get(m.getCod()).getQuantita());
 		    	spes.refre();
+		    	setVisible(false);
 		    	dispose();
 			}
 		});
 		
 		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	setVisible(false);
 		    	m.setQuantita(0.0);
+		    	setVisible(false);
 		    	dispose();
 			}
 		});
@@ -223,9 +221,9 @@ public class Errore extends Frame{
 
 		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	setVisible(false);
 		    	AssegnaMerc ass=new AssegnaMerc(m);
 		    	ass.setVisible(true);
+		    	setVisible(false);
 		    	dispose();
 			}
 		});
@@ -234,9 +232,9 @@ public class Errore extends Frame{
 		    public void actionPerformed(ActionEvent e) {
 		    	m.removeForn(f);
 		    	f.removeMerc(m.getCod());
-		    	setVisible(false);
 		    	AssegnaMerc ass=new AssegnaMerc(m);
 		    	ass.setVisible(true);
+		    	setVisible(false);
 		    	dispose();
 			}
 		});
@@ -267,12 +265,12 @@ public class Errore extends Frame{
 		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	f.ordina(quantita, m.getCod());
-		    	setVisible(false);
 		    	MyReadM.scarica();
     			MyReadF.scarica();
     			MyReadC.scarica();
 		    	Home home=new Home();
 				home.setVisible(true);
+				setVisible(false);
 		    	dispose();
 		    	
 			}
@@ -280,11 +278,11 @@ public class Errore extends Frame{
 
 		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	setVisible(false);
 		    	SchedaMerce ass=new SchedaMerce(m.getCod());
 		    	ass.setVisible(true);
 		    	Home home=new Home();
 				home.setVisible(true);
+				setVisible(false);
 		    	dispose();
 			}
 		});

@@ -85,7 +85,7 @@ public class Home extends Frame{
 		bott.setOpaque(false);
 		bott.setBorder(new EmptyBorder(10, 10, 10, 10));
 					
-		Bottone bes=new Bottone("-History-");
+		Bottone bes=new Bottone("History");
 		bes.but.setMinimumSize(Est.piccolo);
 		bes.but.setMaximumSize(Est.piccolo);
 		bes.but.setPreferredSize(Est.piccolo);
@@ -99,7 +99,7 @@ public class Home extends Frame{
 		});
 		bott.add(bes);
 		
-		Bottone bal=new Bottone("-Balance-");
+		Bottone bal=new Bottone("Balance");
 		bal.but.setMinimumSize(Est.piccolo);
 		bal.but.setMaximumSize(Est.piccolo);
 		bal.but.setPreferredSize(Est.piccolo);

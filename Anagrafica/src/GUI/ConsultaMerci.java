@@ -1,11 +1,7 @@
 package GUI;
 import Negozio.*;
-//import java.util.*;
 import java.awt.*;
-import Negozio.*;
 import javax.swing.*;
-
-//import Negozio.Ogg;
 import java.awt.event.*;
 
 public class ConsultaMerci extends Finestra {
@@ -58,7 +54,7 @@ public class ConsultaMerci extends Finestra {
 			pan1.add(ele);
 			contenuto.add(pan1);
 
-/*comp3*/Bottone bent=new Bottone("-ENTER-", 5);
+/*comp3*/Bottone bent=new Bottone("ENTER", 5);
 			bent.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	if (index!=-1){
@@ -70,21 +66,18 @@ public class ConsultaMerci extends Finestra {
 			});
 			contenuto.add(bent);
 
-/*comp4*/Bottone bex=new Bottone("-EXIT-");
+/*comp4*/Bottone bex=new Bottone("EXIT");
 			bex.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
-			    	setVisible(false);
 			    	Home home=new Home();
 					home.setVisible(true);
+					setVisible(false);
 			    	dispose();
 				}
 			});
 			pan2.add(bex);
 			
-/*comp5	Etichetta tv=new Etichetta("           ");
-			contenuto.add(tv);*/
-			
-/*comp6*/Bottone b2=new Bottone("+ ADD new +");
+/*comp6*/Bottone b2=new Bottone("ADD new");
 			b2.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	AggiungiMerce aggg=new AggiungiMerce();

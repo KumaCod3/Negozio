@@ -1,13 +1,10 @@
 package GUI;
 import Negozio.*;
-//import java.util.*;
 import java.awt.*;
-import Negozio.*;
 import javax.swing.*;
 import java.awt.event.*;
 
 public class SchedaPersona extends Finestra{
-
 	String titolo;
 	String cognome;
 	String nome;
@@ -78,25 +75,24 @@ public class SchedaPersona extends Finestra{
 			Etichetta vv=new Etichetta(indirizzo+" ");
 			contenuto.add(vv);
 			
-	/*comp6*/Bottone bex=new Bottone("-EXIT-");
+	/*comp6*/Bottone bex=new Bottone("EXIT");
 			bex.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
-			    	setVisible(false);
 			    	ConsultaPersone consultaP=new ConsultaPersone();
 			    	consultaP.setVisible(true);
+			    	setVisible(false);
 			    	dispose();
 				}
 			});
 			contenuto.add(bex);
 			
-			Bottone bin=new Bottone("-MODIFY-");
+			Bottone bin=new Bottone("MODIFY");
 			bin.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	if (x!=-1){
-				    	setVisible(false);
 				    	AggiungiPersona modifP=new AggiungiPersona(x,tipo);
 				    	modifP.setVisible(true);
-			    	
+				    	setVisible(false);
 				    	dispose();
 			    	}
 				}
@@ -139,14 +135,14 @@ public class SchedaPersona extends Finestra{
 	/*OUT*/		Panel sud=new Panel();
 				sud.setLayout(new GridLayout(1,2));
 				
-				Bottone agg=new Bottone("-Assign Product-", 5);
+				Bottone agg=new Bottone("Assign Product", 5);
 				agg.but.addActionListener(new ActionListener() {
 				    public void actionPerformed(ActionEvent e) {
-				    	setVisible(false);
 				    	try{
 					    	Fornitore f=DataB.trovaForn(mer);
 					    	AssegnaMerc ass=new AssegnaMerc(f);
 					    	ass.setVisible(true);
+					    	setVisible(false);
 					    	dispose();
 				    	}
 				    	catch (Exception pp){
@@ -156,15 +152,15 @@ public class SchedaPersona extends Finestra{
 				});
 				sud.add(agg);
 				
-				Bottone ord=new Bottone("-Order Product-", 5);
+				Bottone ord=new Bottone("Order Product", 5);
 				ord.but.addActionListener(new ActionListener() {
 				    public void actionPerformed(ActionEvent e) {
 				    	if (index!=-1){
-					    	setVisible(false);
 					    	try{
 						    	Fornitore f=DataB.trovaForn(mer);
 						    	Spesa sp=new Spesa(DataM.get(index),f);
-						    	sp.setVisible(true);;
+						    	sp.setVisible(true);
+						    	setVisible(false);
 						    	dispose();
 					    	}
 					    	catch (Exception y){
@@ -179,7 +175,7 @@ public class SchedaPersona extends Finestra{
 				
 /*comp OUT FOR CLIENTI*/
 			if (tipo.equals("cliente")){
-				Bottone eli=new Bottone("-OPEN CART-", 5);
+				Bottone eli=new Bottone("OPEN CART", 5);
 				eli.but.addActionListener(new ActionListener() {
 				    public void actionPerformed(ActionEvent e) {
 				    	Spesa aggg=new Spesa(DataB.clienti.get(x));

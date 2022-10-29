@@ -1,14 +1,8 @@
 package GUI;
 import java.awt.Frame;
-import java.util.ArrayList;
-
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
-
 import Negozio.ListaSpesa;
 import Negozio.Merce;
 

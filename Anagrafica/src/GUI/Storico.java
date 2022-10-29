@@ -1,14 +1,9 @@
 package GUI;
-
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.LocalDateTime;
-import java.util.HashMap;
-import Negozio.Anagrafica;
-import Negozio.DataB;
 
 public class Storico extends Finestra{
 	
@@ -26,12 +21,12 @@ public class Storico extends Finestra{
 			StorTab tab=new StorTab();
 			sinistro.add("Center",tab.ta());
 			
-			Bottone bex=new Bottone("-EXIT-");
+			Bottone bex=new Bottone("EXIT");
 			bex.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
-			    	setVisible(false);
 			    	Home home=new Home();
 					home.setVisible(true);
+					setVisible(false);
 			    	dispose();
 				}
 			});

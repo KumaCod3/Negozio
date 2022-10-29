@@ -1,13 +1,9 @@
 package GUI;
 import Negozio.*;
-//import java.util.*;
 import java.awt.*;
-import Negozio.*;
-import javax.swing.*;
 import java.awt.event.*;
 
 public class Balance extends Finestra{
-
 	private double merchVal;
 	private double totSold;
 	private double totBought;
@@ -45,12 +41,12 @@ public class Balance extends Finestra{
 			
 			c.add("Center", contenuto);
 			
-	/*es*/Bottone bex=new Bottone("-EXIT-");
+	/*es*/Bottone bex=new Bottone("EXIT");
 			bex.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
-			    	setVisible(false);
 			    	Home home=new Home();
 					home.setVisible(true);
+					setVisible(false);
 			    	dispose();
 				}
 			});

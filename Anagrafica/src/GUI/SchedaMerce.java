@@ -1,11 +1,8 @@
 package GUI;
 import Negozio.*;
-//import java.util.*;
 import java.awt.*;
-import Negozio.*;
 import javax.swing.*;
 import java.awt.event.*;
-import java.beans.PropertyChangeListener;
 
 public class SchedaMerce extends Finestra{
 	String nome;
@@ -98,22 +95,22 @@ public class SchedaMerce extends Finestra{
 		Panel sud=new Panel();
 		sud.setLayout(new GridLayout(2,2));
 		
-/*comp7*/Bottone bex=new Bottone("-EXIT-");
+/*comp7*/Bottone bex=new Bottone("EXIT");
 		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	setVisible(false);
 		    	ConsultaMerci consultaM=new ConsultaMerci();
 		    	consultaM.setVisible(true);
+		    	setVisible(false);
 		    	dispose();
 			}
 		});
 		sud.add(bex);
-		Bottone bin=new Bottone("-MODIFY-");
+		Bottone bin=new Bottone("MODIFY");
 		bin.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (x!=-1){
-			    	setVisible(false);
 			    	AggiungiMerce modifM=new AggiungiMerce(x);
+			    	setVisible(false);
 			    	modifM.setVisible(true);
 		    	
 			    	dispose();
@@ -123,20 +120,20 @@ public class SchedaMerce extends Finestra{
 		sud.add(bin);
 		
 /*OUT*/		
-		Bottone eli=new Bottone("-DELETE-");
+		Bottone eli=new Bottone("DELETE");
 //		eli.but.setBackground(Est.rosso);
 		eli.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (x!=-1){
-			    	setVisible(false);
 			    	Errore del=new Errore(x);
 			    	del.setVisible(true);
+			    	setVisible(false);
 			    	dispose();
 		    	}
 			}
 		});
 		sud.add(eli);
-		Bottone ord=new Bottone("-ORDER-");
+		Bottone ord=new Bottone("ORDER");
 		ord.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (x!=-1){

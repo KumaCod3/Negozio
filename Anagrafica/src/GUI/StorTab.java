@@ -1,18 +1,11 @@
 package GUI;
-import java.awt.Frame;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
-
-import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
 import Negozio.DataM;
-import Negozio.Merce;
 
 public class StorTab extends Finestra{
 	public LinkedHashMap<LocalDateTime,String[]> elenco=new LinkedHashMap<LocalDateTime,String[]>();

@@ -1,5 +1,4 @@
 package GUI;
-
 import java.awt.BorderLayout;
 import java.awt.Choice;
 import java.awt.GridLayout;
@@ -13,7 +12,6 @@ import javax.swing.JPanel;
 import Negozio.Anagrafica;
 import Negozio.Cliente;
 import Negozio.DataM;
-//import Negozio.ErrorMessage;
 import Negozio.Fornitore;
 import Negozio.ListaSpesa;
 import Negozio.Merce;
@@ -108,7 +106,7 @@ public class Spesa extends Finestra{
 		
 		super.c.add("Center", corpo);
 
-/*comp5*/Bottone bent=new Bottone("-ADD-");
+/*comp5*/Bottone bent=new Bottone("ADD");
 		bent.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (index!=-1){
@@ -135,7 +133,7 @@ public class Spesa extends Finestra{
 		});
 		contenuto.add(bent);
 		
-/*comp6*/Bottone eli=new Bottone("-DELETE-");
+/*comp6*/Bottone eli=new Bottone("DELETE");
 		eli.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (indice!=-1&&indixex!=-1){
@@ -159,20 +157,19 @@ public class Spesa extends Finestra{
 		sotto.setLayout(new GridLayout(1,2));
 		
 		
-/*comp10*/Bottone bex=new Bottone("-EXIT-");
+/*comp10*/Bottone bex=new Bottone("EXIT");
 		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	setVisible(false);
 		    	Errore err=new Errore(Spesa.this);
 		    	err.setVisible(true);
+		    	setVisible(false);
 			}
 		});
 		sotto.add(bex);
 		
-/*comp11*/Bottone fin=new Bottone("- BUY -");
+/*comp11*/Bottone fin=new Bottone("BUY");
 		fin.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	
 		    	Errore er=new Errore(Spesa.this, c);
 		    	er.setVisible(true);
 		    	setVisible(false);
@@ -231,18 +228,18 @@ public class Spesa extends Finestra{
 		Panel sotto=new Panel();
 		sotto.setLayout(new GridLayout(1,2));
 		
-/*comp9*/Bottone bex=new Bottone("-CANCEL-");
+/*comp9*/Bottone bex=new Bottone("CANCEL");
 		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	setVisible(false);
 		    	Home home=new Home();
 				home.setVisible(true);
+				setVisible(false);
 		    	dispose();
 			}
 		});
 		sotto.add(bex);
 		
-/*comp10*/Bottone fin=new Bottone("- BUY -");
+/*comp10*/Bottone fin=new Bottone("BUY");
 		fin.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	double qt=Double.parseDouble(tf2.ret);

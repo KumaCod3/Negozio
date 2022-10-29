@@ -1,8 +1,6 @@
 package GUI;
 import Negozio.*;
-//import java.util.*;
 import java.awt.*;
-import Negozio.*;
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -137,18 +135,18 @@ public class AggiungiPersona extends Finestra{
 		pan7.setBackground(Est.sfondo);
 		contenuto.add(pan7);
 			
-/*comp19*/Bottone bex=new Bottone("-EXIT-");
+/*comp19*/Bottone bex=new Bottone("EXIT");
 		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	setVisible(false);
 		    	ConsultaPersone consultaP=new ConsultaPersone();
 		    	consultaP.setVisible(true);
+		    	setVisible(false);
 		    	dispose();
 			}
 		});
 		contenuto.add(bex);
 		
-/*comp20*/Bottone bent=new Bottone("-ENTER-");
+/*comp20*/Bottone bent=new Bottone("ENTER");
 		bent.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 				nome=tf1.ret;
@@ -204,9 +202,9 @@ public class AggiungiPersona extends Finestra{
 			catch (Exception e){
 				Errore err=new Errore("Wrong Index...");
 				err.setVisible(true);
-				setVisible(false);
 			    ConsultaPersone consultaP=new ConsultaPersone();
 			    consultaP.setVisible(true);
+			    setVisible(false);
 			   	dispose();
 			}
 		}
@@ -217,9 +215,9 @@ public class AggiungiPersona extends Finestra{
 			catch (Exception e){
 				Errore err=new Errore("Wrong Index...");
 				err.setVisible(true);
-				setVisible(false);
 			   	ConsultaPersone consultaP=new ConsultaPersone();
 			   	consultaP.setVisible(true);
+			   	setVisible(false);
 			   	dispose();		
 			}
 		}
@@ -307,18 +305,18 @@ public class AggiungiPersona extends Finestra{
 			pan7.setBackground(Est.sfondo);
 			contenuto.add(pan7);
 				
-	/*comp19*/Bottone bex=new Bottone("-EXIT-");
+	/*comp19*/Bottone bex=new Bottone("EXIT");
 			bex.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
-			    	setVisible(false);
 			    	ConsultaPersone consultaP=new ConsultaPersone();
 			    	consultaP.setVisible(true);
+			    	setVisible(false);
 			    	dispose();
 				}
 			});
 			contenuto.add(bex);
 			
-	/*comp20*/Bottone bent=new Bottone("-ENTER-");
+	/*comp20*/Bottone bent=new Bottone("ENTER");
 			bent.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	
@@ -355,9 +353,9 @@ public class AggiungiPersona extends Finestra{
 			    		catch (Exception r){
 			    			Errore err=new Errore("Wrong Index...");
 			    			err.setVisible(true);
-							setVisible(false);
 						    ConsultaPersone consultaP=new ConsultaPersone();
 						    consultaP.setVisible(true);
+						    setVisible(false);
 						    dispose();			    			
 			    		}
 			    	}
@@ -376,9 +374,9 @@ public class AggiungiPersona extends Finestra{
 			    		catch (Exception u){
 			    			Errore err=new Errore("Wrong Index...");
 			    			err.setVisible(true);
-							setVisible(false);
 						    ConsultaPersone consultaP=new ConsultaPersone();
 						    consultaP.setVisible(true);
+						    setVisible(false);
 						    dispose();	
 			    		}
 			    	}

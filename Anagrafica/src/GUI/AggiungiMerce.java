@@ -1,10 +1,7 @@
 package GUI;
 import Negozio.*;
-//import java.util.*;
 import java.awt.*;
-import Negozio.*;
 import javax.swing.*;
-
 import java.awt.event.*;
 
 public class AggiungiMerce extends Finestra{
@@ -94,9 +91,9 @@ public class AggiungiMerce extends Finestra{
 /*comp11*/Bottone bex=new Bottone("-EXIT-");
 		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	setVisible(false);
 		    	ConsultaMerci consultaM=new ConsultaMerci();
 		    	consultaM.setVisible(true);
+		    	setVisible(false);
 		    	dispose();
 			}
 		});
@@ -220,9 +217,9 @@ public class AggiungiMerce extends Finestra{
 /*comp11*/Bottone bex=new Bottone("-EXIT-");
 		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	setVisible(false);
 		    	ConsultaMerci consultaM=new ConsultaMerci();
 		    	consultaM.setVisible(true);
+		    	setVisible(false);
 		    	dispose();
 			}
 		});
@@ -258,10 +255,10 @@ public class AggiungiMerce extends Finestra{
 /*comp14*/Bottone agg=new Bottone("-Assign to Supplier-", 5);
 		agg.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	setVisible(false);
 		    	try{
 			    	AssegnaMerc ass=new AssegnaMerc(DataM.get(x));
 			    	ass.setVisible(true);
+			    	setVisible(false);
 			    	dispose();
 		    	}
 		    	catch (Exception pp){

@@ -1,11 +1,8 @@
 package GUI;
 import Negozio.*;
-//import java.util.*;
 import java.awt.*;
-import Negozio.*;
 import javax.swing.*;
 import java.awt.event.*;
-import java.beans.PropertyChangeListener;
 
 public class AssegnaMerc extends Finestra{
 	int index;
@@ -52,17 +49,17 @@ public class AssegnaMerc extends Finestra{
 		});
 		contenuto.add(ele);
 		
-		Bottone bex=new Bottone("-EXIT-");
+		Bottone bex=new Bottone("EXIT");
 		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	setVisible(false);
 		    	ConsultaPersone consultaP=new ConsultaPersone();
 		    	consultaP.setVisible(true);
+		    	setVisible(false);
 		    	dispose();
 			}
 		});
 		contenuto.add(bex);
-		Bottone bent=new Bottone("-ENTER-");
+		Bottone bent=new Bottone("ENTER");
 		bent.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (index>-1){
@@ -80,13 +77,13 @@ public class AssegnaMerc extends Finestra{
 			}
 		});
 		contenuto.add(bent);
-		Bottone dis=new Bottone("-REMOVE-", 5);
+		Bottone dis=new Bottone("REMOVE", 5);
 		dis.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (index>-1){
-			    	setVisible(false);
 			    	Errore del=new Errore(f,index);
 			    	del.setVisible(true);
+			    	setVisible(false);
 			    	dispose();
 		    	}
 			}
@@ -138,17 +135,17 @@ public class AssegnaMerc extends Finestra{
 		});
 		contenuto.add(ele1);
 		
-		Bottone bex=new Bottone("-EXIT-");
+		Bottone bex=new Bottone("EXIT");
 		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	setVisible(false);
 		    	ConsultaMerci consultaM=new ConsultaMerci();
 		    	consultaM.setVisible(true);
+		    	setVisible(false);
 		    	dispose();
 			}
 		});
 		contenuto.add(bex);
-		Bottone bent=new Bottone("-ENTER-");
+		Bottone bent=new Bottone("ENTER");
 		bent.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (index>-1){
@@ -167,13 +164,13 @@ public class AssegnaMerc extends Finestra{
 		});
 		contenuto.add(bent);
 		
-		Bottone dis=new Bottone("-REMOVE-", 5);
+		Bottone dis=new Bottone("REMOVE", 5);
 		dis.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (index>-1){
-			    	setVisible(false);
 			    	Errore del=new Errore(m,index);
 			    	del.setVisible(true);
+			    	setVisible(false);
 			    	dispose();
 		    	}
 			}
