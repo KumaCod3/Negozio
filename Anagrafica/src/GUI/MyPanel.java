@@ -10,6 +10,7 @@ public class MyPanel extends JPanel{
 	MyPanel(){
 		super();
 		setPreferredSize(new Dimension(40, 40));
+		setOpaque(true);
 	}
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
