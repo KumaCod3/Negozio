@@ -62,7 +62,7 @@ public class ConsultaPersone  extends Finestra {
 		pan1.add(ele1);
 		contenuto.add(pan1);
 		
-/*comp3*/Bottone bent1=new Bottone("-ENTER-", 5);
+/*comp3*/Bottone bent1=new Bottone("ENTER", 5);
 		bent1.but.addActionListener(new ActionListener() {
 			 public void actionPerformed(ActionEvent e) {
 				 if (indexF!=-1){

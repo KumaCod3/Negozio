@@ -33,7 +33,7 @@ public class NewButt extends JButton{
 	private Point pressLoc;
 	
 	// rimpicciolisci per rallentare macchia click
-	private float sizeSpeed=10.0f;
+	private float sizeSpeed=30.0f;
 	
 	public NewButt(String a) {
 		super(a);

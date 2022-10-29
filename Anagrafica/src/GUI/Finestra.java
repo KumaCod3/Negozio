@@ -1,22 +1,10 @@
 package GUI;
-
 import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Frame;
-import java.awt.GridLayout;
-import java.awt.Panel;
-import java.awt.event.ActionEvent;
-import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.beans.PropertyChangeListener;
-import javax.swing.Action;
 import javax.swing.BoxLayout;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import Negozio.DataM;
 
 public class Finestra extends Frame{
 	JPanel c;
@@ -33,6 +21,7 @@ public class Finestra extends Frame{
 	};
 	public Finestra (String x){
 		super(x);
+		setUndecorated(true);
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		this.addWindowListener(close);
 		setLocation(70,70);
