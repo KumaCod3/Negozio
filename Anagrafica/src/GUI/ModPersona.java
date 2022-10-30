@@ -269,7 +269,6 @@ public class ModPersona extends Finestra{
 		});
 		panel_10.add(bent);
 		
-		
 		c.add("Center", contenuto);
 		pack();
     		

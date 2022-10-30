@@ -121,7 +121,6 @@ public class SchedaMerce extends Finestra{
 		
 /*OUT*/		
 		Bottone eli=new Bottone("DELETE");
-//		eli.but.setBackground(Est.rosso);
 		eli.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (x!=-1){

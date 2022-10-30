@@ -20,6 +20,7 @@ public class Errore extends Frame{
 		setLocation(300,300);
 		setBackground(Est.sfondo);
 		addWindowListener(Finestra.close);
+		setUndecorated(true);
 		
 		tx=new JLabel();
 		tx.setText("I'm sorry, something went wrong ... ");
@@ -34,6 +35,7 @@ public class Errore extends Frame{
 		add(ok);
 		add(ty);
 		setAlwaysOnTop(true);
+		pack();
 	}
 	public Errore(String a){
 		this();

@@ -49,7 +49,7 @@ public class AggiungiPersona extends Finestra{
 		panel_1.add(ty);
 		
 		JRadioButton client = new JRadioButton("Customer");
-		client.setBackground(Est.sfondo);
+		client.setOpaque(false);
 	    client.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent evt) {
 	            tipo="cliente";
@@ -57,7 +57,7 @@ public class AggiungiPersona extends Finestra{
 	    });
 	    panel_1.add(client);
 		JRadioButton fornit = new JRadioButton("Supplier");
- 		fornit.setBackground(Est.sfondo);
+ 		fornit.setOpaque(false);
 	    fornit.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent evt) {
 	        	tipo="fornitore";

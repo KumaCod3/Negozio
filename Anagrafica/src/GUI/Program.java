@@ -1,5 +1,8 @@
 package GUI;
 
+import Negozio.DataB;
+import Negozio.DataM;
+
 public class Program{
 	public static void main(String[] args) {
 		MyReadM.carica();

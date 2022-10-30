@@ -75,7 +75,7 @@ public class Spesa extends Finestra{
 		FormVuoto tf2=new FormVuoto("Quantity");
 		pan2.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		pan2.add(tf2);
-		pan2.setBackground(Est.sfondo);
+		pan2.setOpaque(false);
 		contenuto.add(pan2);
 		
 		Panel sal=new Panel();
@@ -220,7 +220,7 @@ public class Spesa extends Finestra{
 		// DA SISTEMARE DOPO ETICHETTA
 		pan2.setBorder(BorderFactory.createEmptyBorder(60, 10, 10, 10));
 		pan2.add(tf2);
-		pan2.setBackground(Est.sfondo);
+		pan2.setOpaque(false);
 		contenuto.add(pan2);
 		
 		c.add("Center",contenuto);

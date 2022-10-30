@@ -24,7 +24,7 @@ public class Bottone extends JPanel{
 		setBorder(Est.vuoto);
 		setLayout(new GridBagLayout());
 		setBorder(Est.bordo);
-		setBackground(Est.sfondo);
+		setOpaque(false);
 
 		but.setMinimumSize(Est.grosso);
 		but.setMaximumSize(Est.grosso);
