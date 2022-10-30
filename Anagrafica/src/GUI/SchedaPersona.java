@@ -90,7 +90,7 @@ public class SchedaPersona extends Finestra{
 			bin.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	if (x!=-1){
-				    	AggiungiPersona modifP=new AggiungiPersona(x,tipo);
+			    		ModPersona modifP=new ModPersona(x,tipo);
 				    	modifP.setVisible(true);
 				    	setVisible(false);
 				    	dispose();

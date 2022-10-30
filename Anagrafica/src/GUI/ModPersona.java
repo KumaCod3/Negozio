@@ -1,24 +1,15 @@
 package GUI;
-
+import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-
-import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
-
 import Negozio.Anagrafica;
-import Negozio.Cliente;
 import Negozio.DataB;
-import Negozio.Fornitore;
 
-import javax.swing.JRadioButton;
-import java.awt.Choice;
-
-public class AggiungiPersona extends Finestra{
+public class ModPersona extends Finestra{
 	String cognome="";
 	String nome="";
 	String telefono="";
@@ -31,13 +22,48 @@ public class AggiungiPersona extends Finestra{
 	boolean sett;
 	Anagrafica mer=null;
 	
-	public AggiungiPersona() {
-		super("Add new Person");
+	public ModPersona(int x,String tipo){
+		super("Edit person");
 		
-		JPanel contenuto=new JPanel();
-		contenuto.setBorder(Est.bordo);
-		contenuto.setOpaque(false);
-		contenuto.setLayout(new GridLayout(9,1));
+		if (tipo.equals("fornitore")){
+			try {
+				mer=DataB.fornitori.get(x);
+			}
+			catch (Exception e){
+				Errore err=new Errore("Wrong Index...");
+				err.setVisible(true);
+			    ConsultaPersone consultaP=new ConsultaPersone();
+			    consultaP.setVisible(true);
+			    setVisible(false);
+			   	dispose();
+			}
+		}
+		else {
+			try {
+				mer=DataB.clienti.get(x);
+			}
+			catch (Exception e){
+				Errore err=new Errore("Wrong Index...");
+				err.setVisible(true);
+			   	ConsultaPersone consultaP=new ConsultaPersone();
+			   	consultaP.setVisible(true);
+			   	setVisible(false);
+			   	dispose();		
+			}
+		}
+		
+		c.setLayout(new BorderLayout(100,10));
+		
+		Panel contenuto=new Panel();
+		contenuto.setLayout(new GridLayout(10,2));
+		
+		titolo=mer.getTitolo();
+		iva=mer.getIva();
+		telefono=mer.getTelefono();
+		email=mer.getEmail();
+		saldo=mer.getSaldo();
+		indirizzo=mer.getIndirizzo();
+		
 		
 		JPanel panel_1 = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) panel_1.getLayout();
@@ -45,58 +71,24 @@ public class AggiungiPersona extends Finestra{
 		panel_1.setOpaque(false);
 		contenuto.add(panel_1);
 		
-		Etichetta ty=new Etichetta("Choose DB:                       ");
+		Etichetta ty=new Etichetta("Type of preson:                                      ");
 		panel_1.add(ty);
 		
-		JRadioButton client = new JRadioButton("Customer");
-		client.setBackground(Est.sfondo);
-	    client.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent evt) {
-	            tipo="cliente";
-	        }
-	    });
-	    panel_1.add(client);
-		JRadioButton fornit = new JRadioButton("Supplier");
- 		fornit.setBackground(Est.sfondo);
-	    fornit.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent evt) {
-	        	tipo="fornitore";
-	        }
-	    });
-	    panel_1.add(fornit);
-	    //Group the radio buttons.
-	    ButtonGroup group = new ButtonGroup();
-	    group.add(client);
-	    group.add(fornit);
+		Etichetta ty1=new Etichetta(""+tipo);
+	    panel_1.add(ty1);
 	    
 		
 		JPanel panel_2 = new JPanel();
 		FlowLayout flowLayout_1 = (FlowLayout) panel_2.getLayout();
-		flowLayout_1.setVgap(-20);
 		flowLayout_1.setAlignment(FlowLayout.TRAILING);
 		panel_2.setOpaque(false);
 		contenuto.add(panel_2);
 		
-		Etichetta un=new Etichetta("Title: ");
+		Etichetta un=new Etichetta("Title:                                              ");
 		panel_2.add(un);
 		
-		Choice uni = new Choice();
-		uni.setPreferredSize(Est.choi);
-		uni.add("Choose");
-		uni.add("Firm");
-		uni.add("Mr.");
-		uni.add("Mrs.");
-		uni.setFont(Est.plainFont);
-		uni.addFocusListener(new FocusListener() {
-			public void focusGained(FocusEvent e){
-			}
-			public void focusLost(FocusEvent e){
-				if (uni.getSelectedIndex()>0){
-					titolo=uni.getSelectedItem();
-				}
-			}
-		});
-		panel_2.add(uni);
+		Etichetta un1=new Etichetta(mer.getTitolo());
+		panel_2.add(un1);
 		
 		JPanel panel_3 = new JPanel();
 		FlowLayout flowLayout_2 = (FlowLayout) panel_3.getLayout();
@@ -107,7 +99,7 @@ public class AggiungiPersona extends Finestra{
 		Etichetta non=new Etichetta("Name: ");
 		panel_3.add(non);
 		
-		FormVuoto tf1 = new FormVuoto("name");
+		FormVuoto tf1 = new FormVuoto(mer.getNome());
 		panel_3.add(tf1);
 		
 		JPanel panel_4 = new JPanel();
@@ -119,7 +111,7 @@ public class AggiungiPersona extends Finestra{
 		Etichetta qtt=new Etichetta("Last Name: ");
 		panel_4.add(qtt);
 		
-		FormVuoto tf2 = new FormVuoto("last n.");
+		FormVuoto tf2 = new FormVuoto(mer.getCognome());
 		panel_4.add(tf2);
 		
 		JPanel panel_5 = new JPanel();
@@ -131,7 +123,7 @@ public class AggiungiPersona extends Finestra{
 		Etichetta tel=new Etichetta("Phone: ");
 		panel_5.add(tel);
 		
-		FormVuoto tf3 = new FormVuoto("phone");
+		FormVuoto tf3 = new FormVuoto(mer.getTelefono());
 		panel_5.add(tf3);
 		
 		JPanel panel_6 = new JPanel();
@@ -144,7 +136,7 @@ public class AggiungiPersona extends Finestra{
 		Etichetta ty_1 = new Etichetta("eMail:   ");
 		panel_6.add(ty_1);
 		
-		FormVuoto tf4 = new FormVuoto("mail");
+		FormVuoto tf4 = new FormVuoto(mer.getEmail());
 		panel_6.add(tf4);
 		
 		JPanel panel_7 = new JPanel();
@@ -157,7 +149,7 @@ public class AggiungiPersona extends Finestra{
 		Etichetta ty_2 = new Etichetta("VAT number:  ");
 		panel_7.add(ty_2);
 		
-		FormVuoto tf5 = new FormVuoto("VAT");
+		FormVuoto tf5 = new FormVuoto(mer.getIva());
 		panel_7.add(tf5);
 		
 		JPanel panel_8 = new JPanel();
@@ -172,7 +164,7 @@ public class AggiungiPersona extends Finestra{
 		Etichetta ty_3 = new Etichetta("Address: ");
 		panel_8.add(ty_3);
 		
-		FormVuoto tf6 = new FormVuoto("address");
+		FormVuoto tf6 = new FormVuoto(mer.getIndirizzo());
 		panel_8.add(tf6);
 		
 		JPanel panel_9 = new JPanel();
@@ -185,7 +177,7 @@ public class AggiungiPersona extends Finestra{
 		contenuto.add(panel_9);
 		
 		Etichetta tchtOpeningBal = new Etichetta("Opening Balance: ");
-		tchtOpeningBal.setText("Opening Bal.:");
+		tchtOpeningBal.setText(""+mer.getSaldo());
 		panel_9.add(tchtOpeningBal);
 		
 		FormVuoto tf7 = new FormVuoto("balance");
@@ -212,8 +204,7 @@ public class AggiungiPersona extends Finestra{
 		Bottone bent=new Bottone("ENTER");
 		bent.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-				nome=tf1.ret;
-				cognome=tf2.ret;
+		    	
 				telefono=tf3.ret;
 				email=tf4.ret;
 				iva=tf5.ret;
@@ -232,27 +223,55 @@ public class AggiungiPersona extends Finestra{
 				}
 		    	
 		    	if (tipo.contentEquals("cliente")){
-		    		Cliente inser=new Cliente(titolo, nome, cognome, telefono, email, iva, indirizzo, saldo);
-		    		DataB.agg(inser);
-		    		ConsultaPersone consultaP=new ConsultaPersone();
-			    	consultaP.setVisible(true);
-			    	MyReadC.scarica();
-			    	dispose();
+		    		try {
+		    		
+			    		DataB.clienti.get(x).setIva(iva);
+			    		DataB.clienti.get(x).setTelefono(telefono);
+			    		DataB.clienti.get(x).setEmail(email);
+			    		DataB.clienti.get(x).setSaldo(saldo);
+			    		DataB.clienti.get(x).setIndirizzo(indirizzo);
+			    		ConsultaPersone consultaP=new ConsultaPersone();
+				    	consultaP.setVisible(true);
+				    	MyReadC.scarica();
+				    	dispose();
+		    		}
+		    		catch (Exception r){
+		    			Errore err=new Errore("Wrong Index...");
+		    			err.setVisible(true);
+					    ConsultaPersone consultaP=new ConsultaPersone();
+					    consultaP.setVisible(true);
+					    setVisible(false);
+					    dispose();			    			
+		    		}
 		    	}
 		    	else if (tipo.contentEquals("fornitore")){
-		    		Fornitore inser=new Fornitore(titolo, nome, cognome, telefono, email, iva, indirizzo, saldo);
-		    		DataB.agg(inser);
-		    		ConsultaPersone consultaP=new ConsultaPersone();
-			    	consultaP.setVisible(true);
-			    	MyReadF.scarica();
-			    	dispose();
+		    		try {
+		    			DataB.fornitori.get(x).setIva(iva);
+		    			DataB.fornitori.get(x).setTelefono(telefono);
+		    			DataB.fornitori.get(x).setEmail(email);
+		    			DataB.fornitori.get(x).setSaldo(saldo);
+		    			DataB.fornitori.get(x).setIndirizzo(indirizzo);
+			    		ConsultaPersone consultaP=new ConsultaPersone();
+				    	consultaP.setVisible(true);
+				    	MyReadF.scarica();
+				    	dispose();
+		    		}
+		    		catch (Exception u){
+		    			Errore err=new Errore("Wrong Index...");
+		    			err.setVisible(true);
+					    ConsultaPersone consultaP=new ConsultaPersone();
+					    consultaP.setVisible(true);
+					    setVisible(false);
+					    dispose();	
+		    		}
 		    	}
 			}
 		});
 		panel_10.add(bent);
 		
+		
 		c.add("Center", contenuto);
 		pack();
-		
-	}
+    		
+    }
 }

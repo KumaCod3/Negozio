@@ -88,8 +88,8 @@ public class AggiungiMerce extends Finestra{
 		panel_4.add(tf3);
 		
 		JPanel panel_5 = new JPanel();
-		FlowLayout flowLayout_4 = (FlowLayout) panel_5.getLayout();
-		flowLayout_4.setAlignment(FlowLayout.TRAILING);
+		FlowLayout flowLayout_5 = (FlowLayout) panel_5.getLayout();
+		flowLayout_5.setAlignment(FlowLayout.TRAILING);
 		panel_5.setOpaque(false);
 		contenuto.add(panel_5);
 		
