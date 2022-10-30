@@ -10,29 +10,42 @@ public class AggiungiMerce extends Finestra{
 	Double prezzoA=0.0;
 	int rincaro=0;
 	String unita="";
-	public AggiungiMerce(){
-		super("Add new Product");
-		
+	
+	public AggiungiMerce(int x){
+		super("Product");
 		JPanel contenuto=new JPanel();
 		contenuto.setBorder(Est.bordo);
 		contenuto.setOpaque(false);
-		contenuto.setLayout(new GridLayout(6,2));
-
-/*comp1*/ Etichetta non=new Etichetta("Product: ");
-		contenuto.add(non);
+		contenuto.setLayout(new GridLayout(6,1));
 		
+		JPanel panel_1 = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) panel_1.getLayout();
+		flowLayout.setAlignment(FlowLayout.TRAILING);
+		flowLayout.setAlignOnBaseline(true);
+		panel_1.setOpaque(false);
+		contenuto.add(panel_1);
 		
-		JPanel pan1=new JPanel();
- /*comp2*/FormVuoto tf1=new FormVuoto("Name");
-		pan1.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-		pan1.add(tf1);
-		pan1.setBackground(Est.sfondo);
-		contenuto.add(pan1);
+		Etichetta etNome = new Etichetta("Product:             ");
+		panel_1.add(etNome);
 		
-/*comp3*/  Etichetta un=new Etichetta("Unit of measure: ");
-		contenuto.add(un);
-/*comp4*/Choice uni=new Choice();
-		uni.add("Choose");
+		FormVuoto tf1 = new FormVuoto("name");
+		if (x!=-1) {
+			tf1.setEditable(false);
+		}
+		panel_1.add(tf1);
+		
+		JPanel panel_2 = new JPanel();
+		FlowLayout flowLayout_1 = (FlowLayout) panel_2.getLayout();
+		flowLayout_1.setAlignment(FlowLayout.TRAILING);
+		panel_2.setOpaque(false);
+		contenuto.add(panel_2);
+		
+		Etichetta etUni = new Etichetta("Unit of measure:              ");
+		panel_2.add(etUni);
+		
+		Choice uni = new Choice();
+		uni.setPreferredSize(Est.choi);
+		uni.add("choose");
 		uni.add("Pieces");
 		uni.add("Kg");
 		uni.add("Grams");
@@ -48,30 +61,44 @@ public class AggiungiMerce extends Finestra{
 				}
 			}
 		});
-		contenuto.add(uni);	
+		panel_2.add(uni);
 		
-/*comp5*/  Etichetta qtt=new Etichetta("Quantity: ");
-		contenuto.add(qtt);
-/*comp6*/JPanel pan2=new JPanel();
-		FormVuoto tf2=new FormVuoto("Quantity");
-		pan2.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-		pan2.add(tf2);
-		pan2.setBackground(Est.sfondo);
-		contenuto.add(pan2);
+		JPanel panel_3 = new JPanel();
+		FlowLayout flowLayout_2 = (FlowLayout) panel_3.getLayout();
+		flowLayout_2.setAlignment(FlowLayout.TRAILING);
+		panel_3.setOpaque(false);
+		contenuto.add(panel_3);
 		
-/*comp7*/  Etichetta prr=new Etichetta("Purchase price: ");
-		contenuto.add(prr);
-/*comp8*/ JPanel pan3=new JPanel();
-		FormVuoto tf3=new FormVuoto("Price");
-		pan3.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-		pan3.add(tf3);
-		pan3.setBackground(Est.sfondo);
-		contenuto.add(pan3);
+		Etichetta etQuant = new Etichetta("Quantity:            ");
+		panel_3.add(etQuant);
 		
-/*comp9*/  Etichetta rin=new Etichetta("Choose % price increase: ");
-		contenuto.add(rin);
-/*comp10*/Choice rim=new Choice();
-		rim.add("Choose");
+		FormVuoto tf2 = new FormVuoto("quantity");
+		panel_3.add(tf2);
+		
+		JPanel panel_4 = new JPanel();
+		FlowLayout flowLayout_3 = (FlowLayout) panel_4.getLayout();
+		flowLayout_3.setAlignment(FlowLayout.TRAILING);
+		panel_4.setOpaque(false);
+		contenuto.add(panel_4);
+		
+		Etichetta etPri  = new Etichetta("Purchase price:            ");
+		panel_4.add(etPri);
+		
+		FormVuoto tf3 = new FormVuoto("price");
+		panel_4.add(tf3);
+		
+		JPanel panel_5 = new JPanel();
+		FlowLayout flowLayout_4 = (FlowLayout) panel_5.getLayout();
+		flowLayout_4.setAlignment(FlowLayout.TRAILING);
+		panel_5.setOpaque(false);
+		contenuto.add(panel_5);
+		
+		Etichetta etRinc = new Etichetta("Choose %price increase:              ");
+		panel_5.add(etRinc);
+		
+		Choice rim = new Choice();
+		rim.setPreferredSize(Est.choi);
+		rim.add("choose");
 		rim.add("10");
 		rim.add("20");
 		rim.add("30");
@@ -86,9 +113,13 @@ public class AggiungiMerce extends Finestra{
 				}
 			}
 		});
-		contenuto.add(rim);	
-			
-/*comp11*/Bottone bex=new Bottone("-EXIT-");
+		panel_5.add(rim);
+		
+		JPanel panel_6 = new JPanel();
+		panel_6.setOpaque(false);
+		contenuto.add(panel_6);
+		
+		Bottone bex = new Bottone("EXIT");
 		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	ConsultaMerci consultaM=new ConsultaMerci();
@@ -97,178 +128,86 @@ public class AggiungiMerce extends Finestra{
 		    	dispose();
 			}
 		});
-		contenuto.add(bex);
 		
-/*comp12*/Bottone bent=new Bottone("-ENTER-");
+		panel_6.add(bex);
+		
+		Bottone bent = new Bottone("ENTER");
 		bent.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	nome=tf1.ret;
-		    	try {
-		    		quantita=Double.parseDouble(tf2.ret);
-		    	}
-		    	catch (Exception ex){
-		    		Errore err=new Errore("Enter number with . ");
-		    		err.setVisible(true);
-		    	}
-		    	try {
-					prezzoA=Double.parseDouble(tf3.ret);
-				}
-				catch (Exception ex){
-					Errore err=new Errore("Enter number with . ");
-					err.setVisible(true);
-				}
-				Merce inserisci =new Merce(nome, quantita, rincaro, prezzoA, unita);
-				DataM.agg(inserisci);
-				ConsultaMerci consultaM=new ConsultaMerci(/*c*/);
-		    	consultaM.setVisible(true);
-		    	MyReadM.scarica();
-		    	setVisible(false);
-		    	dispose();
-			}
-		});
-		contenuto.add(bent);
-		
-		c.add("Center", contenuto);
-		pack();
-	}
-	
-	public AggiungiMerce(int x){
-		super("Product modification");
-		Merce prod=DataM.get(x);
-		
-		nome=prod.getNome();
-		quantita=prod.getQuantita();
-		prezzoA=prod.getPrezzoA();
-		rincaro=prod.getRincaro();
-		unita=prod.getUnit();
-		
-		c.setLayout(new BorderLayout(100,10));
-		setBackground(Est.sfondo);
-		
-		JPanel contenuto=new JPanel();
-		contenuto.setBorder(Est.bordo);
-		contenuto.setOpaque(false);
-		contenuto.setLayout(new GridLayout(6,2));
-
-/*comp1*/  Etichetta non=new Etichetta("Product: ");
-		contenuto.add(non);
-/*comp2*/ Etichetta nom=new Etichetta(nome);
-		contenuto.add(nom);
-		
-/*comp3*/  Etichetta un=new Etichetta("Unit of measure: ");
-		contenuto.add(un);
-/*comp4*/Choice uni=new Choice();
-		uni.add(unita);
-		uni.add("Pezzi");
-		uni.add("Kg");
-		uni.add("grammi");
-		uni.add("quintali");
-		uni.add("tonnellate");
-		uni.setFont(Est.plainFont);
-		uni.addFocusListener(new FocusListener() {
-			public void focusGained(FocusEvent e){
-			}
-			public void focusLost(FocusEvent e){
-				if (uni.getSelectedIndex()>0){
-					unita=uni.getSelectedItem();
-				}
-			}
-		});
-		contenuto.add(uni);	
-		
-/*comp5*/  Etichetta qtt=new Etichetta("Quantity: ");
-		contenuto.add(qtt);
-/*comp6*/JPanel pan2=new JPanel();
-		FormVuoto tf2=new FormVuoto(quantita+"");
-		pan2.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-		pan2.add(tf2);
-		pan2.setBackground(Est.sfondo);
-		contenuto.add(pan2);
-		
-/*comp7*/  Etichetta prr=new Etichetta("Purchase price: ");
-		contenuto.add(prr);
-/*comp8*/ JPanel pan3=new JPanel();
-		FormVuoto tf3=new FormVuoto(prezzoA+"");
-		pan3.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-		pan3.add(tf3);
-		pan3.setBackground(Est.sfondo);
-		contenuto.add(pan3);
-		
-/*comp9*/  Etichetta rin=new Etichetta("Choose % price increase: ");
-		contenuto.add(rin);
-/*comp10*/Choice rim=new Choice();
-		rim.add(""+(rincaro));
-		rim.add("10");
-		rim.add("20");
-		rim.add("30");
-		rim.add("50");
-		rim.setFont(Est.plainFont);
-		rim.addFocusListener(new FocusListener() {
-			public void focusGained(FocusEvent e){
-			}
-			public void focusLost(FocusEvent e){
-				if (rim.getSelectedIndex()>0){
-					rincaro=Integer.parseInt(rim.getSelectedItem());
-				}
-			}
-		});
-		contenuto.add(rim);	
-			
-/*comp11*/Bottone bex=new Bottone("-EXIT-");
-		bex.but.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		    	ConsultaMerci consultaM=new ConsultaMerci();
-		    	consultaM.setVisible(true);
-		    	setVisible(false);
-		    	dispose();
-			}
-		});
-		contenuto.add(bex);
-		
-/*comp12*/Bottone bent=new Bottone("-ENTER-");
-		bent.but.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		    	try {
-		    		quantita=Double.parseDouble(tf2.ret);
-		    	}
-		    	catch (Exception ex){
-		    	}
-		    	try {
-					prezzoA=Double.parseDouble(tf3.ret);
-				}
-				catch (Exception ex){
-				}
-		    	DataM.get(x).setPrezzoA(prezzoA);
-		    	DataM.get(x).setQuantita(quantita);
-		    	DataM.get(x).setRincaro(rincaro);
-		    	DataM.get(x).setUnita(unita);
-		    	
-				ConsultaMerci consultaM=new ConsultaMerci();
-		    	consultaM.setVisible(true);
-		    	MyReadM.scarica();
-		    	setVisible(false);
-		    	dispose();
-			}
-		});
-		contenuto.add(bent);
-		
-/*comp14*/Bottone agg=new Bottone("-Assign to Supplier-", 5);
-		agg.but.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		    	try{
-			    	AssegnaMerc ass=new AssegnaMerc(DataM.get(x));
-			    	ass.setVisible(true);
+		    	if (x==-1) {
+			    	nome=tf1.ret;
+			    	try {
+			    		quantita=Double.parseDouble(tf2.ret);
+			    	}
+			    	catch (Exception ex){
+			    		Errore err=new Errore("Enter number with . ");
+			    		err.setVisible(true);
+			    	}
+			    	try {
+						prezzoA=Double.parseDouble(tf3.ret);
+					}
+					catch (Exception ex){
+						Errore err=new Errore("Enter number with . ");
+						err.setVisible(true);
+					}
+					Merce inserisci =new Merce(nome, quantita, rincaro, prezzoA, unita);
+					DataM.agg(inserisci);
+					ConsultaMerci consultaM=new ConsultaMerci(/*c*/);
+			    	consultaM.setVisible(true);
+			    	MyReadM.scarica();
 			    	setVisible(false);
 			    	dispose();
 		    	}
-		    	catch (Exception pp){
-		    		// ERRORE
+		    	else {
+		    		try {
+			    		quantita=Double.parseDouble(tf2.ret);
+			    	}
+			    	catch (Exception ex){
+			    	}
+			    	try {
+						prezzoA=Double.parseDouble(tf3.ret);
+					}
+					catch (Exception ex){
+					}
+			    	DataM.get(x).setPrezzoA(prezzoA);
+			    	DataM.get(x).setQuantita(quantita);
+			    	DataM.get(x).setRincaro(rincaro);
+			    	DataM.get(x).setUnita(unita);
+			    	
+					ConsultaMerci consultaM=new ConsultaMerci();
+			    	consultaM.setVisible(true);
+			    	MyReadM.scarica();
+			    	setVisible(false);
+			    	dispose();
 		    	}
 			}
 		});
-		c.add("South", agg);
-				
-		c.add(contenuto);
+		panel_6.add(bent);
+		
+		
+		if (x!=-1) {
+			JPanel panel_7 = new JPanel();
+			panel_7.setOpaque(false);
+			Bottone agg=new Bottone("Assign to Supplier", 5);
+			agg.but.addActionListener(new ActionListener() {
+			    public void actionPerformed(ActionEvent e) {
+			    	try{
+				    	AssegnaMerc ass=new AssegnaMerc(DataM.get(x));
+				    	ass.setVisible(true);
+				    	setVisible(false);
+				    	dispose();
+			    	}
+			    	catch (Exception pp){
+			    		// ERRORE
+			    	}
+				}
+			});
+			panel_7.add(agg);
+			c.add("South", panel_7);
+		}
+		
+		c.add("Center", contenuto);
 		pack();
+		
 	}
 }

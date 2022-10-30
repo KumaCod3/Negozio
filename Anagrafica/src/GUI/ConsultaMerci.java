@@ -80,7 +80,7 @@ public class ConsultaMerci extends Finestra {
 /*comp6*/Bottone b2=new Bottone("ADD new");
 			b2.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
-			    	AggiungiMerce aggg=new AggiungiMerce();
+			    	AggiungiMerce aggg=new AggiungiMerce(-1);
 			    	aggg.setVisible(true);
 			    	dispose();
 				}

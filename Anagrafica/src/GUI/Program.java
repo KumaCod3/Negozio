@@ -5,8 +5,7 @@ public class Program{
 		MyReadM.carica();
 		MyReadF.carica();
 		MyReadC.carica();
-	//	Home prova=new Home();
-		NewMerch prova=new NewMerch();
+		Home prova=new Home();
 		prova.setVisible(true);
 	}
 }
