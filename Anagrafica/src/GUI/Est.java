@@ -27,6 +27,7 @@ public class Est {
 	public static Dimension standard=new Dimension(690, 930);
 	public static Dimension testa=new Dimension(690, 80);
 	public static Dimension choi=new Dimension(270,80);
+	public static Dimension fil=new Dimension(270,30);
 	
 	public static DecimalFormat deci = new DecimalFormat("0.00");
 	public static DateTimeFormatter dateForm= DateTimeFormatter.ofPattern("yyyy-MM-dd H:mm.ss");
