@@ -2,6 +2,9 @@ package GUI;
 import Negozio.*;
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 import java.awt.event.*;
 
 public class ConsultaPersone  extends Finestra {
@@ -31,31 +34,22 @@ public class ConsultaPersone  extends Finestra {
 		
 /*comp1*/  Etichetta tx1=new Etichetta("Supplier:");
 		pan1.add(tx1);
-
-/*comp2*/Choice ele1=new Choice();
-		ele1.add("Choose");
-		try{
-			for (Fornitore a:DataB.fornitori){
-				ele1.add(a.getCognome()+", "+a.getNome());
-			}
-		}
-		catch (Exception e){
-			ele1.add("Empty");
-		}
-		ele1.setFont(Est.plainFont);
-		ele1.addFocusListener(new FocusListener() {
-			public void focusGained(FocusEvent e){
-			}
-			public void focusLost(FocusEvent e){
-				if (ele1.getSelectedItem().equals("Choose")||ele1.getSelectedItem().equals("Empty")){
-				}
-				else {
-					String[] temp=ele1.getSelectedItem().split(", ");
+		
+/*comp2*/MyChoice<Fornitore> ele=new MyChoice<Fornitore>(DataB.fornitori);
+		ele.jList.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent e) {
+				try {
+					String[] temp=ele.getSel().split(" , ");
 					indexF=DataB.trovaPersona(temp[0], temp[1]);
 				}
+				catch (Exception ex){
+					// no selection
+				}
+				
 			}
 		});
-		pan1.add(ele1);
+		
+		pan1.add(ele);
 		contenuto.add(pan1);
 		
 /*comp3*/Bottone bent1=new Bottone("ENTER", 5);
@@ -74,30 +68,19 @@ public class ConsultaPersone  extends Finestra {
 /*comp4*/  Etichetta tx=new Etichetta("Customers:");
 		pan2.add(tx);
 		
-/*comp5*/Choice ele=new Choice();
-		ele.add("Choose");
-		try{
-			for (Cliente a:DataB.clienti){
-				ele.add(a.getCognome()+", "+a.getNome());
-			}
-		}
-		catch (Exception e){
-			ele.add("Empty");
-		}
-		ele.setFont(Est.plainFont);
-		ele.addFocusListener(new FocusListener() {
-			public void focusGained(FocusEvent e){
-			}
-			public void focusLost(FocusEvent e){
-				if (ele.getSelectedItem().equals("Choose")||ele.getSelectedItem().equals("Empty")){
-				}
-				else {
-					String[] temp=ele.getSelectedItem().split(", ");
+/*comp5*/MyChoice<Cliente> ele2=new MyChoice<Cliente>(DataB.clienti);
+		ele2.jList.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent e) {
+				try {
+					String[] temp=ele2.getSel().split(" , ");
 					indexC=DataB.trovaPersona(temp[0], temp[1], 5);
+				}
+				catch (Exception ex){
+					// no selection
 				}
 			}
 		});
-		pan2.add(ele);
+		pan2.add(ele2);
 		contenuto.add(pan2);
 
 /*comp6*/Bottone bent=new Bottone("ENTER", 5);

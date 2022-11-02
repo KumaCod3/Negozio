@@ -8,8 +8,7 @@ public class Program{
 		MyReadM.carica();
 		MyReadF.carica();
 		MyReadC.carica();
-//		Home prova=new Home();
-		MyChoice prova=new MyChoice(DataM.elenco);
+		Home prova=new Home();
 		prova.setVisible(true);
 	}
 }

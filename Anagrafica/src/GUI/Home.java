@@ -11,7 +11,7 @@ import javax.swing.border.EmptyBorder;
 public class Home extends Frame{
 	public Home(){
 		super("HOME");
-		addWindowListener(Finestra.close);
+//		addWindowListener(Finestra.close);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setLocation(70,70);
 		setBackground(Est.sfondo);

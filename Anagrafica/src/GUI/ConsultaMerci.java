@@ -2,6 +2,9 @@ package GUI;
 import Negozio.*;
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 import java.awt.event.*;
 
 public class ConsultaMerci extends Finestra {
@@ -27,33 +30,25 @@ public class ConsultaMerci extends Finestra {
 	/*comp1*/  Etichetta tx=new Etichetta("Products: ");
 			pan1.add(tx);
 			
-	/*comp2*/Choice ele=new Choice();
-			ele.add("Choose");
-			try{
-				for (Merce a:DataM.elenco.values()){
-					ele.add(a.getNome()+" "+a.getCod());
-				}
-			}
-			catch (Exception e){
-				ele.add("Empty");
-			}
-			ele.setFont(Est.plainFont);
-			ele.addFocusListener(new FocusListener() {
-				public void focusGained(FocusEvent e){
-				}
-				public void focusLost(FocusEvent e){
-					if (ele.getSelectedItem().equals("Choose")||ele.getSelectedItem().equals("Empty")){
-					}
-					else {
-						String temp=ele.getSelectedItem();
+	/*comp2*/MyChoice ele=new MyChoice(DataM.elenco);
+			ele.jList.addListSelectionListener(new ListSelectionListener() {
+				public void valueChanged(ListSelectionEvent e) {
+					try {
+						String temp=ele.getSel();
 						String[] temAr=temp.split(" ");
-						index=Integer.parseInt(temAr[temAr.length-1]);
+						index=Integer.parseInt(temAr[0]);
 					}
+					catch (Exception ex){
+						// no selection
+					}
+					
 				}
 			});
+			
+			
 			pan1.add(ele);
 			contenuto.add(pan1);
-
+			
 /*comp3*/Bottone bent=new Bottone("ENTER", 5);
 			bent.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {

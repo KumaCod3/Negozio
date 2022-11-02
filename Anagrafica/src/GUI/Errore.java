@@ -19,7 +19,7 @@ public class Errore extends Frame{
 		setLayout(new GridLayout(3,1));
 		setLocation(300,300);
 		setBackground(Est.sfondo);
-		addWindowListener(Finestra.close);
+//		addWindowListener(Finestra.close);
 		setUndecorated(true);
 		
 		tx=new JLabel();
@@ -39,7 +39,7 @@ public class Errore extends Frame{
 	}
 	public Errore(String a){
 		this();
-		addWindowListener(Finestra.close);
+//		addWindowListener(Finestra.close);
 		// da AggiungiMerce e AggiungiPersona
 		tx.setText("I'm sorry, something went wrong ... ");
 

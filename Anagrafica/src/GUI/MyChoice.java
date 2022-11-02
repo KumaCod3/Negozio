@@ -14,7 +14,7 @@ import javax.swing.JList;
 import javax.swing.ListSelectionModel;
 import javax.swing.BoxLayout;
 
-public class MyChoice extends JPanel{
+public class MyChoice <T extends Anagrafica>extends JPanel{
 	JList<String> jList;
 	ArrayList<String> elenco=new ArrayList<String>();
 	
@@ -33,10 +33,7 @@ public class MyChoice extends JPanel{
 		add(new JScrollPane(jList));
 	}
 	
-	/**
-	 * @wbp.parser.constructor
-	 */
-	public MyChoice(ArrayList<Anagrafica> lis){
+	public MyChoice(ArrayList<T> lis){
 		super();
 		populate(lis);
 		setBorder(Est.bordo);
@@ -51,9 +48,13 @@ public class MyChoice extends JPanel{
 		add(new JScrollPane(jList));
 	}
 	
-	private void populate(ArrayList<Anagrafica> sor) {
-		for (Anagrafica a:sor) {
-			String fin=a.getIntestazione();
+	public String getSel() {
+		String fin=jList.getSelectedValue();
+		return fin;
+	}
+	private void populate(ArrayList<T> sor) {
+		for (T a:sor) {
+			String fin=a.getMinIntestazione();
 			elenco.add(fin);
 		}
 		

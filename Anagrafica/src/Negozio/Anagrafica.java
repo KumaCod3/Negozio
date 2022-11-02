@@ -101,5 +101,9 @@ public abstract class Anagrafica {
 		String in=getTitolo()+" "+cognome+" , "+nome;
 		return in;
 	}
+	public String getMinIntestazione(){
+		String in=cognome+" , "+nome;
+		return in;
+	}
 	public abstract HashMap<Integer,Merce> getMerc();
 }
