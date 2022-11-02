@@ -10,6 +10,7 @@ import javax.swing.ListModel;
 import Negozio.Anagrafica;
 import Negozio.Merce;
 import javax.swing.DefaultListModel;
+import javax.swing.DropMode;
 import javax.swing.JList;
 import javax.swing.ListSelectionModel;
 import javax.swing.BoxLayout;
@@ -30,7 +31,10 @@ public class MyChoice <T extends Anagrafica>extends JPanel{
 		jList.setVisibleRowCount(6);
 		
 		add(createTextField());
-		add(new JScrollPane(jList));
+		JScrollPane pap=new JScrollPane(jList);
+		pap.setPreferredSize(Est.choi);
+		pap.setMaximumSize(Est.choi);
+		add(pap);
 	}
 	
 	public MyChoice(ArrayList<T> lis){
@@ -45,7 +49,10 @@ public class MyChoice <T extends Anagrafica>extends JPanel{
 		jList.setVisibleRowCount(6);
 		
 		add(createTextField());
-		add(new JScrollPane(jList));
+		JScrollPane pap=new JScrollPane(jList);
+		pap.setPreferredSize(Est.choi);
+		pap.setMaximumSize(Est.choi);
+		add(pap);
 	}
 	
 	public String getSel() {
@@ -71,6 +78,7 @@ public class MyChoice <T extends Anagrafica>extends JPanel{
 	private JTextField createTextField() {
         final JTextField field = new JTextField(15);
         field.setPreferredSize(Est.fil);
+        field.setMaximumSize(Est.fil);
         field.getDocument().addDocumentListener(new DocumentListener(){
             @Override public void insertUpdate(DocumentEvent e) { filter(); }
             @Override public void removeUpdate(DocumentEvent e) { filter(); }

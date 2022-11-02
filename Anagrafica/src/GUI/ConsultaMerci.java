@@ -28,6 +28,7 @@ public class ConsultaMerci extends Finestra {
 			pan2.setOpaque(false);
 
 	/*comp1*/  Etichetta tx=new Etichetta("Products: ");
+  tx.setVerticalAlignment(SwingConstants.TOP);
 			pan1.add(tx);
 			
 	/*comp2*/MyChoice ele=new MyChoice(DataM.elenco);

@@ -132,7 +132,8 @@ public class SchedaPersona extends Finestra{
 				});
 				contenuto.add(ele1);
 	
-	/*OUT*/		Panel sud=new Panel();
+	/*OUT*/		JPanel sud=new JPanel();
+				sud.setOpaque(false);
 				sud.setLayout(new GridLayout(1,2));
 				
 				Bottone agg=new Bottone("Assign Product", 5);
