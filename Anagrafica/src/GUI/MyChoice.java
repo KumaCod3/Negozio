@@ -18,6 +18,7 @@ import javax.swing.BoxLayout;
 public class MyChoice <T extends Anagrafica>extends JPanel{
 	JList<String> jList;
 	ArrayList<String> elenco=new ArrayList<String>();
+	JTextField field;
 	
 	public MyChoice(HashMap<Integer,Merce> lis){
 		super();
@@ -30,7 +31,8 @@ public class MyChoice <T extends Anagrafica>extends JPanel{
 		jList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		jList.setVisibleRowCount(6);
 		
-		add(createTextField());
+		field=createTextField();
+		add(field);
 		JScrollPane pap=new JScrollPane(jList);
 		pap.setPreferredSize(Est.choi);
 		pap.setMaximumSize(Est.choi);
@@ -48,7 +50,8 @@ public class MyChoice <T extends Anagrafica>extends JPanel{
 		jList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		jList.setVisibleRowCount(6);
 		
-		add(createTextField());
+		field=createTextField();
+		add(field);
 		JScrollPane pap=new JScrollPane(jList);
 		pap.setPreferredSize(Est.choi);
 		pap.setMaximumSize(Est.choi);
@@ -112,4 +115,7 @@ public class MyChoice <T extends Anagrafica>extends JPanel{
             }
         }
     }
+	public void clear() {
+		field.setText("");
+	}
 }

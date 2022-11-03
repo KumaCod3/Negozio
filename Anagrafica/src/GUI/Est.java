@@ -33,10 +33,12 @@ public class Est {
 	public static DateTimeFormatter dateForm= DateTimeFormatter.ofPattern("yyyy-MM-dd H:mm.ss");
 	
 	public static Border bordo= BorderFactory.createEmptyBorder(10,10,10,10);
-	public static Border borGro= BorderFactory.createEmptyBorder(20,20,20,20);
+	public static Border borCol= BorderFactory.createMatteBorder(0, 4, 4, 4, scuro);
+	public static Border borColHe= BorderFactory.createMatteBorder(4, 4, 0, 4, scuro);
+	public static Border borColTut= BorderFactory.createMatteBorder(4, 4, 4, 4, scuro);
 	public static Border vuoto=new EmptyBorder(new Insets(3,3,3,3));;
-	public static Border aaa= BorderFactory.createLineBorder(Est.sfondo,10);
-	public static Border bbb= BorderFactory.createCompoundBorder(aaa,bordo);
+//	public static Border aaa= BorderFactory.createLineBorder(Est.sfondo,10);
+//	public static Border bbb= BorderFactory.createCompoundBorder(aaa,bordo);
 	public static Border eti= BorderFactory.createEmptyBorder(30, 20, 20, 70);
 	
 }

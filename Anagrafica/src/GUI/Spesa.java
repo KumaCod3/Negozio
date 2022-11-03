@@ -9,6 +9,9 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 import Negozio.Anagrafica;
 import Negozio.Cliente;
 import Negozio.DataM;
@@ -23,6 +26,9 @@ public class Spesa extends Finestra{
 	public Anagrafica b;
 	public ListaSpesa list;
 	public Tabella tab;
+	/**
+	 * @wbp.parser.constructor
+	 */
 	public Spesa (Cliente c){
 		super("Shopping cart of "+c.getTitolo()+" "+c.getCognome()+" "+c.getNome());
 		list=new ListaSpesa(c);
@@ -43,28 +49,18 @@ public class Spesa extends Finestra{
 /*comp1*/  Etichetta tx=new Etichetta("Choose product: ");
 		contenuto.add(tx);
 		
-/*comp2*/Choice ele=new Choice();
-		ele.add("Choose");
-		try{
-			for (Merce a:DataM.elenco.values()){
-				ele.add(a.getNome()+" "+a.getCod());
-			}
-		}
-		catch (Exception e){
-			ele.add("Empty");
-		}
-		ele.setFont(Est.plainFont);
-		ele.addFocusListener(new FocusListener() {
-			public void focusGained(FocusEvent e){
-			}
-			public void focusLost(FocusEvent e){
-				if (ele.getSelectedItem().equals("Choose")||ele.getSelectedItem().equals("Empty")){
-				}
-				else {
-					String temp=ele.getSelectedItem();
+		MyChoice ele=new MyChoice(DataM.elenco);
+		ele.jList.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent e) {
+				try {
+					String temp=ele.getSel();
 					String[] temAr=temp.split(" ");
-					index=Integer.parseInt(temAr[temAr.length-1]);
+					index=Integer.parseInt(temAr[0]);
 				}
+				catch (Exception ex){
+					// no selection
+				}
+				
 			}
 		});
 		contenuto.add(ele);
@@ -81,10 +77,13 @@ public class Spesa extends Finestra{
 		Panel sal=new Panel();
 		sal.setLayout(new GridLayout(1,3));
 		Etichetta sal1=new Etichetta("Total: .......");
+		sal1.setForeground(Est.scuro);
 		sal.add(sal1);
 		Etichetta sal2=new Etichetta("..............");
 		sal.add(sal2);
-		Etichetta sal3=new Etichetta(Est.deci.format(list.getSaldo())+" eu.");
+		sal2.setForeground(Est.scuro);
+		Etichetta sal3=new Etichetta("....... "+Est.deci.format(list.getSaldo())+" eu.");
+		sal3.setForeground(Est.scuro);
 		sal.add(sal3);
 		
 		Panel corpo=new Panel();
@@ -120,7 +119,7 @@ public class Spesa extends Finestra{
 			    			tab.togli(tab.getInd(DataM.get(index).getNome()));
 		    				tab.aggiungi(list.get(index),list.get(index).getQuantita());
 		    			}
-		    			ele.select(0);
+		    			ele.clear();
 		    			tf2.clear();
 		    			sal3.setText(Est.deci.format(list.getSaldo())+" eu.");
 		    			index=-1;
@@ -187,7 +186,6 @@ public class Spesa extends Finestra{
 	}
 	public void refre(){
 		tab.repaint(list);
-		System.out.println("che frescura!");
 	}
 	
 	public Spesa (Merce m,Fornitore f){

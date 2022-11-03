@@ -31,7 +31,7 @@ public class ListaSpesa{
 				m.setQuantita(quantita+(m.getQuantita()));
 				if (!check(m)){
 					fix(m,spes);
-					System.out.println("fix a: "+m.getQuantita()+" in magaz: "+DataM.elenco.get(m.getCod()).getQuantita());
+//					System.out.println("fix a: "+m.getQuantita()+" in magaz: "+DataM.elenco.get(m.getCod()).getQuantita());
 				}
 				calcolaSaldo();
 				return false;
@@ -40,7 +40,7 @@ public class ListaSpesa{
 		x.setQuantita(quantita);
 		if (!check(x)){
 			fix(x,spes);
-			System.out.println("fix a: "+x.getQuantita()+" in magaz: "+DataM.elenco.get(x.getCod()).getQuantita());
+//			System.out.println("fix a: "+x.getQuantita()+" in magaz: "+DataM.elenco.get(x.getCod()).getQuantita());
 		}
 		elenco.put(merce, x);
 		calcolaSaldo();
@@ -163,7 +163,7 @@ public class ListaSpesa{
 		return true;
 	}
 	public void fix(Merce m, Spesa spes){
-		System.out.println("rich: "+m.getQuantita()+" in magaz: "+DataM.elenco.get(m.getCod()).getQuantita());
+//		System.out.println("rich: "+m.getQuantita()+" in magaz: "+DataM.elenco.get(m.getCod()).getQuantita());
 		Errore er=new Errore(m,ListaSpesa.this, spes);
 		er.setVisible(true);
 	}

@@ -13,16 +13,21 @@ public class Errore extends Frame{
 	JLabel tx;
 	Bottone ok;
 	Bottone ty;
+	JPanel c;
 	
 	public Errore(){
 		super("---ERROR---");
-		setLayout(new GridLayout(3,1));
+//		setLayout(new GridLayout(3,1));
 		setLocation(300,300);
 		setBackground(Est.sfondo);
-//		addWindowListener(Finestra.close);
 		setUndecorated(true);
+		c = new JPanel();
+		c.setBorder(Est.borColTut);
+		c.setOpaque(false);
+		add("Center",c);
 		
 		tx=new JLabel();
+		tx.setAlignmentX(Component.CENTER_ALIGNMENT);
 		tx.setText("I'm sorry, something went wrong ... ");
 		tx.setBorder(Est.eti);
 		tx.setFont(Est.plainFont);
@@ -30,18 +35,18 @@ public class Errore extends Frame{
 		ok=new Bottone("OK", 5);
 		
 		ty=new Bottone("CANCEL", 5);
+		c.setLayout(new BoxLayout(c, BoxLayout.Y_AXIS));
 		
-		add(tx);
-		add(ok);
-		add(ty);
+		c.add(tx);
+		c.add(ok);
+		c.add(ty);
 		setAlwaysOnTop(true);
 		pack();
 	}
 	public Errore(String a){
 		this();
-//		addWindowListener(Finestra.close);
 		// da AggiungiMerce e AggiungiPersona
-		tx.setText("I'm sorry, something went wrong ... ");
+		tx.setText(a);
 
 		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -50,6 +55,7 @@ public class Errore extends Frame{
 			}
 		});
 		
+		remove(ty);
 		ty.but.setText(a);
 		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -57,6 +63,7 @@ public class Errore extends Frame{
 		    	dispose();
 			}
 		});
+		ty.setVisible(false);
 
 		pack();
 	}
@@ -194,6 +201,7 @@ public class Errore extends Frame{
 
 		tx.setText("<html>Product is Out of Order! <br/> "+"You have only: "+max+m.getUnit()+" of "+m.getNome()+" left.");
 
+		ok.but.setText("Order all you have");
 		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	m.setQuantita(DataM.elenco.get(m.getCod()).getQuantita());
@@ -203,9 +211,10 @@ public class Errore extends Frame{
 			}
 		});
 		
+		ty.setVisible(false);
+		remove(ty);
 		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	m.setQuantita(0.0);
 		    	setVisible(false);
 		    	dispose();
 			}
@@ -290,9 +299,9 @@ public class Errore extends Frame{
 		});
 		tasti.add(ok);
 		tasti.add(ty);
-		add("North",tx);
-		add("Center",sal);
-		add("South",tasti);
+		c.add("North",tx);
+		c.add("Center",sal);
+		c.add("South",tasti);
 		setAlwaysOnTop(true);
 		pack();
 	}

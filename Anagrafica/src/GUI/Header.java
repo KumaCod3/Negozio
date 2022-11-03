@@ -15,6 +15,7 @@ public class Header extends JPanel {
 		setMinimumSize(Est.testa);
 		setMaximumSize(Est.testa);
 		setPreferredSize(Est.testa);
+		setBorder(Est.borColHe);
 		
 		HeadPanel pan=new HeadPanel();
 		pan.setOpaque(false);

@@ -1,5 +1,6 @@
 package GUI;
 import java.awt.Frame;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
@@ -8,18 +9,20 @@ import Negozio.Guest;
 import java.awt.Component;
 import javax.swing.border.EmptyBorder;
 
-public class Home extends Frame{
+public class Home extends Finestra{
 	public Home(){
 		super("HOME");
-//		addWindowListener(Finestra.close);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setLocation(70,70);
 		setBackground(Est.sfondo);
 		setPreferredSize(Est.standard);
 		setUndecorated(true);
 		
-		Header inte=new Header();
-		add(inte);
+		JPanel contenuto=new JPanel();
+		contenuto.setBorder(Est.bordo);
+		contenuto.setOpaque(false);
+		contenuto.setLayout(new GridLayout(5,1));
+		
 		
 		JPanel bu1=new JPanel();
 		bu1.setOpaque(false);
@@ -37,8 +40,7 @@ public class Home extends Frame{
 			}
 		});
 		bu1.add(b1);
-        /*contenuto.*/add(bu1);
-		
+        contenuto.add(bu1);
         
         JPanel bu2=new JPanel();
 		bu2.setOpaque(false);
@@ -57,7 +59,7 @@ public class Home extends Frame{
 			}
 		});
 		bu2.add(b2);
-        /*contenuto.*/add(bu2);
+        contenuto.add(bu2);
 		
         JPanel bu3=new JPanel();
 		bu3.setOpaque(false);
@@ -76,7 +78,7 @@ public class Home extends Frame{
 			}
 		});
 		bu3.add(b3);
-        /*contenuto.*/add(bu3);
+        contenuto.add(bu3);
 		
 		/*add(contenuto);*/
 		
@@ -113,7 +115,7 @@ public class Home extends Frame{
 		});
 		bott.add(bal);
 		
-		add(bott);
+		contenuto.add(bott);
 		
 		JPanel buex=new JPanel();
 		buex.setOpaque(false);
@@ -133,8 +135,8 @@ public class Home extends Frame{
         	}
 		});
 		buex.add(bex);
-        /*contenuto.*/add(buex);
-        
+        contenuto.add(buex);
+        c.add("Center", contenuto);
 		pack();
 	}
 }

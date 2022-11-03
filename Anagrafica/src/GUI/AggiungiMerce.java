@@ -138,25 +138,21 @@ public class AggiungiMerce extends Finestra{
 			    	nome=tf1.ret;
 			    	try {
 			    		quantita=Double.parseDouble(tf2.ret);
+			    		prezzoA=Double.parseDouble(tf3.ret);
+			    		Merce inserisci =new Merce(nome, quantita, rincaro, prezzoA, unita);
+						DataM.agg(inserisci);
+						ConsultaMerci consultaM=new ConsultaMerci(/*c*/);
+				    	consultaM.setVisible(true);
+				    	MyReadM.scarica();
+				    	setVisible(false);
+				    	dispose();
 			    	}
 			    	catch (Exception ex){
 			    		Errore err=new Errore("Enter number with . ");
 			    		err.setVisible(true);
 			    	}
-			    	try {
-						prezzoA=Double.parseDouble(tf3.ret);
-					}
-					catch (Exception ex){
-						Errore err=new Errore("Enter number with . ");
-						err.setVisible(true);
-					}
-					Merce inserisci =new Merce(nome, quantita, rincaro, prezzoA, unita);
-					DataM.agg(inserisci);
-					ConsultaMerci consultaM=new ConsultaMerci(/*c*/);
-			    	consultaM.setVisible(true);
-			    	MyReadM.scarica();
-			    	setVisible(false);
-			    	dispose();
+			    	
+					
 		    	}
 		    	else {
 		    		try {
