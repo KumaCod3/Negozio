@@ -3,7 +3,7 @@ package GUI;
 import Negozio.DataB;
 import Negozio.DataM;
 
-public class Program{
+public class Main{
 	public static void main(String[] args) {
 		MyReadM.carica();
 		MyReadF.carica();
