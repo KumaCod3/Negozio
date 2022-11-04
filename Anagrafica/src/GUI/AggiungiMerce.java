@@ -5,14 +5,23 @@ import javax.swing.*;
 import java.awt.event.*;
 
 public class AggiungiMerce extends Finestra{
-	String nome="";
+	String nome="nome";
 	Double quantita=0.0;
 	Double prezzoA=0.0;
 	int rincaro=0;
-	String unita="";
+	String unita="unita";
 	
 	public AggiungiMerce(int x){
 		super("Product");
+		if (x!=-1) {
+			Merce m=DataM.elenco.get(x);
+			nome=m.getNome();
+			quantita=m.getQuantita();
+			prezzoA=m.getPrezzoA();
+			rincaro=m.getRincaro();
+			unita=m.getUnit();
+		}
+		
 		JPanel contenuto=new JPanel();
 		contenuto.setBorder(Est.bordo);
 		contenuto.setOpaque(false);
@@ -28,9 +37,10 @@ public class AggiungiMerce extends Finestra{
 		Etichetta etNome = new Etichetta("Product:             ");
 		panel_1.add(etNome);
 		
-		FormVuoto tf1 = new FormVuoto("name");
+		FormVuoto tf1 = new FormVuoto(nome);
 		if (x!=-1) {
 			tf1.setEditable(false);
+			tf1.setUnchain();
 		}
 		panel_1.add(tf1);
 		
@@ -43,24 +53,7 @@ public class AggiungiMerce extends Finestra{
 		Etichetta etUni = new Etichetta("Unit of measure:              ");
 		panel_2.add(etUni);
 		
-		Choice uni = new Choice();
-		uni.setPreferredSize(Est.choi);
-		uni.add("choose");
-		uni.add("Pieces");
-		uni.add("Kg");
-		uni.add("Grams");
-		uni.add("Quintals");
-		uni.add("Liters");
-		uni.setFont(Est.plainFont);
-		uni.addFocusListener(new FocusListener() {
-			public void focusGained(FocusEvent e){
-			}
-			public void focusLost(FocusEvent e){
-				if (uni.getSelectedIndex()>0){
-					unita=uni.getSelectedItem();
-				}
-			}
-		});
+		Etichetta uni = new Etichetta("             "+unita);
 		panel_2.add(uni);
 		
 		JPanel panel_3 = new JPanel();
@@ -72,7 +65,7 @@ public class AggiungiMerce extends Finestra{
 		Etichetta etQuant = new Etichetta("Quantity:            ");
 		panel_3.add(etQuant);
 		
-		FormVuoto tf2 = new FormVuoto("quantity");
+		FormVuoto tf2 = new FormVuoto(""+quantita);
 		panel_3.add(tf2);
 		
 		JPanel panel_4 = new JPanel();
@@ -84,7 +77,7 @@ public class AggiungiMerce extends Finestra{
 		Etichetta etPri  = new Etichetta("Purchase price:            ");
 		panel_4.add(etPri);
 		
-		FormVuoto tf3 = new FormVuoto("price");
+		FormVuoto tf3 = new FormVuoto(prezzoA+"");
 		panel_4.add(tf3);
 		
 		JPanel panel_5 = new JPanel();
@@ -98,7 +91,7 @@ public class AggiungiMerce extends Finestra{
 		
 		Choice rim = new Choice();
 		rim.setPreferredSize(Est.choi);
-		rim.add("choose");
+		rim.add(""+rincaro);
 		rim.add("10");
 		rim.add("20");
 		rim.add("30");

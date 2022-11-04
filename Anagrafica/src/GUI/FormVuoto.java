@@ -34,5 +34,10 @@ public class FormVuoto extends JTextField{
 		setText(tt);
 		setForeground(Est.chiarissimo);
 	}
-
+	
+	public void setUnchain() {
+		for (FocusListener f:getFocusListeners()) {
+			removeFocusListener(f);
+		}
+	}
 }

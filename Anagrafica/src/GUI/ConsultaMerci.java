@@ -44,7 +44,7 @@ public class ConsultaMerci extends Finestra{
 		
 		JPanel sud=new JPanel();
 		sud.setOpaque(false);
-		sud.setLayout(new GridLayout(1,2));
+		sud.setLayout(new GridLayout(1,3));
 		Bottone bex=new Bottone("EXIT");
 		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -68,6 +68,16 @@ public class ConsultaMerci extends Finestra{
 		});
 		
 		sud.add(bent);
+		
+/*comp6*/Bottone b2=new Bottone("ADD new");
+		b2.but.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	AggiungiMerce aggg=new AggiungiMerce(-1);
+		    	aggg.setVisible(true);
+		    	dispose();
+			}
+		});
+		sud.add(b2);
 		c.add("South",sud);
 		centro.add(sinistro);
 		pack();
