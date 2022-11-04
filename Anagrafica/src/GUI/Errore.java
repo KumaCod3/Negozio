@@ -29,7 +29,7 @@ public class Errore extends Frame{
 		tx=new JLabel();
 		tx.setAlignmentX(Component.CENTER_ALIGNMENT);
 		tx.setText("I'm sorry, something went wrong ... ");
-		tx.setBorder(Est.eti);
+		tx.setBorder(Est.bordo);
 		tx.setFont(Est.plainFont);
 		
 		ok=new Bottone("OK", 5);

@@ -5,15 +5,19 @@ import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JPanel;
+
 public class Storico extends Finestra{
 	
 		public Storico(){
 			super("History: ");
 
-			Panel centro=new Panel();
+			JPanel centro=new JPanel();
+			centro.setOpaque(false);
 			centro.setLayout(new GridLayout(1,2));
 			c.add("Center",centro);
-			Panel sinistro=new Panel();
+			JPanel sinistro=new JPanel();
+			sinistro.setOpaque(false);
 			sinistro.setLayout(new BorderLayout());
 			Etichetta non=new Etichetta("Sales History: ");
 			sinistro.add("North",non);
@@ -33,7 +37,8 @@ public class Storico extends Finestra{
 			c.add("South",bex);
 			centro.add(sinistro);
 			
-			Panel destro=new Panel();
+			JPanel destro=new JPanel();
+			destro.setOpaque(false);
 			destro.setLayout(new BorderLayout());
 			Etichetta nomm=new Etichetta("Purchase History: ");
 			destro.add("North",nomm);

@@ -3,6 +3,8 @@ import Negozio.*;
 import java.awt.*;
 import java.awt.event.*;
 
+import javax.swing.JPanel;
+
 public class Balance extends Finestra{
 	private double merchVal;
 	private double totSold;
@@ -16,7 +18,8 @@ public class Balance extends Finestra{
 			this.totBought=Shop.getTotBought();
 			this.bal=Shop.getBal();
 			
-			Panel contenuto=new Panel();
+			JPanel contenuto=new JPanel();
+			contenuto.setOpaque(false);
 			contenuto.setLayout(new GridLayout(4,2));
 			
 	/*comp1*/  Etichetta non=new Etichetta("Goods value in stock: ");

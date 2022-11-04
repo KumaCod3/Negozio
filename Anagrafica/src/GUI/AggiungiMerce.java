@@ -157,24 +157,21 @@ public class AggiungiMerce extends Finestra{
 		    	else {
 		    		try {
 			    		quantita=Double.parseDouble(tf2.ret);
+			    		prezzoA=Double.parseDouble(tf3.ret);
+			    		DataM.get(x).setPrezzoA(prezzoA);
+				    	DataM.get(x).setQuantita(quantita);
+				    	DataM.get(x).setRincaro(rincaro);
+				    	DataM.get(x).setUnita(unita);
+						ConsultaMerci consultaM=new ConsultaMerci();
+				    	consultaM.setVisible(true);
+				    	MyReadM.scarica();
+				    	setVisible(false);
+				    	dispose();
 			    	}
 			    	catch (Exception ex){
+			    		Errore err=new Errore("Enter number with . ");
+			    		err.setVisible(true);
 			    	}
-			    	try {
-						prezzoA=Double.parseDouble(tf3.ret);
-					}
-					catch (Exception ex){
-					}
-			    	DataM.get(x).setPrezzoA(prezzoA);
-			    	DataM.get(x).setQuantita(quantita);
-			    	DataM.get(x).setRincaro(rincaro);
-			    	DataM.get(x).setUnita(unita);
-			    	
-					ConsultaMerci consultaM=new ConsultaMerci();
-			    	consultaM.setVisible(true);
-			    	MyReadM.scarica();
-			    	setVisible(false);
-			    	dispose();
 		    	}
 			}
 		});
