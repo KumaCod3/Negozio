@@ -112,7 +112,7 @@ public class AggiungiMerce extends Finestra{
 		panel_6.setOpaque(false);
 		contenuto.add(panel_6);
 		
-		Bottone bex = new Bottone("EXIT");
+		Bottone bex = new Bottone("Back");
 		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	ConsultaMerci consultaM=new ConsultaMerci();

@@ -190,7 +190,7 @@ public class ModPersona extends Finestra{
 		panel_10.setOpaque(false);
 		c.add("South", panel_10);
 		
-		Bottone bex=new Bottone("EXIT");
+		Bottone bex=new Bottone("Back");
 		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	ConsultaPersone consultaP=new ConsultaPersone();

@@ -49,7 +49,7 @@ public class AssegnaMerc extends Finestra{
 		});
 		contenuto.add(ele);
 		
-		Bottone bex=new Bottone("EXIT");
+		Bottone bex=new Bottone("Back");
 		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	ConsultaPersone consultaP=new ConsultaPersone();
@@ -135,7 +135,7 @@ public class AssegnaMerc extends Finestra{
 		});
 		contenuto.add(ele1);
 		
-		Bottone bex=new Bottone("EXIT");
+		Bottone bex=new Bottone("Back");
 		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	ConsultaMerci consultaM=new ConsultaMerci();

@@ -156,7 +156,7 @@ public class Spesa extends Finestra{
 		sotto.setLayout(new GridLayout(1,2));
 		
 		
-/*comp10*/Bottone bex=new Bottone("EXIT");
+/*comp10*/Bottone bex=new Bottone("Back");
 		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	Errore err=new Errore(Spesa.this);

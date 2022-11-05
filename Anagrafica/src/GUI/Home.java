@@ -13,10 +13,6 @@ public class Home extends Finestra{
 	public Home(){
 		super("HOME");
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		setLocation(70,70);
-		setBackground(Est.sfondo);
-		setPreferredSize(Est.standard);
-		setUndecorated(true);
 		
 		JPanel contenuto=new JPanel();
 		contenuto.setBorder(Est.bordo);

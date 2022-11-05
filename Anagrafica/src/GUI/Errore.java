@@ -17,8 +17,7 @@ public class Errore extends Frame{
 	
 	public Errore(){
 		super("---ERROR---");
-//		setLayout(new GridLayout(3,1));
-		setLocation(300,300);
+		setLocation(Est.marginX,Est.marginY);
 		setBackground(Est.sfondo);
 		setUndecorated(true);
 		c = new JPanel();

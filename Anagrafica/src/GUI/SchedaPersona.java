@@ -75,7 +75,7 @@ public class SchedaPersona extends Finestra{
 			Etichetta vv=new Etichetta(indirizzo+" ");
 			contenuto.add(vv);
 			
-	/*comp6*/Bottone bex=new Bottone("EXIT");
+	/*comp6*/Bottone bex=new Bottone("Back");
 			bex.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	ConsultaPersone consultaP=new ConsultaPersone();

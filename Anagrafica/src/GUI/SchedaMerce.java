@@ -95,7 +95,7 @@ public class SchedaMerce extends Finestra{
 		Panel sud=new Panel();
 		sud.setLayout(new GridLayout(2,2));
 		
-/*comp7*/Bottone bex=new Bottone("EXIT");
+/*comp7*/Bottone bex=new Bottone("Back");
 		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	ConsultaMerci consultaM=new ConsultaMerci();

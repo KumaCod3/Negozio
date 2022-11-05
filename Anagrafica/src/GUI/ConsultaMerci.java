@@ -45,7 +45,7 @@ public class ConsultaMerci extends Finestra{
 		JPanel sud=new JPanel();
 		sud.setOpaque(false);
 		sud.setLayout(new GridLayout(1,3));
-		Bottone bex=new Bottone("EXIT");
+		Bottone bex=new Bottone("Back");
 		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	Home home=new Home();

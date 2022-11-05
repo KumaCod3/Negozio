@@ -44,7 +44,7 @@ public class Balance extends Finestra{
 			
 			c.add("Center", contenuto);
 			
-	/*es*/Bottone bex=new Bottone("EXIT");
+	/*es*/Bottone bex=new Bottone("Back");
 			bex.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	Home home=new Home();

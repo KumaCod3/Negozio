@@ -95,7 +95,7 @@ public class ConsultaPersone  extends Finestra {
 	});
 		contenuto.add(bent);
 		
-/*comp7*/Bottone bex=new Bottone("EXIT");
+/*comp7*/Bottone bex=new Bottone("Back");
 		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	Home home=new Home();

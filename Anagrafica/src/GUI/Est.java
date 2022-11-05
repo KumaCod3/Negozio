@@ -36,6 +36,8 @@ public class Est {
 	public static Dimension testa=new Dimension((int)wi, (int)he80);
 	public static Dimension choi=new Dimension((int)wi270,(int)he80);
 	public static Dimension fil=new Dimension((int)wi270,(int)he30);
+	public static int marginX=(int)((screenSize.getSize().getWidth()/2)-(standard.getSize().getWidth()/2));
+	public static int marginY=(int)((screenSize.getSize().getSize().getHeight()/2)-(standard.getSize().getHeight()/2));
 	
 	public static DecimalFormat deci = new DecimalFormat("0.00");
 	public static DateTimeFormatter dateForm= DateTimeFormatter.ofPattern("yyyy-MM-dd H:mm.ss");
