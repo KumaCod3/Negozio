@@ -38,6 +38,7 @@ public class MyReadL {
 		}
 		return elenco;
 	}
+	
 	public static void scarica(ListaSpesa l){
 		if (l.qtTot()>0){
 			String riga=l.getData().format(Est.dateForm)+" , "+l.getCliente().getIntestazione()+" , "+Est.deci.format(l.getSaldo());

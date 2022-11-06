@@ -1,20 +1,16 @@
 package GUI;
-
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-
 import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
-
 import Negozio.Anagrafica;
 import Negozio.Cliente;
 import Negozio.DataB;
 import Negozio.Fornitore;
-
 import javax.swing.JRadioButton;
 import java.awt.Choice;
 

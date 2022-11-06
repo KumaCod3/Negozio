@@ -1,53 +1,49 @@
 package GUI;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
-import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JPanel;
 
 public class Storico extends Finestra{
-	
-		public Storico(){
-			super("History: ");
+	public Storico(){
+		super("History: ");
 
-			JPanel centro=new JPanel();
-			centro.setOpaque(false);
-			centro.setLayout(new GridLayout(1,2));
-			c.add("Center",centro);
-			JPanel sinistro=new JPanel();
-			sinistro.setOpaque(false);
-			sinistro.setLayout(new BorderLayout());
-			Etichetta non=new Etichetta("Sales History: ");
-			sinistro.add("North",non);
-			
-			StorTab tab=new StorTab();
-			sinistro.add("Center",tab.ta());
-			
-			Bottone bex=new Bottone("Back");
-			bex.but.addActionListener(new ActionListener() {
-			    public void actionPerformed(ActionEvent e) {
-			    	Home home=new Home();
-					home.setVisible(true);
-					setVisible(false);
-			    	dispose();
-				}
-			});
-			c.add("South",bex);
-			centro.add(sinistro);
-			
-			JPanel destro=new JPanel();
-			destro.setOpaque(false);
-			destro.setLayout(new BorderLayout());
-			Etichetta nomm=new Etichetta("Purchase History: ");
-			destro.add("North",nomm);
-			
-			StorTab tabb=new StorTab("prova");
-			destro.add("Center",tabb.ta());
-			centro.add(destro);
+		JPanel centro=new JPanel();
+		centro.setOpaque(false);
+		centro.setLayout(new GridLayout(1,2));
+		c.add("Center",centro);
+		JPanel sinistro=new JPanel();
+		sinistro.setOpaque(false);
+		sinistro.setLayout(new BorderLayout());
+		Etichetta non=new Etichetta("Sales History: ");
+		sinistro.add("North",non);
+		
+		StorTab tab=new StorTab();
+		sinistro.add("Center",tab.ta());
+		
+		Bottone bex=new Bottone("Back");
+		bex.but.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	Home home=new Home();
+				home.setVisible(true);
+				setVisible(false);
+		    	dispose();
+			}
+		});
+		c.add("South",bex);
+		centro.add(sinistro);
+		
+		JPanel destro=new JPanel();
+		destro.setOpaque(false);
+		destro.setLayout(new BorderLayout());
+		Etichetta nomm=new Etichetta("Purchase History: ");
+		destro.add("North",nomm);
+		
+		StorTab tabb=new StorTab("prova");
+		destro.add("Center",tabb.ta());
+		centro.add(destro);
 
-			
-			pack();
-		}
+		pack();
 	}
+}

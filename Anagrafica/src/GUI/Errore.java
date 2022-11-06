@@ -42,6 +42,7 @@ public class Errore extends Frame{
 		setAlwaysOnTop(true);
 		pack();
 	}
+	
 	public Errore(String a){
 		this();
 		// da AggiungiMerce e AggiungiPersona
@@ -259,7 +260,8 @@ public class Errore extends Frame{
 
 		tx.setText("<html>Do you want to place the order from "+f.getIntestazione()+"?");
 		
-		Panel sal=new Panel();
+		JPanel sal=new JPanel();
+		sal.setOpaque(false);
 		sal.setLayout(new GridLayout(1,3));
 		Etichetta sal1=new Etichetta(" Order: "+quantita+" "+m.getUnit());
 		sal.add(sal1);
@@ -269,7 +271,8 @@ public class Errore extends Frame{
 		sal.add(sal3);
 		
 		
-		Panel tasti=new Panel();
+		JPanel tasti=new JPanel();
+		tasti.setOpaque(false);
 		tasti.setLayout(new GridLayout(1,2));
 		
 		ok.but.addActionListener(new ActionListener() {

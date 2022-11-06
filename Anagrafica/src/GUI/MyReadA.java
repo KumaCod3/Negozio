@@ -38,6 +38,7 @@ public class MyReadA {
 		}
 		return elenco;
 	}
+	
 	public static void salva(Fornitore f, Double saldo, int merce){
 
 		String riga=LocalDateTime.now().format(Est.dateForm)+" , "+f.getIntestazione()+" , "+Est.deci.format(saldo)+" , "+merce;

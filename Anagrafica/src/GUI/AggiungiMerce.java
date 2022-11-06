@@ -170,7 +170,6 @@ public class AggiungiMerce extends Finestra{
 		});
 		panel_6.add(bent);
 		
-		
 		if (x!=-1) {
 			JPanel panel_7 = new JPanel();
 			panel_7.setOpaque(false);
@@ -191,9 +190,7 @@ public class AggiungiMerce extends Finestra{
 			panel_7.add(agg);
 			c.add("South", panel_7);
 		}
-		
 		c.add("Center", contenuto);
 		pack();
-		
 	}
 }

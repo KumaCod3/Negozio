@@ -10,7 +10,6 @@ import javax.swing.ListModel;
 import Negozio.Anagrafica;
 import Negozio.Merce;
 import javax.swing.DefaultListModel;
-import javax.swing.DropMode;
 import javax.swing.JList;
 import javax.swing.ListSelectionModel;
 import javax.swing.BoxLayout;
@@ -62,6 +61,7 @@ public class MyChoice <T extends Anagrafica>extends JPanel{
 		String fin=jList.getSelectedValue();
 		return fin;
 	}
+	
 	private void populate(ArrayList<T> sor) {
 		for (T a:sor) {
 			String fin=a.getMinIntestazione();
@@ -101,6 +101,7 @@ public class MyChoice <T extends Anagrafica>extends JPanel{
         }
         return model;
     }
+	
 	public void filterModel(DefaultListModel<String> model, String filter) {
         for (String s : elenco) {
         	if (s.toLowerCase().contains(filter)) {
@@ -115,6 +116,7 @@ public class MyChoice <T extends Anagrafica>extends JPanel{
             }
         }
     }
+	
 	public void clear() {
 		field.setText("");
 	}

@@ -7,6 +7,7 @@ import javax.swing.JTextField;
 public class FormVuoto extends JTextField{
 	String ret;
 	String tt="";
+	
 	public FormVuoto(String tit){
 		super(tit, 15);
 		ret=tit;
@@ -30,6 +31,7 @@ public class FormVuoto extends JTextField{
 		setFont(Est.plainFont);
 		
 	}
+	
 	public void clear(){
 		setText(tt);
 		setForeground(Est.chiarissimo);

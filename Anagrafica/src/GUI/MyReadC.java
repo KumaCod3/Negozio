@@ -26,7 +26,6 @@ public class MyReadC{
 		}
 		for (String lin:elenco){
 			String[] og=lin.split(",");
-			
 			String titolo=og[0];
 			String nome=og[1];
 			String cognome=og[2];
@@ -35,7 +34,6 @@ public class MyReadC{
 			String iva=og[5];
 			String indirizzo=og[6];
 			Double saldo=Double.parseDouble(og[7]);
-			
 			Cliente inser=new Cliente(titolo, nome, cognome, telefono, email, iva, indirizzo, saldo);
 			DataB.agg(inser);
 			

@@ -15,8 +15,9 @@ public class SchedaMerce extends Finestra{
 	String unita;
 	Merce mer;
 	int indexF=-1;
+	
 	public SchedaMerce(int x){
-		super("Product details"/*, 650, 920*/);
+		super("Product details");
 		
 		if (x!=-1&&DataM.elenco.containsKey(x)){
 			mer=DataM.elenco.get(x);
@@ -131,6 +132,7 @@ public class SchedaMerce extends Finestra{
 		    	}
 			}
 		});
+		
 		sud.add(eli);
 		Bottone ord=new Bottone("ORDER");
 		ord.but.addActionListener(new ActionListener() {
@@ -140,20 +142,21 @@ public class SchedaMerce extends Finestra{
 		    		try{
 				    	Fornitore f=DataB.get(indexF,"ciao");
 				    	Spesa sp=new Spesa(mer,f);
-				    	sp.setVisible(true);;
+				    	sp.setVisible(true);
 				    	dispose();
 			    	}
 			    	catch (Exception y){
 			    		// ERRORE
 			    	}
 		    	}
+		    	else {
+		    	}
 			}
 		});
-		sud.add(ord);
 		
+		sud.add(ord);
 		c.add("Center", contenuto);
 		c.add("South", sud);
 		pack();
 	}
-	
 }

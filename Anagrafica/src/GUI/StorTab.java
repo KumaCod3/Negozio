@@ -10,6 +10,7 @@ import Negozio.DataM;
 public class StorTab extends Finestra{
 	public LinkedHashMap<LocalDateTime,String[]> elenco=new LinkedHashMap<LocalDateTime,String[]>();
 	JTable tavola;
+	
 	DefaultTableModel model = new DefaultTableModel() {
 	    public boolean isCellEditable(int row, int column) {
 	       return false;
@@ -41,6 +42,7 @@ public class StorTab extends Finestra{
 		sp.add(tavola);
 		add(sp);
 	}
+	
 	public StorTab(String x){
 		super("Storico");
 		elenco=MyReadA.carica();
@@ -66,6 +68,7 @@ public class StorTab extends Finestra{
 		sp.add(tavola);
 		add(sp);
 	}
+	
 	public JScrollPane ta(){
 		JScrollPane sp=new JScrollPane(tavola); 
 		return sp;

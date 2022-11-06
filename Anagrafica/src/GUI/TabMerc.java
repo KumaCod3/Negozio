@@ -31,10 +31,12 @@ public class TabMerc extends Frame{
 		repaint();
 		add(sp);
 	}
+	
 	public JScrollPane ta(){
 		JScrollPane sp=new JScrollPane(tavola); 
 		return sp;
 	}
+	
 	public void aggiungi(Merce m, Double q){
 		String nome=m.getNome();
 		String quantita=q+"";

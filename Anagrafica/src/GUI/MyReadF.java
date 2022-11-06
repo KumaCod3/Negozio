@@ -1,5 +1,4 @@
 package GUI;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -26,6 +25,7 @@ public class MyReadF{
 		catch (IOException e){
 			e.printStackTrace();
 		}
+		
 		for (String lin:elenco){
 			ArrayList<Integer> mer=new ArrayList<Integer>();
 			String[] og=lin.split(",");

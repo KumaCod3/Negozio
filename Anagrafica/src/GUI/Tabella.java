@@ -8,12 +8,13 @@ import Negozio.Merce;
 
 public class Tabella extends Frame{
 	JTable tavola;
+	
 	DefaultTableModel model = new DefaultTableModel() {
 	    public boolean isCellEditable(int row, int column) {
 	       return false;
 	    }
 	};
-// 	int indx=-1;
+
 	public Tabella(){
 		tavola=new JTable(model);
 		tavola.setBackground(Est.sfondo);
@@ -29,10 +30,12 @@ public class Tabella extends Frame{
 		sp.add(tavola);
 		add(sp);
 	}
+	
 	public JScrollPane ta(){
 		JScrollPane sp=new JScrollPane(tavola); 
 		return sp;
 	}
+	
 	public void aggiungi(Merce m, Double q){
 		String nome=m.getNome();
 		String quantita=q+"";
@@ -40,15 +43,19 @@ public class Tabella extends Frame{
 		String[] riga={nome,quantita,tot};
 		model.addRow(riga);
 	}
+	
 	public void togli(int x){
 		model.removeRow(x);
 	}
+	
 	public void clear(){
 		model.setRowCount(0);
 	}
+	
 	public String getNome(int row){
 		return model.getValueAt(row,0).toString();
 	}
+	
 	public int getInd(String nome){
 		for (int i=0;i<model.getRowCount();i++){
 			if (model.getValueAt(i, 0).equals(nome)){
@@ -57,6 +64,7 @@ public class Tabella extends Frame{
 		}
 		return -1;
 	}
+	
 	public void repaint(ListaSpesa l){
 		clear();
 		for (Merce m:l.elenco.values()){

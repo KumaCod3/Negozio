@@ -59,6 +59,7 @@ public class NewButt extends JButton{
 				
 			}
 		});
+		
 		timer=new Timer(40, new ActionListener() { 
 			public void actionPerformed(ActionEvent e) {
 				if (mouseOver) {
@@ -84,6 +85,7 @@ public class NewButt extends JButton{
 				}
 			}
 		});
+		
 		timerPress=new Timer(0, new ActionListener() { 
 			public void actionPerformed(ActionEvent e) {
 				pressSize=pressSize+sizeSpeed;
@@ -113,9 +115,7 @@ public class NewButt extends JButton{
 		}
 		g.drawImage(img,0,0,null);
 		super.paintComponent(g);
-		
 	}
-	
 	
 	//Make graph for pressed
 	private void paintPress(Graphics2D g2) {
@@ -132,5 +132,4 @@ public class NewButt extends JButton{
 		float y=pressLoc.y-(pressSize/2);
 		g2.fillOval((int)x, (int)y, (int)pressSize, (int)pressSize);
 	}
-
 }

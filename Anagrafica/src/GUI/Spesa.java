@@ -1,8 +1,6 @@
 package GUI;
 import java.awt.BorderLayout;
-import java.awt.Choice;
 import java.awt.GridLayout;
-import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -11,7 +9,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-
 import Negozio.Anagrafica;
 import Negozio.Cliente;
 import Negozio.DataM;
@@ -26,9 +23,7 @@ public class Spesa extends Finestra{
 	public Anagrafica b;
 	public ListaSpesa list;
 	public Tabella tab;
-	/**
-	 * @wbp.parser.constructor
-	 */
+
 	public Spesa (Cliente c){
 		super("Shopping cart of "+c.getTitolo()+" "+c.getCognome()+" "+c.getNome());
 		list=new ListaSpesa(c);
@@ -43,7 +38,6 @@ public class Spesa extends Finestra{
 		contenuto.add(ti);
 /*comp2*/  Etichetta no=new Etichetta(c.getTitolo()+" "+c.getCognome()+" "+c.getNome());
 		contenuto.add(no);
-		
 		super.c.add("North",contenuto);
 
 /*comp1*/  Etichetta tx=new Etichetta("Choose product: ");
@@ -74,7 +68,8 @@ public class Spesa extends Finestra{
 		pan2.setOpaque(false);
 		contenuto.add(pan2);
 		
-		Panel sal=new Panel();
+		JPanel sal=new JPanel();
+		sal.setOpaque(false);
 		sal.setLayout(new GridLayout(1,3));
 		Etichetta sal1=new Etichetta("Total: .......");
 		sal1.setForeground(Est.scuro);
@@ -86,7 +81,8 @@ public class Spesa extends Finestra{
 		sal3.setForeground(Est.scuro);
 		sal.add(sal3);
 		
-		Panel corpo=new Panel();
+		JPanel corpo=new JPanel();
+		corpo.setOpaque(false);
 		corpo.setLayout(new BorderLayout());
 		tab=new Tabella();
 		tab.tavola.addFocusListener(new FocusListener() {
@@ -152,7 +148,8 @@ public class Spesa extends Finestra{
 		contenuto.add(eli);
 		
 		
-		Panel sotto=new Panel();
+		JPanel sotto=new JPanel();
+		sotto.setOpaque(false);
 		sotto.setLayout(new GridLayout(1,2));
 		
 		
@@ -176,12 +173,7 @@ public class Spesa extends Finestra{
 			}
 		});
 		sotto.add(fin);
-		
-		
 		super.c.add("South",sotto);
-
-
-
 		pack();
 	}
 	public void refre(){
@@ -189,10 +181,10 @@ public class Spesa extends Finestra{
 	}
 	
 	public Spesa (Merce m,Fornitore f){
-		super("Order "+m.getNome()/*,690,350*/);
-//		setLocation(150,50);
+		super("Order "+m.getNome());
 		b=f;
-		Panel contenuto=new Panel();
+		JPanel contenuto=new JPanel();
+		contenuto.setOpaque(false);
 		contenuto.setLayout(new GridLayout(4,2));
 		
 /*comp1*/  Etichetta ti=new Etichetta("Order supply from ");
@@ -215,7 +207,6 @@ public class Spesa extends Finestra{
 		contenuto.add(qtt);
 /*comp8*/JPanel pan2=new JPanel();
 		FormVuoto tf2=new FormVuoto("Quantity");
-		// DA SISTEMARE DOPO ETICHETTA
 		pan2.setBorder(BorderFactory.createEmptyBorder(60, 10, 10, 10));
 		pan2.add(tf2);
 		pan2.setOpaque(false);
@@ -223,7 +214,8 @@ public class Spesa extends Finestra{
 		
 		c.add("Center",contenuto);
 		
-		Panel sotto=new Panel();
+		JPanel sotto=new JPanel();
+		sotto.setOpaque(false);
 		sotto.setLayout(new GridLayout(1,2));
 		
 /*comp9*/Bottone bex=new Bottone("CANCEL");

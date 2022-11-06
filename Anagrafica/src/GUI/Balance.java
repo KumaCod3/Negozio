@@ -2,7 +2,6 @@ package GUI;
 import Negozio.*;
 import java.awt.*;
 import java.awt.event.*;
-
 import javax.swing.JPanel;
 
 public class Balance extends Finestra{
@@ -12,7 +11,7 @@ public class Balance extends Finestra{
 	private double bal;
 	
 		public Balance(){
-			super("TOTAL BALANCE:"/*, 650, 750*/);
+			super("TOTAL BALANCE:");
 			this.merchVal=Shop.getMerchVal();
 			this.totSold=Shop.getTotSold();
 			this.totBought=Shop.getTotBought();
@@ -44,7 +43,7 @@ public class Balance extends Finestra{
 			
 			c.add("Center", contenuto);
 			
-	/*es*/Bottone bex=new Bottone("Back");
+	/*exit*/Bottone bex=new Bottone("Back");
 			bex.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	Home home=new Home();

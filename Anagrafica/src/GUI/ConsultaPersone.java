@@ -4,15 +4,15 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-
 import java.awt.event.*;
 
 public class ConsultaPersone  extends Finestra {
 	int indexF=-1;
 	int indexC=-1;
 	boolean tipp=true;
+	
 	public ConsultaPersone(){
-		super("Consult Persons database"/*,770,400*/);
+		super("Consult Persons database");
 
 		JPanel contenuto=new JPanel();
 		contenuto.setLayout(new GridLayout(5,1));
@@ -106,10 +106,7 @@ public class ConsultaPersone  extends Finestra {
 		});
 		pan3.add(bex);
 		
-/*comp8Etichetta tv=new Etichetta("           ");
-		contenuto.add(tv);*/
-		
-/*comp9*/Bottone b2=new Bottone("ADD new");
+/*comp8*/Bottone b2=new Bottone("ADD new");
 		b2.but.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AggiungiPersona aggg=new AggiungiPersona();
@@ -123,6 +120,7 @@ public class ConsultaPersone  extends Finestra {
 		c.add(contenuto);
 		pack();
 	}
+	
 	public void sett(boolean a){
 		this.tipp=a;
 	}

@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 
 public class Bottone extends JPanel{
 	public NewButt but;
+	
 	public Bottone(String x){
 		super();
 		but=new NewButt(x);
@@ -18,6 +19,7 @@ public class Bottone extends JPanel{
 		
 		add(but);
 	}
+	
 	public Bottone(String x,int y){
 		super();
 		but=new NewButt(x);
@@ -32,5 +34,4 @@ public class Bottone extends JPanel{
 		
 		add(but);
 	}
-
 }

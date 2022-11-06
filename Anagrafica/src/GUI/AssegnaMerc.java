@@ -92,6 +92,7 @@ public class AssegnaMerc extends Finestra{
 		c.add("South",dis);
 		pack();
 	}
+	
 	public AssegnaMerc(Merce m){
 		super("Assign Product to Supplier"/*, 615, 550*/);
 		
