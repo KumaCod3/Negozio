@@ -59,7 +59,7 @@ public class MyReadM {
 
 		}
 		catch (Exception e){
-			System.out.print("Errore");
+			// error
 			
 		}
 	}

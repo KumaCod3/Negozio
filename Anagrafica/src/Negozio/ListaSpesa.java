@@ -21,9 +21,11 @@ public class ListaSpesa{
 	public Cliente getCliente(){
 		return cliente;
 	}
+	
 	public LocalDateTime getData(){
 		return data;
 	}
+	
 	public boolean compra(int merce,Double quantita, Spesa spes){
 		Merce x=new Merce(DataM.get(merce));
 		for (Merce m:elenco.values()){
@@ -31,7 +33,7 @@ public class ListaSpesa{
 				m.setQuantita(quantita+(m.getQuantita()));
 				if (!check(m)){
 					fix(m,spes);
-//					System.out.println("fix a: "+m.getQuantita()+" in magaz: "+DataM.elenco.get(m.getCod()).getQuantita());
+
 				}
 				calcolaSaldo();
 				return false;
@@ -40,7 +42,6 @@ public class ListaSpesa{
 		x.setQuantita(quantita);
 		if (!check(x)){
 			fix(x,spes);
-//			System.out.println("fix a: "+x.getQuantita()+" in magaz: "+DataM.elenco.get(x.getCod()).getQuantita());
 		}
 		elenco.put(merce, x);
 		calcolaSaldo();
@@ -60,6 +61,7 @@ public class ListaSpesa{
 		stampa=stampa+"TOT. "+saldo+"eu.";
 		return stampa;
 	}
+	
 	public String salva(){
 		String sav=data+" "+cliente.getNome()+" "+cliente.getCognome()+" tot to pay: "+saldo+"eu./n";
 		for (int k:elenco.keySet()){
@@ -72,6 +74,7 @@ public class ListaSpesa{
 	public Merce get(int x){
 		return elenco.get(x);
 	}
+	
 	public int nextIndice(){
 		for (int i=1;i>0;i++){
 			if(elenco.containsKey(i)==false){
@@ -80,6 +83,7 @@ public class ListaSpesa{
 		}
 		return -1;
 	}
+	
 	public int trovaNome(String nome){
 		for (Entry<Integer,Merce> entry:elenco.entrySet()){
 			String part=entry.getValue().toString();
@@ -108,6 +112,7 @@ public class ListaSpesa{
 		}
 		return false;
 	}
+	
 	public int trovaNumero(String nome){
 		for (int i=0;i<elenco.size();i++){
 			if (elenco.get(i).getNome().equals(nome)){
@@ -116,6 +121,7 @@ public class ListaSpesa{
 		}
 		return -1;
 	}
+	
 	public boolean controllaKey(int k){
 		for (int a: elenco.keySet()){
 			if (a==k){
@@ -136,6 +142,7 @@ public class ListaSpesa{
 			saldo=saldo+(m.getQuantita()*m.getPrezzoV());
 		}
 	}
+	
 	public Double qtTot(){
 		Double tot=0.0;
 		for (Merce m:elenco.values()){
@@ -143,6 +150,7 @@ public class ListaSpesa{
 		}
 		return tot;
 	}
+	
 	public void concludi(){
 		
 		for (Merce m:elenco.values()){
@@ -156,14 +164,15 @@ public class ListaSpesa{
 		calcolaSaldo();
 		cliente.setSaldo(cliente.getSaldo()-saldo);
 	}
+	
 	public boolean check(Merce m){
 		if (DataM.elenco.get(m.getCod()).getQuantita()<m.getQuantita()){
 			return false;
 		}
 		return true;
 	}
+	
 	public void fix(Merce m, Spesa spes){
-//		System.out.println("rich: "+m.getQuantita()+" in magaz: "+DataM.elenco.get(m.getCod()).getQuantita());
 		Errore er=new Errore(m,ListaSpesa.this, spes);
 		er.setVisible(true);
 	}

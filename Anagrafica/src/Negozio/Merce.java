@@ -1,8 +1,5 @@
 package Negozio;
-import GUI.*;
-
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Merce {
 	private final String nome;
@@ -16,7 +13,6 @@ public class Merce {
 	private String unita;
 	public ArrayList<Fornitore> elenco=new ArrayList<Fornitore>();
 
-
 	public Merce(Merce m){
 		this.nome=m.getNome();
 		this.quantita=m.getQuantita();
@@ -29,6 +25,7 @@ public class Merce {
 		this.codice=m.getCod();
 		this.elenco=m.getForn();
 	}
+	
 	public Merce(String nome, Double quantita, int rincaro, Double prezzoA, String unita){
 		this.nome=nome;
 		this.quantita=quantita;
@@ -40,6 +37,7 @@ public class Merce {
 		this.valore=prezzoA*quantita;
 		this.codice=DataM.nextIndice();
 	}
+	
 	public Merce(String nome, Double quantita, int rincaro, Double prezzoA, String unita, int cod){
 		this.nome=nome;
 		this.quantita=quantita;
@@ -51,99 +49,124 @@ public class Merce {
 		this.valore=prezzoA*quantita;
 		this.codice=cod;
 	}
+	
 	public int getCod(){
 		return codice;
 	}
+	
 	public String getUnit(){
 		return unita;
 	}
+	
 	public String getNome(){
 		return nome;
 	}
+	
 	public Double getQuantita(){
 		return quantita;
 	}
+	
 	public int getRincaro(){
 		return rincaro;
 	}
+	
 	public Double getPrezzoA(){
 		return prezzoA;
 	}
+	
 	public Double getPrezzoV(){
 		return prezzoV;
 	}
+	
 	public Double getValore(){
 		return valore;
 	}
+	
 	public void togli(Double x){
 		quantita=quantita-x;
 		valore=quantita*prezzoA;
 		prezzoF=quantita*prezzoV;
 	}
+	
 	public void aggiungi(double x){
 		quantita=quantita+x;
 		valore=quantita*prezzoA;
 		prezzoF=quantita*prezzoV;
 	}
+	
 	public void setRincaro(int x){
 		rincaro=x;
 		prezzoV=(prezzoA/100*rincaro)+prezzoA;
 	}
+	
 	public void setPrezzoA(Double x){
 		prezzoA=x;
 		prezzoV=(prezzoA/100*rincaro)+prezzoA;
 		valore=quantita*prezzoA;
 		prezzoF=quantita*prezzoV;
 	}
+	
 	public Double compra(int x){
 		aggiungi(x);
 		return (x*prezzoA);
 	}
+	
 	public Double vendi(Double x){
 		togli(x);
 		return (x*prezzoV);
 	}
+	
 	public void setQuantita(Double x){
 		
 		quantita=x;
 		valore=quantita*prezzoA;
 		prezzoF=quantita*prezzoV;
 	}
+	
 	public void setUnita(String x){
 		unita=x;
 	}
+	
 	public Double getPrezzoF(){
 		return prezzoF;
 	}
+	
 	public String toString(){
 		String stampa=nome+" "+quantita+" "+unita+" price: "+prezzoF;
 		return stampa;
 	}
+	
 	public String toStri(){
 		String stampa=nome+" "+quantita+" TOT "+valore;
 		return stampa;
 	}
+	
 	public void addForn(Fornitore f){
 		if (!doppioForn(f)){
 		elenco.add(f);
 		}
 	}
+	
 	public void addForn(String name){
 		Fornitore f=DataB.fornitori.get(DataB.trovaNome(name));
 		if (!doppioForn(f)){
 			elenco.add(f);
 		}
 	}
+	
 	public ArrayList<Fornitore> getForn(){
 		return elenco;
 	}
+	
 	public void removeForn(String name){
 		int index=getIndex(name);
 		elenco.remove(index);
 	}
+	
 	public void removeForn(Fornitore f){
 		elenco.remove(f);
 	}
+	
 	public int getIndex(String name){
 		int index=-1;
 		for (int i=0;i<elenco.size();i++){
@@ -153,6 +176,7 @@ public class Merce {
 		}
 		return index;
 	}
+	
 	public boolean doppioForn(Fornitore f){
 		for (Fornitore g:elenco){
 			if (g.equals(f)){

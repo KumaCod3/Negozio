@@ -78,7 +78,7 @@ public class MyReadF{
 
 		}
 		catch (Exception e){
-			System.out.print("Errore");
+			// error
 			
 		}
 	}

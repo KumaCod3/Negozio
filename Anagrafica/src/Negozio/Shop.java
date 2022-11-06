@@ -1,9 +1,7 @@
 package Negozio;
-
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-
 import GUI.Est;
 import GUI.MyReadA;
 import GUI.MyReadL;
@@ -18,20 +16,24 @@ public class Shop {
 		setMerchVal();
 		return merchVal;
 	}
+	
 	public static double getTotSold(){
 		setTotSold();
 		return totSold;
 	}
+	
 	public static double getTotBought(){
 		setTotBought();
 		return totBought;
 	}
+	
 	public static void setMerchVal(){
 		merchVal=0.0;
 		for (Merce m:DataM.elenco.values()){
 			merchVal=merchVal+m.getValore();
 		}
 	}
+	
 	public static void setTotSold(){
 		totSold=0.0;
 		HashMap<LocalDateTime,String[]> elenco=MyReadL.carica();
@@ -44,6 +46,7 @@ public class Shop {
 			}
 		}
 	}
+	
 	public static void setTotBought(){
 		totBought=0.0;
 		LinkedHashMap<LocalDateTime,String[]> elenco=MyReadA.carica();
@@ -57,6 +60,7 @@ public class Shop {
 		}
 		
 	}
+	
 	public static double getBal(){
 		bal=totSold-totBought;
 		return bal;

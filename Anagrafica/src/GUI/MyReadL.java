@@ -52,7 +52,7 @@ public class MyReadL {
 	
 			}
 			catch (Exception e){
-				System.out.print("Errore");
+				// error
 				
 			}
 		}

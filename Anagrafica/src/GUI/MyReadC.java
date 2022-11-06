@@ -57,7 +57,7 @@ public class MyReadC{
 
 		}
 		catch (Exception e){
-			System.out.print("Errore");
+			// error
 			
 		}
 	}

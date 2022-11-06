@@ -1,8 +1,5 @@
 package Negozio;
-import GUI.*;
-
 import java.util.HashMap;
-import java.util.Scanner;
 
 public abstract class Anagrafica {
 	private final String titolo;
@@ -14,7 +11,7 @@ public abstract class Anagrafica {
 	private Double saldo=0.00;
 	private String indirizzo;
 	private String tipo;
-	Scanner sc = new Scanner(System.in);
+//	Scanner sc = new Scanner(System.in);
 
 	public Anagrafica(String titolo,String nome,String cognome,String telefono,String email,String iva,String indirizzo,Double saldo){
 		this.cognome=cognome;
@@ -32,13 +29,6 @@ public abstract class Anagrafica {
 	public String getTitolo(){
 		return titolo;
 	}
-	/*public void setTitolo(String tit){
-		titolo=tit;
-	}
-	public Anagrafica(String unCognome, String unNome){
-		cognome=unCognome;
-		nome=unNome;
-	}*/
 
 	public String getNome(){
 		return nome;
@@ -46,12 +36,7 @@ public abstract class Anagrafica {
 	public String getCognome(){
 		return cognome;
 	}
-	/*public void setNome(String nome){
-		this.nome=nome;
-	}
-	public void setCognome(String cognome){
-		this.cognome=cognome;
-	}*/
+
 	public void setIva(String iva){
 		this.iva=iva;
 	}

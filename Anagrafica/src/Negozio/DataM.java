@@ -1,7 +1,6 @@
 package Negozio;
 import java.util.HashMap;
 import java.util.Map.Entry;
-import GUI.Spesa;
 
 public class DataM {
 	static public HashMap<Integer,Merce> elenco=new HashMap<Integer,Merce>();
@@ -13,12 +12,15 @@ public class DataM {
 		else {
 		}
 	}
+	
 	static public void agg(Merce t,int ind){
 		elenco.put(ind,t);
 	}
+	
 	static public Merce get(int x){
 		return elenco.get(x);
 	}
+	
 	static public int nextIndice(){
 		for (int i=1;i>0;i++){
 			if(elenco.containsKey(i)==false){
@@ -27,6 +29,7 @@ public class DataM {
 		}
 		return -1;
 	}
+	
 	static public int trovaNome(String nome){
 		for (Entry<Integer,Merce> entry:elenco.entrySet()){
 			if(nome.equals(entry.getValue().getNome())){
@@ -66,6 +69,7 @@ public class DataM {
 		}
 		return false;
 	}
+	
 	static public int trovaNumero(String nome){
 		for (int i=0;i<elenco.size();i++){
 			if (elenco.get(i).getNome().equals(nome)){
@@ -74,6 +78,7 @@ public class DataM {
 		}
 		return -1;
 	}
+	
 	static public boolean controllaKey(int k){
 		for (int a: elenco.keySet()){
 			if (a==k){
@@ -82,6 +87,7 @@ public class DataM {
 		}
 		return false;
 	}
+	
 	public String toString(){
 		String ss="";
 		for (Merce a:elenco.values()){
@@ -89,6 +95,7 @@ public class DataM {
 		}
 		return ss;
 	}
+	
 	static public void elimina(int x){
 		elenco.remove(x);
 		DataB.remove(x);
