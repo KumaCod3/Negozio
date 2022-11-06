@@ -12,7 +12,7 @@ public class Bottone extends JPanel{
 		setBorder(Est.bordo);
 		setBackground(Est.sfondo);
 
-		but.setMinimumSize(Est.piccolo);
+		but.setMinimumSize(Est.piccoloMin);
 		but.setMaximumSize(Est.piccolo);
 		but.setPreferredSize(Est.piccolo);
 		
@@ -26,7 +26,7 @@ public class Bottone extends JPanel{
 		setBorder(Est.bordo);
 		setOpaque(false);
 
-		but.setMinimumSize(Est.grosso);
+		but.setMinimumSize(Est.grossoMin);
 		but.setMaximumSize(Est.grosso);
 		but.setPreferredSize(Est.grosso);
 		

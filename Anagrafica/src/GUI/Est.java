@@ -1,14 +1,7 @@
 package GUI;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.beans.PropertyChangeListener;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.time.format.DateTimeFormatter;
-
-import javax.swing.Action;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
@@ -32,7 +25,9 @@ public class Est {
 	private static double wi310=wi/2.2;
 	public static Dimension standard=new Dimension((int)wi, (int)he);
 	public static Dimension piccolo=new Dimension((int)wi190,(int)he80);
+	public static Dimension piccoloMin=new Dimension((int)(wi190/3*2),(int)(he80/3*2));
 	public static Dimension grosso=new Dimension((int)wi310,(int)he80);
+	public static Dimension grossoMin=new Dimension((int)(wi310/3),(int)(he80/3*2));
 	public static Dimension testa=new Dimension((int)wi, (int)he80);
 	public static Dimension choi=new Dimension((int)wi270,(int)he80);
 	public static Dimension fil=new Dimension((int)wi270,(int)he30);
@@ -46,7 +41,6 @@ public class Est {
 	public static Border borCol= BorderFactory.createMatteBorder(0, 4, 4, 4, scuro);
 	public static Border borColHe= BorderFactory.createMatteBorder(4, 4, 0, 4, scuro);
 	public static Border borColTut= BorderFactory.createMatteBorder(4, 4, 4, 4, scuro);
-	public static Border vuoto=new EmptyBorder(new Insets(3,3,3,3));;
-//	public static Border eti= BorderFactory.createEmptyBorder(30, 20, 20, 70);
+	public static Border vuoto=new EmptyBorder(new Insets(3,3,3,3));
 	
 }
