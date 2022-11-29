@@ -11,7 +11,6 @@ public abstract class Anagrafica {
 	private Double saldo=0.00;
 	private String indirizzo;
 	private String tipo;
-//	Scanner sc = new Scanner(System.in);
 
 	public Anagrafica(String titolo,String nome,String cognome,String telefono,String email,String iva,String indirizzo,Double saldo){
 		this.cognome=cognome;
@@ -61,26 +60,11 @@ public abstract class Anagrafica {
 	public String getIndirizzo(){
 		return indirizzo;
 	}
-	public abstract void pagamentoEffettuato(Double pagamento);
-	public String getTipo(){
-		return tipo;
-	}
 	public Double getSaldo(){
 		return saldo;
 	}
 	public void setSaldo(Double costo){
 		saldo=costo;
-	}
-	public abstract void consegnaMerci(Double costo);
-	public String toString(){
-		String stamp="";
-		if (getTipo().equals("fornitore")){
-			stamp=getTitolo()+getNome()+" Piva: "+getIva()+" Debito totale: "+getSaldo();
-		}
-		else {
-			stamp=getTitolo()+" "+getNome()+" "+getCognome()+" Debito totale: "+getSaldo();
-		}
-		return stamp;
 	}
 	public String getIntestazione(){
 		String in=getTitolo()+" "+cognome+" , "+nome;

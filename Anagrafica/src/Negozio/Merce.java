@@ -82,12 +82,6 @@ public class Merce {
 		return valore;
 	}
 	
-	public void togli(Double x){
-		quantita=quantita-x;
-		valore=quantita*prezzoA;
-		prezzoF=quantita*prezzoV;
-	}
-	
 	public void aggiungi(double x){
 		quantita=quantita+x;
 		valore=quantita*prezzoA;
@@ -106,16 +100,6 @@ public class Merce {
 		prezzoF=quantita*prezzoV;
 	}
 	
-	public Double compra(int x){
-		aggiungi(x);
-		return (x*prezzoA);
-	}
-	
-	public Double vendi(Double x){
-		togli(x);
-		return (x*prezzoV);
-	}
-	
 	public void setQuantita(Double x){
 		
 		quantita=x;
@@ -126,21 +110,7 @@ public class Merce {
 	public void setUnita(String x){
 		unita=x;
 	}
-	
-	public Double getPrezzoF(){
-		return prezzoF;
-	}
-	
-	public String toString(){
-		String stampa=nome+" "+quantita+" "+unita+" price: "+prezzoF;
-		return stampa;
-	}
-	
-	public String toStri(){
-		String stampa=nome+" "+quantita+" TOT "+valore;
-		return stampa;
-	}
-	
+
 	public void addForn(Fornitore f){
 		if (!doppioForn(f)){
 		elenco.add(f);

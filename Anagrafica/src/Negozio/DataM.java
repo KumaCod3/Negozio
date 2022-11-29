@@ -61,41 +61,6 @@ public class DataM {
 		return false;
 	}
 	
-	static public boolean eDuplicato(String nome){
-		for (Merce a:elenco.values()){
-			if (a.getNome().equals(nome)){
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	static public int trovaNumero(String nome){
-		for (int i=0;i<elenco.size();i++){
-			if (elenco.get(i).getNome().equals(nome)){
-				return i;
-			}
-		}
-		return -1;
-	}
-	
-	static public boolean controllaKey(int k){
-		for (int a: elenco.keySet()){
-			if (a==k){
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	public String toString(){
-		String ss="";
-		for (Merce a:elenco.values()){
-			ss=ss+a.getNome()+" "+a.getQuantita()+" "+a.getUnit()+"\n";
-		}
-		return ss;
-	}
-	
 	static public void elimina(int x){
 		elenco.remove(x);
 		DataB.remove(x);

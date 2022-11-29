@@ -9,11 +9,6 @@ public class Fornitore extends Anagrafica {
 		super(titolo, nome, cognome, telefono, email, iva, indirizzo, saldo);
 		setTipo("fornitore");
 	}
-
-	public void pagamentoEffettuato(Double pagamento){
-		setSaldo(getSaldo()+pagamento);
-	}
-	
 	public void consegnaMerci(Double costo){
 		setSaldo(getSaldo()-costo);
 	}

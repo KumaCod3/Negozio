@@ -7,16 +7,6 @@ public class Cliente extends Anagrafica {
 		super(titolo, nome, cognome, telefono, email, iva, indirizzo, saldo);
 		setTipo("cliente");
 	}
-
-	public void pagamentoEffettuato(Double pagamento){
-		setSaldo(getSaldo()-pagamento);
-	}
-	
-	public void consegnaMerci(Double costo){
-		setSaldo(getSaldo()+costo);
-		if (!getIva().equals("")){
-		}
-	}
 	
 	public HashMap<Integer,Merce> getMerc(){
 		HashMap<Integer,Merce> vod=new HashMap<Integer,Merce>();
