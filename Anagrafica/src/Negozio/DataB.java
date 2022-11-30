@@ -119,29 +119,7 @@ public class DataB <T extends Anagrafica> {
 		}
 		return false;
 	}
-//	
-//	static public int trovaIva(String iva, int y){
-//		if (fornitori.size()>0){
-//			for (int i=0;i<fornitori.size();i++){
-//				if (fornitori.get(i).getIva().equals(iva)){
-//					return i;
-//				}
-//			}
-//		}
-//		return -1;
-//	}
-//	
-//	static public int trovaIva(String iva ,String y){
-//		if (clienti.size()>0){
-//			for (int i=0;i<clienti.size();i++){
-//				if (clienti.get(i).getIva().equals(iva)){
-//					return i;
-//				}
-//			}
-//		}
-//		return -1;
-//	}
-	
+
 	static public Fornitore trovaForn(Anagrafica x)throws Exception{
 		int index=trovaPersona(x.getCognome(), x.getNome());
 		return get(index ,"Fornitore");

@@ -41,6 +41,5 @@ public class Est {
 	public static Border borCol= BorderFactory.createMatteBorder(0, 4, 4, 4, scuro);
 	public static Border borColHe= BorderFactory.createMatteBorder(4, 4, 0, 4, scuro);
 	public static Border borColTut= BorderFactory.createMatteBorder(4, 4, 4, 4, scuro);
-	public static Border vuoto=new EmptyBorder(new Insets(3,3,3,3));
 	
 }

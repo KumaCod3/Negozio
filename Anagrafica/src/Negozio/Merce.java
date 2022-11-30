@@ -8,7 +8,6 @@ public class Merce {
 	private int rincaro;
 	private Double prezzoA;
 	private Double prezzoV;
-	private Double prezzoF;
 	private Double valore;
 	private String unita;
 	public ArrayList<Fornitore> elenco=new ArrayList<Fornitore>();
@@ -20,7 +19,6 @@ public class Merce {
 		this.prezzoA=m.getPrezzoA();
 		this.unita=m.getUnit();
 		this.prezzoV=(prezzoA/100*rincaro)+prezzoA;
-		this.prezzoF=prezzoV*quantita;
 		this.valore=prezzoA*quantita;
 		this.codice=m.getCod();
 		this.elenco=m.getForn();
@@ -33,7 +31,6 @@ public class Merce {
 		this.prezzoA=prezzoA;
 		this.unita=unita;
 		this.prezzoV=(prezzoA/100*rincaro)+prezzoA;
-		this.prezzoF=prezzoV*quantita;
 		this.valore=prezzoA*quantita;
 		this.codice=DataM.nextIndice();
 	}
@@ -45,7 +42,6 @@ public class Merce {
 		this.prezzoA=prezzoA;
 		this.unita=unita;
 		this.prezzoV=(prezzoA/100*rincaro)+prezzoA;
-		this.prezzoF=prezzoV*quantita;
 		this.valore=prezzoA*quantita;
 		this.codice=cod;
 	}
@@ -85,7 +81,6 @@ public class Merce {
 	public void aggiungi(double x){
 		quantita=quantita+x;
 		valore=quantita*prezzoA;
-		prezzoF=quantita*prezzoV;
 	}
 	
 	public void setRincaro(int x){
@@ -97,14 +92,12 @@ public class Merce {
 		prezzoA=x;
 		prezzoV=(prezzoA/100*rincaro)+prezzoA;
 		valore=quantita*prezzoA;
-		prezzoF=quantita*prezzoV;
 	}
 	
 	public void setQuantita(Double x){
 		
 		quantita=x;
 		valore=quantita*prezzoA;
-		prezzoF=quantita*prezzoV;
 	}
 	
 	public void setUnita(String x){

@@ -8,7 +8,7 @@ public class Bottone extends JPanel{
 	public Bottone(String x){
 		super();
 		but=new NewButt(x);
-		setBorder(Est.vuoto);
+		setBorder(Est.bordo);
 		setLayout(new GridBagLayout());
 		setBorder(Est.bordo);
 		setBackground(Est.sfondo);
@@ -23,7 +23,7 @@ public class Bottone extends JPanel{
 	public Bottone(String x,int y){
 		super();
 		but=new NewButt(x);
-		setBorder(Est.vuoto);
+		setBorder(Est.bordo);
 		setLayout(new GridBagLayout());
 		setBorder(Est.bordo);
 		setOpaque(false);
