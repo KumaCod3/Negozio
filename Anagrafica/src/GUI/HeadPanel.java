@@ -7,6 +7,7 @@ import java.awt.Toolkit;
 import javax.swing.JPanel;
 
 public class HeadPanel extends JPanel{
+	
 	HeadPanel(){
 		super();
 		setPreferredSize(new Dimension(40, 40));
