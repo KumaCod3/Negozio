@@ -10,7 +10,6 @@ public abstract class Anagrafica {
 	private String email;
 	private Double saldo=0.00;
 	private String indirizzo;
-	private String tipo;
 
 	public Anagrafica(String titolo,String nome,String cognome,String telefono,String email,String iva,String indirizzo,Double saldo){
 		this.cognome=cognome;
@@ -21,9 +20,6 @@ public abstract class Anagrafica {
 		this.iva=iva;
 		this.indirizzo=indirizzo;
 		this.saldo=saldo;
-	}
-	public void setTipo(String a){
-		tipo=a;
 	}
 	public String getTitolo(){
 		return titolo;

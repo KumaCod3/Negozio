@@ -7,7 +7,6 @@ public class Fornitore extends Anagrafica {
 	
 	public Fornitore(String titolo,String nome,String cognome,String telefono,String email,String iva,String indirizzo,Double saldo){
 		super(titolo, nome, cognome, telefono, email, iva, indirizzo, saldo);
-		setTipo("fornitore");
 	}
 	public void consegnaMerci(Double costo){
 		setSaldo(getSaldo()-costo);

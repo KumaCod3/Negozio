@@ -5,7 +5,6 @@ public class Cliente extends Anagrafica {
 	
 	public Cliente(String titolo,String nome,String cognome,String telefono,String email,String iva,String indirizzo,Double saldo){
 		super(titolo, nome, cognome, telefono, email, iva, indirizzo, saldo);
-		setTipo("cliente");
 	}
 	
 	public HashMap<Integer,Merce> getMerc(){
