@@ -4,7 +4,7 @@ It is still a work in progress, but even if, for now, I would not like outside h
 It is a program to manage a small shop, with customers and suppliers and a goods warehouse, It already has a GUI (swing and awt).
 Some of it is still in my language (I'm gonna translate what I can but not variables an Classes names (yes, not a good idea to make it bilingual... dumb me)).
 
-The main is in the GUI/Program class.
+The main is in the GUI/Main class.
 
 CURRENTLY: implementing connection to MySQL local Database!
 
