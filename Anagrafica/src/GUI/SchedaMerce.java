@@ -3,32 +3,39 @@ import Negozio.*;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class SchedaMerce extends Finestra{
-	String nome;
+	String nome="";
 	int codice;
-	Double quantita;
-	int rincaro;
-	Double prezzoA;
-	Double prezzoV;
-	Double valore;
-	String unita;
-	Merce mer;
-	int indexF=-1;
+	int index;
+	Double quantita=0.0;
+	Double rincaro=0.0;
+	Double prezzoA=0.0;
+	Double prezzoV=0.0;
+	Double valore=0.0;
+	String unita="";
+	String note="";
 	
 	public SchedaMerce(int x){
 		super("Product details");
-		
-		if (x!=-1&&DataM.elenco.containsKey(x)){
-			mer=DataM.elenco.get(x);
-			this.nome=mer.getNome();
-			this.quantita=mer.getQuantita();
-			this.rincaro=mer.getRincaro();
-			this.prezzoA=mer.getPrezzoA();
-			this.unita=mer.getUnit();
-			this.prezzoV=mer.getPrezzoV();
-			this.valore=mer.getValore();
-			this.codice=x;
+		index=x;
+		if (x!=-1) {
+			try {
+				String data=Main.db.leggiMercID(x);
+				String[] spl=data.split(",");
+
+				this.nome=spl[1];
+				this.unita=spl[2];
+				this.quantita=Double.parseDouble(spl[3]);
+				this.prezzoA=Double.parseDouble(spl[4]);
+				this.rincaro=Double.parseDouble(spl[5]);
+				this.note=spl[6];
+				this.prezzoV=prezzoA*rincaro;
+				this.valore=prezzoA*quantita;
+				
+			} catch (SQLException ex) {	ex.printStackTrace(); }
 		}
 		
 		JPanel contenuto=new JPanel();
@@ -70,14 +77,22 @@ public class SchedaMerce extends Finestra{
 		contenuto.add(forn);	
 		Choice ele1=new Choice();
 		ele1.add("Choose");
+//		try{
+//			for (Fornitore a:mer.getForn()){
+//				ele1.add(a.getCognome()+", "+a.getNome());
+//			}
+//		}
+//		catch (Exception e){
+//			ele1.add("Empty");
+//		}
 		try{
-			for (Fornitore a:mer.getForn()){
-				ele1.add(a.getCognome()+", "+a.getNome());
+			ResultSet xx=Main.db.getElenSuppF(index);
+			while (xx.next()) {
+				ele1.add(xx.getString(1)+", "+xx.getShort(2)+", "+xx.getShort(3));
 			}
 		}
-		catch (Exception e){
-			ele1.add("Empty");
-		}
+		catch (SQLException e){	e.printStackTrace();	}
+		
 		ele1.setFont(Est.plainFont);
 		ele1.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e){
@@ -87,7 +102,7 @@ public class SchedaMerce extends Finestra{
 				}
 				else {
 					String[] temp=ele1.getSelectedItem().split(", ");
-					indexF=DataB.trovaPersona(temp[0], temp[1]);
+					codice=Integer.parseInt(temp[0]);
 				}
 			}
 		});
@@ -110,7 +125,7 @@ public class SchedaMerce extends Finestra{
 		bin.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (x!=-1){
-			    	AggiungiMerce modifM=new AggiungiMerce(x);
+			    	ModMerce modifM=new ModMerce(x);
 			    	setVisible(false);
 			    	modifM.setVisible(true);
 		    	
@@ -140,10 +155,11 @@ public class SchedaMerce extends Finestra{
 		    	if (x!=-1){
 		    		
 		    		try{
-				    	Fornitore f=DataB.get(indexF,"ciao");
-				    	Spesa sp=new Spesa(mer,f);
-				    	sp.setVisible(true);
-				    	dispose();
+//	SEGNAPOSTOOOOO
+//				    	Fornitore f=DataB.get(indexF,"ciao");
+//				    	Spesa sp=new Spesa(mer,f);
+//				    	sp.setVisible(true);
+//				    	dispose();
 			    	}
 			    	catch (Exception y){
 			    		// ERRORE

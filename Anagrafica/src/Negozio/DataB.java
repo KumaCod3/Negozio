@@ -5,19 +5,23 @@ public class DataB <T extends Anagrafica> {
 	static public ArrayList<Cliente> clienti=new ArrayList<Cliente>();
 	static public ArrayList<Fornitore> fornitori=new ArrayList<Fornitore>();
 	
-	static public void agg(Cliente t){
+	static public int agg(Cliente t){
 		if (eDuplicato(t)==false){
 			clienti.add(t);
+			return clienti.indexOf(t);
 		}
 		else {
+			return -1;
 		}
 	}
 	
-	static public void agg(Fornitore t){
+	static public int agg(Fornitore t){
 		if (eDuplicato(t)==false){
 			fornitori.add(t);
+			return fornitori.indexOf(t);
 		}
 		else {
+			return -1;
 		}
 	}
 

@@ -5,6 +5,7 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.*;
+import java.sql.SQLException;
 
 public class ConsultaPersone  extends Finestra {
 	int indexF=-1;
@@ -34,23 +35,27 @@ public class ConsultaPersone  extends Finestra {
 		
 /*comp1*/  Etichetta tx1=new Etichetta("Supplier:");
 		pan1.add(tx1);
+
 		
-/*comp2*/MyChoice<Fornitore> ele=new MyChoice<Fornitore>(DataB.fornitori);
-		ele.jList.addListSelectionListener(new ListSelectionListener() {
-			public void valueChanged(ListSelectionEvent e) {
-				try {
-					String[] temp=ele.getSel().split(" , ");
-					indexF=DataB.trovaPersona(temp[0], temp[1]);
+		try {
+	/*comp2*/MyChoice<Fornitore> ele=new MyChoice<Fornitore>(Main.db.getElenForn(),5);
+			ele.jList.addListSelectionListener(new ListSelectionListener() {
+				public void valueChanged(ListSelectionEvent e) {
+					try {
+						String[] temp=ele.getSel().split(", ");
+						indexF=Integer.parseInt(temp[0]);
+					}
+					catch (Exception ex){
+						// no selection
+					}
+					
 				}
-				catch (Exception ex){
-					// no selection
-				}
-				
-			}
-		});
+			});
+		
 		
 		pan1.add(ele);
 		contenuto.add(pan1);
+		} catch (SQLException e) { e.printStackTrace();}
 		
 /*comp3*/Bottone bent1=new Bottone("ENTER", 5);
 		bent1.but.addActionListener(new ActionListener() {
@@ -68,21 +73,24 @@ public class ConsultaPersone  extends Finestra {
 /*comp4*/  Etichetta tx=new Etichetta("Customers:");
 		pan2.add(tx);
 		
-/*comp5*/MyChoice<Cliente> ele2=new MyChoice<Cliente>(DataB.clienti);
-		ele2.jList.addListSelectionListener(new ListSelectionListener() {
-			public void valueChanged(ListSelectionEvent e) {
-				try {
-					String[] temp=ele2.getSel().split(" , ");
-					indexC=DataB.trovaPersona(temp[0], temp[1], 5);
+		try {
+/*comp5*/MyChoice<Cliente> ele2=new MyChoice<Cliente>(Main.db.getElenCli());
+			ele2.jList.addListSelectionListener(new ListSelectionListener() {
+				public void valueChanged(ListSelectionEvent e) {
+					try {
+						String[] temp=ele2.getSel().split(", ");
+						indexC=Integer.parseInt(temp[0]);
+					}
+					catch (Exception ex){
+						// no selection
+					}
 				}
-				catch (Exception ex){
-					// no selection
-				}
-			}
-		});
-		pan2.add(ele2);
-		contenuto.add(pan2);
-
+			});
+			pan2.add(ele2);
+			contenuto.add(pan2);
+		} catch (SQLException e) { e.printStackTrace();}
+		
+		
 /*comp6*/Bottone bent=new Bottone("ENTER", 5);
 		bent.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {

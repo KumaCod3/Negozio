@@ -5,8 +5,8 @@ import GUI.*;
 public class Fornitore extends Anagrafica {
 	public HashMap<Integer,Merce> elenco=new HashMap<Integer,Merce>();
 	
-	public Fornitore(String titolo,String nome,String cognome,String telefono,String email,String iva,String indirizzo,Double saldo){
-		super(titolo, nome, cognome, telefono, email, iva, indirizzo, saldo);
+	public Fornitore(int id,String nome,String cognome,String telefono,String email,String stato,String citta,String indirizzo,String iva,Double saldo){
+		super( id, nome, cognome, telefono, email, stato, citta, indirizzo, iva, saldo);
 	}
 	public void consegnaMerci(Double costo){
 		setSaldo(getSaldo()-costo);

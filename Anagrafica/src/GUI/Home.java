@@ -100,9 +100,9 @@ public class Home extends Finestra{
 		Bottone bex=new Bottone("EXIT",5);
 		bex.but.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	MyReadM.scarica();
-    			MyReadF.scarica();
-    			MyReadC.scarica();
+ //           	MyReadM.scarica();
+  //  			MyReadF.scarica();
+  //  			MyReadC.scarica();
             	setVisible(false);
             	dispose();
             	System.exit(0);

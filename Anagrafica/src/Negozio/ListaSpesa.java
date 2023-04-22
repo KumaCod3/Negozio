@@ -99,7 +99,8 @@ public class ListaSpesa{
 			}
 		}
 		calcolaSaldo();
-		cliente.setSaldo(cliente.getSaldo()-saldo);
+// SEGNAPOSTOOOO
+//		cliente.setSaldo(cliente.getSaldo()-saldo);
 	}
 	
 	public boolean check(Merce m){

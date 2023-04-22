@@ -3,48 +3,54 @@ import Negozio.*;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class SchedaPersona extends Finestra{
-	String titolo;
+//	String titolo;
+	int codice;
 	String cognome;
 	String nome;
-	String iva="";
 	String telefono;
 	String email;
-	Double saldo=0.00;
+	String stato;
+	String citta;
 	String indirizzo;
-	Anagrafica mer;
-	int index=-1;
+	String iva="";
+	Double saldo=0.00;
+	String note;
+	int index;
+	
+//	Anagrafica mer;
+//	int index=-1;
 	
 	public SchedaPersona(int x, String tipo){
 		super("Scheda "+tipo);
-		if (x>-1){
-			if (tipo.equals("fornitore")){
-				try {
-					mer=DataB.fornitori.get(x);
-				}
-				catch (Exception e){
-					
-				}
+		String data="";
+		codice=x;
+		if (tipo.equals("fornitore")){
+			try {
+				data=Main.db.leggiForID(x);
 			}
-			else {
-				try {
-					mer=DataB.clienti.get(x);
-				}
-				catch (Exception e){
-					
-				}
-			}
-
-			this.titolo=mer.getTitolo();
-			this.cognome=mer.getCognome();
-			this.nome=mer.getNome();
-			this.iva=mer.getIva();
-			this.telefono=mer.getTelefono();
-			this.email=mer.getEmail();
-			this.saldo=mer.getSaldo();
-			this.indirizzo=mer.getIndirizzo();
+			catch (SQLException e){	e.printStackTrace();	}
 		}
+		else {
+			try {
+				data=Main.db.leggiCliID(x);
+			}
+			catch (SQLException e){	e.printStackTrace();	}
+		}
+		String[] spl=data.split(",");
+		this.nome=spl[1];
+		this.cognome=spl[2];
+		this.telefono=spl[3];
+		this.email=spl[4];
+		this.stato=spl[5];
+		this.citta=spl[6];
+		this.indirizzo=spl[7];
+		this.iva=spl[8];
+		this.saldo=Double.parseDouble(spl[9]);
+		this.note=spl[10];
 		
 		JPanel contenuto=new JPanel();
 		contenuto.setBorder(Est.bordo);
@@ -53,7 +59,7 @@ public class SchedaPersona extends Finestra{
 		
 /*comp1*/  Etichetta non=new Etichetta("Nominative: ");
 		contenuto.add(non);	
-		Etichetta nn=new Etichetta(titolo+" "+cognome+" "+nome);
+		Etichetta nn=new Etichetta(cognome+" "+nome);
 		contenuto.add(nn);	
 		
 /*comp2*/  Etichetta uni=new Etichetta("Contacts: ");
@@ -109,14 +115,15 @@ public class SchedaPersona extends Finestra{
 			
 			Choice ele1=new Choice();
 			ele1.add("Choose");
+			
 			try{
-				for (Merce a: mer.getMerc().values()){
-					ele1.add(a.getNome()+" "+a.getCod());
+				ResultSet xx=Main.db.getElenSuppM(codice);
+				while (xx.next()) {
+					ele1.add(xx.getString(1)+", "+xx.getString(2));
 				}
 			}
-			catch (Exception e){
-				ele1.add("Empty");
-			}
+			catch (SQLException e){	e.printStackTrace();	}
+			
 			ele1.setFont(Est.plainFont);
 			ele1.addFocusListener(new FocusListener() {
 				public void focusGained(FocusEvent e){
@@ -126,8 +133,8 @@ public class SchedaPersona extends Finestra{
 					}
 					else {
 						String temp=ele1.getSelectedItem();
-						String[] temAr=temp.split(" ");
-						index=Integer.parseInt(temAr[temAr.length-1]);
+						String[] temAr=temp.split(", ");
+						index=Integer.parseInt(temAr[0]);
 					}
 				}
 			});
@@ -141,8 +148,8 @@ public class SchedaPersona extends Finestra{
 			agg.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	try{
-				    	Fornitore f=DataB.trovaForn(mer);
-				    	AssegnaMerc ass=new AssegnaMerc(f);
+//				    	Fornitore f=DataB.trovaForn(mer);
+				    	AssegnaMerc ass=new AssegnaMerc(codice);
 				    	ass.setVisible(true);
 				    	setVisible(false);
 				    	dispose();
@@ -159,11 +166,12 @@ public class SchedaPersona extends Finestra{
 			    public void actionPerformed(ActionEvent e) {
 			    	if (index!=-1){
 				    	try{
-					    	Fornitore f=DataB.trovaForn(mer);
-					    	Spesa sp=new Spesa(DataM.get(index),f);
-					    	sp.setVisible(true);
-					    	setVisible(false);
-					    	dispose();
+//	SEGNAPOSTOOOOO
+//					    	Fornitore f=DataB.trovaForn(mer);
+//					    	Spesa sp=new Spesa(DataM.get(index),f);
+//					    	sp.setVisible(true);
+//					    	setVisible(false);
+//					    	dispose();
 				    	}
 				    	catch (Exception y){
 				    		// ERRORE

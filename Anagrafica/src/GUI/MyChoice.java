@@ -1,4 +1,6 @@
 package GUI;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.event.DocumentEvent;
@@ -19,9 +21,47 @@ public class MyChoice <T extends Anagrafica>extends JPanel{
 	ArrayList<String> elenco=new ArrayList<String>();
 	JTextField field;
 	
-	public MyChoice(HashMap<Integer,Merce> lis){
+//	public MyChoice(HashMap<Integer,Merce> lis){
+//		super();
+//		populate(lis);
+//		setBorder(Est.bordo);
+//		setOpaque(false);
+//		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+//		
+//		jList = new JList<String>(createDefaultListModel());
+//		jList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+//		jList.setVisibleRowCount(6);
+//		
+//		field=createTextField();
+//		add(field);
+//		JScrollPane pap=new JScrollPane(jList);
+//		pap.setPreferredSize(Est.choi);
+//		pap.setMaximumSize(Est.choi);
+//		add(pap);
+//	}
+//	
+//	public MyChoice(ArrayList<T> lis){
+//		super();
+//		populate(lis);
+//		setBorder(Est.bordo);
+//		setOpaque(false);
+//		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+//		
+//		jList = new JList<String>(createDefaultListModel());
+//		jList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+//		jList.setVisibleRowCount(6);
+//		
+//		field=createTextField();
+//		add(field);
+//		JScrollPane pap=new JScrollPane(jList);
+//		pap.setPreferredSize(Est.choi);
+//		pap.setMaximumSize(Est.choi);
+//		add(pap);
+//	}
+	
+	public MyChoice(ResultSet lis,String x){
 		super();
-		populate(lis);
+		populateMer(lis);
 		setBorder(Est.bordo);
 		setOpaque(false);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -38,9 +78,28 @@ public class MyChoice <T extends Anagrafica>extends JPanel{
 		add(pap);
 	}
 	
-	public MyChoice(ArrayList<T> lis){
+	public MyChoice(ResultSet lis,int x){
 		super();
-		populate(lis);
+		populateFor(lis);
+		setBorder(Est.bordo);
+		setOpaque(false);
+		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		
+		jList = new JList<String>(createDefaultListModel());
+		jList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		jList.setVisibleRowCount(6);
+		
+		field=createTextField();
+		add(field);
+		JScrollPane pap=new JScrollPane(jList);
+		pap.setPreferredSize(Est.choi);
+		pap.setMaximumSize(Est.choi);
+		add(pap);
+	}
+	
+	public MyChoice(ResultSet lis){
+		super();
+		populateCli(lis);
 		setBorder(Est.bordo);
 		setOpaque(false);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -62,21 +121,45 @@ public class MyChoice <T extends Anagrafica>extends JPanel{
 		return fin;
 	}
 	
-	private void populate(ArrayList<T> sor) {
-		for (T a:sor) {
-			String fin=a.getMinIntestazione();
-			elenco.add(fin);
-		}
-		
+//	private void populate(ArrayList<T> sor) {
+//		for (T a:sor) {			
+//			String fin="cIAO";
+//			elenco.add(fin);
+//		}
+//	}
+	
+	private void populateMer(ResultSet sor) {
+		try {
+			while (sor.next()) {		
+				String fin=sor.getString("ID_MERCE")+", "+sor.getString("product");
+				elenco.add(fin);
+			}
+		} catch (SQLException e) { e.printStackTrace(); }
+	}
+	private void populateCli(ResultSet sor) {
+		try {
+			while (sor.next()) {		
+				String fin=sor.getString("ID_CLIENTE")+", "+sor.getString("name")+", "+sor.getString("last_name");
+				elenco.add(fin);
+			}
+		} catch (SQLException e) { e.printStackTrace(); }
+	}
+	private void populateFor(ResultSet sor) {
+		try {
+			while (sor.next()) {		
+				String fin=sor.getString("ID_FORNITORE")+", "+sor.getString("name")+", "+sor.getString("last_name");
+				elenco.add(fin);
+			}
+		} catch (SQLException e) { e.printStackTrace(); }
 	}
 	
-	private void populate(HashMap<Integer,Merce> sor) {
-		for (Merce a:sor.values()) {
-			String fin=a.getCod()+" "+a.getNome();
-			elenco.add(fin);
-		}
-		
-	}
+//	private void populate(HashMap<Integer,Merce> sor) {
+//		for (Merce a:sor.values()) {
+//			String fin=a.getCod()+" "+a.getNome();
+//			elenco.add(fin);
+//		}
+//		
+//	}
 
 	private JTextField createTextField() {
         final JTextField field = new JTextField(15);
@@ -120,4 +203,5 @@ public class MyChoice <T extends Anagrafica>extends JPanel{
 	public void clear() {
 		field.setText("");
 	}
+	
 }

@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.sql.SQLException;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
 import Negozio.Anagrafica;
@@ -15,17 +17,17 @@ import javax.swing.JRadioButton;
 import java.awt.Choice;
 
 public class AggiungiPersona extends Finestra{
-	String cognome="";
-	String nome="";
-	String telefono="";
-	String email="";
-	String indirizzo="";
-	String tipo="";
-	Double saldo=0.0;
-	String titolo="";
+	String tipo;
+	String cognome;
+	String nome;
+	String telefono;
+	String email;
+	String stato="ST";
+	String citta="city";
+	String indirizzo;
 	String iva="";
-	boolean sett;
-	Anagrafica mer=null;
+	Double saldo=0.00;
+	String note=" ";
 	
 	public AggiungiPersona() {
 		super("Add new Person");
@@ -76,23 +78,23 @@ public class AggiungiPersona extends Finestra{
 		Etichetta un=new Etichetta("Title: ");
 		panel_2.add(un);
 		
-		Choice uni = new Choice();
-		uni.setPreferredSize(Est.choi);
-		uni.add("Choose");
-		uni.add("Firm");
-		uni.add("Mr.");
-		uni.add("Mrs.");
-		uni.setFont(Est.plainFont);
-		uni.addFocusListener(new FocusListener() {
-			public void focusGained(FocusEvent e){
-			}
-			public void focusLost(FocusEvent e){
-				if (uni.getSelectedIndex()>0){
-					titolo=uni.getSelectedItem();
-				}
-			}
-		});
-		panel_2.add(uni);
+//		Choice uni = new Choice();
+//		uni.setPreferredSize(Est.choi);
+//		uni.add("Choose");
+//		uni.add("Firm");
+//		uni.add("Mr.");
+//		uni.add("Mrs.");
+//		uni.setFont(Est.plainFont);
+//		uni.addFocusListener(new FocusListener() {
+//			public void focusGained(FocusEvent e){
+//			}
+//			public void focusLost(FocusEvent e){
+//				if (uni.getSelectedIndex()>0){
+//					titolo=uni.getSelectedItem();
+//				}
+//			}
+//		});
+//		panel_2.add(uni);
 		
 		JPanel panel_3 = new JPanel();
 		FlowLayout flowLayout_2 = (FlowLayout) panel_3.getLayout();
@@ -228,19 +230,25 @@ public class AggiungiPersona extends Finestra{
 				}
 		    	
 		    	if (tipo.contentEquals("cliente")){
-		    		Cliente inser=new Cliente(titolo, nome, cognome, telefono, email, iva, indirizzo, saldo);
-		    		DataB.agg(inser);
+		    		String dati=nome+"','"+cognome+"','"+telefono+"','"+email+"','"+stato+"','"+citta+"','"+indirizzo+"','"+iva+"',"+saldo+",'"+note;
+		    		try {
+		    			Main.db.aggCli(dati);
+		    		} catch (SQLException ex) {	ex.printStackTrace(); }
+		    		
 		    		ConsultaPersone consultaP=new ConsultaPersone();
 			    	consultaP.setVisible(true);
-			    	MyReadC.scarica();
+//			    	MyReadC.scarica();
 			    	dispose();
 		    	}
 		    	else if (tipo.contentEquals("fornitore")){
-		    		Fornitore inser=new Fornitore(titolo, nome, cognome, telefono, email, iva, indirizzo, saldo);
-		    		DataB.agg(inser);
+		    		try {
+		    			String dati=nome+"','"+cognome+"','"+telefono+"','"+email+"','"+stato+"','"+citta+"','"+indirizzo+"','"+iva+"',"+saldo+",'"+note;
+			    		Main.db.aggFor(dati);
+		    		} catch (SQLException ex) {	ex.printStackTrace(); }
+		    		
 		    		ConsultaPersone consultaP=new ConsultaPersone();
 			    	consultaP.setVisible(true);
-			    	MyReadF.scarica();
+//			    	MyReadF.scarica();
 			    	dispose();
 		    	}
 			}

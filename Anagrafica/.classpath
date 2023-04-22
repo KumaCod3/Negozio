@@ -11,5 +11,6 @@
 	<classpathentry kind="lib" path="C:/Users/mixim/eclipse-workspace/UCanAccess-5.0.1.bin/lib/hsqldb-2.5.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/mixim/eclipse-workspace/UCanAccess-5.0.1.bin/lib/jackcess-3.0.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/mixim/eclipse-workspace/UCanAccess-5.0.1.bin/ucanaccess-5.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Java/jre1.8.0_361/lib/ext/mysql-connector.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

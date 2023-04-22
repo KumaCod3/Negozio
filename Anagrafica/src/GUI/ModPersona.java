@@ -5,65 +5,61 @@ import java.awt.GridLayout;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+
 import javax.swing.JPanel;
 import Negozio.Anagrafica;
 import Negozio.DataB;
 
 public class ModPersona extends Finestra{
-	String cognome="";
-	String nome="";
-	String telefono="";
-	String email="";
-	String indirizzo="";
-	String tipo="";
-	Double saldo=0.0;
-	String titolo="";
+	// titolo
+	int codice;
+	String cognome;
+	String nome;
+	String telefono;
+	String email;
+	String stato;
+	String citta;
+	String indirizzo;
 	String iva="";
-	boolean sett;
-	Anagrafica mer=null;
+	Double saldo=0.00;
+	String note;
+	
+//	boolean sett;
+//	Anagrafica mer=null;
 	
 	public ModPersona(int x,String tipo){
 		super("Edit person");
-		
+		String data="";
+		codice=x;
 		if (tipo.equals("fornitore")){
 			try {
-				mer=DataB.fornitori.get(x);
+				data=Main.db.leggiForID(x);
 			}
-			catch (Exception e){
-				Errore err=new Errore("Wrong Index...");
-				err.setVisible(true);
-			    ConsultaPersone consultaP=new ConsultaPersone();
-			    consultaP.setVisible(true);
-			    setVisible(false);
-			   	dispose();
-			}
+			catch (SQLException e){	e.printStackTrace();	}
 		}
 		else {
 			try {
-				mer=DataB.clienti.get(x);
+				data=Main.db.leggiCliID(x);
 			}
-			catch (Exception e){
-				Errore err=new Errore("Wrong Index...");
-				err.setVisible(true);
-			   	ConsultaPersone consultaP=new ConsultaPersone();
-			   	consultaP.setVisible(true);
-			   	setVisible(false);
-			   	dispose();		
-			}
+			catch (SQLException e){	e.printStackTrace();	}
 		}
+		String[] spl=data.split(",");
+		this.nome=spl[1];
+		this.cognome=spl[2];
+		this.telefono=spl[3];
+		this.email=spl[4];
+		this.stato=spl[5];
+		this.citta=spl[6];
+		this.indirizzo=spl[7];
+		this.iva=spl[8];
+		this.saldo=Double.parseDouble(spl[9]);
+		this.note=spl[10];
 		
 		c.setLayout(new BorderLayout(100,10));
 		
 		Panel contenuto=new Panel();
 		contenuto.setLayout(new GridLayout(10,2));
-		
-		titolo=mer.getTitolo();
-		iva=mer.getIva();
-		telefono=mer.getTelefono();
-		email=mer.getEmail();
-		saldo=mer.getSaldo();
-		indirizzo=mer.getIndirizzo();
-		
 		
 		JPanel panel_1 = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) panel_1.getLayout();
@@ -87,7 +83,7 @@ public class ModPersona extends Finestra{
 		Etichetta un=new Etichetta("Title:                                              ");
 		panel_2.add(un);
 		
-		Etichetta un1=new Etichetta(mer.getTitolo());
+		Etichetta un1=new Etichetta("titolo");
 		panel_2.add(un1);
 		
 		JPanel panel_3 = new JPanel();
@@ -99,7 +95,7 @@ public class ModPersona extends Finestra{
 		Etichetta non=new Etichetta("Name: ");
 		panel_3.add(non);
 		
-		FormVuoto tf1 = new FormVuoto(mer.getNome());
+		FormVuoto tf1 = new FormVuoto(nome);
 		panel_3.add(tf1);
 		
 		JPanel panel_4 = new JPanel();
@@ -111,7 +107,7 @@ public class ModPersona extends Finestra{
 		Etichetta qtt=new Etichetta("Last Name: ");
 		panel_4.add(qtt);
 		
-		FormVuoto tf2 = new FormVuoto(mer.getCognome());
+		FormVuoto tf2 = new FormVuoto(cognome);
 		panel_4.add(tf2);
 		
 		JPanel panel_5 = new JPanel();
@@ -123,7 +119,7 @@ public class ModPersona extends Finestra{
 		Etichetta tel=new Etichetta("Phone: ");
 		panel_5.add(tel);
 		
-		FormVuoto tf3 = new FormVuoto(mer.getTelefono());
+		FormVuoto tf3 = new FormVuoto(telefono);
 		panel_5.add(tf3);
 		
 		JPanel panel_6 = new JPanel();
@@ -136,7 +132,7 @@ public class ModPersona extends Finestra{
 		Etichetta ty_1 = new Etichetta("eMail:   ");
 		panel_6.add(ty_1);
 		
-		FormVuoto tf4 = new FormVuoto(mer.getEmail());
+		FormVuoto tf4 = new FormVuoto(email);
 		panel_6.add(tf4);
 		
 		JPanel panel_7 = new JPanel();
@@ -149,7 +145,7 @@ public class ModPersona extends Finestra{
 		Etichetta ty_2 = new Etichetta("VAT number:  ");
 		panel_7.add(ty_2);
 		
-		FormVuoto tf5 = new FormVuoto(mer.getIva());
+		FormVuoto tf5 = new FormVuoto(iva);
 		panel_7.add(tf5);
 		
 		JPanel panel_8 = new JPanel();
@@ -164,7 +160,7 @@ public class ModPersona extends Finestra{
 		Etichetta ty_3 = new Etichetta("Address: ");
 		panel_8.add(ty_3);
 		
-		FormVuoto tf6 = new FormVuoto(mer.getIndirizzo());
+		FormVuoto tf6 = new FormVuoto(indirizzo);
 		panel_8.add(tf6);
 		
 		JPanel panel_9 = new JPanel();
@@ -177,7 +173,7 @@ public class ModPersona extends Finestra{
 		contenuto.add(panel_9);
 		
 		Etichetta tchtOpeningBal = new Etichetta("Opening Balance: ");
-		tchtOpeningBal.setText(""+mer.getSaldo());
+		tchtOpeningBal.setText(""+saldo);
 		panel_9.add(tchtOpeningBal);
 		
 		FormVuoto tf7 = new FormVuoto("balance");
@@ -224,46 +220,56 @@ public class ModPersona extends Finestra{
 		    	
 		    	if (tipo.contentEquals("cliente")){
 		    		try {
+		    			Main.db.modCliID(codice, nome, cognome, telefono, email, stato, citta, indirizzo, iva, saldo, note);
+		    		} catch (SQLException ex) {	ex.printStackTrace(); }
 		    		
-			    		DataB.clienti.get(x).setIva(iva);
-			    		DataB.clienti.get(x).setTelefono(telefono);
-			    		DataB.clienti.get(x).setEmail(email);
-			    		DataB.clienti.get(x).setSaldo(saldo);
-			    		DataB.clienti.get(x).setIndirizzo(indirizzo);
+		    		
+//			    		DataB.clienti.get(x).setIva(iva);
+//			    		DataB.clienti.get(x).setTelefono(telefono);
+//			    		DataB.clienti.get(x).setEmail(email);
+//			    		DataB.clienti.get(x).setSaldo(saldo);
+//			    		DataB.clienti.get(x).setIndirizzo(indirizzo);
+			    		
+			    		
+			    		
 			    		ConsultaPersone consultaP=new ConsultaPersone();
 				    	consultaP.setVisible(true);
-				    	MyReadC.scarica();
+//				    	MyReadC.scarica();
 				    	dispose();
-		    		}
-		    		catch (Exception r){
-		    			Errore err=new Errore("Wrong Index...");
-		    			err.setVisible(true);
-					    ConsultaPersone consultaP=new ConsultaPersone();
-					    consultaP.setVisible(true);
-					    setVisible(false);
-					    dispose();			    			
-		    		}
+//		    		}
+//		    		catch (Exception r){
+//		    			Errore err=new Errore("Wrong Index...");
+//		    			err.setVisible(true);
+//					    ConsultaPersone consultaP=new ConsultaPersone();
+//					    consultaP.setVisible(true);
+//					    setVisible(false);
+//					    dispose();			    			
+//		    		}
 		    	}
 		    	else if (tipo.contentEquals("fornitore")){
 		    		try {
-		    			DataB.fornitori.get(x).setIva(iva);
-		    			DataB.fornitori.get(x).setTelefono(telefono);
-		    			DataB.fornitori.get(x).setEmail(email);
-		    			DataB.fornitori.get(x).setSaldo(saldo);
-		    			DataB.fornitori.get(x).setIndirizzo(indirizzo);
+		    			Main.db.modForID(codice, nome, cognome, telefono, email, stato, citta, indirizzo, iva, saldo, note);
+		    		} catch (SQLException ex) {	ex.printStackTrace(); }
+		    			
+		    			
+//		    			DataB.fornitori.get(x).setIva(iva);
+//		    			DataB.fornitori.get(x).setTelefono(telefono);
+//		    			DataB.fornitori.get(x).setEmail(email);
+//		    			DataB.fornitori.get(x).setSaldo(saldo);
+//		    			DataB.fornitori.get(x).setIndirizzo(indirizzo);
 			    		ConsultaPersone consultaP=new ConsultaPersone();
 				    	consultaP.setVisible(true);
-				    	MyReadF.scarica();
+//				    	MyReadF.scarica();
 				    	dispose();
-		    		}
-		    		catch (Exception u){
-		    			Errore err=new Errore("Wrong Index...");
-		    			err.setVisible(true);
-					    ConsultaPersone consultaP=new ConsultaPersone();
-					    consultaP.setVisible(true);
-					    setVisible(false);
-					    dispose();	
-		    		}
+//		    		}
+//		    		catch (Exception u){
+//		    			Errore err=new Errore("Wrong Index...");
+//		    			err.setVisible(true);
+//					    ConsultaPersone consultaP=new ConsultaPersone();
+//					    consultaP.setVisible(true);
+//					    setVisible(false);
+//					    dispose();	
+//		    		}
 		    	}
 			}
 		});

@@ -3,6 +3,7 @@ import Negozio.*;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.sql.SQLException;
 
 public class AggiungiMerce extends Finestra{
 	String nome="nome";
@@ -11,16 +12,8 @@ public class AggiungiMerce extends Finestra{
 	int rincaro=0;
 	String unita="unita";
 	
-	public AggiungiMerce(int x){
+	public AggiungiMerce(){
 		super("Product");
-		if (x!=-1) {
-			Merce m=DataM.elenco.get(x);
-			nome=m.getNome();
-			quantita=m.getQuantita();
-			prezzoA=m.getPrezzoA();
-			rincaro=m.getRincaro();
-			unita=m.getUnit();
-		}
 		
 		JPanel contenuto=new JPanel();
 		contenuto.setBorder(Est.bordo);
@@ -38,10 +31,6 @@ public class AggiungiMerce extends Finestra{
 		panel_1.add(etNome);
 		
 		FormVuoto tf1 = new FormVuoto(nome);
-		if (x!=-1) {
-			tf1.setEditable(false);
-			tf1.setUnchain();
-		}
 		panel_1.add(tf1);
 		
 		JPanel panel_2 = new JPanel();
@@ -127,16 +116,22 @@ public class AggiungiMerce extends Finestra{
 		Bottone bent = new Bottone("ENTER");
 		bent.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	if (x==-1) {
+
 			    	nome=tf1.ret;
 			    	try {
 			    		quantita=Double.parseDouble(tf2.ret);
 			    		prezzoA=Double.parseDouble(tf3.ret);
-			    		Merce inserisci =new Merce(nome, quantita, rincaro, prezzoA, unita);
-						DataM.agg(inserisci);
+//			    		Merce inserisci =new Merce(nome, quantita, rincaro, prezzoA, unita);
+//						DataM.agg(inserisci);
+			    		
+			    		try {
+				    		String dati=nome+unita+quantita+prezzoA+rincaro+"note";
+				    		Main.db.aggMerc(dati);
+			    		} catch (SQLException ex) {	ex.printStackTrace(); }
+			    		
 						ConsultaMerci consultaM=new ConsultaMerci(/*c*/);
 				    	consultaM.setVisible(true);
-				    	MyReadM.scarica();
+//				    	MyReadM.scarica();
 				    	setVisible(false);
 				    	dispose();
 			    	}
@@ -144,52 +139,10 @@ public class AggiungiMerce extends Finestra{
 			    		Errore err=new Errore("Enter number with . ");
 			    		err.setVisible(true);
 			    	}
-			    	
-					
-		    	}
-		    	else {
-		    		try {
-			    		quantita=Double.parseDouble(tf2.ret);
-			    		prezzoA=Double.parseDouble(tf3.ret);
-			    		DataM.get(x).setPrezzoA(prezzoA);
-				    	DataM.get(x).setQuantita(quantita);
-				    	DataM.get(x).setRincaro(rincaro);
-				    	DataM.get(x).setUnita(unita);
-						ConsultaMerci consultaM=new ConsultaMerci();
-				    	consultaM.setVisible(true);
-				    	MyReadM.scarica();
-				    	setVisible(false);
-				    	dispose();
-			    	}
-			    	catch (Exception ex){
-			    		Errore err=new Errore("Enter number with . ");
-			    		err.setVisible(true);
-			    	}
-		    	}
 			}
 		});
 		panel_6.add(bent);
 		
-		if (x!=-1) {
-			JPanel panel_7 = new JPanel();
-			panel_7.setOpaque(false);
-			Bottone agg=new Bottone("Assign to Supplier", 5);
-			agg.but.addActionListener(new ActionListener() {
-			    public void actionPerformed(ActionEvent e) {
-			    	try{
-				    	AssegnaMerc ass=new AssegnaMerc(DataM.get(x));
-				    	ass.setVisible(true);
-				    	setVisible(false);
-				    	dispose();
-			    	}
-			    	catch (Exception pp){
-			    		// ERRORE
-			    	}
-				}
-			});
-			panel_7.add(agg);
-			c.add("South", panel_7);
-		}
 		c.add("Center", contenuto);
 		pack();
 	}
