@@ -6,7 +6,9 @@ Some of it is still in my language (I'm gonna translate what I can but not varia
 
 The main is in the GUI/Program class.
 
+CURRENTLY: implementing connection to MySQL local Database!
+
 I'm on:
 https://www.reddit.com/user/Dangerous-Rip-7370
 pucchosa@proton.me
-
+https://www.linkedin.com/in/claudia-de-angelis-pucchosa/
