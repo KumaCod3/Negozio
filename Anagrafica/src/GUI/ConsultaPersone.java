@@ -38,7 +38,7 @@ public class ConsultaPersone  extends Finestra {
 
 		
 		try {
-	/*comp2*/MyChoice<Fornitore> ele=new MyChoice<Fornitore>(Main.db.getElenForn(),5);
+	/*comp2*/MyChoice ele=new MyChoice(Main.db.getElenForn(),5);
 			ele.jList.addListSelectionListener(new ListSelectionListener() {
 				public void valueChanged(ListSelectionEvent e) {
 					try {
@@ -74,7 +74,7 @@ public class ConsultaPersone  extends Finestra {
 		pan2.add(tx);
 		
 		try {
-/*comp5*/MyChoice<Cliente> ele2=new MyChoice<Cliente>(Main.db.getElenCli());
+/*comp5*/MyChoice ele2=new MyChoice(Main.db.getElenCli());
 			ele2.jList.addListSelectionListener(new ListSelectionListener() {
 				public void valueChanged(ListSelectionEvent e) {
 					try {

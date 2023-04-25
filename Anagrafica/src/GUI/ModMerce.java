@@ -9,11 +9,32 @@ public class ModMerce extends Finestra{
 		String nome="nome";
 		Double quantita=0.0;
 		Double prezzoA=0.0;
-		int rincaro=0;
+		Double rincaro=0.0;
 		String unita="unita";
+		String note="";
+		int index;
 		
 		public ModMerce(int x){
 			super("Product");
+			
+			index=x;
+			if (x!=-1) {
+				try {
+					String data=Main.db.leggiMercID(x);
+					String[] spl=data.split(",");
+
+					this.nome=spl[1];
+					this.unita=spl[2];
+					this.quantita=Double.parseDouble(spl[3]);
+					this.prezzoA=Double.parseDouble(spl[4]);
+					this.rincaro=Double.parseDouble(spl[5]);
+					this.note=spl[6];
+//					this.prezzoV=prezzoA*rincaro;
+//					this.valore=prezzoA*quantita;
+					
+				} catch (SQLException ex) {	ex.printStackTrace(); }
+			}
+			
 			
 			JPanel contenuto=new JPanel();
 			contenuto.setBorder(Est.bordo);
@@ -81,17 +102,17 @@ public class ModMerce extends Finestra{
 			Choice rim = new Choice();
 			rim.setPreferredSize(Est.choi);
 			rim.add(""+rincaro);
-			rim.add("10");
-			rim.add("20");
-			rim.add("30");
-			rim.add("50");
+			rim.add("1.10");
+			rim.add("1.20");
+			rim.add("1.30");
+			rim.add("1.50");
 			rim.setFont(Est.plainFont);
 			rim.addFocusListener(new FocusListener() {
 				public void focusGained(FocusEvent e){
 				}
 				public void focusLost(FocusEvent e){
 					if (rim.getSelectedIndex()>0){
-						rincaro=Integer.parseInt(rim.getSelectedItem());
+						rincaro=Double.parseDouble(rim.getSelectedItem());
 					}
 				}
 			});
@@ -121,17 +142,13 @@ public class ModMerce extends Finestra{
 				    	try {
 				    		quantita=Double.parseDouble(tf2.ret);
 				    		prezzoA=Double.parseDouble(tf3.ret);
-//				    		Merce inserisci =new Merce(nome, quantita, rincaro, prezzoA, unita);
-//							DataM.agg(inserisci);
-				    		
 				    		try {
-					    		String dati=nome+unita+quantita+prezzoA+rincaro+"note";
-					    		Main.db.aggMerc(dati);
+
+					    		Main.db.modMerc(index, nome, unita, quantita, prezzoA, rincaro, note);
 				    		} catch (SQLException ex) {	ex.printStackTrace(); }
 				    		
 							ConsultaMerci consultaM=new ConsultaMerci(/*c*/);
 					    	consultaM.setVisible(true);
-//					    	MyReadM.scarica();
 					    	setVisible(false);
 					    	dispose();
 				    	}

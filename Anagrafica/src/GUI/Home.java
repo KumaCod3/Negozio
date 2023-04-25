@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
-import Negozio.Guest;
 import java.awt.Component;
 import javax.swing.border.EmptyBorder;
 
@@ -57,7 +56,7 @@ public class Home extends Finestra{
         b3.setAlignmentX(Component.CENTER_ALIGNMENT);
 		b3.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	Spesa aggg=new Spesa(new Guest());
+		    	Spesa aggg=new Spesa(1);
 				aggg.setVisible(true);
 		    	setVisible(false);
 		    	dispose();
@@ -100,9 +99,6 @@ public class Home extends Finestra{
 		Bottone bex=new Bottone("EXIT",5);
 		bex.but.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
- //           	MyReadM.scarica();
-  //  			MyReadF.scarica();
-  //  			MyReadC.scarica();
             	setVisible(false);
             	dispose();
             	System.exit(0);

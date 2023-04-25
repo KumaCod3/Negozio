@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import javax.swing.JPanel;
-import Negozio.DataM;
 
 public class ConsultaMerci extends Finestra{
 	boolean tipp=true;
@@ -31,7 +30,7 @@ public class ConsultaMerci extends Finestra{
 		tab.tavola.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e){
 				indice=tab.tavola.getSelectedRow();
-				index=DataM.trovaNome(tab.getNome(indice));
+				index=tab.getID(indice);
 			}
 			public void focusLost(FocusEvent e){
 

@@ -11,7 +11,6 @@ public class AssegnaMerc extends Finestra{
 	int codice;
 	String nomeForn="";
 	String nomeMer="";
-//	Double prezzo;
 	
 	public AssegnaMerc(int x){
 		super("Assign Product to Supplier"/*,870,570*/);
@@ -35,14 +34,6 @@ public class AssegnaMerc extends Finestra{
 		contenuto.add(tt);
 		Choice ele=new Choice();
 		ele.add("Choose");
-//		try{
-//			for (Merce a:DataM.elenco.values()){
-//				ele.add(a.getNome()+" "+a.getCod());
-//			}
-//		}
-//		catch (Exception e){
-//			ele.add("Empty");
-//		}
 		try{
 			ResultSet xx=Main.db.getElenMerc();
 			while (xx.next()) {
@@ -85,7 +76,7 @@ public class AssegnaMerc extends Finestra{
 					System.out.println("forn= "+codice);
 //			    	f.addMerc(index);
 		    		try {
-// SEGNAPOSTOOOOO
+		    			// TODO
 		    			Main.db.assMerc(codice,index,0.0);
 		    		} catch (SQLException ex) { ex.printStackTrace(); }
 
@@ -106,7 +97,7 @@ public class AssegnaMerc extends Finestra{
 		dis.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (index>-1){
-// SEGNAPOSTOOOOOO
+		    		// TODO
 //			    	Errore del=new Errore(f,index);
 //			    	del.setVisible(true);
 //			    	setVisible(false);
@@ -183,7 +174,7 @@ public class AssegnaMerc extends Finestra{
 //			    	m.addForn(DataB.fornitori.get(index));
 			    	
 		    		try {
-// SEGNAPOSTOOOOOO		    			
+		    			// TODO	    			
 		    			
 		    			Main.db.assMerc(codice,index,0.0);
 		    		} catch (SQLException ex) { ex.printStackTrace(); }
@@ -205,7 +196,7 @@ public class AssegnaMerc extends Finestra{
 		dis.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (index>-1){
-// SEGNAPOSTOOOO
+		    		// TODO
 //			    	Errore del=new Errore(m,index);
 //			    	del.setVisible(true);
 //			    	setVisible(false);

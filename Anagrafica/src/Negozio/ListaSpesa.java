@@ -1,71 +1,50 @@
 package Negozio;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
 import GUI.Errore;
+import GUI.Main;
 import GUI.Spesa;
 
 public class ListaSpesa{
-	Cliente cliente;
+	int IDcli;
 	Double saldo;
 	LocalDateTime data;
-	public HashMap<Integer,Merce> elenco=new HashMap<Integer,Merce>();
+	String fattura="";
+	String note="";
+	public HashMap<Integer,Double> elenco=new HashMap<Integer,Double>();
 	
-	public ListaSpesa(Cliente c){
-		cliente=c;
+	public ListaSpesa(int c){
+		IDcli=c;
 		data=LocalDateTime.now();
 		saldo=0.0;
 	}
 	
-	public Cliente getCliente(){
-		return cliente;
-	}
-	
-	public LocalDateTime getData(){
-		return data;
-	}
-	
-	public boolean compra(int merce,Double quantita, Spesa spes){
-		Merce x=new Merce(DataM.get(merce));
-		for (Merce m:elenco.values()){
-			if (m.getNome().equals(x.getNome())){
-				m.setQuantita(quantita+(m.getQuantita()));
-				if (!check(m)){
+	public void compra(int merce,Double quantita, Spesa spes){
+		for (int m:elenco.keySet()){
+			if (m==merce){
+				if (!check(m, elenco.get(m)+quantita)){
 					fix(m,spes);
-
 				}
+				elenco.put(m, elenco.get(m)+quantita);
 				calcolaSaldo();
-				return false;
+				return;
 			}
 		}
-		x.setQuantita(quantita);
-		if (!check(x)){
-			fix(x,spes);
+
+		if (!check(merce, quantita)){
+			fix(merce,spes);
 		}
-		elenco.put(merce, x);
+		elenco.put(merce, quantita);
 		calcolaSaldo();
-		return true;
+		return;
 	}
 	
 	public Double getSaldo(){
 		calcolaSaldo();
 		return saldo;
-	}
-
-	public Merce get(int x){
-		return elenco.get(x);
-	}
-
-	public int trovaNome(String nome){
-		for (Entry<Integer,Merce> entry:elenco.entrySet()){
-			String part=entry.getValue().toString();
-			String[] pez=part.split(" ");
-			if(nome.equals(pez[0])){
-				return entry.getKey();
-			}
-		}
-		return -1;
 	}
 
 	public void elimina(int x){
@@ -75,44 +54,38 @@ public class ListaSpesa{
 
 	public void calcolaSaldo(){
 		saldo=0.0;
-		for (Merce m:elenco.values()){
-			saldo=saldo+(m.getQuantita()*m.getPrezzoV());
+		for (Entry<Integer,Double> m:elenco.entrySet()){
+			Double prezzo=Main.db.getPrezzo((int)m.getKey());
+			Double quant=(Double)m.getValue();
+			saldo=saldo+(quant*prezzo);
 		}
-	}
-	
-	public Double qtTot(){
-		Double tot=0.0;
-		for (Merce m:elenco.values()){
-			tot=tot+(m.getQuantita());
-		}
-		return tot;
 	}
 	
 	public void concludi(){
-		
-		for (Merce m:elenco.values()){
-			try{
-				DataM.acquista(m);
-			}
-			catch (AoOexception e){
-				continue;
-			}
+		for (Entry<Integer,Double> m:elenco.entrySet()){
+			int index=m.getKey();
+			Double quantita=m.getValue();
+			try {
+				Main.db.compra(index, quantita);
+			} catch (SQLException ex) { ex.printStackTrace(); }
+			
 		}
 		calcolaSaldo();
-// SEGNAPOSTOOOO
-//		cliente.setSaldo(cliente.getSaldo()-saldo);
+		try {
+			Main.db.aggiornaSaldoCli(IDcli, saldo);
+		} catch (SQLException e) { e.printStackTrace(); }
 	}
 	
-	public boolean check(Merce m){
-		if (DataM.elenco.get(m.getCod()).getQuantita()<m.getQuantita()){
+	public boolean check(int m, double quant){
+		if (Main.db.getQuantMerc(m)<quant){
 			return false;
 		}
 		return true;
 	}
-	
-	public void fix(Merce m, Spesa spes){
-		Errore er=new Errore(m,ListaSpesa.this, spes);
-		er.setVisible(true);
+	// TODO
+	public void fix(int m, Spesa spes){
+//		Errore er=new Errore(m,ListaSpesa.this, spes);
+//		er.setVisible(true);
 	}
 }
 

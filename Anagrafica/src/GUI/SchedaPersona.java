@@ -144,7 +144,7 @@ public class SchedaPersona extends Finestra{
 			sud.setOpaque(false);
 			sud.setLayout(new GridLayout(1,2));
 			
-			Bottone agg=new Bottone("Assign Product", 5);
+			Bottone agg=new Bottone("Assign Product");
 			agg.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	try{
@@ -161,12 +161,12 @@ public class SchedaPersona extends Finestra{
 			});
 			sud.add(agg);
 			
-			Bottone ord=new Bottone("Order Product", 5);
+			Bottone ord=new Bottone("Order Product");
 			ord.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	if (index!=-1){
 				    	try{
-//	SEGNAPOSTOOOOO
+				    		// TODO
 //					    	Fornitore f=DataB.trovaForn(mer);
 //					    	Spesa sp=new Spesa(DataM.get(index),f);
 //					    	sp.setVisible(true);
@@ -185,10 +185,10 @@ public class SchedaPersona extends Finestra{
 			
 /*comp OUT FOR CLIENTI*/
 		if (tipo.equals("cliente")){
-			Bottone eli=new Bottone("OPEN CART", 5);
+			Bottone eli=new Bottone("OPEN CART");
 			eli.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
-			    	Spesa aggg=new Spesa(DataB.clienti.get(x));
+			    	Spesa aggg=new Spesa(x);
 					aggg.setVisible(true);
 					dispose();
 				}

@@ -77,18 +77,10 @@ public class SchedaMerce extends Finestra{
 		contenuto.add(forn);	
 		Choice ele1=new Choice();
 		ele1.add("Choose");
-//		try{
-//			for (Fornitore a:mer.getForn()){
-//				ele1.add(a.getCognome()+", "+a.getNome());
-//			}
-//		}
-//		catch (Exception e){
-//			ele1.add("Empty");
-//		}
 		try{
 			ResultSet xx=Main.db.getElenSuppF(index);
 			while (xx.next()) {
-				ele1.add(xx.getString(1)+", "+xx.getShort(2)+", "+xx.getShort(3));
+				ele1.add(xx.getString(1)+", "+xx.getString(2)+", "+xx.getString(3));
 			}
 		}
 		catch (SQLException e){	e.printStackTrace();	}
@@ -124,8 +116,8 @@ public class SchedaMerce extends Finestra{
 		Bottone bin=new Bottone("MODIFY");
 		bin.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	if (x!=-1){
-			    	ModMerce modifM=new ModMerce(x);
+		    	if (index!=-1){
+			    	ModMerce modifM=new ModMerce(index);
 			    	setVisible(false);
 			    	modifM.setVisible(true);
 		    	

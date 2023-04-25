@@ -1,5 +1,4 @@
 package Negozio;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -7,8 +6,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class myDB {
-	public static Connection connection;
-	public static Statement statement;
+	private static Connection connection;
+	private static Statement statement;
 	
 	public myDB() {
 		try {
@@ -100,7 +99,7 @@ public class myDB {
 		}
 	}
 	public void aggMerc(String x) throws SQLException{
-		String sql="INSERT INTO Merci (product,unity,quantity,price,deal,note) values("+x+")";
+		String sql="INSERT INTO Merci (product,unity,quantity,price,deal,note) values('"+x+"')";
 		int result = statement.executeUpdate(sql);
 		if (result!=0) {
 			System.out.println("Suxcesfully added!");
@@ -140,24 +139,28 @@ public class myDB {
 		}
 	}
 	
-	public String getForName(int x) throws SQLException {
-		String sql="SELECT name FROM Fornitori WHERE ID_FORNITORE="+x;
-		ResultSet result = statement.executeQuery(sql);
-		result.next();
-		String inser=result.getString(1);
-		
-		return inser;
-	}
-	public String getMerName(int x) throws SQLException {
-		String sql="SELECT product FROM Merci WHERE ID_MERCE="+x;
-		ResultSet result = statement.executeQuery(sql);
-		String inser="";
+	public String getForName(int x) {
 		try {
+			String sql="SELECT name FROM Fornitori WHERE ID_FORNITORE="+x;
+			ResultSet result = statement.executeQuery(sql);
 			result.next();
-			inser=result.getString(0);
-		} catch (SQLException ex) { return null; }
-		
-		return inser;
+			String inser=result.getString(1);
+			
+			return inser;
+		} catch (SQLException e) { e.printStackTrace(); return ""; }
+	}
+	public String getMerName(int x) {
+		try {
+			String sql="SELECT product FROM Merci WHERE ID_MERCE="+x;
+			ResultSet result = statement.executeQuery(sql);
+			String inser="";
+			try {
+				result.next();
+				inser=result.getString(0);
+			} catch (SQLException ex) { return null; }
+			
+			return inser;
+		} catch (SQLException e) { e.printStackTrace(); return ""; }
 	}
 
 	public ResultSet getElenForn() throws SQLException {
@@ -171,11 +174,10 @@ public class myDB {
 		return result;
 	}
 	public ResultSet getElenMerc() throws SQLException {
-		String sql="SELECT ID_MERCE,product FROM merci";
+		String sql="SELECT ID_MERCE,product,Quantity,price FROM merci";
 		ResultSet result = statement.executeQuery(sql);
 		return result;
 	}
-	
 	
 	public void assMerc(int codice, int index, Double cost) throws SQLException {
 		String sql="INSERT INTO forniture VALUES("+codice+", "+index+", "+cost+")";
@@ -186,16 +188,81 @@ public class myDB {
 	}
 
 	public ResultSet getElenSuppF(int index) throws SQLException{
-		String sql="SELECT forniture.ID_FORNITORE, fornitori.name, fornitori.last_name FROM forniture JOIN fornitori ON ID_FORNITORE WHERE ID_MERCE="+index;
+		String sql="SELECT forniture.ID_FORNITORE, fornitori.name, fornitori.last_name FROM forniture JOIN fornitori ON forniture.ID_FORNITORE WHERE ID_MERCE="+index;
 		// cod, nome, cogn
 		ResultSet result = statement.executeQuery(sql);
 		return result;
 	}
-
 	public ResultSet getElenSuppM(int codice) throws SQLException{
 		String sql="SELECT forniture.ID_MERCE, merci.product FROM forniture JOIN merci ON forniture.ID_MERCE=merci.ID_MERCE WHERE ID_FORNITORE="+codice;
 		// num. prod
 		ResultSet result = statement.executeQuery(sql);
 		return result;
+	}
+	
+
+	public void modMerc(int index, String nome, String unita, Double quantita, Double prezzoA, Double rincaro, String note) throws SQLException{
+		String sql="UPDATE Merci SET product='"+nome+"', unity='"+unita+"', quantity="+quantita+",price="+prezzoA+",deal="+rincaro+",note='"+note+"' WHERE ID_MERCE="+index;
+		int result = statement.executeUpdate(sql);
+		if (result!=0) {
+			System.out.println("Suxcesfully added!");
+		}
+	}
+
+	public Double getPrezzo(int x) {
+		try {
+			String sql="SELECT price,deal FROM Merci WHERE ID_MERCE="+x;
+			ResultSet result = statement.executeQuery(sql);
+			Double inser=0.0;
+				
+			while (result.next()) {
+				Double prezzoA=result.getDouble("Price");
+				Double rincaro=result.getDouble("deal");
+				inser=prezzoA*rincaro;
+			}
+			return inser;
+		} catch (SQLException e) {e.printStackTrace(); return 0.0; }
+	}
+
+	public Double getPrezzoA(int x) {
+		try {
+			String sql="SELECT price FROM Merci WHERE ID_MERCE="+x;
+			ResultSet result = statement.executeQuery(sql);
+			Double inser=0.0;
+				
+			while (result.next()) {
+				inser=result.getDouble("Price");
+			}
+			return inser;
+		} catch (SQLException e) {e.printStackTrace(); return 0.0; }
+	}
+	
+	public double getQuantMerc(int x) {
+		try {
+			String sql="SELECT quantity FROM Merci WHERE ID_MERCE="+x;
+			ResultSet result = statement.executeQuery(sql);
+			Double inser=0.0;
+				
+			while (result.next()) {
+				inser=result.getDouble("quantity");
+			}
+			return inser;
+		} catch (SQLException e) {e.printStackTrace(); return 0.0; }
+	}
+	
+
+	public void compra(int index, Double quantita)  throws SQLException {
+		String sql="UPDATE Merci SET quantity="+quantita +" WHERE ID_MERCE="+index;
+		int result = statement.executeUpdate(sql);
+		if (result!=0) {
+			System.out.println("Suxcesfully added!");
+		}
+	}
+	
+	public void aggiornaSaldoCli(int codice, Double prezzo)  throws SQLException {
+		String sql="UPDATE Clienti SET tot_sold=tot_sold + "+prezzo +" WHERE ID_CLIENTE="+codice;
+		int result = statement.executeUpdate(sql);
+		if (result!=0) {
+		}
 	}
 }

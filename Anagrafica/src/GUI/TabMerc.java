@@ -1,10 +1,10 @@
 package GUI;
 import java.awt.Frame;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import Negozio.DataM;
-import Negozio.Merce;
 
 public class TabMerc extends Frame{
 	JTable tavola;
@@ -21,10 +21,11 @@ public class TabMerc extends Frame{
 		tavola.setColumnSelectionAllowed(false);
 		tavola.setDragEnabled(false);
 		tavola.setRowSelectionAllowed(true);
-				
+			
+		model.addColumn("ID:");
 		model.addColumn("PRODUCT:");
 		model.addColumn("QUANTITY:");
-		model.addColumn("ToT:");
+		model.addColumn("Price:");
 
 		JScrollPane sp=new JScrollPane(tavola);
 		sp.add(tavola);
@@ -37,16 +38,9 @@ public class TabMerc extends Frame{
 		return sp;
 	}
 	
-	public void aggiungi(Merce m, Double q){
-		String nome=m.getNome();
-		String quantita=q+"";
-		String tot=Est.deci.format(m.getPrezzoA()*q)+" $";
-		String[] riga={nome,quantita,tot};
-		model.addRow(riga);
-	}
 	
-	public String getNome(int row){
-		return model.getValueAt(row,0).toString();
+	public int getID(int row){
+		return Integer.parseInt(model.getValueAt(row,0).toString());
 	}
 	
 	public int getInd(String nome){
@@ -64,8 +58,13 @@ public class TabMerc extends Frame{
 	
 	public void repaint(){
 		clear();
-		for (Merce m:DataM.elenco.values()){
-			aggiungi(m,m.getQuantita());
+		try {
+			ResultSet sett=Main.db.getElenMerc();
+			while (sett.next()) {
+				String[] riga={sett.getString("ID_MERCE"),sett.getString("product"),sett.getString("Quantity"),sett.getString("price")};
+				model.addRow(riga);
+			}
 		}
+		catch (SQLException e ) {e.printStackTrace(); }
 	}
 }

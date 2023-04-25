@@ -1,10 +1,10 @@
 package GUI;
 import java.awt.Frame;
+import java.util.Map.Entry;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import Negozio.ListaSpesa;
-import Negozio.Merce;
 
 public class Tabella extends Frame{
 	JTable tavola;
@@ -21,7 +21,8 @@ public class Tabella extends Frame{
 		tavola.setColumnSelectionAllowed(false);
 		tavola.setDragEnabled(false);
 		tavola.setRowSelectionAllowed(true);
-				
+		
+		model.addColumn("ID:");
 		model.addColumn("PRODUCT:");
 		model.addColumn("QUANTITY:");
 		model.addColumn("ToT:");
@@ -36,11 +37,12 @@ public class Tabella extends Frame{
 		return sp;
 	}
 	
-	public void aggiungi(Merce m, Double q){
-		String nome=m.getNome();
+	public void aggiungi(int m, Double q){
+		String id=m+"";
+		String nome=Main.db.getMerName(m);
 		String quantita=q+"";
-		String tot=Est.deci.format(m.getPrezzoV()*q)+" $";
-		String[] riga={nome,quantita,tot};
+		String tot=Est.deci.format(Main.db.getPrezzo(m)*q)+" $";
+		String[] riga={id,nome,quantita,tot};
 		model.addRow(riga);
 	}
 	
@@ -56,19 +58,15 @@ public class Tabella extends Frame{
 		return model.getValueAt(row,0).toString();
 	}
 	
-	public int getInd(String nome){
-		for (int i=0;i<model.getRowCount();i++){
-			if (model.getValueAt(i, 0).equals(nome)){
-				return i;
-			}
-		}
-		return -1;
+	public int getInd(int row){
+		return Integer.parseInt((String)model.getValueAt(row,0));
 	}
 	
 	public void repaint(ListaSpesa l){
 		clear();
-		for (Merce m:l.elenco.values()){
-			aggiungi(m,m.getQuantita());
+		for (Entry<Integer,Double> m:l.elenco.entrySet()){
+			aggiungi(m.getKey(), m.getValue());
 		}
 	}
+
 }

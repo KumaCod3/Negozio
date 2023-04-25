@@ -2,62 +2,21 @@ package GUI;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ListModel;
-import Negozio.Anagrafica;
-import Negozio.Merce;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.ListSelectionModel;
 import javax.swing.BoxLayout;
 
-public class MyChoice <T extends Anagrafica>extends JPanel{
+public class MyChoice /*<T extends Anagrafica>*/ extends JPanel{
 	JList<String> jList;
 	ArrayList<String> elenco=new ArrayList<String>();
 	JTextField field;
-	
-//	public MyChoice(HashMap<Integer,Merce> lis){
-//		super();
-//		populate(lis);
-//		setBorder(Est.bordo);
-//		setOpaque(false);
-//		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-//		
-//		jList = new JList<String>(createDefaultListModel());
-//		jList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-//		jList.setVisibleRowCount(6);
-//		
-//		field=createTextField();
-//		add(field);
-//		JScrollPane pap=new JScrollPane(jList);
-//		pap.setPreferredSize(Est.choi);
-//		pap.setMaximumSize(Est.choi);
-//		add(pap);
-//	}
-//	
-//	public MyChoice(ArrayList<T> lis){
-//		super();
-//		populate(lis);
-//		setBorder(Est.bordo);
-//		setOpaque(false);
-//		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-//		
-//		jList = new JList<String>(createDefaultListModel());
-//		jList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-//		jList.setVisibleRowCount(6);
-//		
-//		field=createTextField();
-//		add(field);
-//		JScrollPane pap=new JScrollPane(jList);
-//		pap.setPreferredSize(Est.choi);
-//		pap.setMaximumSize(Est.choi);
-//		add(pap);
-//	}
 	
 	public MyChoice(ResultSet lis,String x){
 		super();
@@ -68,7 +27,7 @@ public class MyChoice <T extends Anagrafica>extends JPanel{
 		
 		jList = new JList<String>(createDefaultListModel());
 		jList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		jList.setVisibleRowCount(6);
+		jList.setVisibleRowCount(1);
 		
 		field=createTextField();
 		add(field);
@@ -118,15 +77,9 @@ public class MyChoice <T extends Anagrafica>extends JPanel{
 	
 	public String getSel() {
 		String fin=jList.getSelectedValue();
+		System.out.println(fin);
 		return fin;
 	}
-	
-//	private void populate(ArrayList<T> sor) {
-//		for (T a:sor) {			
-//			String fin="cIAO";
-//			elenco.add(fin);
-//		}
-//	}
 	
 	private void populateMer(ResultSet sor) {
 		try {
