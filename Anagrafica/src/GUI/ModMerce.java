@@ -29,8 +29,6 @@ public class ModMerce extends Finestra{
 					this.prezzoA=Double.parseDouble(spl[4]);
 					this.rincaro=Double.parseDouble(spl[5]);
 					this.note=spl[6];
-//					this.prezzoV=prezzoA*rincaro;
-//					this.valore=prezzoA*quantita;
 					
 				} catch (SQLException ex) {	ex.printStackTrace(); }
 			}

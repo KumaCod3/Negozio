@@ -11,27 +11,37 @@ public class AssegnaMerc extends Finestra{
 	int codice;
 	String nomeForn="";
 	String nomeMer="";
+	Double costo=0.0;
 	
 	public AssegnaMerc(int x){
 		super("Assign Product to Supplier"/*,870,570*/);
 		codice=x;
-		try {
-			nomeForn=Main.db.getForName(x);
-		} catch (SQLException ex) { ex.printStackTrace(); }
+		nomeForn=Main.db.getForName(x);
 
 		JPanel contenuto=new JPanel();
-		contenuto.setLayout(new GridLayout(3,2));
+		contenuto.setLayout(new GridLayout(4,1));
 		contenuto.setBorder(Est.bordo);
 		contenuto.setOpaque(false);
 		c.add("Center",contenuto);
 		
+		JPanel panel_1 = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) panel_1.getLayout();
+		flowLayout.setAlignment(FlowLayout.TRAILING);
+		panel_1.setOpaque(false);
+		contenuto.add(panel_1);
 		Etichetta nom=new Etichetta("Supplier: ");
-		contenuto.add(nom);
+		panel_1.add(nom);
 		Etichetta nome=new Etichetta(nomeForn);
-		contenuto.add(nome);
+		panel_1.add(nome);
 		
+		JPanel panel_2 = new JPanel();
+		FlowLayout flowLayout_1 = (FlowLayout) panel_2.getLayout();
+		flowLayout_1.setVgap(-20);
+		flowLayout_1.setAlignment(FlowLayout.TRAILING);
+		panel_2.setOpaque(false);
+		contenuto.add(panel_2);
 		Etichetta tt=new Etichetta("Choose Product:");
-		contenuto.add(tt);
+		panel_2.add(tt);
 		Choice ele=new Choice();
 		ele.add("Choose");
 		try{
@@ -56,8 +66,23 @@ public class AssegnaMerc extends Finestra{
 				}
 			}
 		});
-		contenuto.add(ele);
+		panel_2.add(ele);
 		
+		JPanel panel_3 = new JPanel();
+		FlowLayout flowLayout_2 = (FlowLayout) panel_3.getLayout();
+		flowLayout_2.setAlignment(FlowLayout.TRAILING);
+		panel_3.setOpaque(false);
+		contenuto.add(panel_3);
+		Etichetta ttp=new Etichetta("Price:");
+		panel_3.add(ttp);
+		FormVuoto tf1 = new FormVuoto("prezzo");
+		panel_3.add(tf1);
+		
+		JPanel panel_4 = new JPanel();
+		FlowLayout flowLayout_3 = (FlowLayout) panel_4.getLayout();
+		flowLayout_3.setAlignment(FlowLayout.TRAILING);
+		panel_4.setOpaque(false);
+		contenuto.add(panel_4);
 		Bottone bex=new Bottone("Back");
 		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -67,17 +92,15 @@ public class AssegnaMerc extends Finestra{
 		    	dispose();
 			}
 		});
-		contenuto.add(bex);
+		panel_4.add(bex);
 		Bottone bent=new Bottone("ENTER");
 		bent.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (index>-1){
-		    		System.out.println("indice= "+index);
-					System.out.println("forn= "+codice);
+		    		costo=Double.parseDouble(tf1.ret);
 //			    	f.addMerc(index);
 		    		try {
-		    			// TODO
-		    			Main.db.assMerc(codice,index,0.0);
+		    			Main.db.assMerc(codice,index,costo);
 		    		} catch (SQLException ex) { ex.printStackTrace(); }
 
 //			    	DataM.get(index).addForn(f);
@@ -92,7 +115,9 @@ public class AssegnaMerc extends Finestra{
 		    	}
 			}
 		});
-		contenuto.add(bent);
+		panel_4.add(bent);
+		
+		
 		Bottone dis=new Bottone("REMOVE", 5);
 		dis.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -113,9 +138,7 @@ public class AssegnaMerc extends Finestra{
 	public AssegnaMerc(int x, String a){
 		super("Assign Product to Supplier"/*, 615, 550*/);
 		index=x;
-		try {
-			nomeMer=Main.db.getMerName(x);
-		} catch (SQLException ex) { ex.printStackTrace(); }
+		nomeMer=Main.db.getMerName(x);
 		Panel tit=new Panel();
 		tit.setLayout(new GridLayout(1,2));
 		Etichetta nom=new Etichetta("Product: ");
@@ -125,12 +148,16 @@ public class AssegnaMerc extends Finestra{
 		
 		c.add("North",tit);	
 		
-		Panel contenuto=new Panel();
-		contenuto.setLayout(new GridLayout(2,2));
+		JPanel contenuto=new JPanel();
+		contenuto.setLayout(new GridLayout(3,1));
 		c.add("Center",contenuto);
 		
+		JPanel panel_1 = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) panel_1.getLayout();
+		flowLayout.setAlignment(FlowLayout.TRAILING);
+		panel_1.setOpaque(false);
 		Etichetta tt=new Etichetta("Choose Supplier:");
-		contenuto.add(tt);
+		panel_1.add(tt);
 		Choice ele1=new Choice();
 		ele1.add("Choose");
 		try{
@@ -154,8 +181,26 @@ public class AssegnaMerc extends Finestra{
 				}
 			}
 		});
-		contenuto.add(ele1);
+		panel_1.add(ele1);
+		contenuto.add(panel_1);
 		
+		
+		JPanel panel_2 = new JPanel();
+		FlowLayout flowLayout_1 = (FlowLayout) panel_2.getLayout();
+		flowLayout_1.setVgap(-20);
+		flowLayout_1.setAlignment(FlowLayout.TRAILING);
+		panel_2.setOpaque(false);
+		contenuto.add(panel_2);
+		Etichetta ttp=new Etichetta("Price:");
+		panel_2.add(ttp);
+		FormVuoto tf1 = new FormVuoto("prezzo");
+		panel_2.add(tf1);
+		
+		JPanel panel_3 = new JPanel();
+		FlowLayout flowLayout_2 = (FlowLayout) panel_3.getLayout();
+		flowLayout_2.setAlignment(FlowLayout.TRAILING);
+		panel_3.setOpaque(false);
+		contenuto.add(panel_3);
 		Bottone bex=new Bottone("Back");
 		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -165,18 +210,16 @@ public class AssegnaMerc extends Finestra{
 		    	dispose();
 			}
 		});
-		contenuto.add(bex);
+		panel_3.add(bex);
 		Bottone bent=new Bottone("ENTER");
 		bent.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (index>-1){
 //		    		DataB.fornitori.get(index).addMerc(m);
 //			    	m.addForn(DataB.fornitori.get(index));
-			    	
+		    		costo=Double.parseDouble(tf1.ret);
 		    		try {
-		    			// TODO	    			
-		    			
-		    			Main.db.assMerc(codice,index,0.0);
+		    			Main.db.assMerc(codice,index,costo);
 		    		} catch (SQLException ex) { ex.printStackTrace(); }
 		    		
 			    	ConsultaMerci consultaM=new ConsultaMerci();
@@ -190,7 +233,9 @@ public class AssegnaMerc extends Finestra{
 		    	}
 			}
 		});
-		contenuto.add(bent);
+		panel_3.add(bent);
+		
+		
 		
 		Bottone dis=new Bottone("REMOVE", 5);
 		dis.but.addActionListener(new ActionListener() {

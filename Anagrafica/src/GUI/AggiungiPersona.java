@@ -78,23 +78,6 @@ public class AggiungiPersona extends Finestra{
 		Etichetta un=new Etichetta("Title: ");
 		panel_2.add(un);
 		
-//		Choice uni = new Choice();
-//		uni.setPreferredSize(Est.choi);
-//		uni.add("Choose");
-//		uni.add("Firm");
-//		uni.add("Mr.");
-//		uni.add("Mrs.");
-//		uni.setFont(Est.plainFont);
-//		uni.addFocusListener(new FocusListener() {
-//			public void focusGained(FocusEvent e){
-//			}
-//			public void focusLost(FocusEvent e){
-//				if (uni.getSelectedIndex()>0){
-//					titolo=uni.getSelectedItem();
-//				}
-//			}
-//		});
-//		panel_2.add(uni);
 		
 		JPanel panel_3 = new JPanel();
 		FlowLayout flowLayout_2 = (FlowLayout) panel_3.getLayout();

@@ -12,6 +12,7 @@ public class FormVuoto extends JTextField{
 		super(tit, 15);
 		ret=tit;
 		tt=tit;
+		setPreferredSize(Est.choi);
 		setForeground(Est.chiarissimo);
 		addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e){
