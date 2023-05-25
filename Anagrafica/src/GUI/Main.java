@@ -1,4 +1,5 @@
 package GUI;
+import Negozio.ListaSpesa;
 import Negozio.myDB;
 	
 public class Main{
@@ -7,5 +8,6 @@ public class Main{
 	public static void main(String[] args) {
 		Home prova=new Home();
 		prova.setVisible(true);
+
 	}
 }

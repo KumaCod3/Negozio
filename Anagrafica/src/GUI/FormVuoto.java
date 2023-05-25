@@ -5,7 +5,7 @@ import java.awt.event.FocusListener;
 import javax.swing.JTextField;
 
 public class FormVuoto extends JTextField{
-	String ret;
+	public String ret=" ";
 	String tt="";
 	
 	public FormVuoto(String tit){

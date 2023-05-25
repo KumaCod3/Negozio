@@ -132,10 +132,9 @@ public class SchedaMerce extends Finestra{
 		eli.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (x!=-1){
-			    	Errore del=new Errore(x);
+			    	Errore del=new Errore("<html>Are you sure you want to delete this product? <br/> Product: "+nome, SchedaMerce.this);
 			    	del.setVisible(true);
 			    	setVisible(false);
-			    	dispose();
 		    	}
 			}
 		});
@@ -147,10 +146,11 @@ public class SchedaMerce extends Finestra{
 		    	if (x!=-1){
 		    		
 		    		try{
-//	SEGNAPOSTOOOOO
-//				    	Fornitore f=DataB.get(indexF,"ciao");
-//				    	Spesa sp=new Spesa(mer,f);
-//				    	sp.setVisible(true);
+//	TODO
+		    			// fai errore per scegliere fornitore index f da cui farai partire
+				    	Errore er=new Errore(index, SchedaMerce.this);
+				    	er.setVisible(true);
+				    	setVisible(false);
 //				    	dispose();
 			    	}
 			    	catch (Exception y){

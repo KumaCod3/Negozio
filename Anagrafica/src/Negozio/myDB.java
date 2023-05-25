@@ -4,6 +4,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
+
+import GUI.Est;
 
 public class myDB {
 	private static Connection connection;
@@ -107,10 +110,10 @@ public class myDB {
 	}
 	
 	public void modCliID(int x,String nome,String cognome,String telefono,String email,String stato,String citta,String indirizzo,String iva,Double saldo,String note) throws SQLException{
-		String mods="name='"+nome+"' last_name='"+cognome+"' phone='"+telefono+"' mail='"+email+"' state='"+stato+"' city='"+citta+
-				"' street='"+indirizzo+"' vatn='"+iva+"' tot_sold='"+saldo+"' note='"+note;
+		String mods="name='"+nome+"', last_name='"+cognome+"', phone='"+telefono+"', mail='"+email+"', state='"+stato+"', city='"+citta+
+				"', street='"+indirizzo+"', vatn='"+iva+"', tot_sold="+saldo+", note='"+note;
 		
-		String sql="UPDATE Clienti SET "+mods+" WHERE ID_CLIENTE="+x;
+		String sql="UPDATE Clienti SET "+mods+"' WHERE ID_CLIENTE="+x;
 		int result = statement.executeUpdate(sql);
 		
 		if (result!=0) {
@@ -118,10 +121,10 @@ public class myDB {
 		}
 	}
 	public void modForID(int x,String nome,String cognome,String telefono,String email,String stato,String citta,String indirizzo,String iva,Double saldo,String note) throws SQLException{
-		String mods="name='"+nome+"' last_name='"+cognome+"' phone='"+telefono+"' mail='"+email+"' state='"+stato+"' city='"+citta+
-				"' street='"+indirizzo+"' vatn='"+iva+"' tot_purchased='"+saldo+"' note='"+note;
+		String mods="name='"+nome+"', last_name='"+cognome+"', phone='"+telefono+"', mail='"+email+"', state='"+stato+"', city='"+citta+
+				"', street='"+indirizzo+"', vatn='"+iva+"', tot_purchased="+saldo+", note='"+note;
 		
-		String sql="UPDATE Fornitori SET "+mods+" WHERE ID_FORNITORE="+x;
+		String sql="UPDATE Fornitori SET "+mods+"' WHERE ID_FORNITORE="+x;
 		int result = statement.executeUpdate(sql);
 		
 		if (result!=0) {
@@ -129,9 +132,9 @@ public class myDB {
 		}
 	}
 	public void modMercID(int x,String nome,String unita,Double quantita,Double prezzoA,Double rincaro,String note) throws SQLException{
-		String mods="product='"+nome+"' unity='"+unita+"' quantity='"+quantita+"' price='"+prezzoA+"' deal='"+rincaro+"' note='"+note;
+		String mods="product='"+nome+"', unity='"+unita+"', quantity="+quantita+", price="+prezzoA+", deal="+rincaro+", note='"+note;
 		
-		String sql="UPDATE Merci SET "+mods+" WHERE ID_MERCE="+x;
+		String sql="UPDATE Merci SET "+mods+"' WHERE ID_MERCE="+x;
 		int result = statement.executeUpdate(sql);
 		
 		if (result!=0) {
@@ -156,7 +159,7 @@ public class myDB {
 			String inser="";
 			try {
 				result.next();
-				inser=result.getString(0);
+				inser=result.getString(1);
 			} catch (SQLException ex) { return null; }
 			
 			return inser;
@@ -209,7 +212,7 @@ public class myDB {
 		}
 	}
 
-	public Double getPrezzo(int x) {
+	public double getPrezzo(int x) {
 		try {
 			String sql="SELECT price,deal FROM Merci WHERE ID_MERCE="+x;
 			ResultSet result = statement.executeQuery(sql);
@@ -223,8 +226,7 @@ public class myDB {
 			return inser;
 		} catch (SQLException e) {e.printStackTrace(); return 0.0; }
 	}
-
-	public Double getPrezzoA(int x) {
+	public double getPrezzoA(int x) {
 		try {
 			String sql="SELECT price FROM Merci WHERE ID_MERCE="+x;
 			ResultSet result = statement.executeQuery(sql);
@@ -235,8 +237,7 @@ public class myDB {
 			}
 			return inser;
 		} catch (SQLException e) {e.printStackTrace(); return 0.0; }
-	}
-	
+	}	
 	public double getQuantMerc(int x) {
 		try {
 			String sql="SELECT quantity FROM Merci WHERE ID_MERCE="+x;
@@ -249,20 +250,82 @@ public class myDB {
 			return inser;
 		} catch (SQLException e) {e.printStackTrace(); return 0.0; }
 	}
-	
 
-	public void compra(int index, Double quantita)  throws SQLException {
-		String sql="UPDATE Merci SET quantity="+quantita +" WHERE ID_MERCE="+index;
+	public double getMercVal() {
+		try {
+			String sql="SELECT id_merce, (quantity*price*deal) AS Total FROM negoziodb.merci GROUP BY id_merce;";
+			ResultSet result = statement.executeQuery(sql);
+			Double inser=0.0;
+				
+			while (result.next()) {
+				inser=inser+result.getDouble("Total");
+			}
+			return inser;
+		} catch (SQLException e) {e.printStackTrace(); return 0.0; }
+	}
+	public double getTotBought() {
+		try {
+			String sql="SELECT SUM(Price) FROM negoziodb.acquisti;";
+			ResultSet result = statement.executeQuery(sql);
+			Double inser=0.0;
+				
+			while (result.next()) {
+				inser=result.getDouble("Total");
+			}
+			return inser;
+		} catch (SQLException e) {e.printStackTrace(); return 0.0; }
+	}
+	public double getTotSold() {
+		try {
+			String sql="SELECT SUM(Price) FROM negoziodb.vendite;";
+			ResultSet result = statement.executeQuery(sql);
+			Double inser=0.0;
+				
+			while (result.next()) {
+				inser=result.getDouble("Total");
+			}
+			return inser;
+		} catch (SQLException e) {e.printStackTrace(); return 0.0; }
+	}
+	
+	public void compra(int index, Double quantita, int c)  throws SQLException {
+		String sql="UPDATE Merci SET quantity=quantity-"+quantita +" WHERE ID_MERCE="+index;
 		int result = statement.executeUpdate(sql);
 		if (result!=0) {
 			System.out.println("Suxcesfully added!");
 		}
+		double cost=getPrezzo(index);
+		String sql2="INSERT INTO merci_vendite (ID_VENDITA, ID_MERCE, quantity, price) values("+c+index+quantita+cost+")";
+		int result2 = statement.executeUpdate(sql2);
+		if (result2!=0) {
+			System.out.println("Suxcesfully added!");
+		}
 	}
-	
 	public void aggiornaSaldoCli(int codice, Double prezzo)  throws SQLException {
 		String sql="UPDATE Clienti SET tot_sold=tot_sold + "+prezzo +" WHERE ID_CLIENTE="+codice;
 		int result = statement.executeUpdate(sql);
 		if (result!=0) {
 		}
 	}
+	public int createTransactionIn(int c, LocalDateTime data) throws SQLException{
+		String sql="INSERT INTO Vendite (ID_CLIENTE, moment) values("+c+", '"+Est.dateFormSQL.format(data)+"')";
+		int result = statement.executeUpdate(sql);
+		if (result!=0) {
+			System.out.println("Suxcesfully added!");
+		}
+		int idd=0;
+		String sql2="SELECT LAST_INSERT_ID() AS id;";
+		ResultSet result2 = statement.executeQuery(sql2);
+		while (result2.next()) {
+			idd=result2.getInt("id");
+		}
+		return idd;
+	}
+	public void aggiornaVendite(int iDtrans, Double saldo, String not) throws SQLException{
+		String sql="UPDATE Vendite SET price="+saldo +", note='"+not +"' WHERE ID_VENDITA="+iDtrans;
+		int result = statement.executeUpdate(sql);
+		if (result!=0) {
+		}
+	}
+
 }

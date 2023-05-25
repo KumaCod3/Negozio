@@ -6,10 +6,7 @@ import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-
 import javax.swing.JPanel;
-import Negozio.Anagrafica;
-import Negozio.DataB;
 
 public class ModPersona extends Finestra{
 	// titolo
@@ -220,7 +217,7 @@ public class ModPersona extends Finestra{
 		    	
 		    	if (tipo.contentEquals("cliente")){
 		    		try {
-		    			Main.db.modCliID(codice, nome, cognome, telefono, email, stato, citta, indirizzo, iva, saldo, note);
+		    			Main.db.modCliID(codice, nome, cognome, telefono, email, "SS", citta, indirizzo, iva, saldo, note);
 		    		} catch (SQLException ex) {	ex.printStackTrace(); }
 		    		
 		    		

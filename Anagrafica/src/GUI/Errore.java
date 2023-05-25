@@ -1,19 +1,22 @@
 package GUI;
-import Negozio.Cliente;
-import Negozio.DataB;
-import Negozio.DataM;
-import Negozio.Fornitore;
 import Negozio.ListaSpesa;
-import Negozio.Merce;
 import java.awt.*;
 import javax.swing.*;
-import java.awt.event.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
-public class Errore extends Frame{
+import java.awt.event.*;
+import java.sql.SQLException;
+
+public class Errore extends Frame {
 	JLabel tx;
-	Bottone ok;
+	public Bottone ok;
 	Bottone ty;
 	JPanel c;
+	public double qtt;
+	public double qttMax;
+	public int index=-1;
+	public FormVuoto tf1;
 	
 	public Errore(){
 		super("---ERROR---");
@@ -40,7 +43,7 @@ public class Errore extends Frame{
 		c.add(ok);
 		c.add(ty);
 		setAlwaysOnTop(true);
-		pack();
+//		pack();
 	}
 	
 	public Errore(String a){
@@ -68,244 +71,135 @@ public class Errore extends Frame{
 		pack();
 	}
 	
-	public Errore(int a){
+	public Errore(String s,SchedaMerce a){	// elimina merce
 		this();
-		//da SchedaMerce 
-		tx.setText("<html>Are you sure you want to delete this product? <br/> Number:"+a+" Product: "+DataM.elenco.get(a).getNome());
+		tx.setText(s);
 
 		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	ConsultaMerci consultaM=new ConsultaMerci();
-		    	consultaM.setVisible(true);
+		    	// TODO fare azione ok (ELIMINA LA MERCE)
+		    	a.dispose();
 		    	setVisible(false);
+		    	ConsultaMerci mc=new ConsultaMerci();
+		    	mc.setVisible(true);
 		    	dispose();
 			}
 		});
 		
 		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	DataM.elimina(a);
-		    	ConsultaMerci consultaM=new ConsultaMerci();
-		    	consultaM.setVisible(true);
 		    	setVisible(false);
+		    	a.setVisible(true);
 		    	dispose();
 			}
 		});
+		pack();
+	}
 
+	public Errore(String s, Spesa a) {	// annulla spesa
+		this();
+		tx.setText(s);
+
+		ok.but.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	a.dispose();
+		    	setVisible(false);
+		    	ConsultaMerci mc=new ConsultaMerci();
+		    	mc.setVisible(true);
+		    	dispose();
+			}
+		});
+		
+		ty.but.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	setVisible(false);
+		    	a.setVisible(true);
+		    	dispose();
+			}
+		});
+		pack();
+	}
+
+	public Errore(ListaSpesa list, Spesa a) {	// concludi spesa
+		this();
+		double price=0.0;
+		tx.setText("<html>Do you want to procede to <br/> check out?: "+Est.deci.format(price)+" eu.");
+
+		ok.but.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	// TODO fare azione ok (acquista)
+		    	a.dispose();
+		    	setVisible(false);
+		    	Home hh=new Home();
+		    	hh.setVisible(true);
+		    	dispose();
+			}
+		});
+		
+		ty.but.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	setVisible(false);
+		    	a.setVisible(true);
+		    	dispose();
+			}
+		});
+		pack();
+	}
+
+	public Errore(ListaSpesa l, int merce) {	// non abbastanza merc
+		this();
+		
+		qtt=0.0;
+		qttMax=Main.db.getQuantMerc(merce);
+		tx.setText("<html>Not enough in store, available: "+qttMax+"<br/> put in cart: ");
+
+		c.remove(ty);
+		tf1 = new FormVuoto(""+qttMax);
+		c.add(tf1);
 		pack();
 	}
 	
-	public Errore(Spesa x){
+	
+	public Errore(int ind, SchedaMerce t){		// scelta forn x ordine merch
 		this();
-		// da Spesa
-		boolean gst=x.b.getNome().equals("GUEST");
+		tx.setText("From which supplier you want to purchase the product?");
 
-		tx.setText("<html>Are you sure you want to go out? <br/> The contents of the shopping cart will be lost.");
+		try {
+			/*comp2*/MyChoice ele=new MyChoice(Main.db.getElenSuppF(ind),5);
+					ele.jList.addListSelectionListener(new ListSelectionListener() {
+						public void valueChanged(ListSelectionEvent e) {
+							try {
+								String[] temp=ele.getSel().split(", ");
+								index=Integer.parseInt(temp[0]);
+							}
+							catch (Exception ex){
+								// no selection
+							}
+							
+						}
+					});
+					c.add(ele);
+		} catch (SQLException e) { e.printStackTrace();}
 
-		ok.but.setText("NO, go back!");
 		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	x.setVisible(true);
+		    	t.dispose();
+		    	Spesa sp=new Spesa(index,ind);
+		    	sp.setVisible(true);
 		    	setVisible(false);
 		    	dispose();
 			}
 		});
-
-		ty.but.setText("DELETE ORDER");
+		
 		ty.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	if (!gst){
-		    		ConsultaPersone consultaP=new ConsultaPersone();
-		    		consultaP.setVisible(true);
-		    	}
-		    	else if (gst){
-		    		Home home=new Home();
-					home.setVisible(true);
-		    	}
 		    	setVisible(false);
+		    	t.setVisible(true);
 		    	dispose();
 			}
 		});
-
 		pack();
 	}
 	
-	public Errore(Spesa x,Cliente c){
-		this();
-		// da Spesa
-		tx.setText("<html>Are you sure you want to place the order? <br/>"+c.getIntestazione()+" tot: "+Est.deci.format(x.list.getSaldo()));
-
-		ty.but.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		    	x.setVisible(true);
-		    	setVisible(false);
-		    	dispose();
-			}
-		});
-		
-		ok.but.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		    	
-		    	setVisible(false);
-		    	x.list.concludi();
-		    	MyReadL.scarica(x.list);
-		    	MyReadM.scarica();
-    			MyReadF.scarica();
-    			MyReadC.scarica();
-		    	x.tab.clear();
-		    	
-		    	ConsultaPersone consultaP=new ConsultaPersone();
-		    	consultaP.setVisible(true);
-		    	x.dispose();
-		    	dispose();
-			}
-		});
-
-		pack();
-	}
-	
-	public Errore(Merce m,int index){
-		this();
-		// da AssegnaMerce
-		Fornitore f=DataB.fornitori.get(index);
-
-		tx.setText("<html>Are you sure you will delete the supplier <br/> "+f.getIntestazione()+"for the product: "+m.getNome()+"?");
-
-		ok.but.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		    	AssegnaMerc ass=new AssegnaMerc(m);
-		    	ass.setVisible(true);
-		    	setVisible(false);
-		    	dispose();
-			}
-		});
-
-		ty.but.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		    	m.removeForn(f);
-		    	f.removeMerc(m.getCod());
-		    	AssegnaMerc ass=new AssegnaMerc(m);
-		    	ass.setVisible(true);
-		    	setVisible(false);
-		    	dispose();
-			}
-		});
-
-		pack();
-	}
-	
-	public Errore(Merce m,ListaSpesa x, Spesa spes){
-		this();
-		// da ListaSpesa
-		double max=DataM.get(m.getCod()).getQuantita();
-
-		tx.setText("<html>Product is Out of Order! <br/> "+"You have only: "+max+m.getUnit()+" of "+m.getNome()+" left.");
-
-		ok.but.setText("Order all you have");
-		ok.but.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		    	m.setQuantita(DataM.elenco.get(m.getCod()).getQuantita());
-		    	spes.refre();
-		    	setVisible(false);
-		    	dispose();
-			}
-		});
-		
-		ty.setVisible(false);
-		remove(ty);
-		ty.but.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		    	setVisible(false);
-		    	dispose();
-			}
-		});
-
-		pack();
-	}
-	
-	public Errore(Fornitore f,int index){
-		this();
-		// da AssegnaMerce 
-		Merce m=DataM.get(index);
-
-		tx.setText("<html>Are you sure you will delete the supplier <br/> "+f.getIntestazione()+"for the product: "+m.getNome()+"?");
-
-		ok.but.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		    	AssegnaMerc ass=new AssegnaMerc(m);
-		    	ass.setVisible(true);
-		    	setVisible(false);
-		    	dispose();
-			}
-		});
-
-		ty.but.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		    	m.removeForn(f);
-		    	f.removeMerc(m.getCod());
-		    	AssegnaMerc ass=new AssegnaMerc(m);
-		    	ass.setVisible(true);
-		    	setVisible(false);
-		    	dispose();
-			}
-		});
-
-		pack();
-	}
-	
-	public Errore(Fornitore f,Merce m, double quantita){
-		this();
-		// da Spesa
-		double saldo=m.getPrezzoA()*quantita;
-
-		tx.setText("<html>Do you want to place the order from "+f.getIntestazione()+"?");
-		
-		JPanel sal=new JPanel();
-		sal.setOpaque(false);
-		sal.setLayout(new GridLayout(1,3));
-		Etichetta sal1=new Etichetta(" Order: "+quantita+" "+m.getUnit());
-		sal.add(sal1);
-		Etichetta sal2=new Etichetta("of "+m.getNome());
-		sal.add(sal2);
-		Etichetta sal3=new Etichetta("for: "+Est.deci.format(saldo)+" eu. ?");
-		sal.add(sal3);
-		
-		
-		JPanel tasti=new JPanel();
-		tasti.setOpaque(false);
-		tasti.setLayout(new GridLayout(1,2));
-		
-		ok.but.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		    	f.ordina(quantita, m.getCod());
-		    	MyReadM.scarica();
-    			MyReadF.scarica();
-    			MyReadC.scarica();
-		    	Home home=new Home();
-				home.setVisible(true);
-				setVisible(false);
-		    	dispose();
-		    	
-			}
-		});
-
-		ty.but.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		    	SchedaMerce ass=new SchedaMerce(m.getCod());
-		    	ass.setVisible(true);
-		    	Home home=new Home();
-				home.setVisible(true);
-				setVisible(false);
-		    	dispose();
-			}
-		});
-		tasti.add(ok);
-		tasti.add(ty);
-		c.add("North",tx);
-		c.add("Center",sal);
-		c.add("South",tasti);
-		setAlwaysOnTop(true);
-		pack();
-	}
 
 }		

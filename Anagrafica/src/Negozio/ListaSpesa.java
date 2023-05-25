@@ -1,4 +1,6 @@
 package Negozio;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -9,6 +11,7 @@ import GUI.Main;
 import GUI.Spesa;
 
 public class ListaSpesa{
+	int IDtrans;
 	int IDcli;
 	Double saldo;
 	LocalDateTime data;
@@ -20,28 +23,52 @@ public class ListaSpesa{
 		IDcli=c;
 		data=LocalDateTime.now();
 		saldo=0.0;
+		try {
+			IDtrans=Main.db.createTransactionIn(c,data);
+		} catch (SQLException e) { e.printStackTrace(); }
 	}
 	
-	public void compra(int merce,Double quantita, Spesa spes){
+	public void compra(int merce,Double quantita){
 		for (int m:elenco.keySet()){
 			if (m==merce){
-				if (!check(m, elenco.get(m)+quantita)){
-					fix(m,spes);
-				}
-				elenco.put(m, elenco.get(m)+quantita);
-				calcolaSaldo();
-				return;
+				quantita=elenco.get(m)+quantita;
 			}
 		}
-
-		if (!check(merce, quantita)){
-			fix(merce,spes);
-		}
 		elenco.put(merce, quantita);
+		
+		if (!check(merce))
+		regolaQ(merce);
+
 		calcolaSaldo();
 		return;
 	}
 	
+	private void regolaQ(int merce) {
+		Errore er=new Errore(ListaSpesa.this, merce);
+		er.setVisible(true);
+		er.ok.but.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	double qtt=0;
+		    	try {
+		    		qtt=Double.parseDouble(er.tf1.ret);
+		    		elenco.put(merce, qtt);
+		    		if (check(merce)){
+		    			er.setVisible(false);
+				    	er.dispose();
+		    		}
+		    		else {
+		    			er.setVisible(false);
+				    	er.dispose();
+				    	regolaQ(merce);
+		    		}
+		    	}
+		    	catch (Exception ex) { ex.printStackTrace(); }
+		    	
+			}
+		});
+
+	}
+
 	public Double getSaldo(){
 		calcolaSaldo();
 		return saldo;
@@ -66,7 +93,7 @@ public class ListaSpesa{
 			int index=m.getKey();
 			Double quantita=m.getValue();
 			try {
-				Main.db.compra(index, quantita);
+				Main.db.compra(index, quantita, IDtrans);
 			} catch (SQLException ex) { ex.printStackTrace(); }
 			
 		}
@@ -74,18 +101,17 @@ public class ListaSpesa{
 		try {
 			Main.db.aggiornaSaldoCli(IDcli, saldo);
 		} catch (SQLException e) { e.printStackTrace(); }
+		try {
+			Main.db.aggiornaVendite(IDtrans, saldo,"note");
+		} catch (SQLException e) { e.printStackTrace(); }
 	}
 	
-	public boolean check(int m, double quant){
-		if (Main.db.getQuantMerc(m)<quant){
+	public boolean check(int m){
+		if (Main.db.getQuantMerc(m)<elenco.get(m)){
 			return false;
 		}
 		return true;
 	}
-	// TODO
-	public void fix(int m, Spesa spes){
-//		Errore er=new Errore(m,ListaSpesa.this, spes);
-//		er.setVisible(true);
-	}
+
 }
 

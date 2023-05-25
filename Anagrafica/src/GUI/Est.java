@@ -36,6 +36,7 @@ public class Est {
 	
 	public static DecimalFormat deci = new DecimalFormat("0.00");
 	public static DateTimeFormatter dateForm= DateTimeFormatter.ofPattern("yyyy-MM-dd H:mm.ss");
+	public static DateTimeFormatter dateFormSQL= DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
 	
 	public static Border bordo= BorderFactory.createEmptyBorder(10,10,10,10);
 	public static Border borCol= BorderFactory.createMatteBorder(0, 4, 4, 4, scuro);

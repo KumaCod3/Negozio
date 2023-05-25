@@ -5,7 +5,6 @@ import java.util.Map.Entry;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import Negozio.DataM;
 
 public class StorTab extends Finestra{
 	public LinkedHashMap<LocalDateTime,String[]> elenco=new LinkedHashMap<LocalDateTime,String[]>();

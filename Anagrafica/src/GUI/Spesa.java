@@ -6,18 +6,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.sql.SQLException;
-import java.util.Arrays;
-
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import Negozio.Anagrafica;
-import Negozio.Cliente;
-import Negozio.DataM;
-import Negozio.Fornitore;
 import Negozio.ListaSpesa;
-import Negozio.Merce;
 
 public class Spesa extends Finestra{
 	int indice=-1;
@@ -26,6 +19,7 @@ public class Spesa extends Finestra{
 	public ListaSpesa list;
 	public Tabella tab;
 
+	// cliente
 	public Spesa (int indexC){
 		super("Shopping cart ");
 		
@@ -114,7 +108,7 @@ public class Spesa extends Finestra{
 			    	if (index!=-1){
 			    		try {
 			    			Double quant=Double.parseDouble(tf2.ret);
-			    			list.compra(index, quant, Spesa.this);
+			    			list.compra(index, quant);
 			    			ele.clear();
 			    			tf2.clear();
 			    			sal3.setText(Est.deci.format(list.getSaldo())+" eu.");
@@ -135,8 +129,6 @@ public class Spesa extends Finestra{
 			    	if (indixex!=-1){
 			    		try {
 			    			list.elimina(indixex);
-	//		    			tab.togli(indice);
-	//		    			indice=-1;
 			    			indixex=-1;
 			    			sal3.setText(Est.deci.format(list.getSaldo())+" eu.");
 			    			tab.repaint(list);
@@ -158,7 +150,7 @@ public class Spesa extends Finestra{
 	/*comp10*/Bottone bex=new Bottone("Back");
 			bex.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
-			    	Errore err=new Errore(Spesa.this);
+			    	Errore err=new Errore("Are you sure you want to cancel this cart?", Spesa.this);
 			    	err.setVisible(true);
 			    	setVisible(false);
 				}
@@ -168,8 +160,8 @@ public class Spesa extends Finestra{
 	/*comp11*/Bottone fin=new Bottone("BUY");
 			fin.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
-	//		    	Errore er=new Errore(Spesa.this, c);
-	//		    	er.setVisible(true);
+			    	Errore er=new Errore(list, Spesa.this);
+			    	er.setVisible(true);
 			    	setVisible(false);
 			    	
 				}
@@ -184,7 +176,7 @@ public class Spesa extends Finestra{
 	public void refre(){
 		tab.repaint(list);
 	}
-	
+	// fornitore
 	public Spesa (int index, int codice){
 		super("Order "+Main.db.getMerName(index));
 // TODO
@@ -194,19 +186,21 @@ public class Spesa extends Finestra{
 		contenuto.setOpaque(false);
 		contenuto.setLayout(new GridLayout(4,2));
 		
-/*comp1*/  Etichetta ti=new Etichetta("Order supply from ");
+		try {
+/*comp1*/  Etichetta ti=new Etichetta("Order supply of "+Main.db.getMerName(codice));
 		contenuto.add(ti);
-/*comp2*/  Etichetta no=new Etichetta(""+Main.db.getForName(indice));
+		}	catch (Exception ee) {ee.printStackTrace();}
+/*comp2*/  Etichetta no=new Etichetta("from "+Main.db.getForName(index));
 		contenuto.add(no);
 		
 /*comp3*/  Etichetta to=new Etichetta("Purchase price: ");
 		contenuto.add(to);
-/*comp4*/  Etichetta po=new Etichetta(""+Est.deci.format(Main.db.getPrezzoA(index))+" eu per "+unita);
+/*comp4*/  Etichetta po=new Etichetta(""+Est.deci.format(Main.db.getPrezzoA(codice))+" eu per "+unita);
 		contenuto.add(po);
 
 /*comp5*/  Etichetta go=new Etichetta("Sale price: ");
 		contenuto.add(go);
-/*comp6*/  Etichetta xo=new Etichetta(""+Est.deci.format(Main.db.getPrezzo(index))+" eu per "+unita);
+/*comp6*/  Etichetta xo=new Etichetta(""+Est.deci.format(Main.db.getPrezzo(codice))+" eu per "+unita);
 		contenuto.add(xo);
 		
 		
