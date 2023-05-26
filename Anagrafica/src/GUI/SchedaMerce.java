@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SchedaMerce extends Finestra{
-	String nome="";
+	public String nome="";
 	int codice;
 	int index;
 	Double quantita=0.0;
@@ -132,7 +132,7 @@ public class SchedaMerce extends Finestra{
 		eli.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (x!=-1){
-			    	Errore del=new Errore("<html>Are you sure you want to delete this product? <br/> Product: "+nome, SchedaMerce.this);
+			    	Errore del=new Errore(SchedaMerce.this);
 			    	del.setVisible(true);
 			    	setVisible(false);
 		    	}

@@ -108,6 +108,13 @@ public class myDB {
 			System.out.println("Suxcesfully added!");
 		}
 	}
+	public void elimMerc(int x) throws SQLException{
+		String sql="DELETE FROM Merci WHERE ID_MERCE="+x;
+		int result = statement.executeUpdate(sql);
+		if (result!=0) {
+			System.out.println("Suxcesfully removed!");
+		}
+	}
 	
 	public void modCliID(int x,String nome,String cognome,String telefono,String email,String stato,String citta,String indirizzo,String iva,Double saldo,String note) throws SQLException{
 		String mods="name='"+nome+"', last_name='"+cognome+"', phone='"+telefono+"', mail='"+email+"', state='"+stato+"', city='"+citta+

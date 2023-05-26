@@ -9,7 +9,6 @@ import java.awt.event.*;
 import java.sql.SQLException;
 
 public class Errore extends Frame {
-	//prova1213
 	JLabel tx;
 	public Bottone ok;
 	Bottone ty;
@@ -72,8 +71,9 @@ public class Errore extends Frame {
 		pack();
 	}
 	
-	public Errore(String s,SchedaMerce a){	// elimina merce
+	public Errore(SchedaMerce a){	// elimina merce
 		this();
+		String s="<html>Are you sure you want to delete this product? <br/> Product: "+a.nome;
 		tx.setText(s);
 
 		ok.but.addActionListener(new ActionListener() {
@@ -81,6 +81,12 @@ public class Errore extends Frame {
 		    	// TODO fare azione ok (ELIMINA LA MERCE)
 		    	a.dispose();
 		    	setVisible(false);
+		    	try {
+		    		Main.db.elimMerc(a.index);
+		    	} catch (SQLException ee) { ee.printStackTrace();}
+		    	
+		    	
+		    	
 		    	ConsultaMerci mc=new ConsultaMerci();
 		    	mc.setVisible(true);
 		    	dispose();
