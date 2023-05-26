@@ -9,7 +9,7 @@ import java.awt.event.*;
 import java.sql.SQLException;
 
 public class Errore extends Frame {
-	//prova789
+	//prova1011
 	JLabel tx;
 	public Bottone ok;
 	Bottone ty;
