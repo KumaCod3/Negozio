@@ -176,10 +176,10 @@ public class Spesa extends Finestra{
 	public void refre(){
 		tab.repaint(list);
 	}
-	// fornitore
+	
+	// fornitore -----------------------------------------------------------------------------------------------
 	public Spesa (int index, int codice){
-		super("Order "+Main.db.getMerName(index));
-// TODO
+		super("Order "+Main.db.getMerName(codice)+" from "+Main.db.getForName(index));
 		String unita="";
 		
 		JPanel contenuto=new JPanel();
@@ -235,11 +235,9 @@ public class Spesa extends Finestra{
 		    public void actionPerformed(ActionEvent e) {
 		    	double qt=Double.parseDouble(tf2.ret);
 		    	if (qt>0){
-		    		// TODO
-
-		    		
-//			    	Errore er=new Errore(f,m,qt);
-//			    	er.setVisible(true);
+		    		// TODO	    		
+			    	Errore er=new Errore(index, codice, qt);
+			    	er.setVisible(true);
 			    	setVisible(false);
 			    	dispose();
 		    	}

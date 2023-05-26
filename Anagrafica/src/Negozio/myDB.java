@@ -295,19 +295,33 @@ public class myDB {
 		} catch (SQLException e) {e.printStackTrace(); return 0.0; }
 	}
 	
-	public void compra(int index, Double quantita, int c)  throws SQLException {
+	public void vendi(int index, Double quantita, int idTrans)  throws SQLException {
 		String sql="UPDATE Merci SET quantity=quantity-"+quantita +" WHERE ID_MERCE="+index;
 		int result = statement.executeUpdate(sql);
 		if (result!=0) {
 			System.out.println("Suxcesfully added!");
 		}
 		double cost=getPrezzo(index);
-		String sql2="INSERT INTO merci_vendite (ID_VENDITA, ID_MERCE, quantity, price) values("+c+index+quantita+cost+")";
+		String sql2="INSERT INTO merci_vendite (ID_VENDITA, ID_MERCE, quantity, price) values("+idTrans+", "+index+", "+quantita+", "+cost+")";
 		int result2 = statement.executeUpdate(sql2);
 		if (result2!=0) {
 			System.out.println("Suxcesfully added!");
 		}
 	}
+	public void compra(int index, Double quantita, int idTrans)  throws SQLException {
+		String sql="UPDATE Merci SET quantity=quantity+"+quantita +" WHERE ID_MERCE="+index;
+		int result = statement.executeUpdate(sql);
+		if (result!=0) {
+			System.out.println("Suxcesfully added!");
+		}
+		double cost=getPrezzo(index);
+		String sql2="INSERT INTO merci_acquisti (ID_ACQUISTO, ID_MERCE, quantity, price) values("+idTrans+", "+index+", "+quantita+", "+cost+")";
+		int result2 = statement.executeUpdate(sql2);
+		if (result2!=0) {
+			System.out.println("Suxcesfully added!");
+		}
+	}
+	
 	public void aggiornaSaldoCli(int codice, Double prezzo)  throws SQLException {
 		String sql="UPDATE Clienti SET tot_sold=tot_sold + "+prezzo +" WHERE ID_CLIENTE="+codice;
 		int result = statement.executeUpdate(sql);

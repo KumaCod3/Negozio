@@ -78,7 +78,6 @@ public class Errore extends Frame {
 
 		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	// TODO fare azione ok (ELIMINA LA MERCE)
 		    	a.dispose();
 		    	setVisible(false);
 		    	try {
@@ -129,14 +128,14 @@ public class Errore extends Frame {
 
 	public Errore(ListaSpesa list, Spesa a) {	// concludi spesa
 		this();
-		double price=0.0;
+		double price=list.getSaldo();
 		tx.setText("<html>Do you want to procede to <br/> check out?: "+Est.deci.format(price)+" eu.");
 
 		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	// TODO fare azione ok (acquista)
 		    	a.dispose();
 		    	setVisible(false);
+		    	list.concludi();
 		    	Home hh=new Home();
 		    	hh.setVisible(true);
 		    	dispose();
@@ -165,7 +164,6 @@ public class Errore extends Frame {
 		c.add(tf1);
 		pack();
 	}
-	
 	
 	public Errore(int ind, SchedaMerce t){		// scelta forn x ordine merch
 		this();
@@ -206,6 +204,10 @@ public class Errore extends Frame {
 			}
 		});
 		pack();
+	}
+
+	public Errore(int index2, int codice, double qt) {
+		// TODO Auto-generated constructor stub
 	}
 	
 

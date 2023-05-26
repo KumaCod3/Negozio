@@ -28,7 +28,7 @@ public class ListaSpesa{
 		} catch (SQLException e) { e.printStackTrace(); }
 	}
 	
-	public void compra(int merce,Double quantita){
+	public void compra(int merce,Double quantita){	//aggiunge un nuovo prod
 		for (int m:elenco.keySet()){
 			if (m==merce){
 				quantita=elenco.get(m)+quantita;
@@ -93,7 +93,7 @@ public class ListaSpesa{
 			int index=m.getKey();
 			Double quantita=m.getValue();
 			try {
-				Main.db.compra(index, quantita, IDtrans);
+				Main.db.vendi(index, quantita, IDtrans);
 			} catch (SQLException ex) { ex.printStackTrace(); }
 			
 		}
