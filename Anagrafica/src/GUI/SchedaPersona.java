@@ -21,8 +21,6 @@ public class SchedaPersona extends Finestra{
 	String note;
 	int index;
 	
-//	Anagrafica mer;
-//	int index=-1;
 	
 	public SchedaPersona(int x, String tipo){
 		super("Scheda "+tipo);

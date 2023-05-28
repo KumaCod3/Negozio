@@ -2,6 +2,9 @@ package GUI;
 import Negozio.*;
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 import java.awt.event.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -74,31 +77,24 @@ public class SchedaMerce extends Finestra{
 		contenuto.add(vv);
 		
 /*comp6*/  Etichetta forn=new Etichetta("Supplier: ");
-		contenuto.add(forn);	
-		Choice ele1=new Choice();
-		ele1.add("Choose");
-		try{
-			ResultSet xx=Main.db.getElenSuppF(index);
-			while (xx.next()) {
-				ele1.add(xx.getString(1)+", "+xx.getString(2)+", "+xx.getString(3));
-			}
-		}
-		catch (SQLException e){	e.printStackTrace();	}
+		contenuto.add(forn);
 		
-		ele1.setFont(Est.plainFont);
-		ele1.addFocusListener(new FocusListener() {
-			public void focusGained(FocusEvent e){
-			}
-			public void focusLost(FocusEvent e){
-				if (ele1.getSelectedItem().equals("Choose")||ele1.getSelectedItem().equals("Empty")){
+		try {
+			MyChoice ele1=new MyChoice(Main.db.getElenSuppF(index),5);
+			ele1.jList.addListSelectionListener(new ListSelectionListener() {
+				public void valueChanged(ListSelectionEvent e) {
+					try {
+						String[] temp=ele1.getSel().split(", ");
+						index=Integer.parseInt(temp[0]);
+					}
+					catch (Exception ex){
+						// no selection
+					}
+					
 				}
-				else {
-					String[] temp=ele1.getSelectedItem().split(", ");
-					codice=Integer.parseInt(temp[0]);
-				}
-			}
-		});
-		contenuto.add(ele1);	
+			});
+			contenuto.add(ele1);
+		} catch (SQLException ex) {ex.printStackTrace();}
 		
 		Panel sud=new Panel();
 		sud.setLayout(new GridLayout(2,2));

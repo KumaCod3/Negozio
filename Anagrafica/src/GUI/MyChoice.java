@@ -75,6 +75,7 @@ public class MyChoice /*<T extends Anagrafica>*/ extends JPanel{
 		add(pap);
 	}
 	
+
 	public String getSel() {
 		String fin=jList.getSelectedValue();
 //		System.out.println(fin);

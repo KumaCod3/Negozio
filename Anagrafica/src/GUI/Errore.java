@@ -172,7 +172,7 @@ public class Errore extends Frame {
 		tx.setText("From which supplier you want to purchase the product?");
 
 		try {
-			/*comp2*/MyChoice ele=new MyChoice(Main.db.getElenSuppF(ind),5);
+			MyChoice ele=new MyChoice(Main.db.getElenSuppF(ind),5);
 					ele.jList.addListSelectionListener(new ListSelectionListener() {
 						public void valueChanged(ListSelectionEvent e) {
 							try {

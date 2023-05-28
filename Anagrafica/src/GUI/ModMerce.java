@@ -61,8 +61,24 @@ public class ModMerce extends Finestra{
 			Etichetta etUni = new Etichetta("Unit of measure:              ");
 			panel_2.add(etUni);
 			
-			Etichetta uni = new Etichetta("             "+unita);
-			panel_2.add(uni);
+			Choice un = new Choice();
+			un.setPreferredSize(Est.choi);
+			un.add(unita);
+			un.add("Kg");
+			un.add("g");
+			un.add("lt");
+			un.add("unit");
+			un.setFont(Est.plainFont);
+			un.addFocusListener(new FocusListener() {
+				public void focusGained(FocusEvent e){
+				}
+				public void focusLost(FocusEvent e){
+					if (un.getSelectedIndex()>0){
+						unita=un.getSelectedItem();
+					}
+				}
+			});
+			panel_2.add(un);
 			
 			JPanel panel_3 = new JPanel();
 			FlowLayout flowLayout_2 = (FlowLayout) panel_3.getLayout();

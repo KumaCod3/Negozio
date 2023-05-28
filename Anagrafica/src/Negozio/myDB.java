@@ -198,7 +198,7 @@ public class myDB {
 	}
 
 	public ResultSet getElenSuppF(int index) throws SQLException{
-		String sql="SELECT forniture.ID_FORNITORE, fornitori.name, fornitori.last_name FROM forniture JOIN fornitori ON forniture.ID_FORNITORE WHERE ID_MERCE="+index;
+		String sql="SELECT fornitori.ID_FORNITORE, fornitori.name, fornitori.last_name FROM fornitori WHERE ID_FORNITORE IN (SELECT ID_FORNITORE FROM forniture WHERE ID_MERCE="+index+");";
 		// cod, nome, cogn
 		ResultSet result = statement.executeQuery(sql);
 		return result;
