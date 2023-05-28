@@ -77,7 +77,7 @@ public class MyChoice /*<T extends Anagrafica>*/ extends JPanel{
 	
 	public String getSel() {
 		String fin=jList.getSelectedValue();
-		System.out.println(fin);
+//		System.out.println(fin);
 		return fin;
 	}
 	
@@ -105,14 +105,6 @@ public class MyChoice /*<T extends Anagrafica>*/ extends JPanel{
 			}
 		} catch (SQLException e) { e.printStackTrace(); }
 	}
-	
-//	private void populate(HashMap<Integer,Merce> sor) {
-//		for (Merce a:sor.values()) {
-//			String fin=a.getCod()+" "+a.getNome();
-//			elenco.add(fin);
-//		}
-//		
-//	}
 
 	private JTextField createTextField() {
         final JTextField field = new JTextField(15);

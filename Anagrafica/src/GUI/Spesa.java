@@ -27,7 +27,7 @@ public class Spesa extends Finestra{
 			String[] dati=Main.db.leggiCliID(indexC).split(",");
 			this.setTitle("Shopping cart of "+dati[1]+" "+dati[2]);
 		
-			list=new ListaSpesa(indexC);
+			list=new ListaSpesa(indexC, this);
 			
 			JPanel contenuto=new JPanel();
 			contenuto.setBorder(Est.bordo);
@@ -234,9 +234,9 @@ public class Spesa extends Finestra{
 		fin.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	double qt=Double.parseDouble(tf2.ret);
+		    	double price=qt*Main.db.getPrezzo(codice);
 		    	if (qt>0){
-		    		// TODO	    		
-			    	Errore er=new Errore(index, codice, qt);
+			    	Errore er=new Errore(index, codice, price, Spesa.this, qt);
 			    	er.setVisible(true);
 			    	setVisible(false);
 			    	dispose();

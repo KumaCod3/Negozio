@@ -17,7 +17,7 @@ public class myDB {
 			Class.forName("com.mysql.jdbc.Driver"); 
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/negozioDB?characterEncoding=latin1&useConfigs=maxPerformance","root","Du1k3rKnows!");
 			statement = connection.createStatement();
-			System.out.println("DB connected!");
+//			System.out.println("DB connected!");
 		}
 		catch (Exception ex) {
 			ex.printStackTrace();
@@ -41,7 +41,7 @@ public class myDB {
 			String indirizzo=result.getString("street");
 			Double saldo=result.getDouble("tot_sold");
 			String note=result.getString("note");
-			System.out.println(id+ nome+ cognome+ telefono+ email+ iva+ indirizzo+ saldo);
+//			System.out.println(id+ nome+ cognome+ telefono+ email+ iva+ indirizzo+ saldo);
 			inser=id+","+nome+","+cognome+","+telefono+","+email+","+stato+","+citta+","+indirizzo+","+iva+","+saldo+","+note;
 		}
 		return inser;
@@ -63,7 +63,7 @@ public class myDB {
 			String indirizzo=result.getString("street");
 			Double saldo=result.getDouble("tot_purchased");
 			String note=result.getString("note");
-			System.out.println(id+ nome+ cognome+ telefono+ email+ iva+ indirizzo+ saldo);
+//			System.out.println(id+ nome+ cognome+ telefono+ email+ iva+ indirizzo+ saldo);
 			inser=id+","+nome+","+cognome+","+telefono+","+email+","+stato+","+citta+","+indirizzo+","+iva+","+saldo+","+note;
 		}
 		return inser;
@@ -81,7 +81,7 @@ public class myDB {
 			Double prezzoA=result.getDouble("Price");
 			Double rincaro=result.getDouble("deal");
 			String note=result.getString("note");
-			System.out.println(id+ nome+ unita+ quantita+ prezzoA+ rincaro+ note);
+//			System.out.println(id+ nome+ unita+ quantita+ prezzoA+ rincaro+ note);
 			inser=id+","+nome+","+unita+","+quantita+","+prezzoA+","+rincaro+","+note;
 		}
 		return inser;
@@ -91,28 +91,28 @@ public class myDB {
 		String sql="INSERT INTO Clienti (name, last_name, phone, Mail, state, city, street, vatn, tot_sold, note) values('"+x+"')";
 		int result = statement.executeUpdate(sql);
 		if (result!=0) {
-			System.out.println("Suxcesfully added!");
+//			System.out.println("Suxcesfully added!");
 		}
 	}
 	public void aggFor(String x) throws SQLException{
 		String sql="INSERT INTO Fornitori (name, last_name, phone, Mail, state, city, street, vatn, tot_purchased, note) values('"+x+"')";
 		int result = statement.executeUpdate(sql);
 		if (result!=0) {
-			System.out.println("Suxcesfully added!");
+//			System.out.println("Suxcesfully added!");
 		}
 	}
 	public void aggMerc(String x) throws SQLException{
 		String sql="INSERT INTO Merci (product,unity,quantity,price,deal,note) values('"+x+"')";
 		int result = statement.executeUpdate(sql);
 		if (result!=0) {
-			System.out.println("Suxcesfully added!");
+//			System.out.println("Suxcesfully added!");
 		}
 	}
 	public void elimMerc(int x) throws SQLException{
 		String sql="DELETE FROM Merci WHERE ID_MERCE="+x;
 		int result = statement.executeUpdate(sql);
 		if (result!=0) {
-			System.out.println("Suxcesfully removed!");
+//			System.out.println("Suxcesfully removed!");
 		}
 	}
 	
@@ -124,7 +124,7 @@ public class myDB {
 		int result = statement.executeUpdate(sql);
 		
 		if (result!=0) {
-			System.out.println("Suxcesfully added!");
+//			System.out.println("Suxcesfully added!");
 		}
 	}
 	public void modForID(int x,String nome,String cognome,String telefono,String email,String stato,String citta,String indirizzo,String iva,Double saldo,String note) throws SQLException{
@@ -135,7 +135,7 @@ public class myDB {
 		int result = statement.executeUpdate(sql);
 		
 		if (result!=0) {
-			System.out.println("Suxcesfully added!");
+//			System.out.println("Suxcesfully added!");
 		}
 	}
 	public void modMercID(int x,String nome,String unita,Double quantita,Double prezzoA,Double rincaro,String note) throws SQLException{
@@ -145,7 +145,7 @@ public class myDB {
 		int result = statement.executeUpdate(sql);
 		
 		if (result!=0) {
-			System.out.println("Suxcesfully added!");
+//			System.out.println("Suxcesfully added!");
 		}
 	}
 	
@@ -193,7 +193,7 @@ public class myDB {
 		String sql="INSERT INTO forniture VALUES("+codice+", "+index+", "+cost+")";
 		int result = statement.executeUpdate(sql);
 		if (result!=0) {
-			System.out.println("Suxcesfully added!");
+//			System.out.println("Suxcesfully added!");
 		}
 	}
 
@@ -204,18 +204,17 @@ public class myDB {
 		return result;
 	}
 	public ResultSet getElenSuppM(int codice) throws SQLException{
-		String sql="SELECT forniture.ID_MERCE, merci.product FROM forniture JOIN merci ON forniture.ID_MERCE=merci.ID_MERCE WHERE ID_FORNITORE="+codice;
+		String sql="SELECT merci.ID_MERCE, merci.product FROM merci WHERE ID_MERCE IN (SELECT ID_MERCE FROM forniture WHERE ID_FORNITORE="+codice+");";
 		// num. prod
 		ResultSet result = statement.executeQuery(sql);
 		return result;
 	}
 	
-
 	public void modMerc(int index, String nome, String unita, Double quantita, Double prezzoA, Double rincaro, String note) throws SQLException{
 		String sql="UPDATE Merci SET product='"+nome+"', unity='"+unita+"', quantity="+quantita+",price="+prezzoA+",deal="+rincaro+",note='"+note+"' WHERE ID_MERCE="+index;
 		int result = statement.executeUpdate(sql);
 		if (result!=0) {
-			System.out.println("Suxcesfully added!");
+//			System.out.println("Suxcesfully added!");
 		}
 	}
 
@@ -299,26 +298,26 @@ public class myDB {
 		String sql="UPDATE Merci SET quantity=quantity-"+quantita +" WHERE ID_MERCE="+index;
 		int result = statement.executeUpdate(sql);
 		if (result!=0) {
-			System.out.println("Suxcesfully added!");
+//			System.out.println("Suxcesfully added!");
 		}
 		double cost=getPrezzo(index);
 		String sql2="INSERT INTO merci_vendite (ID_VENDITA, ID_MERCE, quantity, price) values("+idTrans+", "+index+", "+quantita+", "+cost+")";
 		int result2 = statement.executeUpdate(sql2);
 		if (result2!=0) {
-			System.out.println("Suxcesfully added!");
+//			System.out.println("Suxcesfully added!");
 		}
 	}
 	public void compra(int index, Double quantita, int idTrans)  throws SQLException {
 		String sql="UPDATE Merci SET quantity=quantity+"+quantita +" WHERE ID_MERCE="+index;
 		int result = statement.executeUpdate(sql);
 		if (result!=0) {
-			System.out.println("Suxcesfully added!");
+//			System.out.println("Suxcesfully added!");
 		}
 		double cost=getPrezzo(index);
 		String sql2="INSERT INTO merci_acquisti (ID_ACQUISTO, ID_MERCE, quantity, price) values("+idTrans+", "+index+", "+quantita+", "+cost+")";
 		int result2 = statement.executeUpdate(sql2);
 		if (result2!=0) {
-			System.out.println("Suxcesfully added!");
+//			System.out.println("Suxcesfully added!");
 		}
 	}
 	
@@ -332,7 +331,7 @@ public class myDB {
 		String sql="INSERT INTO Vendite (ID_CLIENTE, moment) values("+c+", '"+Est.dateFormSQL.format(data)+"')";
 		int result = statement.executeUpdate(sql);
 		if (result!=0) {
-			System.out.println("Suxcesfully added!");
+//			System.out.println("Suxcesfully added!");
 		}
 		int idd=0;
 		String sql2="SELECT LAST_INSERT_ID() AS id;";
@@ -349,4 +348,32 @@ public class myDB {
 		}
 	}
 
+
+	public void aggiornaSaldoFor(int index, Double prezzo)  throws SQLException {
+		String sql="UPDATE Fornitori SET tot_purchased=tot_purchased + "+prezzo +" WHERE ID_FORNITORE="+index;
+		int result = statement.executeUpdate(sql);
+		if (result!=0) {
+		}
+	}	
+	public int createTransactionOu(int index, double price) throws SQLException{
+		LocalDateTime data=LocalDateTime.now();
+		String sql="INSERT INTO Acquisti (ID_FORNITORE, moment, Price) values("+index+", '"+Est.dateFormSQL.format(data)+"', "+price+")";
+		int result = statement.executeUpdate(sql);
+		if (result!=0) {
+//			System.out.println("Suxcesfully added!");
+		}
+		int idd=0;
+		String sql2="SELECT LAST_INSERT_ID() AS id;";
+		ResultSet result2 = statement.executeQuery(sql2);
+		while (result2.next()) {
+			idd=result2.getInt("id");
+		}
+		return idd;
+	}
+	public void aggiornaAcquisti(int iDtrans, Double saldo, String not) throws SQLException{
+		String sql="UPDATE Acquisti SET price="+saldo +", note='"+not +"' WHERE ID_ACQUISTO="+iDtrans;
+		int result = statement.executeUpdate(sql);
+		if (result!=0) {
+		}
+	}
 }

@@ -146,15 +146,13 @@ public class SchedaMerce extends Finestra{
 		    	if (x!=-1){
 		    		
 		    		try{
-//	TODO
-		    			// fai errore per scegliere fornitore index f da cui farai partire
 				    	Errore er=new Errore(index, SchedaMerce.this);
 				    	er.setVisible(true);
 				    	setVisible(false);
 //				    	dispose();
 			    	}
 			    	catch (Exception y){
-			    		// ERRORE
+			    		y.printStackTrace();
 			    	}
 		    	}
 		    	else {

@@ -110,8 +110,8 @@ public class Errore extends Frame {
 		    public void actionPerformed(ActionEvent e) {
 		    	a.dispose();
 		    	setVisible(false);
-		    	ConsultaMerci mc=new ConsultaMerci();
-		    	mc.setVisible(true);
+		    	ConsultaPersone cp=new ConsultaPersone();
+		    	cp.setVisible(true);
 		    	dispose();
 			}
 		});
@@ -162,10 +162,12 @@ public class Errore extends Frame {
 		c.remove(ty);
 		tf1 = new FormVuoto(""+qttMax);
 		c.add(tf1);
+		
 		pack();
+		
 	}
 	
-	public Errore(int ind, SchedaMerce t){		// scelta forn x ordine merch
+	public Errore(int ind, SchedaMerce t) {		// scelta forn x ordine merch
 		this();
 		tx.setText("From which supplier you want to purchase the product?");
 
@@ -206,9 +208,78 @@ public class Errore extends Frame {
 		pack();
 	}
 
-	public Errore(int index2, int codice, double qt) {
-		// TODO Auto-generated constructor stub
+	public Errore(int index2, int codice, double price, Spesa a, double qt) {	// concludi spesa fornit
+		this();
+		tx.setText("<html>Do you want to procede to <br/> check out?: "+Est.deci.format(price)+" eu.");
+
+		ok.but.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	a.dispose();
+		    	setVisible(false);
+		    	//list.concludi();
+		    	try {
+		    		int IDtrans=Main.db.createTransactionOu(index2, price);
+		    		Main.db.compra(codice, qt, IDtrans);
+		    		Main.db.aggiornaSaldoFor(index2, price);
+		    	} catch (SQLException ex) { ex.printStackTrace();}
+		    	
+		    	Home hh=new Home();
+		    	hh.setVisible(true);
+		    	a.dispose();
+		    	dispose();
+			}
+		});
+		
+		ty.but.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	setVisible(false);
+		    	a.setVisible(true);
+		    	dispose();
+			}
+		});
+		pack();
 	}
 	
+
+	public Errore(int codice, SchedaPersona t) {	// scelta merce x ordine forn
+		this();
+		tx.setText("Which product you want to purchase form this supplyer?");
+
+		try {
+				MyChoice ele=new MyChoice(Main.db.getElenSuppM(codice), "ciao");
+				ele.jList.addListSelectionListener(new ListSelectionListener() {
+					public void valueChanged(ListSelectionEvent e) {
+						try {
+							String[] temp=ele.getSel().split(", ");
+							index=Integer.parseInt(temp[0]);
+						}
+						catch (Exception ex){
+							ex.printStackTrace();
+						}
+						
+					}
+				});
+				c.add(ele);
+		} catch (SQLException e) { e.printStackTrace();}
+
+		ok.but.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	t.dispose();
+		    	Spesa sp=new Spesa(codice, index);
+		    	sp.setVisible(true);
+		    	setVisible(false);
+		    	dispose();
+			}
+		});
+		
+		ty.but.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	setVisible(false);
+		    	t.setVisible(true);
+		    	dispose();
+			}
+		});
+		pack();
+	}
 
 }		

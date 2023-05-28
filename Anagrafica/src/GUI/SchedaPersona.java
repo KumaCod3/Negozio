@@ -113,32 +113,12 @@ public class SchedaPersona extends Finestra{
 			Etichetta forn=new Etichetta("Products: ");
 			contenuto.add(forn);	
 			
-			Choice ele1=new Choice();
-			ele1.add("Choose");
+			try {
+				MyChoice ele1=new MyChoice(Main.db.getElenSuppM(codice), "ciao");
+				contenuto.add(ele1);
+			} catch (SQLException ex) {ex.printStackTrace();}
 			
-			try{
-				ResultSet xx=Main.db.getElenSuppM(codice);
-				while (xx.next()) {
-					ele1.add(xx.getString(1)+", "+xx.getString(2));
-				}
-			}
-			catch (SQLException e){	e.printStackTrace();	}
 			
-			ele1.setFont(Est.plainFont);
-			ele1.addFocusListener(new FocusListener() {
-				public void focusGained(FocusEvent e){
-				}
-				public void focusLost(FocusEvent e){
-					if (ele1.getSelectedItem().equals("Choose")||ele1.getSelectedItem().equals("Empty")){
-					}
-					else {
-						String temp=ele1.getSelectedItem();
-						String[] temAr=temp.split(", ");
-						index=Integer.parseInt(temAr[0]);
-					}
-				}
-			});
-			contenuto.add(ele1);
 
 /*OUT*/		JPanel sud=new JPanel();
 			sud.setOpaque(false);
@@ -164,17 +144,15 @@ public class SchedaPersona extends Finestra{
 			Bottone ord=new Bottone("Order Product");
 			ord.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
-			    	if (index!=-1){
-				    	try{
-				    		// TODO
-//					    	Fornitore f=DataB.trovaForn(mer);
-//					    	Spesa sp=new Spesa(DataM.get(index),f);
-//					    	sp.setVisible(true);
-//					    	setVisible(false);
+			    	if (codice!=-1){
+			    		try{
+					    	Errore er=new Errore(codice, SchedaPersona.this);
+					    	er.setVisible(true);
+					    	setVisible(false);
 //					    	dispose();
 				    	}
 				    	catch (Exception y){
-				    		// ERRORE
+				    		y.printStackTrace();
 				    	}
 			    	}
 				}

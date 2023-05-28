@@ -17,9 +17,11 @@ public class ListaSpesa{
 	LocalDateTime data;
 	String fattura="";
 	String note="";
+	Spesa ss;
 	public HashMap<Integer,Double> elenco=new HashMap<Integer,Double>();
 	
-	public ListaSpesa(int c){
+	public ListaSpesa(int c, Spesa s){
+		ss=s;
 		IDcli=c;
 		data=LocalDateTime.now();
 		saldo=0.0;
@@ -40,6 +42,7 @@ public class ListaSpesa{
 		regolaQ(merce);
 
 		calcolaSaldo();
+		ss.refre();
 		return;
 	}
 	
@@ -55,6 +58,7 @@ public class ListaSpesa{
 		    		if (check(merce)){
 		    			er.setVisible(false);
 				    	er.dispose();
+				    	ss.refre();
 		    		}
 		    		else {
 		    			er.setVisible(false);
@@ -66,7 +70,7 @@ public class ListaSpesa{
 		    	
 			}
 		});
-
+		
 	}
 
 	public Double getSaldo(){
