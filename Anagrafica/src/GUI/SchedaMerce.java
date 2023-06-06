@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 public class SchedaMerce extends Finestra{
 	public String nome="";
-	int codice;
+//	int codice;
 	int index;
 	Double quantita=0.0;
 	Double rincaro=0.0;
@@ -105,7 +105,7 @@ public class SchedaMerce extends Finestra{
 		} catch (SQLException ex) {ex.printStackTrace();}
 		
 		Panel sud=new Panel();
-		sud.setLayout(new GridLayout(2,2));
+		sud.setLayout(new GridLayout(3,2));
 		
 /*comp9*/Bottone bex=new Bottone("Back");
 		bex.but.addActionListener(new ActionListener() {
@@ -130,6 +130,25 @@ public class SchedaMerce extends Finestra{
 			}
 		});
 		sud.add(bin);
+		
+//--------new
+		
+		Bottone agg=new Bottone("Assign Product");
+		agg.but.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	try{
+			    	AssegnaMerc ass=new AssegnaMerc(index, "ciao");
+			    	ass.setVisible(true);
+			    	setVisible(false);
+			    	dispose();
+		    	}
+		    	catch (Exception pp){
+		    		// ERRORE
+		    	}
+			}
+		});
+		sud.add(agg);
+//---------fin
 		
 /*OUT*/		
 		Bottone eli=new Bottone("DELETE");

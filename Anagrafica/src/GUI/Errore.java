@@ -282,4 +282,33 @@ public class Errore extends Frame {
 		pack();
 	}
 
+	public Errore(int codice, int indice, AssegnaMerc a) {		// elimina rapporto fornitore/merce
+		this();
+		String mer=Main.db.getMerName(codice);
+		String sup=Main.db.getForName(indice);
+		
+		tx.setText("Remove "+mer+" from supplier "+sup+"?");
+
+		ok.but.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	a.dispose();
+		    	setVisible(false);
+	//	    	removeee();
+		    	Main.db.removeForn(codice,indice);
+		    	ConsultaPersone cp=new ConsultaPersone();
+		    	cp.setVisible(true);
+		    	dispose();
+			}
+		});
+		
+		ty.but.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	setVisible(false);
+		    	a.setVisible(true);
+		    	dispose();
+			}
+		});
+		pack();
+	}
+
 }		

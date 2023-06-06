@@ -186,6 +186,18 @@ public class myDB {
 		if (result!=0) {
 //			System.out.println("Suxcesfully added!");
 		}
+		
+		double prezOld=getPrezzoA(index);
+		if (prezOld>cost) {
+			String sql2="UPDATE Merci SET price="+cost+" WHERE ID_MERCE="+index;
+			int result2 = statement.executeUpdate(sql2);
+			if (result2!=0) {
+//				System.out.println("Suxcesfully added!");
+			}
+		}
+		
+		
+		
 	}
 
 	public ResultSet getElenSuppF(int index) throws SQLException{
@@ -373,5 +385,16 @@ public class myDB {
 			}
 			return inser;
 		} catch (SQLException e) {e.printStackTrace(); return 0.0; }
+	}
+	
+
+	public void removeForn(int codice, int indice) {
+		try {
+			String sql="DELETE FROM forniture WHERE ID_MERCE="+codice+" AND ID_FORNITORE="+indice+";";
+			int result = statement.executeUpdate(sql);
+			if (result!=0) {
+	//			System.out.println("Suxcesfully added!");
+			}
+		} catch (SQLException e) { e.printStackTrace();}
 	}
 }
