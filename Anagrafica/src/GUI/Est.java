@@ -35,6 +35,7 @@ public class Est {
 	public static int marginY=(int)((screenSize.getSize().getSize().getHeight()/2)-(standard.getSize().getHeight()/2));
 	
 	public static DecimalFormat deci = new DecimalFormat("0.00");
+	public static DecimalFormat sco = new DecimalFormat("00");
 	public static DateTimeFormatter dateForm= DateTimeFormatter.ofPattern("yyyy-MM-dd H:mm.ss");
 	public static DateTimeFormatter dateFormSQL= DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
 	

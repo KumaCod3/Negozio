@@ -10,6 +10,7 @@ public class ModMerce extends Finestra{
 		Double quantita=0.0;
 		Double prezzoA=0.0;
 		Double rincaro=0.0;
+		Double sconto=0.0;
 		String unita="unita";
 		String note="";
 		int index;
@@ -28,7 +29,8 @@ public class ModMerce extends Finestra{
 					this.quantita=Double.parseDouble(spl[3]);
 					this.prezzoA=Double.parseDouble(spl[4]);
 					this.rincaro=Double.parseDouble(spl[5]);
-					this.note=spl[6];
+					this.sconto=Double.parseDouble(spl[6]);
+					this.note=spl[7];
 					
 				} catch (SQLException ex) {	ex.printStackTrace(); }
 			}
@@ -37,7 +39,7 @@ public class ModMerce extends Finestra{
 			JPanel contenuto=new JPanel();
 			contenuto.setBorder(Est.bordo);
 			contenuto.setOpaque(false);
-			contenuto.setLayout(new GridLayout(6,1));
+			contenuto.setLayout(new GridLayout(7,1));
 			
 			JPanel panel_1 = new JPanel();
 			FlowLayout flowLayout = (FlowLayout) panel_1.getLayout();
@@ -115,22 +117,56 @@ public class ModMerce extends Finestra{
 			
 			Choice rim = new Choice();
 			rim.setPreferredSize(Est.choi);
-			rim.add(""+rincaro);
-			rim.add("1.10");
-			rim.add("1.20");
-			rim.add("1.30");
-			rim.add("1.50");
+			rim.add(""+(rincaro*100));
+			rim.add("0");
+			rim.add("10");
+			rim.add("20");
+			rim.add("30");
+			rim.add("50");
 			rim.setFont(Est.plainFont);
 			rim.addFocusListener(new FocusListener() {
 				public void focusGained(FocusEvent e){
 				}
 				public void focusLost(FocusEvent e){
 					if (rim.getSelectedIndex()>0){
-						rincaro=Double.parseDouble(rim.getSelectedItem());
+						rincaro=Double.parseDouble(rim.getSelectedItem())/100;
 					}
 				}
 			});
 			panel_5.add(rim);
+			
+// ---------new
+			JPanel panel_5bis = new JPanel();
+			FlowLayout flowLayout_5bis = (FlowLayout) panel_5.getLayout();
+			flowLayout_5bis.setAlignment(FlowLayout.TRAILING);
+			panel_5bis.setOpaque(false);
+			contenuto.add(panel_5bis);
+			
+			Etichetta etSco = new Etichetta("Choose %price increase:              ");
+			panel_5.add(etSco);
+			
+			Choice sco = new Choice();
+			sco.setPreferredSize(Est.choi);
+			sco.add(""+(sconto*100));
+			sco.add("0");
+			sco.add("10");
+			sco.add("20");
+			sco.add("30");
+			sco.add("50");
+			sco.setFont(Est.plainFont);
+			sco.addFocusListener(new FocusListener() {
+				public void focusGained(FocusEvent e){
+				}
+				public void focusLost(FocusEvent e){
+					if (sco.getSelectedIndex()>0){
+						sconto=Double.parseDouble(sco.getSelectedItem())/100;
+					}
+				}
+			});
+			panel_5bis.add(sco);
+			
+	// -------------fin
+			
 			
 			JPanel panel_6 = new JPanel();
 			panel_6.setOpaque(false);
@@ -158,7 +194,7 @@ public class ModMerce extends Finestra{
 				    		prezzoA=Double.parseDouble(tf3.ret);
 				    		try {
 
-					    		Main.db.modMerc(index, nome, unita, quantita, prezzoA, rincaro, note);
+					    		Main.db.modMerc(index, nome, unita, quantita, prezzoA, rincaro, sconto, note);
 				    		} catch (SQLException ex) {	ex.printStackTrace(); }
 				    		
 							ConsultaMerci consultaM=new ConsultaMerci(/*c*/);

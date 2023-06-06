@@ -61,7 +61,9 @@ public class TabMerc extends Frame{
 		try {
 			ResultSet sett=Main.db.getElenMerc();
 			while (sett.next()) {
-				String[] riga={sett.getString("ID_MERCE"),sett.getString("product"),sett.getString("Quantity"),sett.getString("price")};
+				double priz=sett.getDouble("price")+(sett.getDouble("price")*sett.getDouble("increase"))-(sett.getDouble("price")*sett.getDouble("deal"));
+				
+				String[] riga={sett.getString("ID_MERCE"),sett.getString("product"),sett.getString("Quantity"),Est.deci.format(priz)};
 				model.addRow(riga);
 			}
 		}

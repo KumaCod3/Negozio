@@ -15,6 +15,7 @@ public class SchedaMerce extends Finestra{
 	int index;
 	Double quantita=0.0;
 	Double rincaro=0.0;
+	Double sconto=0.0;
 	Double prezzoA=0.0;
 	Double prezzoV=0.0;
 	Double valore=0.0;
@@ -27,6 +28,7 @@ public class SchedaMerce extends Finestra{
 		if (x!=-1) {
 			try {
 				String data=Main.db.leggiMercID(x);
+				
 				String[] spl=data.split(",");
 
 				this.nome=spl[1];
@@ -34,8 +36,9 @@ public class SchedaMerce extends Finestra{
 				this.quantita=Double.parseDouble(spl[3]);
 				this.prezzoA=Double.parseDouble(spl[4]);
 				this.rincaro=Double.parseDouble(spl[5]);
-				this.note=spl[6];
-				this.prezzoV=prezzoA*rincaro;
+				this.sconto=Double.parseDouble(spl[6]);
+				this.note=spl[7];
+				this.prezzoV=prezzoA+(prezzoA*rincaro)-(prezzoA*sconto);
 				this.valore=prezzoA*quantita;
 				
 			} catch (SQLException ex) {	ex.printStackTrace(); }
@@ -44,7 +47,7 @@ public class SchedaMerce extends Finestra{
 		JPanel contenuto=new JPanel();
 		contenuto.setBorder(Est.bordo);
 		contenuto.setOpaque(false);
-		contenuto.setLayout(new GridLayout(6,2));
+		contenuto.setLayout(new GridLayout(7,2));
 		
 /*comp1*/  Etichetta non=new Etichetta("Product: ");
 		contenuto.add(non);	
@@ -68,15 +71,20 @@ public class SchedaMerce extends Finestra{
 		
 /*comp4*/  Etichetta ri=new Etichetta("Selling price: ");
 		contenuto.add(ri);
-		Etichetta rr=new Etichetta(Est.deci.format(prezzoV)+"eu ("+rincaro+"% price increase)");
+		Etichetta rr=new Etichetta(Est.deci.format(prezzoV)+"eu");
 		contenuto.add(rr);
 		
-/*comp5*/  Etichetta va=new Etichetta("Total in stock value: ");
+/*comp5*/		Etichetta car=new Etichetta(Est.sco.format(rincaro*100)+" % increase");
+		contenuto.add(car);
+/*comp6*/		Etichetta sco=new Etichetta(Est.sco.format(sconto*100)+" %  deal");
+		contenuto.add(sco);
+		
+/*comp7*/  Etichetta va=new Etichetta("Total in stock value: ");
 		contenuto.add(va);
 		Etichetta vv=new Etichetta(Est.deci.format(valore)+"eu");
 		contenuto.add(vv);
 		
-/*comp6*/  Etichetta forn=new Etichetta("Supplier: ");
+/*comp8*/  Etichetta forn=new Etichetta("Supplier: ");
 		contenuto.add(forn);
 		
 		try {
@@ -85,7 +93,7 @@ public class SchedaMerce extends Finestra{
 				public void valueChanged(ListSelectionEvent e) {
 					try {
 						String[] temp=ele1.getSel().split(", ");
-						index=Integer.parseInt(temp[0]);
+	//					index=Integer.parseInt(temp[0]);
 					}
 					catch (Exception ex){
 						// no selection
@@ -99,7 +107,7 @@ public class SchedaMerce extends Finestra{
 		Panel sud=new Panel();
 		sud.setLayout(new GridLayout(2,2));
 		
-/*comp7*/Bottone bex=new Bottone("Back");
+/*comp9*/Bottone bex=new Bottone("Back");
 		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	ConsultaMerci consultaM=new ConsultaMerci();

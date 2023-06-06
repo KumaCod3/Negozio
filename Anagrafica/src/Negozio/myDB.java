@@ -78,11 +78,12 @@ public class myDB {
 			String nome=result.getString("Product");
 			String unita=result.getString("Unity");
 			Double quantita=result.getDouble("Quantity");
-			Double prezzoA=result.getDouble("Price");
-			Double rincaro=result.getDouble("deal");
+			Double prezzoA=result.getDouble("price");
+			Double rincaro=result.getDouble("increase");
+			Double sconto=result.getDouble("Deal");
 			String note=result.getString("note");
 //			System.out.println(id+ nome+ unita+ quantita+ prezzoA+ rincaro+ note);
-			inser=id+","+nome+","+unita+","+quantita+","+prezzoA+","+rincaro+","+note;
+			inser=id+","+nome+","+unita+","+quantita+","+prezzoA+","+rincaro+","+sconto+","+note;
 		}
 		return inser;
 	}
@@ -102,7 +103,7 @@ public class myDB {
 		}
 	}
 	public void aggMerc(String x) throws SQLException{
-		String sql="INSERT INTO Merci (product,unity,quantity,price,deal,note) values('"+x+"')";
+		String sql="INSERT INTO Merci (product,unity,quantity,price,deal,increase,note) values('"+x+"')";
 		int result = statement.executeUpdate(sql);
 		if (result!=0) {
 //			System.out.println("Suxcesfully added!");
@@ -132,16 +133,6 @@ public class myDB {
 				"', street='"+indirizzo+"', vatn='"+iva+"', tot_purchased="+saldo+", note='"+note;
 		
 		String sql="UPDATE Fornitori SET "+mods+"' WHERE ID_FORNITORE="+x;
-		int result = statement.executeUpdate(sql);
-		
-		if (result!=0) {
-//			System.out.println("Suxcesfully added!");
-		}
-	}
-	public void modMercID(int x,String nome,String unita,Double quantita,Double prezzoA,Double rincaro,String note) throws SQLException{
-		String mods="product='"+nome+"', unity='"+unita+"', quantity="+quantita+", price="+prezzoA+", deal="+rincaro+", note='"+note;
-		
-		String sql="UPDATE Merci SET "+mods+"' WHERE ID_MERCE="+x;
 		int result = statement.executeUpdate(sql);
 		
 		if (result!=0) {
@@ -184,7 +175,7 @@ public class myDB {
 		return result;
 	}
 	public ResultSet getElenMerc() throws SQLException {
-		String sql="SELECT ID_MERCE,product,Quantity,price FROM merci";
+		String sql="SELECT ID_MERCE,product,Quantity,price,deal,increase FROM merci";
 		ResultSet result = statement.executeQuery(sql);
 		return result;
 	}
@@ -210,8 +201,8 @@ public class myDB {
 		return result;
 	}
 	
-	public void modMerc(int index, String nome, String unita, Double quantita, Double prezzoA, Double rincaro, String note) throws SQLException{
-		String sql="UPDATE Merci SET product='"+nome+"', unity='"+unita+"', quantity="+quantita+",price="+prezzoA+",deal="+rincaro+",note='"+note+"' WHERE ID_MERCE="+index;
+	public void modMerc(int index, String nome, String unita, Double quantita, Double prezzoA, Double rincaro, Double sconto, String note) throws SQLException{
+		String sql="UPDATE Merci SET product='"+nome+"', unity='"+unita+"', quantity="+quantita+",price="+prezzoA+",deal="+sconto+",increase="+rincaro+",note='"+note+"' WHERE ID_MERCE="+index;
 		int result = statement.executeUpdate(sql);
 		if (result!=0) {
 //			System.out.println("Suxcesfully added!");
@@ -220,14 +211,15 @@ public class myDB {
 
 	public double getPrezzo(int x) {
 		try {
-			String sql="SELECT price,deal FROM Merci WHERE ID_MERCE="+x;
+			String sql="SELECT price,deal,increase FROM Merci WHERE ID_MERCE="+x;
 			ResultSet result = statement.executeQuery(sql);
 			Double inser=0.0;
 				
 			while (result.next()) {
 				Double prezzoA=result.getDouble("Price");
-				Double rincaro=result.getDouble("deal");
-				inser=prezzoA*rincaro;
+				Double rincaro=result.getDouble("increase");
+				Double sconto=result.getDouble("deal");
+				inser=prezzoA+(prezzoA*rincaro)-(prezzoA*sconto);
 			}
 			return inser;
 		} catch (SQLException e) {e.printStackTrace(); return 0.0; }
@@ -259,7 +251,7 @@ public class myDB {
 
 	public double getMercVal() {
 		try {
-			String sql="SELECT id_merce, (quantity*price*deal) AS Total FROM negoziodb.merci GROUP BY id_merce;";
+			String sql="SELECT id_merce, (quantity*price) AS Total FROM negoziodb.merci GROUP BY id_merce;";
 			ResultSet result = statement.executeQuery(sql);
 			Double inser=0.0;
 				
@@ -307,13 +299,12 @@ public class myDB {
 //			System.out.println("Suxcesfully added!");
 		}
 	}
-	public void compra(int index, Double quantita, int idTrans)  throws SQLException {
+	public void compra(int index, Double quantita, double cost, int idTrans)  throws SQLException {
 		String sql="UPDATE Merci SET quantity=quantity+"+quantita +" WHERE ID_MERCE="+index;
 		int result = statement.executeUpdate(sql);
 		if (result!=0) {
 //			System.out.println("Suxcesfully added!");
 		}
-		double cost=getPrezzo(index);
 		String sql2="INSERT INTO merci_acquisti (ID_ACQUISTO, ID_MERCE, quantity, price) values("+idTrans+", "+index+", "+quantita+", "+cost+")";
 		int result2 = statement.executeUpdate(sql2);
 		if (result2!=0) {
@@ -370,10 +361,17 @@ public class myDB {
 		}
 		return idd;
 	}
-	public void aggiornaAcquisti(int iDtrans, Double saldo, String not) throws SQLException{
-		String sql="UPDATE Acquisti SET price="+saldo +", note='"+not +"' WHERE ID_ACQUISTO="+iDtrans;
-		int result = statement.executeUpdate(sql);
-		if (result!=0) {
-		}
+
+	public double getPriceF(int index, int codice) {
+		try {
+			String sql="SELECT price FROM negoziodb.forniture WHERE ID_FORNITORE="+index+" AND ID_MERCE="+codice+";";
+			ResultSet result = statement.executeQuery(sql);
+			Double inser=0.0;
+				
+			while (result.next()) {
+				inser=result.getDouble("price");
+			}
+			return inser;
+		} catch (SQLException e) {e.printStackTrace(); return 0.0; }
 	}
 }

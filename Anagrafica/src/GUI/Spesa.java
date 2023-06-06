@@ -181,7 +181,7 @@ public class Spesa extends Finestra{
 	public Spesa (int index, int codice){
 		super("Order "+Main.db.getMerName(codice)+" from "+Main.db.getForName(index));
 		String unita="";
-		
+		double prezF=Main.db.getPriceF(index, codice);
 		JPanel contenuto=new JPanel();
 		contenuto.setOpaque(false);
 		contenuto.setLayout(new GridLayout(4,2));
@@ -195,10 +195,10 @@ public class Spesa extends Finestra{
 		
 /*comp3*/  Etichetta to=new Etichetta("Purchase price: ");
 		contenuto.add(to);
-/*comp4*/  Etichetta po=new Etichetta(""+Est.deci.format(Main.db.getPrezzoA(codice))+" eu per "+unita);
+/*comp4*/  Etichetta po=new Etichetta(""+Est.deci.format(prezF)+" eu per "+unita);
 		contenuto.add(po);
 
-/*comp5*/  Etichetta go=new Etichetta("Sale price: ");
+/*comp5*/  Etichetta go=new Etichetta("Sell price: ");
 		contenuto.add(go);
 /*comp6*/  Etichetta xo=new Etichetta(""+Est.deci.format(Main.db.getPrezzo(codice))+" eu per "+unita);
 		contenuto.add(xo);
@@ -234,7 +234,8 @@ public class Spesa extends Finestra{
 		fin.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	double qt=Double.parseDouble(tf2.ret);
-		    	double price=qt*Main.db.getPrezzo(codice);
+		    	
+		    	double price=qt*prezF;
 		    	if (qt>0){
 			    	Errore er=new Errore(index, codice, price, Spesa.this, qt);
 			    	er.setVisible(true);

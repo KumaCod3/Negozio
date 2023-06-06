@@ -219,7 +219,7 @@ public class Errore extends Frame {
 		    	//list.concludi();
 		    	try {
 		    		int IDtrans=Main.db.createTransactionOu(index2, price);
-		    		Main.db.compra(codice, qt, IDtrans);
+		    		Main.db.compra(codice, qt,price, IDtrans);
 		    		Main.db.aggiornaSaldoFor(index2, price);
 		    	} catch (SQLException ex) { ex.printStackTrace();}
 		    	
