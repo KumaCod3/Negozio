@@ -387,13 +387,13 @@ public class myDB {
 		} catch (SQLException e) {e.printStackTrace(); return 0.0; }
 	}
 	
-	public ResultSet getVendite() throws SQLException{
-		String sql="SELECT vendite.ID_VENDITA, vendite.Moment, clienti.name, clienti.Last_name, vendite.price FROM vendite JOIN clienti ON vendite.ID_CLIENTE=clienti.ID_CLIENTE;";
+	public ResultSet getVendite(LocalDateTime dataIN, LocalDateTime dataFI) throws SQLException{
+		String sql="SELECT vendite.ID_VENDITA, vendite.Moment, clienti.name, clienti.Last_name, vendite.price FROM vendite JOIN clienti ON vendite.ID_CLIENTE=clienti.ID_CLIENTE WHERE vendite.Moment BETWEEN '"+dataIN+"' AND '"+dataFI+"';";
 		ResultSet result = statement.executeQuery(sql);
 		return result;
 	}
-	public ResultSet getAcquisti() throws SQLException{
-		String sql="SELECT acquisti.ID_ACQUISTO, acquisti.Moment, fornitori.name, fornitori.Last_name, acquisti.price FROM acquisti JOIN fornitori ON acquisti.ID_FORNITORE=fornitori.ID_FORNITORE;";
+	public ResultSet getAcquisti(LocalDateTime dataIN, LocalDateTime dataFI) throws SQLException{
+		String sql="SELECT acquisti.ID_ACQUISTO, acquisti.Moment, fornitori.name, fornitori.Last_name, acquisti.price FROM acquisti JOIN fornitori ON acquisti.ID_FORNITORE=fornitori.ID_FORNITORE WHERE acquisti.Moment BETWEEN '"+dataIN+"' AND '"+dataFI+"';";
 		ResultSet result = statement.executeQuery(sql);
 		return result;
 	}

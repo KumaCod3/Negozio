@@ -311,4 +311,5 @@ public class Errore extends Frame {
 		pack();
 	}
 
+
 }		
