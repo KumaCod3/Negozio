@@ -126,7 +126,6 @@ public class SchedaPersona extends Finestra{
 			agg.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			    	try{
-//				    	Fornitore f=DataB.trovaForn(mer);
 				    	AssegnaMerc ass=new AssegnaMerc(codice);
 				    	ass.setVisible(true);
 				    	setVisible(false);

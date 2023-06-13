@@ -12,10 +12,10 @@ public class Balance extends Finestra{
 	
 		public Balance(){
 			super("TOTAL BALANCE:");
-			this.merchVal=Shop.getMerchVal();
-			this.totSold=Shop.getTotSold();
-			this.totBought=Shop.getTotBought();
-			this.bal=Shop.getBal();
+			this.merchVal=Main.db.getMercVal();;
+			this.totSold=Main.db.getTotSold();
+			this.totBought=Main.db.getTotBought();
+			this.bal=totSold-totBought;
 			
 			JPanel contenuto=new JPanel();
 			contenuto.setOpaque(false);
