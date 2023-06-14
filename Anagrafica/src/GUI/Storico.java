@@ -42,8 +42,8 @@ public class Storico extends Finestra{
 		Bottone bexSX=new Bottone("Find Sale");
 		bexSX.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	Home home=new Home();
-				home.setVisible(true);
+		    	ConsultaTrans xx=new ConsultaTrans("Sale");
+		    	xx.setVisible(true);
 				setVisible(false);
 		    	dispose();
 			}
@@ -71,8 +71,8 @@ public class Storico extends Finestra{
 		Bottone bexDX=new Bottone("Find Purchase");
 		bexDX.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	Home home=new Home();
-				home.setVisible(true);
+		    	ConsultaTrans xx=new ConsultaTrans("Purchase",3);
+		    	xx.setVisible(true);
 				setVisible(false);
 		    	dispose();
 			}

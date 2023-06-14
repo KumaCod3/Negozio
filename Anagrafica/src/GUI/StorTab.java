@@ -9,6 +9,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import Negozio.ListaSpesa;
+
 public class StorTab extends Finestra{
 	ArrayList<String> elenco=new ArrayList<String>();
 	JTable tavola;
@@ -49,5 +51,14 @@ public class StorTab extends Finestra{
 	public JScrollPane ta(){
 		JScrollPane sp=new JScrollPane(tavola); 
 		return sp;
+	}
+	
+	public void repaint(ArrayList<String> ele){
+		elenco=ele;
+		model.setRowCount(0);
+		for (String entry:elenco){
+			String[] riga=entry.split(", ");
+			model.addRow(riga);
+		}
 	}
 }

@@ -1,6 +1,7 @@
 package GUI;
 import java.awt.*;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
@@ -38,6 +39,8 @@ public class Est {
 	public static DecimalFormat sco = new DecimalFormat("00");
 	public static DateTimeFormatter dateForm= DateTimeFormatter.ofPattern("yyyy-MM-dd H:mm.ss");
 	public static DateTimeFormatter dateFormSQL= DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
+	public static DateTimeFormatter simpDate= DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	public static DateTimeFormatter simpDateHH= DateTimeFormatter.ofPattern("dd/MM/yyyy H:mm.ss");
 	
 	public static Border bordo= BorderFactory.createEmptyBorder(10,10,10,10);
 	public static Border borCol= BorderFactory.createMatteBorder(0, 4, 4, 4, scuro);
