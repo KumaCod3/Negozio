@@ -1,10 +1,12 @@
 package GUI;
+import java.awt.Dimension;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.Map.Entry;
+
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -24,7 +26,6 @@ public class StorTab extends Finestra{
 	public StorTab(ArrayList<String> ele){
 		super("Storico");
 		elenco=ele;
-		
 
 		tavola=new JTable(model);
 		tavola.setBackground(Est.sfondo);
@@ -49,8 +50,18 @@ public class StorTab extends Finestra{
 	}
 	
 	public JScrollPane ta(){
-		JScrollPane sp=new JScrollPane(tavola); 
-		return sp;
+		JScrollPane scrollPane = new JScrollPane(tavola, 
+                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		JScrollBar bar = scrollPane.getVerticalScrollBar();
+				bar.setPreferredSize(new Dimension(20, 0));
+		scrollPane.setPreferredSize(new Dimension(200,200));
+		
+		return scrollPane;
+	}
+	
+	public int getIndex() {
+		return tavola.getSelectedRow();
 	}
 	
 	public void repaint(ArrayList<String> ele){

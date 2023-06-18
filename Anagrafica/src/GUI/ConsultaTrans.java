@@ -31,35 +31,41 @@ public class ConsultaTrans extends Finestra{
 	Bottone bIdp;
 	FormVuoto idPform;
 	Bottone bIdt;
+	Bottone opn;
 	
 	
-	
-	public ConsultaTrans(String s) {
+	public ConsultaTrans(String s) {	// vendite
 		super("Find "+s);
 		
 		JPanel contenuto=new JPanel();
-		contenuto.setBorder(Est.bordo);
-		contenuto.setOpaque(false);
-		contenuto.setLayout(new GridLayout(2,1));
-		c.add("Center", contenuto);
 		JPanel centro=new JPanel();
 		centro.setBorder(Est.bordo);
 		centro.setOpaque(false);
-		centro.setLayout(new GridLayout(6,3));
-		contenuto.add(centro);
-		// 5 righe con etic, campo e bottone
+		centro.setLayout(new GridLayout(7,1));
+		c.add("Center", centro);
 // prima
+		
+		JPanel primo=new JPanel();
+		primo.setBorder(Est.bordo);
+		primo.setOpaque(false);
+		primo.setLayout(new GridLayout(1,3));
+		centro.add(primo);
 		Etichetta datI=new Etichetta("Dates between: ");
-		centro.add(datI);
+		primo.add(datI);
 		datIform = new FormVuoto(""+Est.simpDate.format(dataIN));
-		centro.add(datIform);
+		primo.add(datIform);
 		Etichetta vuo=new Etichetta("     ");
-		centro.add(vuo);
+		primo.add(vuo);
 // seconda
+		JPanel secondo=new JPanel();
+		secondo.setBorder(Est.bordo);
+		secondo.setOpaque(false);
+		secondo.setLayout(new GridLayout(1,3));
+		centro.add(secondo);
 		Etichetta datF=new Etichetta("and: ");
-		centro.add(datF);
+		secondo.add(datF);
 		datFform = new FormVuoto(""+Est.simpDate.format(dataFI));
-		centro.add(datFform);
+		secondo.add(datFform);
 		bDat=new Bottone("Find dates");
 		bDat.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -79,19 +85,29 @@ public class ConsultaTrans extends Finestra{
 		    	tab.repaint(elenco);
 			}
 		});
-		centro.add(bDat);
+		secondo.add(bDat);
 // terza
+		JPanel terzo=new JPanel();
+		terzo.setBorder(Est.bordo);
+		terzo.setOpaque(false);
+		terzo.setLayout(new GridLayout(1,3));
+		centro.add(terzo);
 		Etichetta priI=new Etichetta("Price between: ");
-		centro.add(priI);
+		terzo.add(priI);
 		priIform = new FormVuoto(""+Est.deci.format(priceI));
-		centro.add(priIform);
+		terzo.add(priIform);
 		Etichetta vuot=new Etichetta("     ");
-		centro.add(vuot);
+		terzo.add(vuot);
 // quarta
+		JPanel quarto=new JPanel();
+		quarto.setBorder(Est.bordo);
+		quarto.setOpaque(false);
+		quarto.setLayout(new GridLayout(1,3));
+		centro.add(quarto);
 		Etichetta priF=new Etichetta("and: ");
-		centro.add(priF);
+		quarto.add(priF);
 		priFform = new FormVuoto(""+Est.deci.format(priceF));
-		centro.add(priFform);
+		quarto.add(priFform);
 		bPri=new Bottone("Find price");
 		bPri.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -111,12 +127,17 @@ public class ConsultaTrans extends Finestra{
 		    	tab.repaint(elenco);
 			}
 		});
-		centro.add(bPri);
+		quarto.add(bPri);
 // quinta
+		JPanel quinto=new JPanel();
+		quinto.setBorder(Est.bordo);
+		quinto.setOpaque(false);
+		quinto.setLayout(new GridLayout(1,3));
+		centro.add(quinto);
 		Etichetta idp=new Etichetta("Personal ID ");
-		centro.add(idp);
+		quinto.add(idp);
 		idPform = new FormVuoto(""+Est.sco.format(pID));
-		centro.add(idPform);
+		quinto.add(idPform);
 		bIdp=new Bottone("Find ID");
 		bIdp.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -135,12 +156,17 @@ public class ConsultaTrans extends Finestra{
 		    	tab.repaint(elenco);
 			}
 		});
-		centro.add(bIdp);
+		quinto.add(bIdp);
 // sesta
+		JPanel sesto=new JPanel();
+		sesto.setBorder(Est.bordo);
+		sesto.setOpaque(false);
+		sesto.setLayout(new GridLayout(1,3));
+		centro.add(sesto);
 		Etichetta idt=new Etichetta("Transaction ID");
-		centro.add(idt);
+		sesto.add(idt);
 		idTform = new FormVuoto(""+Est.sco.format(tID));
-		centro.add(idTform);
+		sesto.add(idTform);
 		bIdt=new Bottone("Find ID");
 		bIdt.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -159,35 +185,45 @@ public class ConsultaTrans extends Finestra{
 		    	tab.repaint(elenco);
 			}
 		});
-		centro.add(bIdt);
-		
-		tab=new StorTab(elenco);
-		contenuto.add(tab.ta());
-		
-		JPanel foot=new JPanel();
-		foot.setBorder(Est.bordo);
-		foot.setOpaque(false);
-		foot.setLayout(new GridLayout(1,2));
-		c.add("South", foot);
-		Bottone opn=new Bottone("Open Transaction");
+		sesto.add(bIdt);
+//	settima
+		JPanel settimo=new JPanel();
+		settimo.setBorder(Est.bordo);
+		settimo.setOpaque(false);
+		settimo.setLayout(new GridLayout(1,2));
+		centro.add(settimo);
+		opn=new Bottone("Open Transaction");
 		opn.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	// TODO
+		    	if (tab.getIndex()>-1) {
+		    		Transazione tra=new Transazione(tab.getIndex(), ConsultaTrans.this);
+		    		tra.setVisible(true);
+		    		setVisible(false);
+		    	}
 			}
 		});
-		foot.add(opn);
+		settimo.add(opn);
 		Bottone bk=new Bottone("Back");
 		bk.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	// TODO
+		    	Storico st=new Storico();
+		    	st.setVisible(true);
+		    	setVisible(false);
+		    	dispose();
 			}
 		});
-		foot.add(bk);
+		settimo.add(bk);
+
+// footer
+		tab=new StorTab(elenco);
+		c.add("South", tab.ta());
+		
 		
 		pack();
 	}
 
-	public ConsultaTrans(String s, int x) {
+	public ConsultaTrans(String s, int x) {	// acquisti
 		this(s);
 
 		bDat.but.addActionListener(new ActionListener() {
@@ -258,6 +294,16 @@ public class ConsultaTrans extends Finestra{
 					}
 				} catch (SQLException ex) { ex.printStackTrace(); }
 		    	tab.repaint(elenco);
+			}
+		});
+		opn.but.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	// TODO
+		    	if (tab.getIndex()>-1) {
+		    		Transazione tra=new Transazione(tab.getIndex(), ConsultaTrans.this, "acquisti");
+		    		tra.setVisible(true);
+		    		setVisible(false);
+		    	}
 			}
 		});
 	}
