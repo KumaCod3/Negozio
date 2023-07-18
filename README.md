@@ -5,8 +5,10 @@ It is a program to manage a small shop, with customers and suppliers and a goods
 Some of it is still in my language (I'm gonna translate what I can but not variables an Classes names (yes, not a good idea to make it bilingual... dumb me)).
 
 The main is in the GUI/Main class.
+Inside the Package there is a .sql file to setup the database, you need to install and create a DB connection with MySQL.
+Before compilation enter the Negozio.myDB.java class and edit with your MySQL connection name and password!
 
-CURRENTLY: implementing connection to MySQL local Database!
+//TODO fix GUI component alignment
 
 I'm on:
 rededit: https://www.reddit.com/user/Dangerous-Rip-7370
