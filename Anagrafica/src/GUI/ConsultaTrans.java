@@ -37,7 +37,6 @@ public class ConsultaTrans extends Finestra{
 	public ConsultaTrans(String s) {	// vendite
 		super("Find "+s);
 		
-		JPanel contenuto=new JPanel();
 		JPanel centro=new JPanel();
 		centro.setBorder(Est.bordo);
 		centro.setOpaque(false);
@@ -195,9 +194,8 @@ public class ConsultaTrans extends Finestra{
 		opn=new Bottone("Open Transaction");
 		opn.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	// TODO
 		    	if (tab.getIndex()>-1) {
-		    		Transazione tra=new Transazione(tab.getIndex(), ConsultaTrans.this);
+		    		Transazione tra=new Transazione(tab.getNumber(), ConsultaTrans.this);
 		    		tra.setVisible(true);
 		    		setVisible(false);
 		    	}
@@ -225,7 +223,7 @@ public class ConsultaTrans extends Finestra{
 
 	public ConsultaTrans(String s, int x) {	// acquisti
 		this(s);
-
+		bDat.but.removeActionListener(bDat.but.getActionListeners()[0]);
 		bDat.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	try {
@@ -244,6 +242,8 @@ public class ConsultaTrans extends Finestra{
 		    	tab.repaint(elenco);
 			}
 		});
+		
+		bPri.but.removeActionListener(bPri.but.getActionListeners()[0]);
 		bPri.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	try {
@@ -262,6 +262,8 @@ public class ConsultaTrans extends Finestra{
 		    	tab.repaint(elenco);
 			}
 		});
+		
+		bIdp.but.removeActionListener(bIdp.but.getActionListeners()[0]);
 		bIdp.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	try {
@@ -279,6 +281,8 @@ public class ConsultaTrans extends Finestra{
 		    	tab.repaint(elenco);
 			}
 		});
+		
+		bIdt.but.removeActionListener(bIdt.but.getActionListeners()[0]);
 		bIdt.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	try {
@@ -296,16 +300,19 @@ public class ConsultaTrans extends Finestra{
 		    	tab.repaint(elenco);
 			}
 		});
+		
+		opn.but.removeActionListener(opn.but.getActionListeners()[0]);
 		opn.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	// TODO
 		    	if (tab.getIndex()>-1) {
-		    		Transazione tra=new Transazione(tab.getIndex(), ConsultaTrans.this, "acquisti");
+		    		Transazione tra=new Transazione(tab.getNumber(), ConsultaTrans.this, "acquisti");
 		    		tra.setVisible(true);
 		    		setVisible(false);
 		    	}
 			}
 		});
+		pack();
 	}
 	
 }

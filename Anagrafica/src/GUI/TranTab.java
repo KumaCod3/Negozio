@@ -6,7 +6,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class StorTab extends Finestra{
+public class TranTab extends Finestra{
 	ArrayList<String> elenco=new ArrayList<String>();
 	JTable tavola;
 	
@@ -16,7 +16,7 @@ public class StorTab extends Finestra{
 	    }
 	};
 
-	public StorTab(ArrayList<String> ele){
+	public TranTab(ArrayList<String> ele){
 		super("Storico");
 		elenco=ele;
 
@@ -26,10 +26,10 @@ public class StorTab extends Finestra{
 		tavola.setDragEnabled(false);
 		tavola.setRowSelectionAllowed(true);
 			
-		model.addColumn("ID Transaction:");
-		model.addColumn("DATE:");
-		model.addColumn("LAST NAME:");
-		model.addColumn("TOT:");
+		model.addColumn("ID Merch:");
+		model.addColumn("Name:");
+		model.addColumn("Quantity:");
+		model.addColumn("Price:");
 		
 		for (String entry:elenco){
 			
@@ -52,10 +52,7 @@ public class StorTab extends Finestra{
 		
 		return scrollPane;
 	}
-	
-	public int getIndex() {
-		return tavola.getSelectedRow();
-	}
+
 	
 	public void repaint(ArrayList<String> ele){
 		elenco=ele;
@@ -64,9 +61,5 @@ public class StorTab extends Finestra{
 			String[] riga=entry.split(", ");
 			model.addRow(riga);
 		}
-	}
-	
-	public int getNumber() {
-		return Integer.parseInt(""+tavola.getModel().getValueAt(getIndex(), 0));
 	}
 }

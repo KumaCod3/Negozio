@@ -407,6 +407,13 @@ public class myDB {
 		ResultSet result = statement.executeQuery(sql);
 		return result;
 	}
+	public ResultSet getVendita(int index) throws SQLException{
+		String sql="SELECT merci_vendite.ID_MERCE, merci.Product as Nome, merci_vendite.Quantity, merci_vendite.Price FROM merci_vendite JOIN merci ON merci_vendite.ID_MERCE=merci.ID_MERCE  WHERE ID_VENDITA="+index+";";
+		ResultSet result = statement.executeQuery(sql);
+		return result;
+	}
+
+	
 	public ResultSet getAcquisti(LocalDateTime dataIN, LocalDateTime dataFI) throws SQLException{
 		String sql="SELECT acquisti.ID_ACQUISTO, acquisti.Moment, fornitori.name, fornitori.Last_name, acquisti.price FROM acquisti JOIN fornitori ON acquisti.ID_FORNITORE=fornitori.ID_FORNITORE WHERE acquisti.Moment BETWEEN '"+dataIN+"' AND '"+dataFI+"';";
 		ResultSet result = statement.executeQuery(sql);
@@ -427,7 +434,12 @@ public class myDB {
 		ResultSet result = statement.executeQuery(sql);
 		return result;
 	}
-
+	public ResultSet getAcquisto(int index) throws SQLException{
+		String sql="SELECT merci_acquisti.ID_MERCE, merci.Product as Nome, merci_acquisti.Quantity, merci_acquisti.Price FROM merci_acquisti JOIN merci ON merci_acquisti.ID_MERCE=merci.ID_MERCE  WHERE ID_ACQUISTO="+index+";";
+		ResultSet result = statement.executeQuery(sql);
+		return result;
+	}
+	
 	public void removeForn(int codice, int indice) {
 		try {
 			String sql="DELETE FROM forniture WHERE ID_MERCE="+codice+" AND ID_FORNITORE="+indice+";";
@@ -437,4 +449,6 @@ public class myDB {
 			}
 		} catch (SQLException e) { e.printStackTrace();}
 	}
+
+	
 }
