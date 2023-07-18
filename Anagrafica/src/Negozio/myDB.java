@@ -11,11 +11,14 @@ import GUI.Est;
 public class myDB {
 	private static Connection connection;
 	private static Statement statement;
+	private String PASSWORD="Du1k3rKnows!";
+	private String DataBaseNAME="negozioDB";
+	
 	
 	public myDB() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver"); 
-			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/negozioDB?characterEncoding=latin1&useConfigs=maxPerformance","root","Du1k3rKnows!");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+DataBaseNAME+"?characterEncoding=latin1&useConfigs=maxPerformance","root",PASSWORD);
 			statement = connection.createStatement();
 //			System.out.println("DB connected!");
 		}
