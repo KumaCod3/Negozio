@@ -12,5 +12,5 @@ Before compilation enter the Negozio.myDB.java class and edit with your MySQL co
 
 I'm on:
 rededit: https://www.reddit.com/user/Dangerous-Rip-7370
-mail: pucchosa@proton.me
+mail: kumacod3@proton.me
 LinedIn: https://www.linkedin.com/in/claudia-de-angelis-pucchosa/
