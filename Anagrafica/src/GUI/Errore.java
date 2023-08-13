@@ -19,7 +19,7 @@ public class Errore extends Frame {
 	public FormVuoto tf1;
 	
 	public Errore(){
-		super("--ERROR--");
+		super("---ERROR---");
 		setBackground(Est.sfondo);
 		setUndecorated(true);
 		setLocation(500,500);
