@@ -2,17 +2,19 @@ package GUI;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import javax.swing.JTextField;
+import javax.swing.BorderFactory;
+import javax.swing.JTextArea;
 
-public class FormVuoto extends JTextField{
+public class FormVuoto extends JTextArea{
 	public String ret=" ";
 	String tt="";
 	
 	public FormVuoto(String tit){
-		super(tit, 15);
+		super(tit, 1, 15);
 		ret=tit;
 		tt=tit;
-		setPreferredSize(Est.choi);
+		setBorder(BorderFactory.createLineBorder(Est.sfondo, 15));
+		getDocument().putProperty("filterNewlines", Boolean.TRUE);
 		setForeground(Est.chiarissimo);
 		addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e){

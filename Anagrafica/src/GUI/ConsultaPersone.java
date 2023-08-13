@@ -16,16 +16,16 @@ public class ConsultaPersone  extends Finestra {
 		super("Consult Persons database");
 
 		JPanel contenuto=new JPanel();
-		contenuto.setLayout(new GridLayout(5,1));
+		contenuto.setLayout(new GridLayout(3,1));
 		contenuto.setBorder(Est.bordo);
 		contenuto.setOpaque(false);
 		
 		JPanel pan1=new JPanel();
-		pan1.setLayout(new GridLayout(1,2));
+		pan1.setLayout(new GridLayout(1,3));
 		pan1.setBorder(Est.bordo);
 		pan1.setOpaque(false);
 		JPanel pan2=new JPanel();
-		pan2.setLayout(new GridLayout(1,2));
+		pan2.setLayout(new GridLayout(1,3));
 		pan2.setBorder(Est.bordo);
 		pan2.setOpaque(false);
 		JPanel pan3=new JPanel();
@@ -36,9 +36,13 @@ public class ConsultaPersone  extends Finestra {
 /*comp1*/  Etichetta tx1=new Etichetta("Supplier:");
 		pan1.add(tx1);
 
-		
+		JPanel ele1=new JPanel();
+		ele1.setLayout(new GridLayout(1,1));
+		ele1.setBorder(Est.bordo);
+		ele1.setOpaque(false);
 		try {
 	/*comp2*/MyChoice ele=new MyChoice(Main.db.getElenForn(),5);
+			ele.setBorder(Est.bordoCh);
 			ele.jList.addListSelectionListener(new ListSelectionListener() {
 				public void valueChanged(ListSelectionEvent e) {
 					try {
@@ -46,15 +50,13 @@ public class ConsultaPersone  extends Finestra {
 						indexF=Integer.parseInt(temp[0]);
 					}
 					catch (Exception ex){
-						// no selection
 					}
 					
 				}
 			});
-		
-		
-		pan1.add(ele);
-		contenuto.add(pan1);
+			ele1.add(ele);
+			pan1.add(ele1);
+			contenuto.add(pan1);
 		} catch (SQLException e) { e.printStackTrace();}
 		
 /*comp3*/Bottone bent1=new Bottone("ENTER", 5);
@@ -67,14 +69,20 @@ public class ConsultaPersone  extends Finestra {
 				 }
 			}
 		});
-		contenuto.add(bent1);
+		pan1.add(bent1);
 
 
 /*comp4*/  Etichetta tx=new Etichetta("Customers:");
 		pan2.add(tx);
 		
+		JPanel ele3=new JPanel();
+		ele3.setLayout(new GridLayout(1,1));
+		ele3.setBorder(Est.bordo);
+		ele3.setOpaque(false);
 		try {
+			
 /*comp5*/MyChoice ele2=new MyChoice(Main.db.getElenCli());
+			ele2.setBorder(Est.bordoCh);
 			ele2.jList.addListSelectionListener(new ListSelectionListener() {
 				public void valueChanged(ListSelectionEvent e) {
 					try {
@@ -86,7 +94,8 @@ public class ConsultaPersone  extends Finestra {
 					}
 				}
 			});
-			pan2.add(ele2);
+			ele3.add(ele2);
+			pan2.add(ele3);
 			contenuto.add(pan2);
 		} catch (SQLException e) { e.printStackTrace();}
 		
@@ -101,7 +110,7 @@ public class ConsultaPersone  extends Finestra {
 			 }
 		}
 	});
-		contenuto.add(bent);
+		pan2.add(bent);
 		
 /*comp7*/Bottone bex=new Bottone("Back");
 		bex.but.addActionListener(new ActionListener() {

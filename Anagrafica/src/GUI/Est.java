@@ -17,8 +17,8 @@ public class Est {
 	public static Font plainFont=new Font("Arial Rounded MT Bold", Font.PLAIN, 20);
 	
 	private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	private static double wi=screenSize.getSize().getWidth()/2.8;
-	private static double he=screenSize.getSize().getSize().getHeight()/1.15;
+	private static double wi=screenSize.getSize().getWidth()*0.8;
+	private static double he=screenSize.getSize().getSize().getHeight()*0.8;
 	private static double he80=he/11.5;
 	private static double he30=he/31.0;
 	private static double wi270=wi/2.5;
@@ -34,6 +34,8 @@ public class Est {
 	public static Dimension fil=new Dimension((int)wi270,(int)he30);
 	public static int marginX=(int)((screenSize.getSize().getWidth()/2)-(standard.getSize().getWidth()/2));
 	public static int marginY=(int)((screenSize.getSize().getSize().getHeight()/2)-(standard.getSize().getHeight()/2));
+	public static int centX=(int)((screenSize.getSize().getWidth()/2));
+	public static int centY=(int)((screenSize.getSize().getSize().getHeight()/2));
 	
 	public static DecimalFormat deci = new DecimalFormat("0.00");
 	public static DecimalFormat sco = new DecimalFormat("00");
@@ -43,6 +45,7 @@ public class Est {
 	public static DateTimeFormatter simpDateHH= DateTimeFormatter.ofPattern("dd/MM/yyyy H:mm.ss");
 	
 	public static Border bordo= BorderFactory.createEmptyBorder(10,10,10,10);
+	public static Border bordoCh= BorderFactory.createEmptyBorder(100,10,10,10);
 	public static Border borCol= BorderFactory.createMatteBorder(0, 4, 4, 4, scuro);
 	public static Border borColHe= BorderFactory.createMatteBorder(4, 4, 0, 4, scuro);
 	public static Border borColTut= BorderFactory.createMatteBorder(4, 4, 4, 4, scuro);

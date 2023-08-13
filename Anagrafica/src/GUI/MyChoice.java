@@ -13,17 +13,20 @@ import javax.swing.JList;
 import javax.swing.ListSelectionModel;
 import javax.swing.BoxLayout;
 
-public class MyChoice /*<T extends Anagrafica>*/ extends JPanel{
+public class MyChoice extends JPanel{
 	JList<String> jList;
 	ArrayList<String> elenco=new ArrayList<String>();
 	JTextField field;
 	
-	public MyChoice(ResultSet lis,String x){
+	public MyChoice() {
 		super();
-		populateMer(lis);
 		setBorder(Est.bordo);
 		setOpaque(false);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+	}
+	public MyChoice(ResultSet lis,String x){
+		this();
+		populateMer(lis);
 		
 		jList = new JList<String>(createDefaultListModel());
 		jList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -38,11 +41,8 @@ public class MyChoice /*<T extends Anagrafica>*/ extends JPanel{
 	}
 	
 	public MyChoice(ResultSet lis,int x){
-		super();
+		this();
 		populateFor(lis);
-		setBorder(Est.bordo);
-		setOpaque(false);
-		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
 		jList = new JList<String>(createDefaultListModel());
 		jList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -57,11 +57,8 @@ public class MyChoice /*<T extends Anagrafica>*/ extends JPanel{
 	}
 	
 	public MyChoice(ResultSet lis){
-		super();
+		this();
 		populateCli(lis);
-		setBorder(Est.bordo);
-		setOpaque(false);
-		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
 		jList = new JList<String>(createDefaultListModel());
 		jList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

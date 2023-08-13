@@ -15,7 +15,7 @@ public class AssegnaMerc extends Finestra{
 	
 	// a fornitore x
 	public AssegnaMerc(int x){
-		super("Assign Product to Supplier"/*,870,570*/);
+		super("Assign Product to Supplier");
 		indice=x;
 		nomeForn=Main.db.getForName(x);
 
@@ -26,8 +26,7 @@ public class AssegnaMerc extends Finestra{
 		c.add("Center",contenuto);
 		
 		JPanel panel_1 = new JPanel();
-		FlowLayout flowLayout = (FlowLayout) panel_1.getLayout();
-		flowLayout.setAlignment(FlowLayout.TRAILING);
+		panel_1.setLayout(new GridLayout(1,2));
 		panel_1.setOpaque(false);
 		contenuto.add(panel_1);
 		Etichetta nom=new Etichetta("Supplier: ");
@@ -36,9 +35,7 @@ public class AssegnaMerc extends Finestra{
 		panel_1.add(nome);
 		
 		JPanel panel_2 = new JPanel();
-		FlowLayout flowLayout_1 = (FlowLayout) panel_2.getLayout();
-		flowLayout_1.setVgap(-20);
-		flowLayout_1.setAlignment(FlowLayout.TRAILING);
+		panel_2.setLayout(new GridLayout(1,2));
 		panel_2.setOpaque(false);
 		contenuto.add(panel_2);
 		Etichetta tt=new Etichetta("Choose Product:");
@@ -70,25 +67,31 @@ public class AssegnaMerc extends Finestra{
 		panel_2.add(ele);
 		
 		JPanel panel_3 = new JPanel();
-		FlowLayout flowLayout_2 = (FlowLayout) panel_3.getLayout();
-		flowLayout_2.setAlignment(FlowLayout.TRAILING);
+		panel_3.setLayout(new GridLayout(1,2));
 		panel_3.setOpaque(false);
 		contenuto.add(panel_3);
 		Etichetta ttp=new Etichetta("Price:");
 		panel_3.add(ttp);
+		
 		FormVuoto tf1 = new FormVuoto("prezzo");
-		panel_3.add(tf1);
+		JPanel ff=new JPanel();
+		ff.setOpaque(false);
+		FlowLayout flowLayout = (FlowLayout) ff.getLayout();
+		flowLayout.setAlignment(FlowLayout.LEFT);
+		flowLayout.setAlignOnBaseline(true);
+		ff.setBorder(BorderFactory.createEmptyBorder(40,0,0,0));
+		ff.add(tf1);
+		panel_3.add(ff);
 		
 		JPanel panel_4 = new JPanel();
-		FlowLayout flowLayout_3 = (FlowLayout) panel_4.getLayout();
-		flowLayout_3.setAlignment(FlowLayout.TRAILING);
+		panel_4.setLayout(new GridLayout(1,3));
 		panel_4.setOpaque(false);
 		contenuto.add(panel_4);
 		Bottone bex=new Bottone("Back");
 		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	ConsultaPersone consultaP=new ConsultaPersone();
-		    	consultaP.setVisible(true);
+		    	Home omeh=new Home();
+		    	omeh.setVisible(true);
 		    	setVisible(false);
 		    	dispose();
 			}
@@ -128,13 +131,13 @@ public class AssegnaMerc extends Finestra{
 			}
 		});
 		
-		c.add("South",dis);
+		panel_4.add(dis);
 		pack();
 	}
 	
 	// merce x
 	public AssegnaMerc(int x, String a){
-		super("Assign Product to Supplier"/*, 615, 550*/);
+		super("Assign Product to Supplier");
 		codice=x;
 		nomeMer=Main.db.getMerName(x);
 		
@@ -145,19 +148,16 @@ public class AssegnaMerc extends Finestra{
 		c.add("Center",contenuto);
 		
 		JPanel panel_1 = new JPanel();
-		FlowLayout flowLayout = (FlowLayout) panel_1.getLayout();
-		flowLayout.setAlignment(FlowLayout.TRAILING);
+		panel_1.setLayout(new GridLayout(1,2));
 		panel_1.setOpaque(false);
 		contenuto.add(panel_1);
-		Etichetta nom=new Etichetta("Supplier: ");
+		Etichetta nom=new Etichetta("Product: ");
 		panel_1.add(nom);
-		Etichetta nome=new Etichetta(nomeForn);
+		Etichetta nome=new Etichetta(nomeMer);
 		panel_1.add(nome);
 		
 		JPanel panel_2 = new JPanel();
-		FlowLayout flowLayout_1 = (FlowLayout) panel_2.getLayout();
-		flowLayout_1.setVgap(-20);
-		flowLayout_1.setAlignment(FlowLayout.TRAILING);
+		panel_2.setLayout(new GridLayout(1,2));
 		panel_2.setOpaque(false);
 		contenuto.add(panel_2);
 		
@@ -191,18 +191,25 @@ public class AssegnaMerc extends Finestra{
 		panel_2.add(ele);
 		
 		JPanel panel_3 = new JPanel();
-		FlowLayout flowLayout_2 = (FlowLayout) panel_3.getLayout();
-		flowLayout_2.setAlignment(FlowLayout.TRAILING);
+		panel_3.setLayout(new GridLayout(1,2));
 		panel_3.setOpaque(false);
 		contenuto.add(panel_3);
 		Etichetta ttp=new Etichetta("Price:");
 		panel_3.add(ttp);
+		
+		
 		FormVuoto tf1 = new FormVuoto("prezzo");
-		panel_3.add(tf1);
+		JPanel ff=new JPanel();
+		ff.setOpaque(false);
+		FlowLayout flowLayout = (FlowLayout) ff.getLayout();
+		flowLayout.setAlignment(FlowLayout.LEFT);
+		flowLayout.setAlignOnBaseline(true);
+		ff.setBorder(BorderFactory.createEmptyBorder(40,0,0,0));
+		ff.add(tf1);
+		panel_3.add(ff);
 		
 		JPanel panel_4 = new JPanel();
-		FlowLayout flowLayout_3 = (FlowLayout) panel_4.getLayout();
-		flowLayout_3.setAlignment(FlowLayout.TRAILING);
+		panel_4.setLayout(new GridLayout(1,3));
 		panel_4.setOpaque(false);
 		contenuto.add(panel_4);
 		Bottone bex=new Bottone("Back");
@@ -249,7 +256,7 @@ public class AssegnaMerc extends Finestra{
 			}
 		});
 		
-		c.add("South",dis);
+		panel_4.add(dis);
 		pack();
 	}
 }

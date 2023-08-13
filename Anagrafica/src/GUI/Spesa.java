@@ -1,5 +1,6 @@
 package GUI;
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,7 +33,7 @@ public class Spesa extends Finestra{
 			JPanel contenuto=new JPanel();
 			contenuto.setBorder(Est.bordo);
 			contenuto.setOpaque(false);
-			contenuto.setLayout(new GridLayout(4,2));
+			contenuto.setLayout(new GridLayout(3,2));
 			
 	/*comp1*/  Etichetta ti=new Etichetta("Shopping cart of ");
 			contenuto.add(ti);
@@ -40,10 +41,22 @@ public class Spesa extends Finestra{
 			contenuto.add(no);
 			super.c.add("North",contenuto);
 	
-	/*comp1*/  Etichetta tx=new Etichetta("Choose product: ");
-			contenuto.add(tx);
 			
+			JPanel pp1=new JPanel();
+			pp1.setBorder(Est.bordo);
+			pp1.setOpaque(false);
+			pp1.setLayout(new GridLayout(1,2));
+	/*comp1*/  Etichetta tx=new Etichetta("Choose product: ");
+			tx.setBorder(BorderFactory.createEmptyBorder(1,1,80,1));
+			pp1.add(tx);
 			MyChoice ele=new MyChoice(Main.db.getElenMerc(), "ciao");
+			JPanel ff=new JPanel();
+			ff.setOpaque(false);
+			ff.setLayout(new GridLayout(1,1));
+//			FlowLayout flowLayout = (FlowLayout) ff.getLayout();
+//			flowLayout.setAlignment(FlowLayout.LEFT);
+//			flowLayout.setAlignOnBaseline(true);
+			ff.add(ele);
 			ele.jList.addListSelectionListener(new ListSelectionListener() {
 				public void valueChanged(ListSelectionEvent e) {
 					try {
@@ -58,26 +71,30 @@ public class Spesa extends Finestra{
 					
 				}
 			});
-			contenuto.add(ele);
+			pp1.add(ff);
+			contenuto.add(pp1);
 			
+			JPanel pp2=new JPanel();
+			pp2.setBorder(Est.bordo);
+			pp2.setOpaque(false);
+			pp2.setLayout(new GridLayout(1,2));
 	/*comp3*/  Etichetta qtt=new Etichetta("Quantity: ");
-			contenuto.add(qtt);
+			qtt.setBorder(BorderFactory.createEmptyBorder(1,1,80,1));
+			pp2.add(qtt);
 	/*comp4*/JPanel pan2=new JPanel();
 			FormVuoto tf2=new FormVuoto("Quantity");
-			pan2.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 			pan2.add(tf2);
 			pan2.setOpaque(false);
-			contenuto.add(pan2);
+			pp2.add(pan2);
+			contenuto.add(pp2);
+
 			
 			JPanel sal=new JPanel();
 			sal.setOpaque(false);
-			sal.setLayout(new GridLayout(1,3));
+			sal.setLayout(new GridLayout(1,4));
 			Etichetta sal1=new Etichetta("Total: .......");
 			sal1.setForeground(Est.scuro);
 			sal.add(sal1);
-			Etichetta sal2=new Etichetta("..............");
-			sal.add(sal2);
-			sal2.setForeground(Est.scuro);
 			Etichetta sal3=new Etichetta("....... "+Est.deci.format(list.getSaldo())+" eu.");
 			sal3.setForeground(Est.scuro);
 			sal.add(sal3);
@@ -97,8 +114,6 @@ public class Spesa extends Finestra{
 					}
 				});
 			corpo.add("Center",tab.ta());
-	
-			corpo.add("South",sal);
 			
 			super.c.add("Center", corpo);
 	
@@ -140,12 +155,7 @@ public class Spesa extends Finestra{
 				}
 			});
 			contenuto.add(eli);
-			
-			
-			JPanel sotto=new JPanel();
-			sotto.setOpaque(false);
-			sotto.setLayout(new GridLayout(1,2));
-			
+						
 			
 	/*comp10*/Bottone bex=new Bottone("Back");
 			bex.but.addActionListener(new ActionListener() {
@@ -155,7 +165,7 @@ public class Spesa extends Finestra{
 			    	setVisible(false);
 				}
 			});
-			sotto.add(bex);
+			sal.add(bex);
 			
 	/*comp11*/Bottone fin=new Bottone("BUY");
 			fin.but.addActionListener(new ActionListener() {
@@ -166,8 +176,8 @@ public class Spesa extends Finestra{
 			    	
 				}
 			});
-			sotto.add(fin);
-			super.c.add("South",sotto);
+			sal.add(fin);
+			super.c.add("South",sal);
 			pack();
 
 		} catch (SQLException e) { e.printStackTrace(); }
@@ -208,7 +218,7 @@ public class Spesa extends Finestra{
 		contenuto.add(qtt);
 /*comp8*/JPanel pan2=new JPanel();
 		FormVuoto tf2=new FormVuoto("Quantity");
-		pan2.setBorder(BorderFactory.createEmptyBorder(60, 10, 10, 10));
+		pan2.setBorder(BorderFactory.createEmptyBorder(0,1,0,453));
 		pan2.add(tf2);
 		pan2.setOpaque(false);
 		contenuto.add(pan2);

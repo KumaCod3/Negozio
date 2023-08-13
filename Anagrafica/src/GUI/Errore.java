@@ -20,9 +20,10 @@ public class Errore extends Frame {
 	
 	public Errore(){
 		super("---ERROR---");
-		setLocation(Est.marginX,Est.marginY);
 		setBackground(Est.sfondo);
 		setUndecorated(true);
+//		setLocation(Est.centX-((int)(getSize().getWidth())),Est.centY-((int)(getSize().getHeight())));
+		setLocation(500,500);
 		c = new JPanel();
 		c.setBorder(Est.borColTut);
 		c.setOpaque(false);
@@ -108,9 +109,10 @@ public class Errore extends Frame {
 
 		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
+		    	a.list.annulla();
 		    	a.dispose();
 		    	setVisible(false);
-		    	ConsultaPersone cp=new ConsultaPersone();
+		    	Home cp=new Home();
 		    	cp.setVisible(true);
 		    	dispose();
 			}
@@ -168,6 +170,46 @@ public class Errore extends Frame {
 	}
 	
 	public Errore(int ind, SchedaMerce t) {		// scelta forn x ordine merch
+		this();
+		tx.setText("From which supplier you want to purchase the product?");
+
+		try {
+			MyChoice ele=new MyChoice(Main.db.getElenSuppF(ind),5);
+					ele.jList.addListSelectionListener(new ListSelectionListener() {
+						public void valueChanged(ListSelectionEvent e) {
+							try {
+								String[] temp=ele.getSel().split(", ");
+								index=Integer.parseInt(temp[0]);
+							}
+							catch (Exception ex){
+								// no selection
+							}
+							
+						}
+					});
+					c.add(ele);
+		} catch (SQLException e) { e.printStackTrace();}
+
+		ok.but.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	t.dispose();
+		    	Spesa sp=new Spesa(index,ind);
+		    	sp.setVisible(true);
+		    	setVisible(false);
+		    	dispose();
+			}
+		});
+		
+		ty.but.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	setVisible(false);
+		    	t.setVisible(true);
+		    	dispose();
+			}
+		});
+		pack();
+	}
+	public Errore(int ind, ConsultaMerci t) {		// scelta forn x ordine merch
 		this();
 		tx.setText("From which supplier you want to purchase the product?");
 

@@ -15,13 +15,14 @@ public class Home extends Finestra{
 		JPanel contenuto=new JPanel();
 		contenuto.setBorder(Est.bordo);
 		contenuto.setOpaque(false);
-		contenuto.setLayout(new GridLayout(5,1));
+		contenuto.setLayout(new GridLayout(4,1));
 		
-		
+// cont1		
 		JPanel bu1=new JPanel();
+		bu1.setLayout(new GridLayout(1,2));
 		bu1.setOpaque(false);
 		bu1.setBorder(new EmptyBorder(10, 10, 10, 10));
-		Bottone b1=new Bottone("See Persons DataBase",5);
+		Bottone b1=new Bottone("See Persons DataBase");
 		b1.setAlignmentX(Component.CENTER_ALIGNMENT);
 		b1.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -31,12 +32,7 @@ public class Home extends Finestra{
 			}
 		});
 		bu1.add(b1);
-        contenuto.add(bu1);
-        
-        JPanel bu2=new JPanel();
-		bu2.setOpaque(false);
-		bu2.setBorder(new EmptyBorder(10, 10, 10, 10));
-		Bottone b2=new Bottone("See Products DataBase",5);
+		Bottone b2=new Bottone("See Products DataBase");
         b2.setAlignmentX(Component.CENTER_ALIGNMENT);
 		b2.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -46,9 +42,10 @@ public class Home extends Finestra{
 		    	dispose();
 			}
 		});
-		bu2.add(b2);
-        contenuto.add(bu2);
-		
+		bu1.add(b2);
+		contenuto.add(bu1);
+
+// cont 2
         JPanel bu3=new JPanel();
 		bu3.setOpaque(false);
 		bu3.setBorder(new EmptyBorder(10, 10, 10, 10));
@@ -56,7 +53,7 @@ public class Home extends Finestra{
         b3.setAlignmentX(Component.CENTER_ALIGNMENT);
 		b3.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	Spesa aggg=new Spesa(1);
+		    	Spesa aggg=new Spesa(0);
 				aggg.setVisible(true);
 		    	setVisible(false);
 		    	dispose();
@@ -64,8 +61,10 @@ public class Home extends Finestra{
 		});
 		bu3.add(b3);
         contenuto.add(bu3);
-		
-        JPanel bott=new JPanel();
+
+// cont 3
+		JPanel bott=new JPanel();
+		bott.setLayout(new GridLayout(1,2));
 		bott.setOpaque(false);
 		bott.setBorder(new EmptyBorder(10, 10, 10, 10));
 					
@@ -90,9 +89,9 @@ public class Home extends Finestra{
         	}
 		});
 		bott.add(bal);
-		
 		contenuto.add(bott);
 		
+// cont 4
 		JPanel buex=new JPanel();
 		buex.setOpaque(false);
 		buex.setBorder(new EmptyBorder(10, 10, 10, 10));

@@ -116,6 +116,8 @@ public class ListaSpesa{
 		}
 		return true;
 	}
-
+	public void annulla() {
+		Main.db.elimTransactionIn(IDtrans);
+	}
 }
 

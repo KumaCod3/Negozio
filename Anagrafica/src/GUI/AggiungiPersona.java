@@ -30,8 +30,8 @@ public class AggiungiPersona extends Finestra{
 		contenuto.setLayout(new GridLayout(9,1));
 		
 		JPanel panel_1 = new JPanel();
-		FlowLayout flowLayout = (FlowLayout) panel_1.getLayout();
-		flowLayout.setAlignment(FlowLayout.TRAILING);
+		panel_1.setLayout(new GridLayout(1,3));
+		
 		panel_1.setOpaque(false);
 		contenuto.add(panel_1);
 		
@@ -61,9 +61,7 @@ public class AggiungiPersona extends Finestra{
 	    
 		
 		JPanel panel_2 = new JPanel();
-		FlowLayout flowLayout_1 = (FlowLayout) panel_2.getLayout();
-		flowLayout_1.setVgap(-20);
-		flowLayout_1.setAlignment(FlowLayout.TRAILING);
+		panel_2.setLayout(new GridLayout(1,2));
 		panel_2.setOpaque(false);
 		contenuto.add(panel_2);
 		
@@ -72,8 +70,7 @@ public class AggiungiPersona extends Finestra{
 		
 		
 		JPanel panel_3 = new JPanel();
-		FlowLayout flowLayout_2 = (FlowLayout) panel_3.getLayout();
-		flowLayout_2.setAlignment(FlowLayout.TRAILING);
+		panel_3.setLayout(new GridLayout(1,2));
 		panel_3.setOpaque(false);
 		contenuto.add(panel_3);
 		
@@ -84,8 +81,7 @@ public class AggiungiPersona extends Finestra{
 		panel_3.add(tf1);
 		
 		JPanel panel_4 = new JPanel();
-		FlowLayout flowLayout_3 = (FlowLayout) panel_4.getLayout();
-		flowLayout_3.setAlignment(FlowLayout.TRAILING);
+		panel_4.setLayout(new GridLayout(1,2));
 		panel_4.setOpaque(false);
 		contenuto.add(panel_4);
 		
@@ -96,8 +92,7 @@ public class AggiungiPersona extends Finestra{
 		panel_4.add(tf2);
 		
 		JPanel panel_5 = new JPanel();
-		FlowLayout flowLayout_5 = (FlowLayout) panel_5.getLayout();
-		flowLayout_5.setAlignment(FlowLayout.TRAILING);
+		panel_5.setLayout(new GridLayout(1,2));
 		panel_5.setOpaque(false);
 		contenuto.add(panel_5);
 		
@@ -108,9 +103,7 @@ public class AggiungiPersona extends Finestra{
 		panel_5.add(tf3);
 		
 		JPanel panel_6 = new JPanel();
-		FlowLayout flowLayout_6 = (FlowLayout) panel_6.getLayout();
-		flowLayout_6.setAlignment(FlowLayout.TRAILING);
-		flowLayout_6.setAlignOnBaseline(true);
+		panel_6.setLayout(new GridLayout(1,2));
 		panel_6.setOpaque(false);
 		contenuto.add(panel_6);
 		
@@ -121,9 +114,7 @@ public class AggiungiPersona extends Finestra{
 		panel_6.add(tf4);
 		
 		JPanel panel_7 = new JPanel();
-		FlowLayout flowLayout_7 = (FlowLayout) panel_7.getLayout();
-		flowLayout_7.setAlignment(FlowLayout.TRAILING);
-		flowLayout_7.setAlignOnBaseline(true);
+		panel_7.setLayout(new GridLayout(1,2));
 		panel_7.setOpaque(false);
 		contenuto.add(panel_7);
 		
@@ -134,11 +125,7 @@ public class AggiungiPersona extends Finestra{
 		panel_7.add(tf5);
 		
 		JPanel panel_8 = new JPanel();
-		FlowLayout flowLayout_4 = (FlowLayout) panel_8.getLayout();
-		flowLayout_4.setAlignment(FlowLayout.TRAILING);
-		FlowLayout flowLayout_8 = (FlowLayout) panel_7.getLayout();
-		flowLayout_8.setAlignment(FlowLayout.TRAILING);
-		flowLayout_8.setAlignOnBaseline(true);
+		panel_8.setLayout(new GridLayout(1,2));
 		panel_8.setOpaque(false);
 		contenuto.add(panel_8);
 		
@@ -149,11 +136,7 @@ public class AggiungiPersona extends Finestra{
 		panel_8.add(tf6);
 		
 		JPanel panel_9 = new JPanel();
-		FlowLayout flowLayout_11 = (FlowLayout) panel_9.getLayout();
-		flowLayout_11.setAlignment(FlowLayout.TRAILING);
-		FlowLayout flowLayout_9 = (FlowLayout) panel_7.getLayout();
-		flowLayout_9.setAlignment(FlowLayout.TRAILING);
-		flowLayout_9.setAlignOnBaseline(true);
+		panel_9.setLayout(new GridLayout(1,2));
 		panel_9.setOpaque(false);
 		contenuto.add(panel_9);
 		
@@ -165,9 +148,7 @@ public class AggiungiPersona extends Finestra{
 		panel_9.add(tf7);
 		
 		JPanel panel_10 = new JPanel();
-		FlowLayout flowLayout_10 = (FlowLayout) panel_7.getLayout();
-		flowLayout_10.setAlignment(FlowLayout.TRAILING);
-		flowLayout_10.setAlignOnBaseline(true);
+		panel_10.setLayout(new GridLayout(1,2));
 		panel_10.setOpaque(false);
 		c.add("South", panel_10);
 		
@@ -212,7 +193,6 @@ public class AggiungiPersona extends Finestra{
 		    		
 		    		ConsultaPersone consultaP=new ConsultaPersone();
 			    	consultaP.setVisible(true);
-//			    	MyReadC.scarica();
 			    	dispose();
 		    	}
 		    	else if (tipo.contentEquals("fornitore")){
@@ -223,7 +203,6 @@ public class AggiungiPersona extends Finestra{
 		    		
 		    		ConsultaPersone consultaP=new ConsultaPersone();
 			    	consultaP.setVisible(true);
-//			    	MyReadF.scarica();
 			    	dispose();
 		    	}
 			}

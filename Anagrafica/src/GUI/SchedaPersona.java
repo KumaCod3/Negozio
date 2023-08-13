@@ -53,7 +53,7 @@ public class SchedaPersona extends Finestra{
 		JPanel contenuto=new JPanel();
 		contenuto.setBorder(Est.bordo);
 		contenuto.setOpaque(false);
-		contenuto.setLayout(new GridLayout(6,2));
+		contenuto.setLayout(new GridLayout(5,2));
 		
 /*comp1*/  Etichetta non=new Etichetta("Nominative: ");
 		contenuto.add(non);	
@@ -79,8 +79,13 @@ public class SchedaPersona extends Finestra{
 		contenuto.add(va);
 		Etichetta vv=new Etichetta(indirizzo+" ");
 		contenuto.add(vv);
+
+		JPanel fot=new JPanel();
+		fot.setBorder(Est.bordo);
+		fot.setOpaque(false);
+		fot.setLayout(new GridLayout(1,3));
 		
-/*comp6*/Bottone bex=new Bottone("Back");
+		Bottone bex=new Bottone("Back");
 		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	ConsultaPersone consultaP=new ConsultaPersone();
@@ -89,7 +94,7 @@ public class SchedaPersona extends Finestra{
 		    	dispose();
 			}
 		});
-		contenuto.add(bex);
+		fot.add(bex);
 		
 		Bottone bin=new Bottone("MODIFY");
 		bin.but.addActionListener(new ActionListener() {
@@ -102,26 +107,30 @@ public class SchedaPersona extends Finestra{
 		    	}
 			}
 		});
-		contenuto.add(bin);
+		fot.add(bin);
 		
 /*comp 7 FOR FORNITORI*/
 		if (tipo.equals("fornitore")){
-			contenuto.setLayout(new GridLayout(7,2));
+			contenuto.setLayout(new GridLayout(6,2));
 
 			Etichetta forn=new Etichetta("Products: ");
 			contenuto.add(forn);	
 			
 			try {
 				MyChoice ele1=new MyChoice(Main.db.getElenSuppM(codice), "ciao");
-				contenuto.add(ele1);
+				JPanel ff=new JPanel();
+				ff.setOpaque(false);
+				FlowLayout flowLayout = (FlowLayout) ff.getLayout();
+				flowLayout.setAlignment(FlowLayout.LEFT);
+				flowLayout.setAlignOnBaseline(true);
+				ff.add(ele1);
+				contenuto.add(ff);
 			} catch (SQLException ex) {ex.printStackTrace();}
 			
 			
 
-/*OUT*/		JPanel sud=new JPanel();
-			sud.setOpaque(false);
-			sud.setLayout(new GridLayout(1,2));
-			
+/*OUT*/	
+			fot.setLayout(new GridLayout(1,4));
 			Bottone agg=new Bottone("Assign Product");
 			agg.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
@@ -136,7 +145,7 @@ public class SchedaPersona extends Finestra{
 			    	}
 				}
 			});
-			sud.add(agg);
+			fot.add(agg);
 			
 			Bottone ord=new Bottone("Order Product");
 			ord.but.addActionListener(new ActionListener() {
@@ -154,12 +163,12 @@ public class SchedaPersona extends Finestra{
 			    	}
 				}
 			});
-			sud.add(ord);
-			c.add("South",sud);
+			fot.add(ord);
+			c.add("South",fot);
 		}			
 			
 /*comp OUT FOR CLIENTI*/
-		if (tipo.equals("cliente")){
+		else if (tipo.equals("cliente")){
 			Bottone eli=new Bottone("OPEN CART");
 			eli.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
@@ -168,7 +177,8 @@ public class SchedaPersona extends Finestra{
 					dispose();
 				}
 			});
-			c.add("South", eli);
+			fot.add( eli);
+			c.add("South",fot);
 		}
 		c.add("Center", contenuto);
 		pack();

@@ -33,7 +33,8 @@ public class Tabella extends Frame{
 	}
 	
 	public JScrollPane ta(){
-		JScrollPane sp=new JScrollPane(tavola); 
+		JScrollPane sp=new JScrollPane(tavola);
+		sp.setBorder(Est.borColTut);
 		return sp;
 	}
 	

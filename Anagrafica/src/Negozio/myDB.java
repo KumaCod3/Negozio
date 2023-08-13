@@ -347,6 +347,16 @@ public class myDB {
 		}
 		return idd;
 	}
+	public void elimTransactionIn(int iDtrans) {
+		try {
+			String sql="DELETE FROM Vendite WHERE ID_VENDITA="+iDtrans+";";
+			int result = statement.executeUpdate(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public void aggiornaVendite(int iDtrans, Double saldo, String not) throws SQLException{
 		String sql="UPDATE Vendite SET price="+saldo +", note='"+not +"' WHERE ID_VENDITA="+iDtrans;
 		int result = statement.executeUpdate(sql);
@@ -452,6 +462,8 @@ public class myDB {
 			}
 		} catch (SQLException e) { e.printStackTrace();}
 	}
+
+
 
 	
 }

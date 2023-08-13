@@ -39,7 +39,7 @@ public class ConsultaMerci extends Finestra{
 		
 		JPanel sud=new JPanel();
 		sud.setOpaque(false);
-		sud.setLayout(new GridLayout(1,3));
+		sud.setLayout(new GridLayout(1,4));
 		Bottone bex=new Bottone("Back");
 		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -63,6 +63,27 @@ public class ConsultaMerci extends Finestra{
 		});
 		
 		sud.add(bent);
+		
+		Bottone ord=new Bottone("ORDER");
+		ord.but.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	if (index!=-1){
+		    		
+		    		try{
+				    	Errore er=new Errore(index, ConsultaMerci.this);
+				    	er.setVisible(true);
+				    	setVisible(false);
+//				    	dispose();
+			    	}
+			    	catch (Exception y){
+			    		y.printStackTrace();
+			    	}
+		    	}
+		    	else {
+		    	}
+			}
+		});
+		sud.add(ord);
 		
 /*comp6*/Bottone b2=new Bottone("ADD new");
 		b2.but.addActionListener(new ActionListener() {
