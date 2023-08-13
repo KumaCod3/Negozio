@@ -143,15 +143,14 @@ public class myDB {
 		}
 	}
 	
-	public String getForName(int x) {
-		try {
+	public String getForName(int x) throws SQLException {
+//		try {
 			String sql="SELECT name FROM Fornitori WHERE ID_FORNITORE="+x;
 			ResultSet result = statement.executeQuery(sql);
 			result.next();
 			String inser=result.getString(1);
-			
 			return inser;
-		} catch (SQLException e) { e.printStackTrace(); return ""; }
+//		} catch (SQLException e) { e.printStackTrace(); return ""; }
 	}
 	public String getMerName(int x) {
 		try {

@@ -195,7 +195,7 @@ public class Spesa extends Finestra{
 	}
 	
 	// fornitore -----------------------------------------------------------------------------------------------
-	public Spesa (int index, int codice){
+	public Spesa (int index, int codice) throws SQLException{
 		super("Order "+Main.db.getMerName(codice)+" from "+Main.db.getForName(index));
 		String unita="";
 		double prezF=Main.db.getPriceF(index, codice);

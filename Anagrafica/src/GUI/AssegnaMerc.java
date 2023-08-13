@@ -17,7 +17,11 @@ public class AssegnaMerc extends Finestra{
 	public AssegnaMerc(int x){
 		super("Assign Product to Supplier");
 		indice=x;
-		nomeForn=Main.db.getForName(x);
+		try {
+			nomeForn=Main.db.getForName(x);
+		} catch (SQLException e) {
+			nomeForn="not found";
+		}
 
 		JPanel contenuto=new JPanel();
 		contenuto.setLayout(new GridLayout(4,1));

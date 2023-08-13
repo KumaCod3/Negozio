@@ -191,11 +191,16 @@ public class Errore extends Frame {
 
 		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	t.dispose();
-		    	Spesa sp=new Spesa(index,ind);
-		    	sp.setVisible(true);
-		    	setVisible(false);
-		    	dispose();
+		    	try {
+			    	Spesa sp=new Spesa(index,ind);
+			    	sp.setVisible(true);
+			    	setVisible(false);
+			    	t.dispose();
+			    	dispose();
+		    	}catch (SQLException ex) {
+		    		t.setVisible(true);
+		    		dispose();
+		    	}
 			}
 		});
 		
@@ -231,11 +236,17 @@ public class Errore extends Frame {
 
 		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	t.dispose();
-		    	Spesa sp=new Spesa(index,ind);
-		    	sp.setVisible(true);
-		    	setVisible(false);
-		    	dispose();
+		    	try {
+			    	Spesa sp=new Spesa(index,ind);
+			    	sp.setVisible(true);
+			    	setVisible(false);
+			    	t.dispose();
+			    	dispose();
+		    	}catch (SQLException ex) {
+		    		setVisible(false);
+			    	t.setVisible(true);
+			    	dispose();
+		    	}
 			}
 		});
 		
@@ -281,7 +292,6 @@ public class Errore extends Frame {
 		pack();
 	}
 	
-
 	public Errore(int codice, SchedaPersona t) {	// scelta merce x ordine forn
 		this();
 		tx.setText("Which product you want to purchase form this supplyer?");
@@ -305,11 +315,17 @@ public class Errore extends Frame {
 
 		ok.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	t.dispose();
-		    	Spesa sp=new Spesa(codice, index);
-		    	sp.setVisible(true);
-		    	setVisible(false);
-		    	dispose();
+		    	try {
+			    	Spesa sp=new Spesa(codice, index);
+			    	sp.setVisible(true);
+			    	setVisible(false);
+				    t.dispose();
+			    	dispose();
+		    	}catch (SQLException ex) {
+		    		setVisible(false);
+			    	t.setVisible(true);
+			    	dispose();
+		    	}
 			}
 		});
 		
@@ -325,30 +341,43 @@ public class Errore extends Frame {
 
 	public Errore(int codice, int indice, AssegnaMerc a) {		// elimina rapporto fornitore/merce
 		this();
-		String mer=Main.db.getMerName(codice);
-		String sup=Main.db.getForName(indice);
-		
-		tx.setText("Remove "+mer+" from supplier "+sup+"?");
+		try {
+			String mer=Main.db.getMerName(codice);
+			String sup=Main.db.getForName(indice);
 
-		ok.but.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		    	a.dispose();
-		    	setVisible(false);
-	//	    	removeee();
-		    	Main.db.removeForn(codice,indice);
-		    	ConsultaPersone cp=new ConsultaPersone();
-		    	cp.setVisible(true);
-		    	dispose();
-			}
-		});
 		
-		ty.but.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		    	setVisible(false);
-		    	a.setVisible(true);
-		    	dispose();
-			}
-		});
+			tx.setText("Remove "+mer+" from supplier "+sup+"?");
+	
+			ok.but.addActionListener(new ActionListener() {
+			    public void actionPerformed(ActionEvent e) {
+			    	a.dispose();
+			    	setVisible(false);
+			    	Main.db.removeForn(codice,indice);
+			    	ConsultaPersone cp=new ConsultaPersone();
+			    	cp.setVisible(true);
+			    	dispose();
+				}
+			});
+			
+			ty.but.addActionListener(new ActionListener() {
+			    public void actionPerformed(ActionEvent e) {
+			    	setVisible(false);
+			    	a.setVisible(true);
+			    	dispose();
+				}
+			});
+			
+		} catch (SQLException e) {
+			tx.setText("Select Product or Supplier.");
+			ty.but.addActionListener(new ActionListener() {
+			    public void actionPerformed(ActionEvent e) {
+			    	setVisible(false);
+			    	a.setVisible(true);
+			    	dispose();
+				}
+			});
+			ok.setVisible(false);
+		}
 		pack();
 	}
 
