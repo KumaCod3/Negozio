@@ -22,7 +22,6 @@ public class Errore extends Frame {
 		super("---ERROR---");
 		setBackground(Est.sfondo);
 		setUndecorated(true);
-//		setLocation(Est.centX-((int)(getSize().getWidth())),Est.centY-((int)(getSize().getHeight())));
 		setLocation(500,500);
 		c = new JPanel();
 		c.setBorder(Est.borColTut);
