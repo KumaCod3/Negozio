@@ -215,7 +215,7 @@ public class AssegnaMerc extends Finestra{
 		Bottone bex=new Bottone("Back");
 		bex.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	ConsultaPersone consultaP=new ConsultaPersone();
+		    	ConsultaMerci consultaP=new ConsultaMerci();
 		    	consultaP.setVisible(true);
 		    	setVisible(false);
 		    	dispose();
@@ -231,7 +231,7 @@ public class AssegnaMerc extends Finestra{
 		    			Main.db.assMerc(indice,codice,costo);
 		    		} catch (SQLException ex) { ex.printStackTrace(); }
 
-			    	ConsultaPersone consultaP=new ConsultaPersone();
+			    	ConsultaMerci consultaP=new ConsultaMerci();
 			    	consultaP.setVisible(true);
 			    	setVisible(false);
 			    	dispose();

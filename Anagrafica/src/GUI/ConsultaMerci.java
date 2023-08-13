@@ -56,8 +56,8 @@ public class ConsultaMerci extends Finestra{
 		    public void actionPerformed(ActionEvent e) {
 		    	if (index!=-1){
 		    		SchedaMerce aggg=new SchedaMerce(index);
-				    	aggg.setVisible(true);
-				    	dispose();
+				    aggg.setVisible(true);
+				    dispose();
 		    	}
 			}
 		});

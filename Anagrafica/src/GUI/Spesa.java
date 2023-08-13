@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.SQLException;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
@@ -23,6 +25,14 @@ public class Spesa extends Finestra{
 	// cliente
 	public Spesa (int indexC){
 		super("Shopping cart ");
+		removeWindowListener(getWindowListeners()[0]);
+		addWindowListener (new WindowAdapter() {    
+            public void windowClosing (WindowEvent e) {    
+            	Errore err=new Errore("Are you sure you want to cancel this cart?", Spesa.this);
+		    	err.setVisible(true);
+		    	setVisible(false);
+            }    
+        });
 		
 		try {
 			String[] dati=Main.db.leggiCliID(indexC).split(",");
@@ -53,9 +63,6 @@ public class Spesa extends Finestra{
 			JPanel ff=new JPanel();
 			ff.setOpaque(false);
 			ff.setLayout(new GridLayout(1,1));
-//			FlowLayout flowLayout = (FlowLayout) ff.getLayout();
-//			flowLayout.setAlignment(FlowLayout.LEFT);
-//			flowLayout.setAlignOnBaseline(true);
 			ff.add(ele);
 			ele.jList.addListSelectionListener(new ListSelectionListener() {
 				public void valueChanged(ListSelectionEvent e) {
@@ -218,7 +225,7 @@ public class Spesa extends Finestra{
 		contenuto.add(qtt);
 /*comp8*/JPanel pan2=new JPanel();
 		FormVuoto tf2=new FormVuoto("Quantity");
-		pan2.setBorder(BorderFactory.createEmptyBorder(0,1,0,453));
+		pan2.setBorder(BorderFactory.createEmptyBorder(50,1,0,460));
 		pan2.add(tf2);
 		pan2.setOpaque(false);
 		contenuto.add(pan2);

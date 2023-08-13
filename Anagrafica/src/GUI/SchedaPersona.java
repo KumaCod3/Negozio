@@ -62,7 +62,7 @@ public class SchedaPersona extends Finestra{
 		
 /*comp2*/  Etichetta uni=new Etichetta("Contacts: ");
 		contenuto.add(uni);
-		Etichetta uu=new Etichetta("Phone: "+telefono+" eMail: "+email);
+		Etichetta uu=new Etichetta("Phone: "+telefono+"     eMail: "+email);
 		contenuto.add(uu);
 		
 /*comp3*/  Etichetta ac=new Etichetta("VAT number: ");

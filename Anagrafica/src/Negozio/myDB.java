@@ -191,7 +191,7 @@ public class myDB {
 		}
 		
 		double prezOld=getPrezzoA(index);
-		if (prezOld>cost) {
+		if (prezOld>cost||prezOld==0) {
 			String sql2="UPDATE Merci SET price="+cost+" WHERE ID_MERCE="+index;
 			int result2 = statement.executeUpdate(sql2);
 			if (result2!=0) {
@@ -461,6 +461,22 @@ public class myDB {
 	//			System.out.println("Suxcesfully added!");
 			}
 		} catch (SQLException e) { e.printStackTrace();}
+	}
+
+	public int nuovaMerc(String nome, String unita) {
+		String sql="INSERT INTO Merci (product,unity) values('"+nome+"','"+unita+"')";
+		int idd=-1;
+		try {
+			int result = statement.executeUpdate(sql);
+			String sql2="SELECT LAST_INSERT_ID() AS id;";
+			ResultSet result2 = statement.executeQuery(sql2);
+			while (result2.next()) {
+				idd=result2.getInt("id");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return idd;
 	}
 
 
