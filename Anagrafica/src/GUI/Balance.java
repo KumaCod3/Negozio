@@ -12,14 +12,15 @@ public class Balance extends Finestra{
 	
 		public Balance(){
 			super("TOTAL BALANCE:");
-			this.merchVal=Main.db.getMercVal();;
-			this.totSold=Main.db.getTotSold();
-			this.totBought=Main.db.getTotBought();
-			this.bal=totSold-totBought;
+			this.merchVal=Main.db.getMercVal(); // somma prezzi acquisto per quantita di tutto
+			this.totSold=Main.db.getTotSold();	// somma tutte vendite
+			this.totBought=Main.db.getTotBought();	// somma tutti acquisti
+			this.bal=totSold-totBought;				// tutte vendite - tutti acquisti
+			double balMag=bal+merchVal;			// vendite - acquisti - valore magazzino
 			
 			JPanel contenuto=new JPanel();
 			contenuto.setOpaque(false);
-			contenuto.setLayout(new GridLayout(4,2));
+			contenuto.setLayout(new GridLayout(5,2));
 			
 	/*comp1*/  Etichetta non=new Etichetta("Goods value in stock: ");
 			contenuto.add(non);	
@@ -36,10 +37,15 @@ public class Balance extends Finestra{
 			Etichetta aa=new Etichetta(Est.deci.format(totBought)+" eu. ");
 			contenuto.add(aa);
 			
-	/*comp4*/  Etichetta ri=new Etichetta("FINAL BALANCE: ");
+	/*comp5*/  Etichetta ri=new Etichetta("Cash BALANCE: ");
 			contenuto.add(ri);
 			Etichetta rr=new Etichetta(Est.deci.format(bal)+" eu. ");
-			contenuto.add(rr);
+			contenuto.add(rr);		
+			
+	/*comp5*/  Etichetta rin=new Etichetta("FINAL BALANCE: ");
+			contenuto.add(rin);
+			Etichetta rrn=new Etichetta(Est.deci.format(balMag)+" eu. ");
+			contenuto.add(rrn);
 			
 			c.add("Center", contenuto);
 			
