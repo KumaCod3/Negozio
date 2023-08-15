@@ -5,6 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+
+import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 
 import GUI.Est;
 
@@ -183,23 +186,51 @@ public class myDB {
 	}
 	
 	public void assMerc(int codice, int index, Double cost) throws SQLException {
-		String sql="INSERT INTO forniture VALUES("+codice+", "+index+", "+cost+")";
-		int result = statement.executeUpdate(sql);
-		if (result!=0) {
-//			System.out.println("Suxcesfully added!");
+		try {
+			String sql="INSERT INTO forniture VALUES("+codice+", "+index+", "+cost+")";
+			int result = statement.executeUpdate(sql);
+			if (result!=0) {
+	//			System.out.println("Suxcesfully added!");
+			}
+			aggiornaPrezzo(index);
+			
+		} catch (MySQLIntegrityConstraintViolationException x) {
+			String sql="UPDATE forniture SET PRICE="+cost+" WHERE ID_MERCE="+index+" AND ID_FORNITORE="+codice+";";
+			int result = statement.executeUpdate(sql);
+			if (result!=0) {
+	//			System.out.println("Suxcesfully added!");
+			}
+			aggiornaPrezzo(index);
 		}
-		
-		double prezOld=getPrezzoA(index);
-		if (prezOld>cost||prezOld==0) {
-			String sql2="UPDATE Merci SET price="+cost+" WHERE ID_MERCE="+index;
-			int result2 = statement.executeUpdate(sql2);
-			if (result2!=0) {
-//				System.out.println("Suxcesfully added!");
+	}
+
+	private void aggiornaPrezzo(int index) {
+		double prezFin=100000;
+		ArrayList<Double> prezzi=new ArrayList<>();
+		try {
+			String sql="SELECT price FROM Forniture WHERE ID_MERCE="+index;
+			ResultSet result = statement.executeQuery(sql);	
+			while (result.next()) {
+				Double prezzo=result.getDouble("Price");
+				prezzi.add(prezzo);
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		for (Double d:prezzi) {
+			if (d<prezFin) {
+				prezFin=d;
 			}
 		}
-		
-		
-		
+		try {
+			String sql2="UPDATE Merci SET price="+prezFin+" WHERE ID_MERCE="+index;
+			int result2 = statement.executeUpdate(sql2);
+			if (result2!=0) {
+	//			System.out.println("Suxcesfully added!");
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public ResultSet getElenSuppF(int index) throws SQLException{

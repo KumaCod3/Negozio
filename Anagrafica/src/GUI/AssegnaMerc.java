@@ -7,8 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AssegnaMerc extends Finestra{
-	int codice;
-	int indice;
+	int codice=-1;
+	int indice=-1;
 	String nomeForn="";
 	String nomeMer="";
 	Double costo=0.0;
@@ -104,19 +104,21 @@ public class AssegnaMerc extends Finestra{
 		Bottone bent=new Bottone("ENTER");
 		bent.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	if (codice>-1){
-		    		costo=Double.parseDouble(tf1.ret);
+		    	if (codice>-1&&indice>-1){
 		    		try {
-		    			Main.db.assMerc(indice,codice,costo);
-		    		} catch (SQLException ex) { ex.printStackTrace(); }
-
-			    	ConsultaPersone consultaP=new ConsultaPersone();
-			    	consultaP.setVisible(true);
-			    	setVisible(false);
-			    	dispose();
+			    		costo=Double.parseDouble(tf1.ret);
+			    		try {
+			    			Main.db.assMerc(indice,codice,costo);
+			    		} catch (SQLException ex) { ex.printStackTrace(); }
+	
+				    	ConsultaPersone consultaP=new ConsultaPersone();
+				    	consultaP.setVisible(true);
+				    	setVisible(false);
+				    	dispose();
+		    		}catch (Exception ex) {}
 		    	}
 		    	else {
-		    		Errore err=new Errore("Index not valid... ");
+		    		Errore err=new Errore("Select a choice... ");
 		    		err.setVisible(true);
 		    	}
 			}
@@ -229,19 +231,22 @@ public class AssegnaMerc extends Finestra{
 		Bottone bent=new Bottone("ENTER");
 		bent.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	if (codice>-1){
-		    		costo=Double.parseDouble(tf1.ret);
+		    	if (codice>-1&&indice>-1){
 		    		try {
-		    			Main.db.assMerc(indice,codice,costo);
-		    		} catch (SQLException ex) { ex.printStackTrace(); }
-
-			    	ConsultaMerci consultaP=new ConsultaMerci();
-			    	consultaP.setVisible(true);
-			    	setVisible(false);
-			    	dispose();
+		    			costo=Double.parseDouble(tf1.ret);
+			    		try {
+			    			Main.db.assMerc(indice,codice,costo);
+			    		} catch (SQLException ex) { ex.printStackTrace(); }
+	
+				    	ConsultaMerci consultaP=new ConsultaMerci();
+				    	consultaP.setVisible(true);
+				    	setVisible(false);
+				    	dispose();
+		    		}
+		    		catch (Exception ex) {}
 		    	}
 		    	else {
-		    		Errore err=new Errore("Index not valid... ");
+		    		Errore err=new Errore("Select a choice... ");
 		    		err.setVisible(true);
 		    	}
 			}
