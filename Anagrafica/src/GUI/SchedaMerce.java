@@ -1,8 +1,6 @@
 package GUI;
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.awt.event.*;
 import java.sql.SQLException;
 
