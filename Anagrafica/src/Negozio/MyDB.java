@@ -11,22 +11,18 @@ import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 
 import GUI.Est;
 
-public class myDB {
+public class MyDB {
 	private static Connection connection;
 	private static Statement statement;
 	private String PASSWORD="Du1k3rKnows!";
 	private String DataBaseNAME="negozioDB";
 	
-	public myDB() {
+	public MyDB() throws SQLException {
 		try {
-			Class.forName("com.mysql.jdbc.Driver"); 
-			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+DataBaseNAME+"?characterEncoding=latin1&useConfigs=maxPerformance","root",PASSWORD);
-			statement = connection.createStatement();
-//			System.out.println("DB connected!");
-		}
-		catch (Exception ex) {
-			ex.printStackTrace();
-		}
+		Class.forName("com.mysql.jdbc.Driver");
+		connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+DataBaseNAME+"?characterEncoding=latin1&useConfigs=maxPerformance","root",PASSWORD);
+		statement = connection.createStatement();
+		}catch (ClassNotFoundException e) {System.out.println("MySQL Library missing");}
 	}
 	
 	public String leggiCliID(int x) throws SQLException{
