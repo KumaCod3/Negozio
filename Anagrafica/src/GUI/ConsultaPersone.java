@@ -1,5 +1,4 @@
 package GUI;
-import Negozio.*;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -41,7 +40,7 @@ public class ConsultaPersone  extends Finestra {
 		ele1.setBorder(Est.bordo);
 		ele1.setOpaque(false);
 		try {
-	/*comp2*/MyChoice ele=new MyChoice(Main.db.getElenForn(),5);
+/*comp2*/MyChoice ele=new MyChoice(Main.db.getElenForn(),5);
 			ele.setBorder(Est.bordoCh);
 			ele.jList.addListSelectionListener(new ListSelectionListener() {
 				public void valueChanged(ListSelectionEvent e) {

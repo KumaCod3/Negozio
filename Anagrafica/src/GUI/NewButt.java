@@ -44,7 +44,7 @@ public class NewButt extends JButton{
 		
 		// metto manina
 		setCursor(new Cursor(Cursor.HAND_CURSOR));
-		// metto bordo?
+		// metto bordo
 		setBorder(new EmptyBorder(10,20,10,20));
 		
 		// faccio il lampeggio sull OVER
@@ -56,7 +56,6 @@ public class NewButt extends JButton{
 				pressLoc=me.getPoint();
 				timerPress.setDelay(0);
 				timerPress.start();
-				
 			}
 		});
 		
@@ -109,7 +108,6 @@ public class NewButt extends JButton{
 		g2.setPaint(col1);
 		// I DUE 5 SERVONO PER ARROTONDARE GLI SPIGOLI
 		g2.fillRoundRect(0,0,wi,he,20,20);
-//		createStyle(g2);
 		if (press) {
 			paintPress(g2);
 		}

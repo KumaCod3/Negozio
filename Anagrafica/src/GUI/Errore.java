@@ -43,12 +43,10 @@ public class Errore extends Frame {
 		c.add(ok);
 		c.add(ty);
 		setAlwaysOnTop(true);
-//		pack();
 	}
 	
-	public Errore(String a){
+	public Errore(String a){	// da AggiungiMerce e AggiungiPersona
 		this();
-		// da AggiungiMerce e AggiungiPersona
 		tx.setText(a);
 
 		ok.but.addActionListener(new ActionListener() {
@@ -180,10 +178,7 @@ public class Errore extends Frame {
 								String[] temp=ele.getSel().split(", ");
 								index=Integer.parseInt(temp[0]);
 							}
-							catch (Exception ex){
-								// no selection
-							}
-							
+							catch (Exception ex){}
 						}
 					});
 					c.add(ele);
@@ -225,10 +220,7 @@ public class Errore extends Frame {
 								String[] temp=ele.getSel().split(", ");
 								index=Integer.parseInt(temp[0]);
 							}
-							catch (Exception ex){
-								// no selection
-							}
-							
+							catch (Exception ex){}
 						}
 					});
 					c.add(ele);
@@ -268,7 +260,6 @@ public class Errore extends Frame {
 		    public void actionPerformed(ActionEvent e) {
 		    	a.dispose();
 		    	setVisible(false);
-		    	//list.concludi();
 		    	try {
 		    		int IDtrans=Main.db.createTransactionOu(index2, price);
 		    		Main.db.compra(codice, qt,price, IDtrans);
@@ -380,6 +371,4 @@ public class Errore extends Frame {
 		}
 		pack();
 	}
-
-
 }		

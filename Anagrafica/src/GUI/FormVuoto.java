@@ -32,7 +32,6 @@ public class FormVuoto extends JTextArea{
 			}
 		});
 		setFont(Est.plainFont);
-		
 	}
 	
 	public void clear(){

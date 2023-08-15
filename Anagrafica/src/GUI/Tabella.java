@@ -69,5 +69,4 @@ public class Tabella extends Frame{
 			aggiungi(m.getKey(), m.getValue());
 		}
 	}
-
 }

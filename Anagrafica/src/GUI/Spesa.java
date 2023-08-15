@@ -1,6 +1,5 @@
 package GUI;
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,7 +21,7 @@ public class Spesa extends Finestra{
 	public ListaSpesa list;
 	public Tabella tab;
 
-	// cliente
+// cliente
 	public Spesa (int indexC){
 		super("Shopping cart ");
 		removeWindowListener(getWindowListeners()[0]);
@@ -194,7 +193,7 @@ public class Spesa extends Finestra{
 		tab.repaint(list);
 	}
 	
-	// fornitore -----------------------------------------------------------------------------------------------
+// fornitore -----------------------------------------------------------------------------------------------
 	public Spesa (int index, int codice) throws SQLException{
 		super("Order "+Main.db.getMerName(codice)+" from "+Main.db.getForName(index));
 		String unita="";

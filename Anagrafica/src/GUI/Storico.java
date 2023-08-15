@@ -19,7 +19,7 @@ public class Storico extends Finestra{
 		centro.setLayout(new GridLayout(1,2));
 		c.add("Center",centro);
 		
-		// sinistro
+// sinistro
 		JPanel sinistro=new JPanel();
 		sinistro.setOpaque(false);
 		sinistro.setLayout(new BorderLayout());
@@ -49,9 +49,8 @@ public class Storico extends Finestra{
 			}
 		});
 		sinistro.add("South",bexSX);
-		
-		
-		// destro
+				
+// destro
 		JPanel destro=new JPanel();
 		destro.setOpaque(false);
 		destro.setLayout(new BorderLayout());
@@ -78,7 +77,6 @@ public class Storico extends Finestra{
 			}
 		});
 		destro.add("South",bexDX);
-		
 		
 		centro.add(sinistro);
 		centro.add(destro);

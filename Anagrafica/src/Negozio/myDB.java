@@ -17,7 +17,6 @@ public class myDB {
 	private String PASSWORD="Du1k3rKnows!";
 	private String DataBaseNAME="negozioDB";
 	
-	
 	public myDB() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver"); 
@@ -129,7 +128,6 @@ public class myDB {
 		
 		String sql="UPDATE Clienti SET "+mods+"' WHERE ID_CLIENTE="+x;
 		int result = statement.executeUpdate(sql);
-		
 		if (result!=0) {
 //			System.out.println("Suxcesfully added!");
 		}
@@ -140,20 +138,17 @@ public class myDB {
 		
 		String sql="UPDATE Fornitori SET "+mods+"' WHERE ID_FORNITORE="+x;
 		int result = statement.executeUpdate(sql);
-		
 		if (result!=0) {
 //			System.out.println("Suxcesfully added!");
 		}
 	}
 	
 	public String getForName(int x) throws SQLException {
-//		try {
-			String sql="SELECT name FROM Fornitori WHERE ID_FORNITORE="+x;
-			ResultSet result = statement.executeQuery(sql);
-			result.next();
-			String inser=result.getString(1);
-			return inser;
-//		} catch (SQLException e) { e.printStackTrace(); return ""; }
+		String sql="SELECT name FROM Fornitori WHERE ID_FORNITORE="+x;
+		ResultSet result = statement.executeQuery(sql);
+		result.next();
+		String inser=result.getString(1);
+		return inser;
 	}
 	public String getMerName(int x) {
 		try {
@@ -228,9 +223,7 @@ public class myDB {
 			if (result2!=0) {
 	//			System.out.println("Suxcesfully added!");
 			}
-		}catch (SQLException e) {
-			e.printStackTrace();
-		}
+		}catch (SQLException e) {e.printStackTrace();}
 	}
 
 	public ResultSet getElenSuppF(int index) throws SQLException{
@@ -394,7 +387,6 @@ public class myDB {
 		}
 	}
 
-
 	public void aggiornaSaldoFor(int index, Double prezzo)  throws SQLException {
 		String sql="UPDATE Fornitori SET tot_purchased=tot_purchased + "+prezzo +" WHERE ID_FORNITORE="+index;
 		int result = statement.executeUpdate(sql);
@@ -503,13 +495,8 @@ public class myDB {
 			while (result2.next()) {
 				idd=result2.getInt("id");
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		} catch (SQLException e) {e.printStackTrace();}
 		return idd;
 	}
-
-
-
 	
 }

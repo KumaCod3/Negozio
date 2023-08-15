@@ -1,8 +1,5 @@
 package GUI;
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -20,7 +17,6 @@ public class ModPersona extends Finestra{
 	String iva="";
 	Double saldo=0.00;
 	String note;
-	
 	
 	public ModPersona(int x,String tipo){
 		super("Edit person");
@@ -218,7 +214,6 @@ public class ModPersona extends Finestra{
 		panel_10.add(bent);
 		
 		c.add("Center", contenuto);
-		pack();
-    		
+		pack();	
     }
 }

@@ -1,12 +1,9 @@
 package GUI;
-import Negozio.*;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-
 import java.awt.event.*;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SchedaMerce extends Finestra{
@@ -93,20 +90,9 @@ public class SchedaMerce extends Finestra{
 		contenuto.add(aa);
 		
 /*comp6*/  Etichetta forn=new Etichetta("Supplier: ");
-		contenuto.add(forn);
-		
+		contenuto.add(forn);	
 		try {
 			MyChoice ele1=new MyChoice(Main.db.getElenSuppF(index),5);
-			ele1.jList.addListSelectionListener(new ListSelectionListener() {
-				public void valueChanged(ListSelectionEvent e) {
-					try {
-						String[] temp=ele1.getSel().split(", ");
-					}
-					catch (Exception ex){
-					}
-					
-				}
-			});
 			contenuto.add(ele1);
 		} catch (SQLException ex) {ex.printStackTrace();}
 		
@@ -159,24 +145,7 @@ public class SchedaMerce extends Finestra{
 		});
 		contenuto.add(scc);
 		c.add("Center", contenuto);
-		
-/*		JPanel sud=new JPanel();
-		sud.setBorder(Est.bordo);
-		sud.setOpaque(false);
-		sud.setLayout(new GridLayout(1,3));
-		
-		Bottone bex=new Bottone("Back");
-		bex.but.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		    	ConsultaMerci consultaM=new ConsultaMerci();
-		    	consultaM.setVisible(true);
-		    	setVisible(false);
-		    	dispose();
-			}
-		});
-		sud.add(bex);
-		c.add("South", sud);
-*/
+
 		JPanel est=new JPanel();
 		est.setBorder(Est.bordo);
 		est.setOpaque(false);
@@ -201,7 +170,6 @@ public class SchedaMerce extends Finestra{
 				    	Errore er=new Errore(index, SchedaMerce.this);
 				    	er.setVisible(true);
 				    	setVisible(false);
-		//		    	dispose();
 			    	}
 			    	catch (Exception y){
 			    		y.printStackTrace();

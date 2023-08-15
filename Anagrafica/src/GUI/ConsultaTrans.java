@@ -1,5 +1,4 @@
 package GUI;
-
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -304,7 +303,6 @@ public class ConsultaTrans extends Finestra{
 		opn.but.removeActionListener(opn.but.getActionListeners()[0]);
 		opn.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	// TODO
 		    	if (tab.getIndex()>-1) {
 		    		Transazione tra=new Transazione(tab.getNumber(), ConsultaTrans.this, "acquisti");
 		    		tra.setVisible(true);
@@ -314,5 +312,4 @@ public class ConsultaTrans extends Finestra{
 		});
 		pack();
 	}
-	
 }

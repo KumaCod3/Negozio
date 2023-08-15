@@ -1,13 +1,10 @@
 package GUI;
-import Negozio.*;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SchedaPersona extends Finestra{
-//	String titolo;
 	int codice;
 	String cognome;
 	String nome;
@@ -20,7 +17,6 @@ public class SchedaPersona extends Finestra{
 	Double saldo=0.00;
 	String note;
 	int index;
-	
 	
 	public SchedaPersona(int x, String tipo){
 		super("Scheda "+tipo);
@@ -126,8 +122,6 @@ public class SchedaPersona extends Finestra{
 				ff.add(ele1);
 				contenuto.add(ff);
 			} catch (SQLException ex) {ex.printStackTrace();}
-			
-			
 
 /*OUT*/	
 			fot.setLayout(new GridLayout(1,4));
@@ -140,9 +134,7 @@ public class SchedaPersona extends Finestra{
 				    	setVisible(false);
 				    	dispose();
 			    	}
-			    	catch (Exception pp){
-			    		// ERRORE
-			    	}
+			    	catch (Exception pp){}
 				}
 			});
 			fot.add(agg);

@@ -1,5 +1,4 @@
 package GUI;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
@@ -25,7 +24,6 @@ public class Transazione extends Finestra{
 				dat=sor.getString("Moment");
 			}
 		} catch (SQLException ex) { ex.printStackTrace(); }
-		
 		
     	try {
 			ResultSet sor=Main.db.getVendita(index);
@@ -53,7 +51,6 @@ public class Transazione extends Finestra{
 		
 		pack();
 	}
-	
 	
 	public Transazione(int index, ConsultaTrans a, String ciao) { // acquisti
 		super("Transaction details:");

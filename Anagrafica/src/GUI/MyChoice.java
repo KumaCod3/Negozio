@@ -146,5 +146,4 @@ public class MyChoice extends JPanel{
 	public void clear() {
 		field.setText("");
 	}
-	
 }

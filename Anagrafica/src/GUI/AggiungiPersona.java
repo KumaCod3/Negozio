@@ -1,5 +1,4 @@
 package GUI;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -211,6 +210,5 @@ public class AggiungiPersona extends Finestra{
 		
 		c.add("Center", contenuto);
 		pack();
-		
 	}
 }

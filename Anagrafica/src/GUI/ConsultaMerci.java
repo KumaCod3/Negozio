@@ -85,7 +85,7 @@ public class ConsultaMerci extends Finestra{
 		});
 		sud.add(ord);
 		
-/*comp6*/Bottone b2=new Bottone("ADD new");
+		Bottone b2=new Bottone("ADD new");
 		b2.but.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	AggiungiMerce aggg=new AggiungiMerce();
