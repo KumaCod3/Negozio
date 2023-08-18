@@ -120,4 +120,3 @@ public class ListaSpesa{
 		Main.db.elimTransactionIn(IDtrans);
 	}
 }
-
