@@ -7,6 +7,8 @@ import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
+import Negozio.MyDB;
+
 public class AggiungiPersona extends Finestra{
 	String tipo;
 	String cognome;
@@ -187,7 +189,7 @@ public class AggiungiPersona extends Finestra{
 		    	if (tipo.contentEquals("cliente")){
 		    		String dati=nome+"','"+cognome+"','"+telefono+"','"+email+"','"+stato+"','"+citta+"','"+indirizzo+"','"+iva+"',"+saldo+",'"+note;
 		    		try {
-		    			Main.db.aggCli(dati);
+		    			MyDB.aggCli(dati);
 		    		} catch (SQLException ex) {	ex.printStackTrace(); }
 		    		
 		    		ConsultaPersone consultaP=new ConsultaPersone();
@@ -197,7 +199,7 @@ public class AggiungiPersona extends Finestra{
 		    	else if (tipo.contentEquals("fornitore")){
 		    		try {
 		    			String dati=nome+"','"+cognome+"','"+telefono+"','"+email+"','"+stato+"','"+citta+"','"+indirizzo+"','"+iva+"',"+saldo+",'"+note;
-			    		Main.db.aggFor(dati);
+		    			MyDB.aggFor(dati);
 		    		} catch (SQLException ex) {	ex.printStackTrace(); }
 		    		
 		    		ConsultaPersone consultaP=new ConsultaPersone();

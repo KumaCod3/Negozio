@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import Negozio.ListaSpesa;
+import Negozio.MyDB;
 
 public class Spesa extends Finestra{
 	int indice=-1;
@@ -34,7 +35,7 @@ public class Spesa extends Finestra{
         });
 		
 		try {
-			String[] dati=Main.db.leggiCliID(indexC).split(",");
+			String[] dati=MyDB.leggiCliID(indexC).split(",");
 			this.setTitle("Shopping cart of "+dati[1]+" "+dati[2]);
 		
 			list=new ListaSpesa(indexC, this);
@@ -58,7 +59,7 @@ public class Spesa extends Finestra{
 	/*comp1*/  Etichetta tx=new Etichetta("Choose product: ");
 			tx.setBorder(BorderFactory.createEmptyBorder(1,1,80,1));
 			pp1.add(tx);
-			MyChoice ele=new MyChoice(Main.db.getElenMerc(), "ciao");
+			MyChoice ele=new MyChoice(MyDB.getElenMerc(), "ciao");
 			JPanel ff=new JPanel();
 			ff.setOpaque(false);
 			ff.setLayout(new GridLayout(1,1));
@@ -195,18 +196,18 @@ public class Spesa extends Finestra{
 	
 // fornitore -----------------------------------------------------------------------------------------------
 	public Spesa (int index, int codice) throws SQLException{
-		super("Order "+Main.db.getMerName(codice)+" from "+Main.db.getForName(index));
+		super("Order "+MyDB.getMerName(codice)+" from "+MyDB.getForName(index));
 		String unita="";
-		double prezF=Main.db.getPriceF(index, codice);
+		double prezF=MyDB.getPriceF(index, codice);
 		JPanel contenuto=new JPanel();
 		contenuto.setOpaque(false);
 		contenuto.setLayout(new GridLayout(4,2));
 		
 		try {
-/*comp1*/  Etichetta ti=new Etichetta("Order supply of "+Main.db.getMerName(codice));
+/*comp1*/  Etichetta ti=new Etichetta("Order supply of "+MyDB.getMerName(codice));
 		contenuto.add(ti);
 		}	catch (Exception ee) {ee.printStackTrace();}
-/*comp2*/  Etichetta no=new Etichetta("from "+Main.db.getForName(index));
+/*comp2*/  Etichetta no=new Etichetta("from "+MyDB.getForName(index));
 		contenuto.add(no);
 		
 /*comp3*/  Etichetta to=new Etichetta("Purchase price: ");
@@ -216,7 +217,7 @@ public class Spesa extends Finestra{
 
 /*comp5*/  Etichetta go=new Etichetta("Sell price: ");
 		contenuto.add(go);
-/*comp6*/  Etichetta xo=new Etichetta(""+Est.deci.format(Main.db.getPrezzo(codice))+" eu per "+unita);
+/*comp6*/  Etichetta xo=new Etichetta(""+Est.deci.format(MyDB.getPrezzo(codice))+" eu per "+unita);
 		contenuto.add(xo);
 		
 		

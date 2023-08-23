@@ -1,6 +1,9 @@
 package GUI;
 import java.awt.*;
 import javax.swing.*;
+
+import Negozio.MyDB;
+
 import java.awt.event.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,7 +20,7 @@ public class AssegnaMerc extends Finestra{
 		super("Assign Product to Supplier");
 		indice=x;
 		try {
-			nomeForn=Main.db.getForName(x);
+			nomeForn=MyDB.getForName(x);
 		} catch (SQLException e) {
 			nomeForn="not found";
 		}
@@ -46,7 +49,7 @@ public class AssegnaMerc extends Finestra{
 		Choice ele=new Choice();
 		ele.add("Choose");
 		try{
-			ResultSet xx=Main.db.getElenMerc();
+			ResultSet xx=MyDB.getElenMerc();
 			while (xx.next()) {
 				ele.add(xx.getString(1)+", "+xx.getString(2));
 			}
@@ -107,7 +110,7 @@ public class AssegnaMerc extends Finestra{
 		    		try {
 			    		costo=Double.parseDouble(tf1.ret);
 			    		try {
-			    			Main.db.assMerc(indice,codice,costo);
+			    			MyDB.assMerc(indice,codice,costo);
 			    		} catch (SQLException ex) { ex.printStackTrace(); }
 	
 				    	ConsultaPersone consultaP=new ConsultaPersone();
@@ -144,7 +147,7 @@ public class AssegnaMerc extends Finestra{
 	public AssegnaMerc(int x, String a){
 		super("Assign Product to Supplier");
 		codice=x;
-		nomeMer=Main.db.getMerName(x);
+		nomeMer=MyDB.getMerName(x);
 		
 		JPanel contenuto=new JPanel();
 		contenuto.setLayout(new GridLayout(4,1));
@@ -172,7 +175,7 @@ public class AssegnaMerc extends Finestra{
 		Choice ele=new Choice();
 		ele.add("Choose");
 		try{
-			ResultSet xx=Main.db.getElenForn();
+			ResultSet xx=MyDB.getElenForn();
 			while (xx.next()) {
 				ele.add(xx.getString(1)+", "+xx.getString(2)+", "+xx.getString(3));
 			}
@@ -234,7 +237,7 @@ public class AssegnaMerc extends Finestra{
 		    		try {
 		    			costo=Double.parseDouble(tf1.ret);
 			    		try {
-			    			Main.db.assMerc(indice,codice,costo);
+			    			MyDB.assMerc(indice,codice,costo);
 			    		} catch (SQLException ex) { ex.printStackTrace(); }
 	
 				    	ConsultaMerci consultaP=new ConsultaMerci();

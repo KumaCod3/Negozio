@@ -5,6 +5,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import Negozio.ListaSpesa;
+import Negozio.MyDB;
 
 public class Tabella extends Frame{
 	JTable tavola;
@@ -40,9 +41,9 @@ public class Tabella extends Frame{
 	
 	public void aggiungi(int m, Double q){
 		String id=m+"";
-		String nome=Main.db.getMerName(m);
+		String nome=MyDB.getMerName(m);
 		String quantita=q+"";
-		String tot=Est.deci.format(Main.db.getPrezzo(m)*q)+" $";
+		String tot=Est.deci.format(MyDB.getPrezzo(m)*q)+" $";
 		String[] riga={id,nome,quantita,tot};
 		model.addRow(riga);
 	}

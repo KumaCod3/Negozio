@@ -10,6 +10,8 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
+import Negozio.MyDB;
+
 public class ConsultaTrans extends Finestra{
 	int pID;
 	int tID;
@@ -74,7 +76,7 @@ public class ConsultaTrans extends Finestra{
 		    	elenco.clear();
 		    	tab.repaint(elenco);
 		    	try {
-					ResultSet sor=Main.db.getVendite(dataIN, dataFI);
+					ResultSet sor=MyDB.getVendite(dataIN, dataFI);
 					while (sor.next()) {		
 						String fin=sor.getString("ID_VENDITA")+", "+sor.getString("Moment")+", "+sor.getString("name")+" "+sor.getString("Last_name")+", "+sor.getString("price");
 						elenco.add(fin);
@@ -116,7 +118,7 @@ public class ConsultaTrans extends Finestra{
 		    	elenco.clear();
 		    	tab.repaint(elenco);
 		    	try {
-					ResultSet sor=Main.db.getVendite(priceI, priceF);
+					ResultSet sor=MyDB.getVendite(priceI, priceF);
 					while (sor.next()) {		
 						String fin=sor.getString("ID_VENDITA")+", "+sor.getString("Moment")+", "+sor.getString("name")+" "+sor.getString("Last_name")+", "+sor.getString("price");
 						elenco.add(fin);
@@ -145,7 +147,7 @@ public class ConsultaTrans extends Finestra{
 		    	elenco.clear();
 		    	tab.repaint(elenco);
 		    	try {
-					ResultSet sor=Main.db.getVendite(pID);
+					ResultSet sor=MyDB.getVendite(pID);
 					while (sor.next()) {		
 						String fin=sor.getString("ID_VENDITA")+", "+sor.getString("Moment")+", "+sor.getString("name")+" "+sor.getString("Last_name")+", "+sor.getString("price");
 						elenco.add(fin);
@@ -174,7 +176,7 @@ public class ConsultaTrans extends Finestra{
 		    	elenco.clear();
 		    	tab.repaint(elenco);
 		    	try {
-					ResultSet sor=Main.db.getVendite(tID, "ciao");
+					ResultSet sor=MyDB.getVendite(tID, "ciao");
 					while (sor.next()) {		
 						String fin=sor.getString("ID_VENDITA")+", "+sor.getString("Moment")+", "+sor.getString("name")+" "+sor.getString("Last_name")+", "+sor.getString("price");
 						elenco.add(fin);
@@ -232,7 +234,7 @@ public class ConsultaTrans extends Finestra{
 		    	elenco.clear();
 		    	tab.repaint(elenco);
 		    	try {
-					ResultSet sor=Main.db.getAcquisti(dataIN, dataFI);
+					ResultSet sor=MyDB.getAcquisti(dataIN, dataFI);
 					while (sor.next()) {		
 						String fin=sor.getString("ID_ACQUISTO")+", "+sor.getString("Moment")+", "+sor.getString("name")+" "+sor.getString("Last_name")+", "+sor.getString("price");
 						elenco.add(fin);
@@ -252,7 +254,7 @@ public class ConsultaTrans extends Finestra{
 		    	elenco.clear();
 		    	tab.repaint(elenco);
 		    	try {
-					ResultSet sor=Main.db.getAcquisti(priceI, priceF);
+					ResultSet sor=MyDB.getAcquisti(priceI, priceF);
 					while (sor.next()) {		
 						String fin=sor.getString("ID_ACQUISTO")+", "+sor.getString("Moment")+", "+sor.getString("name")+" "+sor.getString("Last_name")+", "+sor.getString("price");
 						elenco.add(fin);
@@ -271,7 +273,7 @@ public class ConsultaTrans extends Finestra{
 		    	elenco.clear();
 		    	tab.repaint(elenco);
 		    	try {
-					ResultSet sor=Main.db.getAcquisti(pID);
+					ResultSet sor=MyDB.getAcquisti(pID);
 					while (sor.next()) {		
 						String fin=sor.getString("ID_ACQUISTO")+", "+sor.getString("Moment")+", "+sor.getString("name")+" "+sor.getString("Last_name")+", "+sor.getString("price");
 						elenco.add(fin);
@@ -290,7 +292,7 @@ public class ConsultaTrans extends Finestra{
 		    	elenco.clear();
 		    	tab.repaint(elenco);
 		    	try {
-					ResultSet sor=Main.db.getAcquisti(tID, "ciao");
+					ResultSet sor=MyDB.getAcquisti(tID, "ciao");
 					while (sor.next()) {		
 						String fin=sor.getString("ID_ACQUISTO")+", "+sor.getString("Moment")+", "+sor.getString("name")+" "+sor.getString("Last_name")+", "+sor.getString("price");
 						elenco.add(fin);

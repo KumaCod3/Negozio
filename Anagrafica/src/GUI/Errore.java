@@ -1,5 +1,7 @@
 package GUI;
 import Negozio.ListaSpesa;
+import Negozio.MyDB;
+
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -15,6 +17,7 @@ public class Errore extends Frame {
 	JPanel c;
 	public double qtt;
 	public double qttMax;
+	public String pW;
 	public int index=-1;
 	public FormVuoto tf1;
 	
@@ -79,7 +82,7 @@ public class Errore extends Frame {
 		    	a.dispose();
 		    	setVisible(false);
 		    	try {
-		    		Main.db.elimMerc(a.index);
+		    		MyDB.elimMerc(a.index);
 		    	} catch (SQLException ee) { ee.printStackTrace();}
 		    	
 		    	
@@ -155,7 +158,7 @@ public class Errore extends Frame {
 		this();
 		
 		qtt=0.0;
-		qttMax=Main.db.getQuantMerc(merce);
+		qttMax=MyDB.getQuantMerc(merce);
 		tx.setText("<html>Not enough in store, available: "+qttMax+"<br/> put in cart: ");
 
 		c.remove(ty);
@@ -165,13 +168,26 @@ public class Errore extends Frame {
 		pack();
 		
 	}
+	public Errore(float x) {	// DB password
+		this();
+		pW="";
+		tx.setText("<html>Insert DataBase connection PASSWORD: ");
+		ty.but.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	System.exit(0);
+			}
+		});
+		tf1 = new FormVuoto("");
+		c.add(tf1);
+		pack();
+	}
 	
 	public Errore(int ind, SchedaMerce t) {		// scelta forn x ordine merch
 		this();
 		tx.setText("From which supplier you want to purchase the product?");
 
 		try {
-			MyChoice ele=new MyChoice(Main.db.getElenSuppF(ind),5);
+			MyChoice ele=new MyChoice(MyDB.getElenSuppF(ind),5);
 					ele.jList.addListSelectionListener(new ListSelectionListener() {
 						public void valueChanged(ListSelectionEvent e) {
 							try {
@@ -213,7 +229,7 @@ public class Errore extends Frame {
 		tx.setText("From which supplier you want to purchase the product?");
 
 		try {
-			MyChoice ele=new MyChoice(Main.db.getElenSuppF(ind),5);
+			MyChoice ele=new MyChoice(MyDB.getElenSuppF(ind),5);
 					ele.jList.addListSelectionListener(new ListSelectionListener() {
 						public void valueChanged(ListSelectionEvent e) {
 							try {
@@ -261,9 +277,9 @@ public class Errore extends Frame {
 		    	a.dispose();
 		    	setVisible(false);
 		    	try {
-		    		int IDtrans=Main.db.createTransactionOu(index2, price);
-		    		Main.db.compra(codice, qt,price, IDtrans);
-		    		Main.db.aggiornaSaldoFor(index2, price);
+		    		int IDtrans=MyDB.createTransactionOu(index2, price);
+		    		MyDB.compra(codice, qt,price, IDtrans);
+		    		MyDB.aggiornaSaldoFor(index2, price);
 		    	} catch (SQLException ex) { ex.printStackTrace();}
 		    	
 		    	Home hh=new Home();
@@ -288,7 +304,7 @@ public class Errore extends Frame {
 		tx.setText("Which product you want to purchase form this supplyer?");
 
 		try {
-				MyChoice ele=new MyChoice(Main.db.getElenSuppM(codice), "ciao");
+				MyChoice ele=new MyChoice(MyDB.getElenSuppM(codice), "ciao");
 				ele.jList.addListSelectionListener(new ListSelectionListener() {
 					public void valueChanged(ListSelectionEvent e) {
 						try {
@@ -333,8 +349,8 @@ public class Errore extends Frame {
 	public Errore(int codice, int indice, AssegnaMerc a) {		// elimina rapporto fornitore/merce
 		this();
 		try {
-			String mer=Main.db.getMerName(codice);
-			String sup=Main.db.getForName(indice);
+			String mer=MyDB.getMerName(codice);
+			String sup=MyDB.getForName(indice);
 
 		
 			tx.setText("Remove "+mer+" from supplier "+sup+"?");
@@ -343,7 +359,7 @@ public class Errore extends Frame {
 			    public void actionPerformed(ActionEvent e) {
 			    	a.dispose();
 			    	setVisible(false);
-			    	Main.db.removeForn(codice,indice);
+			    	MyDB.removeForn(codice,indice);
 			    	ConsultaPersone cp=new ConsultaPersone();
 			    	cp.setVisible(true);
 			    	dispose();

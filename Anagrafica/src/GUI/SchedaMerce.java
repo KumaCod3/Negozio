@@ -1,6 +1,9 @@
 package GUI;
 import java.awt.*;
 import javax.swing.*;
+
+import Negozio.MyDB;
+
 import java.awt.event.*;
 import java.sql.SQLException;
 
@@ -34,7 +37,7 @@ public class SchedaMerce extends Finestra{
 		index=x;
 		if (x!=-1) {
 			try {
-				String data=Main.db.leggiMercID(x);
+				String data=MyDB.leggiMercID(x);
 				String[] spl=data.split(",");
 				this.nome=spl[1];
 				this.unita=spl[2];
@@ -90,7 +93,7 @@ public class SchedaMerce extends Finestra{
 /*comp6*/  Etichetta forn=new Etichetta("Supplier: ");
 		contenuto.add(forn);	
 		try {
-			MyChoice ele1=new MyChoice(Main.db.getElenSuppF(index),5);
+			MyChoice ele1=new MyChoice(MyDB.getElenSuppF(index),5);
 			contenuto.add(ele1);
 		} catch (SQLException ex) {ex.printStackTrace();}
 		
@@ -199,7 +202,7 @@ public class SchedaMerce extends Finestra{
 		    public void actionPerformed(ActionEvent e) {
 		    	if (index!=-1){
 		    		try {
-			    		Main.db.modMerc(index, nome, unita, quantita, prezzoA, rincaroT, scontoT, note);
+		    			MyDB.modMerc(index, nome, unita, quantita, prezzoA, rincaroT, scontoT, note);
 		    		} catch (SQLException ex) {	ex.printStackTrace(); }
 		    	}
 			}

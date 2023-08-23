@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import javax.swing.JPanel;
 
+import Negozio.MyDB;
+
 public class ModPersona extends Finestra{
 	int codice;
 	String cognome;
@@ -24,13 +26,13 @@ public class ModPersona extends Finestra{
 		codice=x;
 		if (tipo.equals("fornitore")){
 			try {
-				data=Main.db.leggiForID(x);
+				data=MyDB.leggiForID(x);
 			}
 			catch (SQLException e){	e.printStackTrace();	}
 		}
 		else {
 			try {
-				data=Main.db.leggiCliID(x);
+				data=MyDB.leggiCliID(x);
 			}
 			catch (SQLException e){	e.printStackTrace();	}
 		}
@@ -191,7 +193,7 @@ public class ModPersona extends Finestra{
 		    	
 		    	if (tipo.contentEquals("cliente")){
 		    		try {
-		    			Main.db.modCliID(codice, nome, cognome, telefono, email, "SS", citta, indirizzo, iva, saldo, note);
+		    			MyDB.modCliID(codice, nome, cognome, telefono, email, "SS", citta, indirizzo, iva, saldo, note);
 		    		} catch (SQLException ex) {	ex.printStackTrace(); }
 		    		
 		    		
@@ -201,7 +203,7 @@ public class ModPersona extends Finestra{
 		    	}
 		    	else if (tipo.contentEquals("fornitore")){
 		    		try {
-		    			Main.db.modForID(codice, nome, cognome, telefono, email, stato, citta, indirizzo, iva, saldo, note);
+		    			MyDB.modForID(codice, nome, cognome, telefono, email, stato, citta, indirizzo, iva, saldo, note);
 		    		} catch (SQLException ex) {	ex.printStackTrace(); }
 		    			
 

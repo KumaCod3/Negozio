@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import java.awt.Component;
 import javax.swing.border.EmptyBorder;
 
+import Negozio.DBhandler;
+
 public class Home extends Finestra{
 	public Home(){
 		super("HOME");

@@ -1,6 +1,9 @@
 package GUI;
 import java.awt.*;
 import javax.swing.*;
+
+import Negozio.MyDB;
+
 import java.awt.event.*;
 import java.sql.SQLException;
 
@@ -24,13 +27,13 @@ public class SchedaPersona extends Finestra{
 		codice=x;
 		if (tipo.equals("fornitore")){
 			try {
-				data=Main.db.leggiForID(x);
+				data=MyDB.leggiForID(x);
 			}
 			catch (SQLException e){	e.printStackTrace();	}
 		}
 		else {
 			try {
-				data=Main.db.leggiCliID(x);
+				data=MyDB.leggiCliID(x);
 			}
 			catch (SQLException e){	e.printStackTrace();	}
 		}
@@ -113,7 +116,7 @@ public class SchedaPersona extends Finestra{
 			contenuto.add(forn);	
 			
 			try {
-				MyChoice ele1=new MyChoice(Main.db.getElenSuppM(codice), "ciao");
+				MyChoice ele1=new MyChoice(MyDB.getElenSuppM(codice), "ciao");
 				JPanel ff=new JPanel();
 				ff.setOpaque(false);
 				FlowLayout flowLayout = (FlowLayout) ff.getLayout();

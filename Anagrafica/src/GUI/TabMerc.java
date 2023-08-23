@@ -6,6 +6,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import Negozio.MyDB;
+
 public class TabMerc extends Frame{
 	JTable tavola;
 	
@@ -59,7 +61,9 @@ public class TabMerc extends Frame{
 	public void repaint(){
 		clear();
 		try {
-			ResultSet sett=Main.db.getElenMerc();
+			// TODO
+//			ResultSet sett=Main.dd.db.getElenMerc();
+			ResultSet sett=MyDB.getElenMerc();
 			while (sett.next()) {
 				double priz=sett.getDouble("price")+(sett.getDouble("price")*sett.getDouble("increase"))-(sett.getDouble("price")*sett.getDouble("deal"));
 				

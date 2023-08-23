@@ -3,6 +3,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.JPanel;
 
+import Negozio.MyDB;
+
 public class Balance extends Finestra{
 	private double merchVal;
 	private double totSold;
@@ -11,9 +13,9 @@ public class Balance extends Finestra{
 	
 		public Balance(){
 			super("TOTAL BALANCE:");
-			this.merchVal=Main.db.getMercVal(); // somma prezzi acquisto per quantita di tutto
-			this.totSold=Main.db.getTotSold();	// somma tutte vendite
-			this.totBought=Main.db.getTotBought();	// somma tutti acquisti
+			this.merchVal=MyDB.getMercVal(); // somma prezzi acquisto per quantita di tutto
+			this.totSold=MyDB.getTotSold();	// somma tutte vendite
+			this.totBought=MyDB.getTotBought();	// somma tutti acquisti
 			this.bal=totSold-totBought;				// tutte vendite - tutti acquisti
 			double balMag=bal+merchVal;			// vendite - acquisti - valore magazzino
 			

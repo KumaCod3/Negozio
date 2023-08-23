@@ -9,7 +9,7 @@ import javax.swing.border.EmptyBorder;
 
 public class Est {
 	public static Color sfondo=new Color(91,138,223);
-	public static Color scuro=new Color(44,100,198);
+	public static Color scuro=new Color(44,100,198);	// #2C64C6
 	public static Color rosso=new Color(230,20,21);
 	public static Color chiarissimo=new Color(117,223,235);
 	
@@ -24,6 +24,7 @@ public class Est {
 	private static double wi270=wi/2.5;
 	private static double wi190=wi/3.6;
 	private static double wi310=wi/2.2;
+	private static double wis=wi/1.5;
 	public static Dimension standard=new Dimension((int)wi, (int)he);
 	public static Dimension piccolo=new Dimension((int)wi190,(int)he80);
 	public static Dimension piccoloMin=new Dimension((int)(wi190/3*2),(int)(he80/3*2));
@@ -32,6 +33,7 @@ public class Est {
 	public static Dimension testa=new Dimension((int)wi, (int)he80);
 	public static Dimension choi=new Dimension((int)wi270,(int)he80);
 	public static Dimension fil=new Dimension((int)wi270,(int)he30);
+	public static Dimension istr=new Dimension((int)wis,(int)he);
 	public static int marginX=(int)((screenSize.getSize().getWidth()/2)-(standard.getSize().getWidth()/2));
 	public static int marginY=(int)((screenSize.getSize().getSize().getHeight()/2)-(standard.getSize().getHeight()/2));
 	public static int centX=(int)((screenSize.getSize().getWidth()/2));

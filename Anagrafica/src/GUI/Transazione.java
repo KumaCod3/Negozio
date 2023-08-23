@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import Negozio.MyDB;
+
 public class Transazione extends Finestra{
 	
 	ArrayList<String> elenco=new ArrayList<String>();
@@ -17,7 +19,7 @@ public class Transazione extends Finestra{
 		super("Transaction details:");
 		
 		try {
-			ResultSet sor=Main.db.getVendite(index,"ciao");
+			ResultSet sor=MyDB.getVendite(index,"ciao");
 			while (sor.next()) {
 				nomeP=sor.getString("name");
 				prezzoF=Double.parseDouble(sor.getString("price"));
@@ -26,7 +28,7 @@ public class Transazione extends Finestra{
 		} catch (SQLException ex) { ex.printStackTrace(); }
 		
     	try {
-			ResultSet sor=Main.db.getVendita(index);
+			ResultSet sor=MyDB.getVendita(index);
 			while (sor.next()) {		
 				String fin=sor.getString("ID_MERCE")+", "+sor.getString("Nome")+", "+sor.getString("Quantity")+", "+sor.getString("Price");
 				elenco.add(fin);
@@ -56,7 +58,7 @@ public class Transazione extends Finestra{
 		super("Transaction details:");
 		
 		try {
-			ResultSet sor=Main.db.getAcquisti(index,"ciao");
+			ResultSet sor=MyDB.getAcquisti(index,"ciao");
 			while (sor.next()) {
 				nomeP=sor.getString("name");
 				prezzoF=Double.parseDouble(sor.getString("price"));
@@ -65,7 +67,7 @@ public class Transazione extends Finestra{
 		} catch (SQLException ex) { ex.printStackTrace(); }
 		
 		try {
-			ResultSet sor=Main.db.getAcquisto(index);
+			ResultSet sor=MyDB.getAcquisto(index);
 			while (sor.next()) {		
 				String fin=sor.getString("ID_MERCE")+", "+sor.getString("Nome")+", "+sor.getString("Quantity")+", "+sor.getString("Price");
 				elenco.add(fin);

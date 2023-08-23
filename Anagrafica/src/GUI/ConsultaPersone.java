@@ -3,6 +3,9 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
+import Negozio.MyDB;
+
 import java.awt.event.*;
 import java.sql.SQLException;
 
@@ -40,7 +43,7 @@ public class ConsultaPersone  extends Finestra {
 		ele1.setBorder(Est.bordo);
 		ele1.setOpaque(false);
 		try {
-/*comp2*/MyChoice ele=new MyChoice(Main.db.getElenForn(),5);
+/*comp2*/MyChoice ele=new MyChoice(MyDB.getElenForn(),5);
 			ele.setBorder(Est.bordoCh);
 			ele.jList.addListSelectionListener(new ListSelectionListener() {
 				public void valueChanged(ListSelectionEvent e) {
@@ -80,7 +83,7 @@ public class ConsultaPersone  extends Finestra {
 		ele3.setOpaque(false);
 		try {
 			
-/*comp5*/MyChoice ele2=new MyChoice(Main.db.getElenCli());
+/*comp5*/MyChoice ele2=new MyChoice(MyDB.getElenCli());
 			ele2.setBorder(Est.bordoCh);
 			ele2.jList.addListSelectionListener(new ListSelectionListener() {
 				public void valueChanged(ListSelectionEvent e) {

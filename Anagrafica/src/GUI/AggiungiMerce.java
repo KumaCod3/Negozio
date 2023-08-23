@@ -1,6 +1,9 @@
 package GUI;
 import java.awt.*;
 import javax.swing.*;
+
+import Negozio.MyDB;
+
 import java.awt.event.*;
 
 public class AggiungiMerce extends Finestra{
@@ -80,7 +83,7 @@ public class AggiungiMerce extends Finestra{
 		    public void actionPerformed(ActionEvent e) {
 		    	nome=tf1.ret;
 		    	if (!nome.equals("name")) {
-		    		int index=Main.db.nuovaMerc(nome,unita);
+		    		int index=MyDB.nuovaMerc(nome,unita);
 		    		if (index!=-1) {
 			    		SchedaMerce aggg=new SchedaMerce(index);
 					    aggg.setVisible(true);

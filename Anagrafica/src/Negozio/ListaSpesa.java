@@ -26,7 +26,7 @@ public class ListaSpesa{
 		data=LocalDateTime.now();
 		saldo=0.0;
 		try {
-			IDtrans=Main.db.createTransactionIn(c,data);
+			IDtrans=MyDB.createTransactionIn(c,data);
 		} catch (SQLException e) { e.printStackTrace(); }
 	}
 	
@@ -67,10 +67,8 @@ public class ListaSpesa{
 		    		}
 		    	}
 		    	catch (Exception ex) { ex.printStackTrace(); }
-		    	
 			}
 		});
-		
 	}
 
 	public Double getSaldo(){
@@ -86,7 +84,7 @@ public class ListaSpesa{
 	public void calcolaSaldo(){
 		saldo=0.0;
 		for (Entry<Integer,Double> m:elenco.entrySet()){
-			Double prezzo=Main.db.getPrezzo((int)m.getKey());
+			Double prezzo=MyDB.getPrezzo((int)m.getKey());
 			Double quant=(Double)m.getValue();
 			saldo=saldo+(quant*prezzo);
 		}
@@ -97,26 +95,26 @@ public class ListaSpesa{
 			int index=m.getKey();
 			Double quantita=m.getValue();
 			try {
-				Main.db.vendi(index, quantita, IDtrans);
+				MyDB.vendi(index, quantita, IDtrans);
 			} catch (SQLException ex) { ex.printStackTrace(); }
 			
 		}
 		calcolaSaldo();
 		try {
-			Main.db.aggiornaSaldoCli(IDcli, saldo);
+			MyDB.aggiornaSaldoCli(IDcli, saldo);
 		} catch (SQLException e) { e.printStackTrace(); }
 		try {
-			Main.db.aggiornaVendite(IDtrans, saldo,"note");
+			MyDB.aggiornaVendite(IDtrans, saldo,"note");
 		} catch (SQLException e) { e.printStackTrace(); }
 	}
 	
 	public boolean check(int m){
-		if (Main.db.getQuantMerc(m)<elenco.get(m)){
+		if (MyDB.getQuantMerc(m)<elenco.get(m)){
 			return false;
 		}
 		return true;
 	}
 	public void annulla() {
-		Main.db.elimTransactionIn(IDtrans);
+		MyDB.elimTransactionIn(IDtrans);
 	}
 }

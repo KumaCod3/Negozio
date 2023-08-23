@@ -10,6 +10,8 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
+import Negozio.MyDB;
+
 public class Storico extends Finestra{
 	public Storico(){
 		super("History: ");
@@ -30,7 +32,7 @@ public class Storico extends Finestra{
 		LocalDateTime dataFI=LocalDateTime.now();
 		LocalDateTime dataIN=dataFI.minusMonths(1);
 		try {
-			ResultSet sor=Main.db.getVendite(dataIN, dataFI);
+			ResultSet sor=MyDB.getVendite(dataIN, dataFI);
 			while (sor.next()) {		
 				String fin=sor.getString("ID_VENDITA")+", "+sor.getString("Moment")+", "+sor.getString("name")+" "+sor.getString("Last_name")+", "+sor.getString("price");
 				elenco.add(fin);
@@ -59,7 +61,7 @@ public class Storico extends Finestra{
 
 		ArrayList<String> elenco2=new ArrayList<String>();
 		try {
-			ResultSet sor=Main.db.getAcquisti(dataIN, dataFI);
+			ResultSet sor=MyDB.getAcquisti(dataIN, dataFI);
 			while (sor.next()) {		
 				String fin=sor.getString("ID_ACQUISTO")+", "+sor.getString("Moment")+", "+sor.getString("name")+" "+sor.getString("Last_name")+", "+sor.getString("price");
 				elenco2.add(fin);
