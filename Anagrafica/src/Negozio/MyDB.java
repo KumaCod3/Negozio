@@ -1,8 +1,6 @@
 package Negozio;
-import java.awt.Desktop;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -11,7 +9,6 @@ import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
-
 import GUI.DownloadSQLinfo;
 import GUI.Est;
 import GUI.Main;
@@ -24,20 +21,17 @@ public class MyDB {
 	
 	public MyDB(String pw) {
 		PASSWORD=pw;
-//		System.out.println("pass "+PASSWORD);
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+DataBaseNAME+"?characterEncoding=latin1&useConfigs=maxPerformance","root",PASSWORD);
 			statement = connection.createStatement();
 		}catch (ClassNotFoundException e) {System.out.println("MySQL Library missing");}
 		catch (SQLException e) {
-//			System.out.println("code error: "+e.getSQLState());
 			creaDB();
 		}
 	}
 
 	static void creaDB() {
-//		System.out.println("creoDB ");
 		try {
 			connection = DriverManager.getConnection("jdbc:mysql://localhost/?characterEncoding=latin1&useConfigs=maxPerformance", "root", PASSWORD);
 			Statement st = connection.createStatement();
@@ -45,11 +39,8 @@ public class MyDB {
 			st.executeUpdate(sql);
 		}catch (SQLException e) { 
 			if (e.getSQLState().startsWith("28")) {
-//				System.out.println("PWW errata");
 				Main.restartApplication();
 			}
-//			System.out.println("manca software MySQL");
-//			System.out.println("code error: "+e.getSQLState());
 			DownloadSQLinfo info=new DownloadSQLinfo();
 			info.setVisible(true);
 			return;

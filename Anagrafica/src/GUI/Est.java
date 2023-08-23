@@ -1,11 +1,9 @@
 package GUI;
 import java.awt.*;
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
 
 public class Est {
 	public static Color sfondo=new Color(91,138,223);

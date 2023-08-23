@@ -7,8 +7,7 @@ import java.net.URL;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class DownloadSQLinfo extends Finestra{	
-	
+public class DownloadSQLinfo extends Finestra{		
 	public DownloadSQLinfo() {
 		super("Please Install MySQL: ");
 		setPreferredSize(Est.istr);
@@ -23,8 +22,7 @@ public class DownloadSQLinfo extends Finestra{
 		non.setHorizontalAlignment(JLabel.CENTER);
 		non.setVerticalAlignment(JLabel.CENTER);
 		c.add("North", non);	
-		
-		// TODO istruzioni
+
 		String ist="<html><big style=\"font-size:20px; color:#2C64C6; \">To work, this app needs a local MySQL Database, "
 				+ " It looks like you didn't install or connect it correctly."
 				+ "<br> "
