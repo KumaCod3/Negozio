@@ -8,7 +8,6 @@ public class Main{
 	public static void main(String[] args) {
 		DBhandler dd=new DBhandler();
 		do {
-			
 		} while (dd.ready);
 		Home prova=new Home();
 		prova.setVisible(true);
