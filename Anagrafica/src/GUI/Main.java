@@ -5,7 +5,6 @@ import java.lang.management.ManagementFactory;
 import Negozio.DBhandler;
 	
 public class Main{
-	
 	public static void main(String[] args) {
 		DBhandler dd=new DBhandler();
 		do {

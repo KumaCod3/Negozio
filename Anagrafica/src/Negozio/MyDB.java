@@ -16,7 +16,7 @@ import GUI.Main;
 public class MyDB {
 	private static Connection connection;
 	private static Statement statement;
-	private static String PASSWORD="Du1k3rKnows!";
+	private static String PASSWORD="password";
 	private static String DataBaseNAME="negozioDB";
 	
 	public MyDB(String pw) {
@@ -200,7 +200,7 @@ public class MyDB {
 	}
 
 	public static ResultSet getElenForn() throws SQLException {
-		String sql="SELECT ID_FORNITORE,name,last_name FROM fornitori";
+		String sql="SELECT ID_FORNITORE,name,last_name AS sec FROM fornitori";
 		ResultSet result = statement.executeQuery(sql);
 		return result;
 	}
@@ -262,8 +262,9 @@ public class MyDB {
 	}
 
 	public static ResultSet getElenSuppF(int index) throws SQLException{
-		String sql="SELECT fornitori.ID_FORNITORE, fornitori.name, fornitori.last_name FROM fornitori WHERE ID_FORNITORE IN (SELECT ID_FORNITORE FROM forniture WHERE ID_MERCE="+index+");";
+		String sql="SELECT fornitori.ID_FORNITORE, fornitori.name,  forniture.price AS sec FROM fornitori JOIN forniture ON forniture.ID_FORNITORE=fornitori.ID_FORNITORE WHERE ID_MERCE="+index+";";
 		// cod, nome, cogn
+		// TODO cod nome prezzo
 		ResultSet result = statement.executeQuery(sql);
 		return result;
 	}

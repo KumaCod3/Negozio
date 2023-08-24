@@ -98,7 +98,7 @@ public class MyChoice extends JPanel{
 	private void populateFor(ResultSet sor) {
 		try {
 			while (sor.next()) {		
-				String fin=sor.getString("ID_FORNITORE")+", "+sor.getString("name")+", "+sor.getString("last_name");
+				String fin=sor.getString("ID_FORNITORE")+", "+sor.getString("name")+", "+sor.getString("sec");
 				elenco.add(fin);
 			}
 		} catch (SQLException e) { e.printStackTrace(); }

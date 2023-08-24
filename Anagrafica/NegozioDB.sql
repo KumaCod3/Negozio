@@ -147,7 +147,7 @@ CREATE TABLE `merci` (
   `ID_MERCE` int NOT NULL AUTO_INCREMENT,
   `Product` varchar(15) DEFAULT NULL,
   `Unity` varchar(10) DEFAULT NULL,
-  `Quantity` decimal(7,2) DEFAULT NULL,
+  `Quantity` decimal(7,2) DEFAULT '0.00',
   `Deal` decimal(3,2) DEFAULT '1.00',
   `Note` varchar(150) DEFAULT NULL,
   `increase` decimal(3,2) DEFAULT '1.20',
