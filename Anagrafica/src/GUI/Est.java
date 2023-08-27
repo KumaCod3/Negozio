@@ -32,6 +32,7 @@ public class Est {
 	public static Dimension choi=new Dimension((int)wi270,(int)he80);
 	public static Dimension fil=new Dimension((int)wi270,(int)he30);
 	public static Dimension istr=new Dimension((int)wis,(int)he);
+	public static Dimension istrMin=new Dimension((int)680,(int)860);
 	public static int marginX=(int)((screenSize.getSize().getWidth()/2)-(standard.getSize().getWidth()/2));
 	public static int marginY=(int)((screenSize.getSize().getSize().getHeight()/2)-(standard.getSize().getHeight()/2));
 	public static int centX=(int)((screenSize.getSize().getWidth()/2));

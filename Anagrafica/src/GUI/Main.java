@@ -6,11 +6,16 @@ import Negozio.DBhandler;
 	
 public class Main{
 	public static void main(String[] args) {
+//		DownloadSQLinfo d=new DownloadSQLinfo();
+//		d.setVisible(true);
+		
 		DBhandler dd=new DBhandler();
 		do {
 		} while (dd.ready);
 		Home prova=new Home();
 		prova.setVisible(true);
+		
+		
 	}
 	
 	static public void restartApplication(){

@@ -10,8 +10,11 @@ import javax.swing.JPanel;
 public class DownloadSQLinfo extends Finestra{		
 	public DownloadSQLinfo() {
 		super("Please Install MySQL: ");
-		setPreferredSize(Est.istr);
-		
+		setMinimumSize(Est.istrMin);
+		if (Est.istrMin.getWidth()>Est.istr.getWidth()||Est.istrMin.getHeight()>Est.istr.getHeight()) {
+			setPreferredSize(Est.istr);
+		}
+//		System.out.println("larg "+Est.istrMin.getWidth()+" alte "+Est.istrMin.getHeight());
 		JPanel foot=new JPanel();
 		foot.setBorder(Est.bordo);
 		foot.setOpaque(false);

@@ -19,7 +19,7 @@ public class MyDB {
 	private static String PASSWORD="password";
 	private static String DataBaseNAME="negozioDB";
 	
-	public MyDB(String pw) {
+	public MyDB(String pw, DBhandler ddb) {
 		PASSWORD=pw;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -27,11 +27,11 @@ public class MyDB {
 			statement = connection.createStatement();
 		}catch (ClassNotFoundException e) {System.out.println("MySQL Library missing");}
 		catch (SQLException e) {
-			creaDB();
+			ddb.ready=creaDB();
 		}
 	}
 
-	static void creaDB() {
+	static boolean creaDB() {
 		try {
 			connection = DriverManager.getConnection("jdbc:mysql://localhost/?characterEncoding=latin1&useConfigs=maxPerformance", "root", PASSWORD);
 			Statement st = connection.createStatement();
@@ -43,19 +43,21 @@ public class MyDB {
 			}
 			DownloadSQLinfo info=new DownloadSQLinfo();
 			info.setVisible(true);
-			return;
+			return true;
 			}
-		importaDB();
+		return importaDB();
 	}
 
-	private static void importaDB() {  
+	private static boolean importaDB() {  
 		try {
 				connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+DataBaseNAME+"?characterEncoding=latin1&useConfigs=maxPerformance","root",PASSWORD);
 				statement = connection.createStatement();
 				ScriptRunner runner = new ScriptRunner(connection , false, false);
 				runner.runScript(new BufferedReader(new FileReader("NegozioDB.sql")));
+				return false;
 		} catch (Exception ex) {
 	        ex.printStackTrace();
+	        return true;
 	    }
 	}
 	
