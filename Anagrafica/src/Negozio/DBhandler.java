@@ -17,7 +17,6 @@ public class DBhandler {
 		} while (ppw==null);
 //		System.out.println("Provo");
 	    db=new MyDB(ppw, this);
-//	    ready=false;
 	}
 	
 	private void chiediPW() {

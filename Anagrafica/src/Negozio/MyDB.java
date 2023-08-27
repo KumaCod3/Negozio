@@ -25,9 +25,16 @@ public class MyDB {
 			Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+DataBaseNAME+"?characterEncoding=latin1&useConfigs=maxPerformance","root",PASSWORD);
 			statement = connection.createStatement();
+			
 		}catch (ClassNotFoundException e) {System.out.println("MySQL Library missing");}
 		catch (SQLException e) {
 			ddb.ready=creaDB();
+		}
+		try {
+			leggiCliID(0);
+			ddb.ready=false;
+		} catch (SQLException ex) {
+			ddb.ready=importaDB();
 		}
 	}
 
@@ -37,6 +44,7 @@ public class MyDB {
 			Statement st = connection.createStatement();
 			String sql="CREATE DATABASE "+DataBaseNAME;
 			st.executeUpdate(sql);
+			
 		}catch (SQLException e) { 
 			if (e.getSQLState().startsWith("28")) {
 				Main.restartApplication();
@@ -57,7 +65,7 @@ public class MyDB {
 				return false;
 		} catch (Exception ex) {
 	        ex.printStackTrace();
-	        return true;
+	        return false;
 	    }
 	}
 	
